@@ -1,0 +1,19 @@
+{
+  "name": "smaily/woocommerce_smaily_plugin",
+  "description": "Smaily email marketing and automation extension plugin for WooCommerce",
+  "type": "plugin",
+  "license": "GPL3",
+  "authors": [
+    {
+      "name": "Smaily",
+      "email": "info@smaily.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "Inc\\": "./inc"
+    }
+  }
+}
