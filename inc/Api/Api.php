@@ -64,7 +64,7 @@ class Api {
 			$http_code = wp_remote_retrieve_response_code( $api_call );
 			// Show error message if no access.
 			if ( $http_code == 401 ) {
-				$response = array( 'error' => 'Check details, no connection !' );
+				$response = array( 'error' => 'Invalid API credentials, no connection !' );
 			}
 			// Return autoresponders list back to front end for selection.
 			if ( $http_code == 200 ) {
@@ -83,7 +83,7 @@ class Api {
 
 		// Return response to ajax call.
 		echo json_encode( $response );
-		die();
+		wp_die();
 	}
 
 	/**
@@ -133,7 +133,7 @@ class Api {
 
 		// Return message to user.
 		echo json_encode( $response );
-		die();
+		wp_die();
 	}
 
 	/**

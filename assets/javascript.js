@@ -23,17 +23,12 @@
           const data = $.parseJSON(response);
           // Show Error messages to user if any exist.
           if (data["error"]) {
-            $errorMessage = ` < div class = "error notice" > < p > ${
-              data["error"]
-            } < / p > < / div > `;
+            $errorMessage =
+              '<div class = "error notice"><p>' + data["error"] + "</p></div>";
             $(".message-display").html($errorMessage);
             // Hide loading icon
             spinner.hide();
           } else {
-            // If no errors show success message.
-            $successMessage = ` < div class = "notice notice-success is-dismissible" > < p > Connection successful < / p > < / div > `;
-            $(".message-display").html($successMessage);
-
             // Add autoresponders to autoresponders list inside next form.
             $.each(data, (index, item) => {
               $("#autoresponders-list").append(
@@ -82,15 +77,15 @@
           // Response message from back-end.
           data = $.parseJSON(response);
           if (data["error"]) {
-            $errorMessage = ` < div class = "error notice" > < p > ${
-              data["error"]
-            } < / p > < / div > `;
+            $errorMessage =
+              '<div class = "error notice"><p>' + data["error"] + "</p></div>";
             $(".message-display").html($errorMessage);
           } else {
             // Display message to user.
-            $successMessage = ` < div class = "notice notice-success is-dismissible" > < p > ${
-              data["success"]
-            } < / p > < / div > `;
+            $successMessage =
+              '<div class = "notice notice-success is-dismissible"><p>' +
+              data["success"] +
+              "</p></div>";
             $(".message-display").html($successMessage);
           }
         }
