@@ -18,6 +18,7 @@ print_r($result);
 	<h1>Smaily Plugin Settings</h1>		
 	<div class="message-display"></div>
 	<form method="POST" id="startupForm" action="" class="validate" novalidate="novalidate">
+		<?php wp_nonce_field( 'settings-nonce', 'nonce', false  );?>
 		<table class="form-table">
 			<tbody>
 				<tr class="form-field form-required">
