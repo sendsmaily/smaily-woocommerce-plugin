@@ -144,7 +144,7 @@ class Api {
 					$wpdb->update(
 						$table_name,
 						array(
-							'enable'                => isset( $sanitized_user['enable'] ) ? 'on' : 'off',
+							'enable'                => isset( $sanitized_user['enable'] ) ? 1 : 0,
 							'subdomain'             => $sanitized_user['subdomain'],
 							'username'              => $sanitized_user['username'],
 							'password'              => $sanitized_user['password'],

@@ -42,12 +42,12 @@ class Activate {
 		$smaily = "
                 CREATE TABLE IF NOT EXISTS `{$wpdb->prefix}smaily` (
                 `id` int(11) NOT NULL AUTO_INCREMENT ,
-                `enable` varchar(10) DEFAULT NULL,
+                `enable` tinyint(1) DEFAULT NULL,
                 `subdomain` varchar(255) DEFAULT NULL,
                 `username` varchar(255) DEFAULT NULL,
                 `password` varchar(255) DEFAULT NULL,
                 `autoresponder` varchar(255) DEFAULT NULL,
-                `autoresponder_id` varchar(10) DEFAULT NULL,
+                `autoresponder_id` int(10) DEFAULT NULL,
                 `syncronize_additional` varchar(255) DEFAULT NULL,
                 `syncronize` varchar(255) DEFAULT NULL,
                 PRIMARY KEY (`id`)
@@ -59,7 +59,7 @@ class Activate {
 	}
 
 	/**
-	 * Marks enable field to Off
+	 * Marks enable field to 0
 	 *
 	 * @return void
 	 */
@@ -68,7 +68,7 @@ class Activate {
 		$result = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}smaily", 'ARRAY_A' );
 		if ( empty( $result ) ) {
 			$table_name = $wpdb->prefix . 'smaily';
-			$wpdb->insert( $table_name, array( 'enable' => 'off' ) );
+			$wpdb->insert( $table_name, array( 'enable' => 0 ) );
 		}
 	}
 

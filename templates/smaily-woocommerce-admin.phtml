@@ -23,7 +23,7 @@ print_r($result);
 			<tbody>
 				<tr class="form-field form-required">
 					<th scope="row"><label for="enable">Enable Cron synchronization </label></th>
-					<td><input name="enable" value="on" aria-required="true" maxlength="60" type="checkbox" <?php echo (isset($isEnabled) && $isEnabled == 'on') ? 'checked' : ' ' ; ?>></td>
+					<td><input name="enable" value="on" aria-required="true" maxlength="60" type="checkbox" <?php echo (isset($isEnabled) && $isEnabled == 1) ? 'checked' : ' ' ; ?>></td>
 				</tr>
 				<tr class="form-field form-required">
 					<th scope="row"><label for="subdomain">Subdomain </label></th>
