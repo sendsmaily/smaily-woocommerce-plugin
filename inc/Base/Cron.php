@@ -2,6 +2,7 @@
 /**
  * @package smaily_woocommerce_plugin
  */
+
 namespace Inc\Base;
 
 use Inc\Api\Api;
@@ -17,10 +18,16 @@ class Cron {
 	 */
 	public function register() {
 		// Action hook for contact syncronization.
-		add_action( 'smaily_chron_event', array( $this, 'smaily_sync_contacts' ) );
+		add_action( 'smaily_cron_sync_contacts', array( $this, 'smaily_sync_contacts' ) );
 
 	}
 
+	/**
+	 * Synchronizes contact information between Smaily and WooCommerce.
+	 * Logs response from Smaily to smaily-cron file.
+	 *
+	 * @return void
+	 */
 	public function smaily_sync_contacts() {
 
 		$results = DataHandler::get_smaily_results();
@@ -60,21 +67,21 @@ class Cron {
 			);
 			// If no subscribers.
 			if ( empty( $users ) ) {
-				$this->logToFile( PLUGIN_PATH . 'smaily-cron.txt', 'No subscribers' );
+				$this->log_to_file( PLUGIN_PATH . 'smaily-cron.txt', 'No subscribers' );
 				return;
 			}
 			// Prepare data to update Subscribers list in Smaily.
 			$list = [];
 
 			foreach ( $users as $user ) {
-				$subscriber = DataHandler::getUserData( $user->ID );
+				$subscriber = DataHandler::get_user_data( $user->ID );
 				array_push( $list, $subscriber );
 			}
 
 			// Update all subscribers to Smaily.
 			$response = Api::ApiCall( 'contact', [ 'body' => $list ], 'POST' );
 
-			$this->logToFile( PLUGIN_PATH . 'smaily-cron.txt', $response['message'] );
+			$this->log_to_file( PLUGIN_PATH . 'smaily-cron.txt', $response['message'] );
 		}
 
 	}
@@ -85,7 +92,7 @@ class Cron {
 	 * @param string $msg       Text response from api.
 	 * @return void
 	 */
-	private function logToFile( $filename, $msg ) {
+	private function log_to_file( $filename, $msg ) {
 		$fd  = fopen( $filename, 'a' );
 		$str = '[' . current_time( 'mysql', 1 ) . '] ' . $msg;
 		fwrite( $fd, $str . "\r\n" );
