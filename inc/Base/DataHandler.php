@@ -40,10 +40,10 @@ class DataHandler {
 		$currencysymbol = get_woocommerce_currency_symbol();
 		$items          = [];
 		foreach ( $products as $prod ) {
-			if ( function_exists( 'get_product' ) ) {
+			if ( function_exists( 'wc_get_product' ) ) {
 				$product = wc_get_product( $prod->ID );
 			} else {
-				$product = new WC_Product( $prod->ID );
+				$product = new \WC_Product( $prod->ID );
 			}
 
 			$price      = $product->get_regular_price();
