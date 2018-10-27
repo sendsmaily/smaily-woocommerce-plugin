@@ -91,7 +91,8 @@ class DataHandler {
 	}
 
 	/**
-	 * Get latest published products from WooCommerce database
+	 * Get latest published products from WooCommerce database.
+	 * Syncs only fields selected from Settings->Additional fields.
 	 *
 	 * @param integer $limit Maximum number of products fetched.
 	 * @return array $products WooCommerce products.
@@ -152,10 +153,10 @@ class DataHandler {
 			'first_name'       => $firstname,
 			'last_name'        => $lastname,
 			'nickname'         => $nickname,
-			'birthday'         => $birthday,
-			'gender'           => $gender,
-			'website'          => $website,
-			'phone'            => $phone,
+			'user_dob'         => $birthday,
+			'user_gender'      => $gender,
+			'user_url'         => $website,
+			'user_phone'       => $phone,
 		);
 
 		// Only sync fields selected from admin panel.

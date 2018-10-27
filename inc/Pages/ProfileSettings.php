@@ -2,6 +2,7 @@
 /**
  * @package smaily_woocommerce_plugin
  */
+
 namespace Inc\Pages;
 
 use Inc\Base\DataHandler;
@@ -11,28 +12,33 @@ use Inc\Base\DataHandler;
  */
 class ProfileSettings {
 
-	function register() {
+	/**
+	 * Adds additional profile settings fields to user froms.
+	 *
+	 * @return void
+	 */
+	public function register() {
 
-		// Show additional profile fields only if plugin is activated
+		// Show additional profile fields only if plugin is activated.
 		$result = DataHandler::get_smaily_results();
 
 		if ( isset( $result['result']['autoresponder'] ) ) {
-			// Add fields to registration form and account area
+			// Add fields to registration form and account area.
 			add_action( 'woocommerce_register_form', array( $this, 'smaily_print_user_frontend_fields' ), 10 );
 			add_action( 'woocommerce_edit_account_form', array( $this, 'smaily_print_user_frontend_fields' ), 10 );
 
-			// Show fields in checkout area
+			// Show fields in checkout area.
 			add_filter( 'woocommerce_checkout_fields', array( $this, 'smaily_checkout_fields' ), 10, 1 );
 
-			// Add fields to admin area
-			add_action( 'show_user_profile', array( $this, 'smaily_print_user_admin_fields' ), 30 ); // admin: edit profile
-			add_action( 'edit_user_profile', array( $this, 'smaily_print_user_admin_fields' ), 30 ); // admin: edit other users
+			// Add fields to admin area.
+			add_action( 'show_user_profile', array( $this, 'smaily_print_user_admin_fields' ), 30 ); // admin: edit profile.
+			add_action( 'edit_user_profile', array( $this, 'smaily_print_user_admin_fields' ), 30 ); // admin: edit other users.
 
-			// Save registration fields
-			add_action( 'woocommerce_created_customer', array( $this, 'smaily_save_account_fields' ) ); // register/checkout
-			add_action( 'personal_options_update', array( $this, 'smaily_save_account_fields' ) ); // edit own account admin
-			add_action( 'edit_user_profile_update', array( $this, 'smaily_save_account_fields' ) ); // edit other account admin
-			add_action( 'woocommerce_save_account_details', array( $this, 'smaily_save_account_fields' ) ); // edit WC account
+			// Save registration fields.
+			add_action( 'woocommerce_created_customer', array( $this, 'smaily_save_account_fields' ) ); // register/checkout.
+			add_action( 'personal_options_update', array( $this, 'smaily_save_account_fields' ) ); // edit own account admin.
+			add_action( 'edit_user_profile_update', array( $this, 'smaily_save_account_fields' ) ); // edit other account admin.
+			add_action( 'woocommerce_save_account_details', array( $this, 'smaily_save_account_fields' ) ); // edit WC account.
 		}
 
 	}
@@ -42,15 +48,15 @@ class ProfileSettings {
 	 *
 	 * @return void
 	 */
-	function smaily_print_user_frontend_fields() {
-		// Get new fileds
+	public function smaily_print_user_frontend_fields() {
+		// Get new fileds.
 		$fields            = $this->smaily_get_account_fields();
 		$is_user_logged_in = is_user_logged_in();
 
 		foreach ( $fields as $key => $field_args ) {
 			$value = null;
 
-			// Conditionals to show fields based on hide-settings
+			// Conditionals to show fields based on hide-settings.
 			if ( $is_user_logged_in && ! empty( $field_args['hide_in_account'] ) ) {
 				continue;
 			}
@@ -59,7 +65,7 @@ class ProfileSettings {
 				continue;
 			}
 
-			// Get user information and save in value
+			// Get user information and save in value.
 			if ( $is_user_logged_in ) {
 				$user_id = $this->smaily_get_edit_user_id();
 				$value   = $this->smaily_get_userdata( $user_id, $key );
@@ -74,13 +80,16 @@ class ProfileSettings {
 	/**
 	 * Add additional account fields data
 	 *
-	 * @return void
+	 * @return array $smaily_account_fields New fields to add in forms.
 	 */
-	function smaily_get_account_fields() {
-		return apply_filters(
-			'smaily_account_fields',
-			array(
-				'user_gender'     => array(
+	public function smaily_get_account_fields() {
+
+		// Get fields from sync_additional.
+		$result = DataHandler::get_smaily_results();
+		if ( isset( $result['syncronize_additional'] ) ) {
+			// All custom fields available.
+			$fields_available = array(
+				'user_gender' => array(
 					'type'                 => 'radio',
 					'label'                => __( 'Gender', 'smaily' ),
 					'required'             => false,
@@ -94,7 +103,7 @@ class ProfileSettings {
 					'hide_in_checkout'     => false,
 					'hide_in_registration' => false,
 				),
-				'user_phone'      => array(
+				'user_phone'  => array(
 					'type'                 => 'tel',
 					'label'                => __( 'Phone', 'smaily' ),
 					'placeholder'          => __( 'Enter phone number', 'smaily' ),
@@ -105,7 +114,7 @@ class ProfileSettings {
 					'hide_in_checkout'     => true,
 					'hide_in_registration' => false,
 				),
-				'user_dob'        => array(
+				'user_dob'    => array(
 					'type'                 => 'date',
 					'label'                => __( 'Birthday', 'smaily' ),
 					'placeholder'          => __( 'Enter birthday', 'smaily' ),
@@ -117,7 +126,7 @@ class ProfileSettings {
 					'hide_in_registration' => false,
 
 				),
-				'user_url'        => array(
+				'user_url'    => array(
 					'type'                 => 'text',
 					'label'                => __( 'Website', 'smaily' ),
 					'required'             => false,
@@ -127,6 +136,9 @@ class ProfileSettings {
 					'hide_in_checkout'     => false,
 					'hide_in_registration' => false,
 				),
+			);
+
+			$add_fields = array(
 				'user_newsletter' => array(
 					'type'                 => 'checkbox',
 					'label'                => __( 'Subscribe newsletter', 'smaily' ),
@@ -136,17 +148,44 @@ class ProfileSettings {
 					'hide_in_checkout'     => false,
 					'hide_in_registration' => false,
 				),
-			)
-		);
+			);
+
+			$syncronize_additional = $result['syncronize_additional'];
+			foreach ( $syncronize_additional as $key ) {
+				if ( array_key_exists( $key, $fields_available ) ) {
+					$add_fields[ $key ] = $fields_available[ $key ];
+				}
+			}
+			return apply_filters(
+				'smaily_account_fields',
+				$add_fields
+			);
+		} else {
+			// If no additional fields selected, show only newsletter subscribe option.
+			return apply_filters(
+				'smaily_account_fields',
+				array(
+					'user_newsletter' => array(
+						'type'                 => 'checkbox',
+						'label'                => __( 'Subscribe newsletter', 'smaily' ),
+						'required'             => false,
+						'hide_in_account'      => false,
+						'hide_in_admin'        => false,
+						'hide_in_checkout'     => false,
+						'hide_in_registration' => false,
+					),
+				)
+			);
+		}
 	}
 
 	/**
 	 * Show fields at checkout form
 	 *
-	 * @param array $checkout_fields Old checkout fields
+	 * @param array $checkout_fields Old checkout fields.
 	 * @return array $checkout_fields Updated checkout fields
 	 */
-	function smaily_checkout_fields( $checkout_fields ) {
+	public function smaily_checkout_fields( $checkout_fields ) {
 		$fields = $this->smaily_get_account_fields();
 
 		foreach ( $fields as $key => $field_args ) {
@@ -166,13 +205,13 @@ class ProfileSettings {
 	 *
 	 * @return void
 	 */
-	function smaily_print_user_admin_fields() {
-		// Get account fields
+	public function smaily_print_user_admin_fields() {
+		// Get account fields.
 		$fields = $this->smaily_get_account_fields();
 		?>
 		<h2><?php _e( 'Additional Information', 'smaily' ); ?></h2>
 		<table class="form-table" id="smaily-additional-information">
-			
+
 			<?php foreach ( $fields as $key => $field_args ) { ?>
 				<?php
 				if ( ! empty( $field_args['hide_in_admin'] ) ) {
@@ -192,22 +231,19 @@ class ProfileSettings {
 					</td>
 				</tr>
 			<?php } ?>
-			
+
 		</table>
 		<?php
 	}
 
-	// TO-DO
-	// Add smaily api call if newsletter is checked when saving
-
 	/**
 	 *  Save registration fields
 	 *
-	 * @param [type] $customer_id
+	 * @param int $customer_id Customer id from WooCommerce.
 	 * @return void
 	 */
-	function smaily_save_account_fields( $customer_id ) {
-		// Get account field data
+	public function smaily_save_account_fields( $customer_id ) {
+		// Get account field data.
 		$fields         = $this->smaily_get_account_fields();
 		$sanitized_data = array();
 
@@ -243,7 +279,7 @@ class ProfileSettings {
 	 *
 	 * @return int $user_id Current user ID
 	 */
-	function smaily_get_edit_user_id() {
+	public function smaily_get_edit_user_id() {
 		return isset( $_GET['user_id'] ) ? (int) $_GET['user_id'] : get_current_user_id();
 	}
 
@@ -251,11 +287,11 @@ class ProfileSettings {
 	/**
 	 * Get user data based on key
 	 *
-	 * @param int    $user_id User ID
-	 * @param string $key Key to search from user data
+	 * @param int    $user_id User ID.
+	 * @param string $key Key to search from user data.
 	 * @return string $userdata User data based on key
 	 */
-	function smaily_get_userdata( $user_id, $key ) {
+	public function smaily_get_userdata( $user_id, $key ) {
 		if ( ! $this->smaily_is_userdata( $key ) ) {
 			return get_user_meta( $user_id, $key, true );
 		}
@@ -269,8 +305,13 @@ class ProfileSettings {
 		return $userdata->{$key};
 	}
 
-	// Check if the field is visible for saving
-	function smaily_is_field_visible( $field_args ) {
+	/**
+	 * Check if the field is visible to user.
+	 *
+	 * @param array $field_args Form field.
+	 * @return boolean $visible Visibility.
+	 */
+	public function smaily_is_field_visible( $field_args ) {
 		$visible = true;
 		$action  = filter_input( INPUT_POST, 'action' );
 
@@ -287,7 +328,12 @@ class ProfileSettings {
 		return $visible;
 	}
 
-	// Check if field is one of WordPress predefined fields
+	/**
+	 *  Check if field is one of WordPress predefined fields.
+	 *
+	 * @param string $key Key to be checked
+	 * @return boolean $inUserdata True if is in predefined fields.
+	 */
 	private function smaily_is_userdata( $key ) {
 		$userdata = array(
 			'user_pass',
