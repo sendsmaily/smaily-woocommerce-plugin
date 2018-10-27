@@ -26,8 +26,8 @@ class Activate {
 		// Flush rewrite rules.
 		flush_rewrite_rules();
 		// Add Cron job.
-		if ( ! wp_next_scheduled( 'smaily_chron_event' ) ) {
-			wp_schedule_event( time(), 'daily', 'smaily_chron_event' );
+		if ( ! wp_next_scheduled( 'smaily_cron_sync_contacts' ) ) {
+			wp_schedule_event( time(), 'daily', 'smaily_cron_sync_contacts' );
 		}
 	}
 
