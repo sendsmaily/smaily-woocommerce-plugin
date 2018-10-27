@@ -2,6 +2,7 @@
 /**
  * @package smaily_woocommerce_plugin
  */
+
 namespace Inc\Pages;
 
 /**
@@ -13,7 +14,7 @@ class Admin {
 	 * Adds Smaily plugin menu to WooCommerce submenu
 	 */
 	public function register() {
-		// add Smaily menu to WooCommerce submenu
+		// add Smaily menu to WooCommerce submenu.
 		add_action( 'admin_menu', array( $this, 'smaily_menu' ) );
 
 	}

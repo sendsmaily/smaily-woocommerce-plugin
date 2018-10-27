@@ -2,6 +2,7 @@
 /**
  * @package smaily_woocommerce_plugin
  */
+
 namespace Inc\Widget;
 
 use Inc\Base\DataHandler;
@@ -14,10 +15,10 @@ class SmailyWidget extends \WP_Widget {
 	/**
 	 * Register widget with WordPress.
 	 */
-	function __construct() {
+	public function __construct() {
 		parent::__construct(
-			'smaily_widget', // Base ID
-			esc_html__( 'Smaily Newsletter', 'smaily_widget' ), // Name
+			'smaily_widget', // Base ID.
+			esc_html__( 'Smaily Newsletter', 'smaily_widget' ), // Name.
 			array( 'description' => esc_html__( 'WooCommerce Smaily Newsletter Widget', 'smaily_widget' ) ) // Args
 		);
 	}
@@ -27,9 +28,9 @@ class SmailyWidget extends \WP_Widget {
 	 *
 	 * @return void
 	 */
-	function register() {
+	public function register() {
 
-		// Register widget for WordPress
+		// Register widget for WordPress.
 		add_action(
 			'widgets_init',
 			function() {
@@ -48,7 +49,7 @@ class SmailyWidget extends \WP_Widget {
 	 * @param array $instance Saved values from database.
 	 */
 	public function widget( $args, $instance ) {
-		// Get results from database
+		// Get results from database.
 		$result = DataHandler::get_smaily_results();
 		if ( isset( $result ) ) {
 			$result                = $result['result'];
@@ -63,7 +64,7 @@ class SmailyWidget extends \WP_Widget {
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
 		}
 
-		// Widget front-end
+		// Widget front-end.
 		if ( array_key_exists( 'message', $_GET ) || array_key_exists( 'code', $_GET ) ) {
 			echo '	
 				<div class="smaily-newsletter-alert">
@@ -131,13 +132,11 @@ class SmailyWidget extends \WP_Widget {
 	 *
 	 * @param array $instance Previously saved values from database.
 	 */
-
-
 	public function form( $instance ) {
 
 		$title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( 'Smaily Newsletter', 'smaily_widget' );
 
-		$apiKey = ! empty( $instance['api_key'] ) ? $instance['api_key'] : esc_html__( 'Please insert API key', 'smaily_widget' );
+		$api_key = ! empty( $instance['api_key'] ) ? $instance['api_key'] : esc_html__( 'Please insert API key', 'smaily_widget' );
 
 		?>
 		<!--  Title -->
@@ -151,7 +150,7 @@ class SmailyWidget extends \WP_Widget {
 			name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" 
 			type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
-		
+
 
 		<!-- API Key -->
 		<p>
@@ -162,7 +161,7 @@ class SmailyWidget extends \WP_Widget {
 			class="widefat" 
 			id="<?php echo esc_attr( $this->get_field_id( 'api_key' ) ); ?>" 
 			name="<?php echo esc_attr( $this->get_field_name( 'api_key' ) ); ?>" 
-			type="text" value="<?php echo esc_attr( $apiKey ); ?>">
+			type="text" value="<?php echo esc_attr( $api_key ); ?>">
 		</p>
 		<?php
 

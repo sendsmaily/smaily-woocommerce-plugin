@@ -31,9 +31,7 @@ final class Init {
 
 	/**
 	 * Loop through the classes and instantiate them.
-	 * Call register() method if it exists
-	 *
-	 * @return
+	 * Call register() method if it exists.
 	 */
 	public static function register_services() {
 		foreach ( self::get_services() as $class ) {
@@ -47,7 +45,7 @@ final class Init {
 	/**
 	 * Initialize class
 	 *
-	 * @param class $class      class from the services array
+	 * @param class $class      class from the services array.
 	 * @return class instance   new instanze of the class
 	 */
 	private static function instantiate( $class ) {

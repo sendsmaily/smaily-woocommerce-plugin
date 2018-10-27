@@ -6,7 +6,7 @@
 namespace Inc\Base;
 
 use Inc\Api\Api;
- /**
+/**
  * Newsletter subscriber sync with Smaily contacts
  */
 
