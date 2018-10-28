@@ -10,7 +10,7 @@
  * @copyright 2018 Smaily
  */
 
- /*
+/*
 	* Plugin Name: WooCommerce Smaily Plugin
 	* Plugin URI: https://github.com/sendsmaily/smaily-woocommerce-plugin
 	* Description: Smaily email marketing and automation extension plugin for WooCommerce (set up opt-in form, client sync and output RSS-feed) for easy product import into template.
@@ -39,23 +39,23 @@
 // If accessed directly exit program.
 defined( 'ABSPATH' ) || die( "This is a plugin you can't access directly" );
 
-// check if autoload exists and require it and use for namespaces
+// check if autoload exists and require it and use for namespaces.
 if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) {
 	require_once dirname( __FILE__ ) . '/vendor/autoload.php';
 }
 
-// Import Activate and Deactivate classes
+// Import Activate and Deactivate classes.
 use Inc\Base\Activate;
 use Inc\Base\Deactivate;
 use Inc\Base\Cron;
 
 
-// Define constants
+// Define constants.
 define( 'PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'PLUGIN_NAME', plugin_basename( __FILE__ ) );
 
-// Required to use functions is_plugin_active and deactivate_plugins
+// Required to use functions is_plugin_active and deactivate_plugins.
 require_once ABSPATH . 'wp-admin/includes/plugin.php';
 
 /**
@@ -64,33 +64,37 @@ require_once ABSPATH . 'wp-admin/includes/plugin.php';
  * @return void
  */
 function activate_smaily_plugin() {
-	// Create DB and add Cron job
+	// Create DB and add Cron job.
 	Activate::activate();
 }
 
-// Check if WooCommerce is installed and activate plugin only if possible
+// Check if WooCommerce is installed and activate plugin only if possible.
 if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
 
-	// call Init class that is responsible for initiating all other classes
+	// call Init class that is responsible for initiating all other classes.
 	if ( ! class_exists( 'Inc\\Init.php' ) ) {
 		Inc\Init::register_services();
 	}
 
-	// register activation hook
+	// register activation hook.
 	register_activation_hook( __FILE__, 'activate_smaily_plugin' );
-	// register deactivation hook
+	// register deactivation hook.
 	register_deactivation_hook( __FILE__, 'deactivate_smaily_plugin' );
 
 } else {
 	deactivate_plugins( PLUGIN_NAME );
 	add_action( 'admin_notices', 'smaily_plugin_admin_notices' );
-	// Stop "Plugin Activated" message from appearing
+	// Stop "Plugin Activated" message from appearing.
 	if ( isset( $_GET['activate'] ) ) {
 		unset( $_GET['activate'] );
 	}
 }
 
-// Display error message to user if WooCommerce not installed
+/**
+ * Display error message to user if WooCommerce not installed.
+ *
+ * @return void
+ */
 function smaily_plugin_admin_notices() {
 	echo "<div class='update-message notice inline notice-warning notice-alt'><p> Woocommerce  Smaily not able to activate . Woocommerce needed to function properly. Is WooCommerce installed?</p></div>";
 }
