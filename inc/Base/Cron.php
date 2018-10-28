@@ -32,7 +32,7 @@ class Cron {
 
 		$results = DataHandler::get_smaily_results();
 		// Check if contact sync is enabled.
-		if ( $results['result']['enable'] === 1 ) {
+		if ( (int) $results['result']['enable'] === 1 ) {
 
 				// List value 2  = unsubscribers list.
 			$data = array(
