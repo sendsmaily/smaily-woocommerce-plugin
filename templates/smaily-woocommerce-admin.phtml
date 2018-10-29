@@ -1,0 +1,91 @@
+<?php
+use Inc\Base\DataHandler;
+
+// Get results from database and fill form if results allready available
+$result= DataHandler::get_smaily_results();
+if( isset($result) ){
+	$result = $result['result'];
+	$isEnabled = $result['enable'];
+}
+
+?>
+<style>.zoho_input{width: 25em !important;} small{ display:block; }</style>
+<div class="wrap" >
+	<h1>Smaily Plugin Settings</h1>		
+	<div class="message-display"></div>
+	<form method="POST" id="startupForm" action="" class="validate" novalidate="novalidate">
+		<?php wp_nonce_field( 'settings-nonce', 'nonce', false  );?>
+		<table class="form-table">
+			<tbody>
+				<tr class="form-field form-required">
+					<th scope="row"><label for="enable">Enable Cron synchronization </label></th>
+					<td><input name="enable" value="on" aria-required="true" maxlength="60" type="checkbox" <?php echo (isset($isEnabled) && $isEnabled == 1) ? 'checked' : ' ' ; ?>></td>
+				</tr>
+				<tr class="form-field form-required">
+					<th scope="row"><label for="subdomain">Subdomain </label></th>
+					<td><input id="subdomain" name="subdomain" class="zoho_input" value="<?php echo ( $result['subdomain'] ) ? $result['subdomain'] : '';  ?>" type="text">
+					<small id="emailHelp" class="form-text text-muted"> For example "demo" from https://demo.sendsmaily.net/</small></td>
+				</tr>
+				<tr class="form-field form-required">
+					<th scope="row"><label for="username">API username </label></th>
+					<td><input name="username" class="zoho_input" value="<?php echo ( $result['username'] ) ? $result['username'] : ''; ?>" type="text">
+					</td>
+				</tr>
+				<tr class="form-field form-required">
+					<th scope="row"><label for="password">API password </label></th>
+					<td><input name="password" class="zoho_input" value="<?php echo ( $result['password'] ) ? $result['password'] : '';?>" type="password">
+					<small id="emailHelp" class="form-text text-muted"><a href="http://help.smaily.com/en/support/solutions/articles/16000062943-create-api-user" target="_blank">How to create API credentials?</a></small></td>
+				</tr> 
+			</tbody>
+		</table>
+		<div class="loader-wraper">
+			<button type="submit" name="continue" class="button-primary"> Validate API information </button>
+		<div class="loader">Loading...</div>
+		</div>
+	</form>
+
+	<form  method="POST" id="advancedForm" action="" class="validate" novalidate="novalidate" >
+		<table  class="form-table">
+			<tbody>
+			<tr class="form-field form-required">
+				<th scope="row"><label for="password">Subscribe Widget</label></th>
+				<td>To add a subscribe widget, use Widget menu. Fill out settings before using.</td>
+			</tr>
+			<tr class="form-field form-required">
+				<th scope="row"><label for="autoresponder">Autoresponder ID </label></th>
+				<td>
+					<select id="autoresponders-list" name="autoresponder" class="zoho_input" > 
+						<option value="">-Select-</option>
+					</select>
+					<small id="emailHelp" class="form-text text-muted"><a href="http://help.smaily.com/en/support/solutions/articles/16000017234-creating-an-autoresponder" target="_blank">How to set up an autoresponder for confirmation emails?</a></small>
+				</td>
+			</tr>
+			<tr class="form-field form-required">
+				<th scope="row"><label for="syncronize_additional">Syncronize additional fields </label></th>
+				<td>
+					<select name="syncronize_additional[]" class="zoho_input" multiple style="height:250px;">
+						
+						<option value="store">Store Name </option>
+						<option value="customer_group">Customer Group</option>
+						<option value="customer_id">Customer ID</option>
+						<option value="first_registered">First Registered</option>
+						<option value="first_name">Firstname</option>
+						<option value="last_name" >Lastname</option>
+						<option value="nickname">Nickname</option>
+						<option value="user_dob">Date Of Birth</option>
+						<option value="user_gender">Gender</option>
+						<option value="user_url">Website</option>
+						<option value="user_phone">Phone</option>
+					</select>
+					<small id="emailHelp" class="form-text text-muted">Select fields you wish to synchronize along with subscriber email</small>
+				</td>
+			</tr>
+			<tr class="form-field form-required">
+				<th scope="row"><label>Product RSS feed</label></th>
+				<td><strong><?php echo get_site_url(); ?>/smaily-rss-feed</strong> Copy this URL into your template editor's RSS block, to receive RSS-feed.</td>
+			</tr>
+			</tbody>
+		</table>
+		<button type="submit" name="save" class="button-primary"> Save Settings </button>
+	</form>
+</div>

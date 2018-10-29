@@ -1,0 +1,25 @@
+/* NEWSLETTER WIDGET*/
+
+.smaily-newsletter-closebtn {
+  margin-left: 5px;
+  color: red;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.smaily-newsletter-closebtn:hover {
+  color: black;
+}
+
+.smaily-newsletter-form button[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+}
+
+.smaily-newsletter-form button[type="submit"]:hover {
+  background-color: #45a049;
+}
