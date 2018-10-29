@@ -1,11 +1,11 @@
-=== WooCommerce Smaily Newsletter ===
-Contributors: Smaily
-Tags: woocommerce, smaily, newsletter
-Requires PHP: 5.6+
+=== Smaily for WooCommerce ===
+Contributors: sendsmaily, kaarel
+Tags: woocommerce, smaily, newsletter, email
+Requires PHP: 5.6
 Requires at least: 4.0
 Tested up to: 4.9.5
 WC tested up to: 3.4.7
-Stable tag: 2.2.0
+Stable tag: trunk
 License: GPLv3
 
 Simple and flexible Smaily newsletter and rss-feed integration for WooCommerce.
@@ -45,7 +45,7 @@ Automatically subscribe newsletter subscribers to a Smaily subscribers list, gen
 
 = Requirements =
 
-WooCommerce Smaily Plugin requires PHP 5.6+ (PHP 7.0+ recommended). You'll also need to be running WordPress 4.0+ and have WooCommerce 2.2+.
+Smaily for WooCommerce requires PHP 5.6+ (PHP 7.0+ recommended). You'll also need to be running WordPress 4.0+ and have WooCommerce 2.2+.
 
 = Documentation & Support =
 
@@ -53,7 +53,7 @@ Online documentation and code samples are available via our [Help Center](http:/
 
 = Contribute =
 
-All development for WooCommerce Smaily Plugin is [handled via GitHub](https://github.com/sendsmaily/smaily-woocommerce-plugin). Opening new issues and submitting pull requests are welcome.
+All development for Smaily for WooCommerce is [handled via GitHub](https://github.com/sendsmaily/smaily-woocommerce-plugin). Opening new issues and submitting pull requests are welcome.
 
 == Installation ==
 
