@@ -1,6 +1,6 @@
 <?php
 /**
- * @package smaily_woocommerce_plugin
+ * @package smaily_for_woocommerce
  */
 
 namespace Inc\Base;
