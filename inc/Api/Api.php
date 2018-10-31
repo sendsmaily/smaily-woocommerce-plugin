@@ -122,8 +122,8 @@ class Api {
 
 			// Check for nonce-verification and sanitize user input.
 			if ( wp_verify_nonce( sanitize_key( $user['nonce'] ), 'settings-nonce' ) ) {
-				$sanitized_user = [];
-				$sanitized_autoresponder = [];
+				$sanitized_user                  = [];
+				$sanitized_autoresponder         = [];
 				$sanitized_syncronize_additional = [];
 				if ( is_array( $user ) ) {
 					foreach ( $user as $key => $value ) {

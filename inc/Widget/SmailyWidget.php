@@ -19,7 +19,7 @@ class SmailyWidget extends \WP_Widget {
 		parent::__construct(
 			'smaily_widget', // Base ID.
 			esc_html__( 'Smaily Newsletter', 'smaily_widget' ), // Name.
-			array( 'description' => esc_html__( 'WooCommerce Smaily Newsletter Widget', 'smaily_widget' ) ) // Args
+			array( 'description' => esc_html__( 'WooCommerce Smaily Newsletter Widget', 'smaily_widget' ) ) // Args.
 		);
 	}
 
@@ -52,7 +52,7 @@ class SmailyWidget extends \WP_Widget {
 		// Get results from database.
 		$result = DataHandler::get_smaily_results();
 		if ( isset( $result ) ) {
-			$result                = $result['result'];
+			$result = $result['result'];
 		}
 
 		// Get current url.
@@ -66,7 +66,7 @@ class SmailyWidget extends \WP_Widget {
 
 		// Widget front-end.
 		if ( isset( $_GET['message'] ) && array_key_exists( 'message', $_GET ) || array_key_exists( 'code', $_GET ) ) {
-			echo '	
+			echo '
 				<div class="smaily-newsletter-alert">
 				<p>' . esc_html( $_GET['message'] ) . '
 				<span class="smaily-newsletter-closebtn" onclick="this.parentElement.style.display=\'none\'">&times;</span>
@@ -101,7 +101,7 @@ class SmailyWidget extends \WP_Widget {
 				<div>
 				<input type="hidden" name="key" value="' . esc_html( $instance['api_key'] ) . '" />
 				<input type="hidden" name="autoresponder" value="' . $result['autoresponder_id'] . '" />
-				<input type="hidden" name="success_url" value="' . esc_url( $current_url ). '" />
+				<input type="hidden" name="success_url" value="' . esc_url( $current_url ) . '" />
 				<input type="hidden" name="failure_url" value="' . esc_url( $current_url ) . '" />
 				</div>
 				<p>

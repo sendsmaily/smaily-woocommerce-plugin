@@ -2,6 +2,7 @@
 /**
  * @package smaily_for_woocommerce
  */
+
 namespace Smaily_Inc\Base;
 
 // Required to use dbDelta.

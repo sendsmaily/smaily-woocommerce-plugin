@@ -4,7 +4,7 @@ use Smaily_Inc\Base\DataHandler;
 // Get results from database and fill form if results allready available
 $result= DataHandler::get_smaily_results();
 if( isset($result) ){
-	$result = $result['result'];
+	$result    = $result['result'];
 	$isEnabled = $result['enable'];
 }
 
@@ -64,7 +64,6 @@ if( isset($result) ){
 				<th scope="row"><label for="syncronize_additional">Syncronize additional fields </label></th>
 				<td>
 					<select name="syncronize_additional[]" class="zoho_input" multiple style="height:250px;">
-						
 						<option value="store">Store Name </option>
 						<option value="customer_group">Customer Group</option>
 						<option value="customer_id">Customer ID</option>

@@ -34,7 +34,7 @@ class DataHandler {
 
 		// Escape syncronize_additional fields.
 		$syncronize_additional = [];
-		foreach ( $un_escaped_syncronize_additional as $key => $value ){
+		foreach ( $un_escaped_syncronize_additional as $key => $value ) {
 			$syncronize_additional[ $key ] = esc_html( $value );
 		}
 		return compact( 'result', 'syncronize_additional' );
