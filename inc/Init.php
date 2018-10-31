@@ -3,7 +3,7 @@
  * @package smaily_for_woocommerce
  */
 
-namespace Inc;
+namespace Smaily_Inc;
 
 /**
 * Initializes all other classes and runs register( ) method if available

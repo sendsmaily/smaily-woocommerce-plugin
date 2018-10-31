@@ -3,9 +3,9 @@
  * @package smaily_for_woocommerce
  */
 
-namespace Inc\Pages;
+namespace Smaily_Inc\Pages;
 
-use Inc\Base\DataHandler;
+use Smaily_Inc\Base\DataHandler;
 /**
  * Adds and controlls WooCommerce Register and Account Details fields.
  * Adds and controlls WordPress User Profile and Admin Profile fields.
@@ -150,6 +150,7 @@ class ProfileSettings {
 				),
 			);
 
+			// Add only new fields selected from syncronize_additional.
 			$syncronize_additional = $result['syncronize_additional'];
 			foreach ( $syncronize_additional as $key ) {
 				if ( array_key_exists( $key, $fields_available ) ) {
@@ -209,7 +210,7 @@ class ProfileSettings {
 		// Get account fields.
 		$fields = $this->smaily_get_account_fields();
 		?>
-		<h2><?php _e( 'Additional Information', 'smaily' ); ?></h2>
+		<h2><?php esc_html_e( 'Additional Information', 'smaily' ); ?></h2>
 		<table class="form-table" id="smaily-additional-information">
 
 			<?php foreach ( $fields as $key => $field_args ) { ?>
@@ -223,7 +224,7 @@ class ProfileSettings {
 				?>
 				<tr>
 					<th>
-						<label for="<?php echo $key; ?>"><?php echo $field_args['label']; ?></label>
+						<label for="<?php echo esc_html( $key ); ?>"><?php echo esc_html( $field_args['label'] ); ?></label>
 					</th>
 					<td>
 						<?php $field_args['label'] = false; ?>
@@ -331,7 +332,7 @@ class ProfileSettings {
 	/**
 	 *  Check if field is one of WordPress predefined fields.
 	 *
-	 * @param string $key Key to be checked
+	 * @param string $key Key to be checked.
 	 * @return boolean $inUserdata True if is in predefined fields.
 	 */
 	private function smaily_is_userdata( $key ) {

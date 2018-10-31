@@ -3,14 +3,14 @@
  * @package smaily_for_woocommerce
  */
 
-namespace Inc\Base;
+namespace Smaily_Inc\Base;
 
-use Inc\Api\Api;
+use Smaily_Inc\Api\Api;
 /**
  * Newsletter subscriber sync with Smaily contacts
  */
 
-use Inc\Base\DataHandler;
+use Smaily_Inc\Base\DataHandler;
 
 /**
  * Send subscriber to Smaily mailing list when user updates profile

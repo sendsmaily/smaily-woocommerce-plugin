@@ -1,5 +1,5 @@
 <?php
-use Inc\Base\DataHandler;
+use Smaily_Inc\Base\DataHandler;
 
 // Get results from database and fill form if results allready available
 $result= DataHandler::get_smaily_results();
@@ -82,7 +82,7 @@ if( isset($result) ){
 			</tr>
 			<tr class="form-field form-required">
 				<th scope="row"><label>Product RSS feed</label></th>
-				<td><strong><?php echo get_site_url(); ?>/smaily-rss-feed</strong> Copy this URL into your template editor's RSS block, to receive RSS-feed.</td>
+				<td><strong><?php echo esc_url( get_site_url() ); ?>/smaily-rss-feed</strong> Copy this URL into your template editor's RSS block, to receive RSS-feed.</td>
 			</tr>
 			</tbody>
 		</table>

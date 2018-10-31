@@ -3,7 +3,7 @@
  * @package smaily_for_woocommerce
  */
 
-namespace Inc\Rss;
+namespace Smaily_Inc\Rss;
 
 /**
  * Handles RSS generation for Smaily newsletter
@@ -57,7 +57,7 @@ class SmailyRss {
 			// Verify "smaily-rss-feed" exists and value is "true".
 			if ( $page_value && $page_value === 'true' ) {
 				// Load your template or file.
-				return PLUGIN_PATH . 'templates/smaily-rss-feed.php';
+				return SMAILY_PLUGIN_PATH . 'templates/smaily-rss-feed.php';
 			}
 		}
 

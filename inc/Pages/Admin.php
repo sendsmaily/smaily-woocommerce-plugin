@@ -3,7 +3,7 @@
  * @package smaily_for_woocommerce
  */
 
-namespace Inc\Pages;
+namespace Smaily_Inc\Pages;
 
 /**
  * Controlls Admin panel items
@@ -27,8 +27,8 @@ class Admin {
 	public function smaily_menu() {
 		add_submenu_page(
 			'woocommerce',
-			__( 'smaily', 'woocommerce' ),
-			__( 'Smaily email marketing and automation', 'woocommerce' ),
+			'smaily',
+			'Smaily email marketing and automation',
 			'manage_options',
 			'smaily-settings',
 			array( $this, 'smaily_page' )
@@ -41,7 +41,7 @@ class Admin {
 	 * @return void
 	 */
 	public function smaily_page() {
-		require_once PLUGIN_PATH . '/templates/smaily-woocommerce-admin.phtml';
+		require_once SMAILY_PLUGIN_PATH . '/templates/smaily-woocommerce-admin.phtml';
 	}
 
 }

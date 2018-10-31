@@ -3,9 +3,9 @@
  * @package smaily_for_woocommerce
  */
 
-namespace Inc\Widget;
+namespace Smaily_Inc\Widget;
 
-use Inc\Base\DataHandler;
+use Smaily_Inc\Base\DataHandler;
 
 /**
  * Handles communication between Smaily API and WordPress
@@ -34,7 +34,7 @@ class SmailyWidget extends \WP_Widget {
 		add_action(
 			'widgets_init',
 			function() {
-				register_widget( 'Inc\Widget\SmailyWidget' );
+				register_widget( 'Smaily_Inc\Widget\SmailyWidget' );
 			}
 		);
 	}
@@ -65,19 +65,19 @@ class SmailyWidget extends \WP_Widget {
 		}
 
 		// Widget front-end.
-		if ( array_key_exists( 'message', $_GET ) || array_key_exists( 'code', $_GET ) ) {
+		if ( isset( $_GET['message'] ) && array_key_exists( 'message', $_GET ) || array_key_exists( 'code', $_GET ) ) {
 			echo '	
 				<div class="smaily-newsletter-alert">
-				<p>' . $_GET['message'] . '
+				<p>' . esc_html( $_GET['message'] ) . '
 				<span class="smaily-newsletter-closebtn" onclick="this.parentElement.style.display=\'none\'">&times;</span>
 				</p>
 				</div>
 				<form class="smaily-newsletter-form" action="https://' . $result['subdomain'] . '.sendsmaily.net/api/opt-in/" method="post" autocomplete="off">
 					<div>
-					<input type="hidden" name="key" value="' . $instance['api_key'] . '" />
+					<input type="hidden" name="key" value="' . esc_html( $instance['api_key'] ) . '" />
 					<input type="hidden" name="autoresponder" value="' . $result['autoresponder_id'] . '" />
-					<input type="hidden" name="success_url" value="' . $current_url . '" />
-					<input type="hidden" name="failure_url" value="' . $current_url . '" />
+					<input type="hidden" name="success_url" value="' . esc_url( $current_url ) . '" />
+					<input type="hidden" name="failure_url" value="' . esc_url( $current_url ) . '" />
 					</div>
 					<p>
 						<label>Email</label>
@@ -99,10 +99,10 @@ class SmailyWidget extends \WP_Widget {
 			echo '
 			<form class="smaily-newsletter-form" action="https://' . $result['subdomain'] . '.sendsmaily.net/api/opt-in/" method="post" autocomplete="off">
 				<div>
-				<input type="hidden" name="key" value="' . $instance['api_key'] . '" />
+				<input type="hidden" name="key" value="' . esc_html( $instance['api_key'] ) . '" />
 				<input type="hidden" name="autoresponder" value="' . $result['autoresponder_id'] . '" />
-				<input type="hidden" name="success_url" value="' . $current_url . '" />
-				<input type="hidden" name="failure_url" value="' . $current_url . '" />
+				<input type="hidden" name="success_url" value="' . esc_url( $current_url ). '" />
+				<input type="hidden" name="failure_url" value="' . esc_url( $current_url ) . '" />
 				</div>
 				<p>
 					<label>Email</label>

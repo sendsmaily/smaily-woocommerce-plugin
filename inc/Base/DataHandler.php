@@ -3,7 +3,7 @@
  * @package smaily_for_woocommerce
  */
 
-namespace Inc\Base;
+namespace Smaily_Inc\Base;
 
 /**
  * Handles communication between WordPress database
@@ -22,8 +22,21 @@ class DataHandler {
 		if ( count( $result ) === 0 ) {
 			return;
 		}
-		$result                = $result[0];
-		$syncronize_additional = isset( $result['syncronize_additional'] ) ? explode( ',', $result['syncronize_additional'] ) : null;
+		$un_escaped_result = $result[0];
+
+		// Escape db values for output and usage.
+		$result = [];
+		foreach ( $un_escaped_result as $key => $value ) {
+			$result[ $key ] = esc_html( $value );
+		}
+
+		$un_escaped_syncronize_additional = isset( $result['syncronize_additional'] ) ? explode( ',', $result['syncronize_additional'] ) : null;
+
+		// Escape syncronize_additional fields.
+		$syncronize_additional = [];
+		foreach ( $un_escaped_syncronize_additional as $key => $value ){
+			$syncronize_additional[ $key ] = esc_html( $value );
+		}
 		return compact( 'result', 'syncronize_additional' );
 	}
 
@@ -57,8 +70,8 @@ class DataHandler {
 				$discount = ceil( ( $price - $splc_price ) / $price * 100 );
 			}
 
-			$price      = '$' . number_format( $price, 2, '.', ',' );
-			$splc_price = '$' . number_format( $splc_price, 2, '.', ',' );
+			$price      = number_format( $price, 2, '.', ',' ) . html_entity_decode( $currencysymbol );
+			$splc_price = number_format( $splc_price, 2, '.', ',' ) . html_entity_decode( $currencysymbol );
 
 			$url   = get_permalink( $prod->ID );
 			$image = wp_get_attachment_image_src( get_post_thumbnail_id( $prod->ID ), 'single-post-thumbnail' );
@@ -68,26 +81,26 @@ class DataHandler {
 			$price_fields = '';
 			if ( $discount > 0 ) {
 				$price_fields = '
-			  <smly:old_price>' . $price . '</smly:old_price>
-			  <smly:discount>-' . $discount . '%</smly:discount>';
+			  <smly:old_price>' . esc_attr( $price ) . '</smly:old_price>
+			  <smly:discount>-' . esc_attr( $discount ) . '%</smly:discount>';
 			}
 
 			$items[] = '<item>
-			  <title>' . $prod->post_title . '</title>
-			  <link>' . $url . '</link>
-			  <guid isPermaLink="True">' . $url . '</guid>
+			  <title>' . esc_attr( $prod->post_title ) . '</title>
+			  <link>' . esc_url( $url ) . '</link>
+			  <guid isPermaLink="True">' . esc_url( $url ) . '</guid>
 			  <pubDate>' . date( 'D, d M Y H:i:s', $create_time ) . '</pubDate>
 			  <description>' . htmlentities( $prod->post_content ) . '</description>
-			  <enclosure url="' . $image . '" />
-			  <smly:price>' . $splc_price . '</smly:price>' . $price_fields . '
+			  <enclosure url="' . esc_url( $image ) . '" />
+			  <smly:price>' . esc_attr( $splc_price ) . '</smly:price>' . $price_fields . '
 			</item>
 			';
 		}
-		$rss  = '<?xml version="1.0" encoding="utf-8"?><rss xmlns:smly="https://sendsmaily.net/schema/editor/rss.xsd" version="2.0"><channel><title>Store</title><link>' . $base_url . '</link><description>Product Feed</description><lastBuildDate>' . date( 'D, d M Y H:i:s' ) . '</lastBuildDate>';
+		$rss  = '<?xml version="1.0" encoding="utf-8"?><rss xmlns:smly="https://sendsmaily.net/schema/editor/rss.xsd" version="2.0"><channel><title>Store</title><link>' . esc_url( $base_url ) . '</link><description>Product Feed</description><lastBuildDate>' . date( 'D, d M Y H:i:s' ) . '</lastBuildDate>';
 		$rss .= implode( ' ', $items );
 		$rss .= '</channel></rss>';
 		header( 'Content-Type: application/xml' );
-		echo $rss;
+		echo $rss; // All values escaped before.
 	}
 
 	/**
@@ -100,12 +113,15 @@ class DataHandler {
 	public static function get_latest_products( $limit = 50 ) {
 		global $wpdb;
 		$products = $wpdb->get_results(
-			"
-            SELECT * FROM {$wpdb->prefix}posts
-            WHERE post_type = 'product' AND post_status='publish'
-            ORDER BY post_date DESC
-            LIMIT $limit
-        "
+			$wpdb->prepare(
+				"
+				SELECT * FROM {$wpdb->prefix}posts
+				WHERE post_type = 'product' AND post_status='publish'
+				ORDER BY post_date DESC
+				LIMIT %d
+				",
+				$limit
+			)
 		);
 
 		return $products;
