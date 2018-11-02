@@ -65,7 +65,7 @@ class SmailyWidget extends \WP_Widget {
 		}
 
 		// Widget front-end.
-		if ( isset( $_GET['message'] ) && array_key_exists( 'message', $_GET ) || array_key_exists( 'code', $_GET ) ) {
+		if ( isset( $_GET['message'] ) || isset( $_GET['code'] ) ) {
 			echo '
 				<div class="smaily-newsletter-alert">
 				<p>' . esc_html( $_GET['message'] ) . '
