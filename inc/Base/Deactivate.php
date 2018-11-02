@@ -3,7 +3,7 @@
  * @package smaily_for_woocommerce
  */
 
-namespace Inc\Base;
+namespace Smaily_Inc\Base;
 
 /**
  * Deactivates plugin Smaily cron.

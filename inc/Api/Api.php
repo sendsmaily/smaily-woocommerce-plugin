@@ -3,9 +3,9 @@
  * @package smaily_for_woocommerce
  */
 
-namespace Inc\Api;
+namespace Smaily_Inc\Api;
 
-use Inc\Base\DataHandler;
+use Smaily_Inc\Base\DataHandler;
 
 /**
  * Handles communication between Smaily API and WordPress
@@ -35,10 +35,10 @@ class Api {
 	 * @return void
 	 */
 	public function register_api_information() {
-		if ( isset( $_POST['form_data'] ) ) {
+		if ( isset( $_POST['form_data'] ) && current_user_can( 'manage_options' ) ) {
 			// Parse form data out of the serialization.
 			$params = array();
-			parse_str( $_POST['form_data'], $params );
+			parse_str( $_POST['form_data'], $params ); // Ajax serialized string, sanitizing data before usage below.
 
 			// Check for nonce-verification and sanitize user input.
 			if ( wp_verify_nonce( sanitize_key( $params['nonce'] ), 'settings-nonce' ) ) {
@@ -111,61 +111,77 @@ class Api {
 		if (
 			isset( $_POST['user_data'] )
 			&& isset( $_POST['autoresponder_data'] )
+			&& current_user_can( 'manage_options' )
 		) {
 			// Parse form data out of the serialization.
 			$user = array();
-			parse_str( $_POST['user_data'], $user );
+			parse_str( $_POST['user_data'], $user ); // Ajax serialized data, sanitization below.
 			$autoresponders = array();
-			parse_str( $_POST['autoresponder_data'], $autoresponders );
+			parse_str( $_POST['autoresponder_data'], $autoresponders ); // Ajax serialized data, sanitization below.
 			$autoresponder = json_decode( $autoresponders['autoresponder'], true );
 
 			// Check for nonce-verification and sanitize user input.
 			if ( wp_verify_nonce( sanitize_key( $user['nonce'] ), 'settings-nonce' ) ) {
-				$sanitized_user = [];
+				$sanitized_user                  = [];
+				$sanitized_autoresponder         = [];
+				$sanitized_syncronize_additional = [];
 				if ( is_array( $user ) ) {
 					foreach ( $user as $key => $value ) {
 						$sanitized_user[ $key ] = wp_unslash( sanitize_text_field( $value ) );
 					}
 				}
 
-				// Response to front-end js.
-				$response = array();
-
-				// Save data to database.
-				global $wpdb;
-				// Smaily table name.
-				$table_name = $wpdb->prefix . 'smaily';
-
-				// Error if no autoresponders.
-				if ( empty( $autoresponder ) ) {
-					$response = array( 'error' => 'No autoresponder selected, please select autoresponder!' );
-				} else {
-					// Update DB with user values if autoresponder selected.
-					$wpdb->update(
-						$table_name,
-						array(
-							'enable'                => isset( $sanitized_user['enable'] ) ? 1 : 0,
-							'subdomain'             => $sanitized_user['subdomain'],
-							'username'              => $sanitized_user['username'],
-							'password'              => $sanitized_user['password'],
-							'autoresponder'         => $autoresponder['name'],
-							'autoresponder_id'      => $autoresponder['id'],
-							'syncronize_additional' => isset( $autoresponders['syncronize_additional'] ) ? implode( ',', $autoresponders['syncronize_additional'] ) : null,
-							'syncronize'            => null,
-						),
-						array( 'id' => 1 )
-					);
-
-					$response = array( 'success' => 'Settings updated!' );
+				if ( is_array( $autoresponder ) ) {
+					foreach ( $autoresponder as $key => $value ) {
+						$sanitized_autoresponder[ $key ] = wp_unslash( sanitize_text_field( $value ) );
+					}
 				}
 
-				// Return message to user.
-				echo wp_json_encode( $response );
-				wp_die();
-
+				if ( is_array( $autoresponders['syncronize_additional'] ) ) {
+					foreach ( $autoresponders['syncronize_additional'] as $key => $value ) {
+						$sanitized_syncronize_additional[ $key ] = wp_unslash( sanitize_text_field( $value ) );
+					}
+				}
 			}
+
+			// Response to front-end js.
+			$response = array();
+
+			// Save data to database.
+			global $wpdb;
+			// Smaily table name.
+			$table_name = $wpdb->prefix . 'smaily';
+
+			// Error if no autoresponders.
+			if ( empty( $autoresponder ) ) {
+				$response = array( 'error' => 'No autoresponder selected, please select autoresponder!' );
+			} else {
+				// Update DB with user values if autoresponder selected.
+				$wpdb->update(
+					$table_name,
+					array(
+						'enable'                => isset( $sanitized_user['enable'] ) ? 1 : 0,
+						'subdomain'             => $sanitized_user['subdomain'],
+						'username'              => $sanitized_user['username'],
+						'password'              => $sanitized_user['password'],
+						'autoresponder'         => $sanitized_autoresponder['name'],
+						'autoresponder_id'      => $sanitized_autoresponder['id'],
+						'syncronize_additional' => isset( $sanitized_syncronize_additional ) ? implode( ',', $sanitized_syncronize_additional ) : null,
+						'syncronize'            => null,
+					),
+					array( 'id' => 1 )
+				);
+
+				$response = array( 'success' => 'Settings updated!' );
+			}
+
+			// Return message to user.
+			echo wp_json_encode( $response );
+			wp_die();
+
 		}
 	}
+
 
 	/**
 	 * Api call to Smaily with different parameters

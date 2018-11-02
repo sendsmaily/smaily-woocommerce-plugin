@@ -3,10 +3,10 @@
  * @package smaily_for_woocommerce
  */
 
-namespace Inc\Base;
+namespace Smaily_Inc\Base;
 
-use Inc\Api\Api;
-use Inc\Base\DataHandler;
+use Smaily_Inc\Api\Api;
+use Smaily_Inc\Base\DataHandler;
 /**
  * Data syncronization between Smaily and WooCommerce
  */
@@ -41,7 +41,7 @@ class Cron {
 
 			// Make API call to Smaily to get unsubscribers.
 			$unsubscribers = Api::ApiCall( 'contact', [ 'body' => $data ] );
-			// Subscribed to newsletter.
+			// List of unsubscribed emails.
 			$unsubscribers_emails = [];
 			foreach ( $unsubscribers as $key => $value ) {
 				array_push( $unsubscribers_emails, $value['email'] );
@@ -67,7 +67,7 @@ class Cron {
 			);
 			// If no subscribers.
 			if ( empty( $users ) ) {
-				$this->log_to_file( PLUGIN_PATH . 'smaily-cron.txt', 'No subscribers' );
+				$this->log_to_file( SMAILY_PLUGIN_PATH . 'smaily-cron.txt', 'No subscribers' );
 				return;
 			}
 			// Prepare data to update Subscribers list in Smaily.
@@ -81,7 +81,7 @@ class Cron {
 			// Update all subscribers to Smaily.
 			$response = Api::ApiCall( 'contact', [ 'body' => $list ], 'POST' );
 
-			$this->log_to_file( PLUGIN_PATH . 'smaily-cron.txt', $response['message'] );
+			$this->log_to_file( SMAILY_PLUGIN_PATH . 'smaily-cron.txt', $response['message'] );
 		}
 
 	}

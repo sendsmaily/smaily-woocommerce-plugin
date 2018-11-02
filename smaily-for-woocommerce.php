@@ -45,15 +45,15 @@ if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) {
 }
 
 // Import Activate and Deactivate classes.
-use Inc\Base\Activate;
-use Inc\Base\Deactivate;
-use Inc\Base\Cron;
+use Smaily_Inc\Base\Activate;
+use Smaily_Inc\Base\Deactivate;
+use Smaily_Inc\Base\Cron;
 
 
 // Define constants.
-define( 'PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
-define( 'PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( 'PLUGIN_NAME', plugin_basename( __FILE__ ) );
+define( 'SMAILY_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+define( 'SMAILY_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'SMAILY_PLUGIN_NAME', plugin_basename( __FILE__ ) );
 
 // Required to use functions is_plugin_active and deactivate_plugins.
 require_once ABSPATH . 'wp-admin/includes/plugin.php';
@@ -72,8 +72,8 @@ function activate_smaily_plugin() {
 if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
 
 	// call Init class that is responsible for initiating all other classes.
-	if ( ! class_exists( 'Inc\\Init.php' ) ) {
-		Inc\Init::register_services();
+	if ( ! class_exists( 'Smaily_Inc\\Init.php' ) ) {
+		Smaily_Inc\Init::register_services();
 	}
 
 	// register activation hook.
@@ -82,7 +82,7 @@ if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
 	register_deactivation_hook( __FILE__, 'deactivate_smaily_plugin' );
 
 } else {
-	deactivate_plugins( PLUGIN_NAME );
+	deactivate_plugins( SMAILY_PLUGIN_NAME );
 	add_action( 'admin_notices', 'smaily_plugin_admin_notices' );
 	// Stop "Plugin Activated" message from appearing.
 	if ( isset( $_GET['activate'] ) ) {

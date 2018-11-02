@@ -2,7 +2,8 @@
 /**
  * @package smaily_for_woocommerce
  */
-namespace Inc\Base;
+
+namespace Smaily_Inc\Base;
 
 // Required to use dbDelta.
 require_once ABSPATH . 'wp-admin/includes/upgrade.php';

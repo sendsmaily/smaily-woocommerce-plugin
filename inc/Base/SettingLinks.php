@@ -3,7 +3,7 @@
  * @package smaily_for_woocommerce
  */
 
-namespace Inc\Base;
+namespace Smaily_Inc\Base;
 
 /**
  * Controlls Plugin panel links list
@@ -16,7 +16,7 @@ class SettingLinks {
 	public function register() {
 
 		// add settings link to plugin menu.
-		add_filter( 'plugin_action_links_' . PLUGIN_NAME, array( $this, 'settings_link' ) );
+		add_filter( 'plugin_action_links_' . SMAILY_PLUGIN_NAME, array( $this, 'settings_link' ) );
 	}
 
 	/**

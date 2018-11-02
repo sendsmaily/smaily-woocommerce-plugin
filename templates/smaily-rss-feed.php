@@ -1,5 +1,5 @@
 <?php
-use Inc\Base\DataHandler;
+use Smaily_Inc\Base\DataHandler;
 
 // TO DO
 // Rewrite generate_rss_feed to accept GET variables for more functionality
