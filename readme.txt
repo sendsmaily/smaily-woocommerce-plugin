@@ -94,6 +94,6 @@ Cron update data-log is stored in the root folder of Smaily plugin, inside "smai
 
 == Changelog ==
 
-### 1.0 - 2018
+### 1.0.0
 
 - This is the first public release.
