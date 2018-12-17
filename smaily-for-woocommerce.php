@@ -8,32 +8,31 @@
  * @license GPL-3.0+
  * @link https://github.com/sendsmaily/smaily-woocommerce-plugin
  * @copyright 2018 Smaily
+ *
+ * @wordpress-plugin
+ * Plugin Name: Smaily for WooCommerce
+ * Plugin URI: https://github.com/sendsmaily/smaily-woocommerce-plugin
+ * Description: Smaily email marketing and automation extension plugin for WooCommerce (set up opt-in form, client sync and output RSS-feed) for easy product import into template.
+ * Version: 1.0.0
+ * License: GPL3
+ * Author: Smaily
+ * Author URI: https://smaily.com/
+ * Text Domain: smaily
+ * Domain Path: languages
+ *
+ * Smaily for WooCommerce is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * Smaily for WooCommerce is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Smaily for WooCommerce. If not, see <http://www.gnu.org/licenses/>.
  */
-
-/*
-	* Plugin Name: Smaily for WooCommerce
-	* Plugin URI: https://github.com/sendsmaily/smaily-woocommerce-plugin
-	* Description: Smaily email marketing and automation extension plugin for WooCommerce (set up opt-in form, client sync and output RSS-feed) for easy product import into template.
-	* Version: 1.0.0.
-	* License: GPL3
-	* Author: Smaily
-	* Author URI: https://smaily.com/
-	* Text Domain: smaily
-	* Domain Path: languages
-	*
-	* Smaily for WooCommerce is free software: you can redistribute it and/or modify
-	* it under the terms of the GNU General Public License as published by
-	* the Free Software Foundation, either version 3 of the License, or
-	* any later version.
-	*
-	* Smaily for WooCommerce is distributed in the hope that it will be useful,
-	* but WITHOUT ANY WARRANTY; without even the implied warranty of
-	* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-	* GNU General Public License for more details.
-	*
-	* You should have received a copy of the GNU General Public License
-	* along with Smaily for WooCommerce. If not, see <http://www.gnu.org/licenses/>.
-*/
 
 
 // If accessed directly exit program.
