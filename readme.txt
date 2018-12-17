@@ -5,7 +5,7 @@ Requires PHP: 5.6
 Requires at least: 4.0
 Tested up to: 4.9.5
 WC tested up to: 3.4.7
-Stable tag: trunk
+Stable tag: 1.0.0
 License: GPLv3
 
 Simple and flexible Smaily newsletter and rss-feed integration for WooCommerce.
