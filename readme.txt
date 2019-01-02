@@ -3,9 +3,9 @@ Contributors: sendsmaily, kaarel
 Tags: woocommerce, smaily, newsletter, email
 Requires PHP: 5.6
 Requires at least: 4.0
-Tested up to: 4.9.5
-WC tested up to: 3.4.7
-Stable tag: 1.0.0
+Tested up to: 5.0.2
+WC tested up to: 3.5.3
+Stable tag: 1.0.1
 License: GPLv3
 
 Simple and flexible Smaily newsletter and rss-feed integration for WooCommerce.
@@ -93,6 +93,10 @@ Cron update data-log is stored in the root folder of Smaily plugin, inside "smai
 4. WooCommerce Smaily RSS-feed screen.
 
 == Changelog ==
+
+### 1.0.1
+
+- Folder structure changed for CSS and JS
 
 ### 1.0.0
 

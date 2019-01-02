@@ -82,3 +82,13 @@ Cron update data-log is stored in the root folder of Smaily plugin, inside "smai
 2. WooCommerce Smaily widget settings screen.
 3. WooCommerce Smaily widget front screen.
 4. WooCommerce Smaily RSS-feed screen.
+
+## Changelog
+
+### 1.0.1
+
+- Folder structure changed for CSS and JS
+
+### 1.0.0
+
+- This is the first public release.
