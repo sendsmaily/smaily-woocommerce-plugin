@@ -187,7 +187,12 @@ class ProfileSettings {
 	 * @return array $checkout_fields Updated checkout fields
 	 */
 	public function smaily_checkout_fields( $checkout_fields ) {
+		// Get available account fields.
 		$fields = $this->smaily_get_account_fields();
+		// Fields to append to billing information.
+		$billing_details_list = [ 'user_gender', 'user_phone', 'user_dob', 'user_url' ];
+		// Fields to append to Additional information.
+		$order_details_list = [ 'user_newsletter' ];
 
 		foreach ( $fields as $key => $field_args ) {
 
@@ -195,7 +200,14 @@ class ProfileSettings {
 				continue;
 			}
 
-			$checkout_fields['account'][ $key ] = $field_args;
+			// Append billing details to customer billing details list.
+			if ( in_array( $key, $billing_details_list, true ) ) {
+				$checkout_fields['billing'][ $key ] = $field_args;
+			}
+			// Append newsletter to additional information.
+			if ( in_array( $key, $order_details_list, true ) ) {
+				$checkout_fields['order'][ $key ] = $field_args;
+			}
 		}
 
 		return $checkout_fields;

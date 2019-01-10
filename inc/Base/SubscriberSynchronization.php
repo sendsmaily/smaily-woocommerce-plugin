@@ -26,6 +26,7 @@ class SubscriberSynchronization {
 		add_action( 'personal_options_update', array( $this, 'smaily_newsletter_subscribe_update' ) ); // edit own account admin.
 		add_action( 'edit_user_profile_update', array( $this, 'smaily_newsletter_subscribe_update' ) ); // edit other account admin.
 		add_action( 'woocommerce_save_account_details', array( $this, 'smaily_newsletter_subscribe_update' ) ); // edit WC account.
+		add_action( 'woocommerce_checkout_order_processed', array( $this, 'smaily_checkout_subscribe_customer' ) ); // Checkout newsletter checkbox.
 	}
 	/**
 	 * Make Api call with subscriber data when updating settings.
@@ -48,4 +49,43 @@ class SubscriberSynchronization {
 		// Subscribed to newsletter.
 	}
 
+	/**
+	 * Subscribes customer in checkout form when subscribe newsletter box is checked.
+	 *
+	 * @param int $order_id Order ID
+	 * @return void
+	 */
+	public function smaily_checkout_subscribe_customer( $order_id ) {
+
+		if ( ! isset( $_POST['user_newsletter'] ) ) {
+			return;
+		}
+
+		// Data to sent to Smaily API.
+		$data = [];
+
+		// Add store url for refrence in Smaily database.
+		$store = get_site_url();
+		$data['store'] = isset( $store ) ? $store : 'woocommerce';
+
+		// Append fields to data array when available.
+		// Add first name.
+		if ( isset( $_POST['billing_first_name'] ) ) {
+			$data['first_name'] = sanitize_text_field( wp_unslash( $_POST['billing_first_name'] ) );
+		}
+		// Add last name.
+		if ( isset( $_POST['billing_last_name'] ) ) {
+			$data['last_name'] = sanitize_text_field( wp_unslash( $_POST['billing_last_name'] ) );
+		}
+		// Add email.
+		if ( isset( $_POST['billing_email'] ) ) {
+			$data['email'] = sanitize_text_field( wp_unslash( $_POST['billing_email'] ) );
+		}
+
+		// Make API call  to Smaily for subscriber update.
+		if ( isset( $data['email'] ) ) {
+			Api::ApiCall( 'contact', [ 'body' => $data ], 'POST' );
+		}
+		// Subscribed to newsletter.
+	}
 }
