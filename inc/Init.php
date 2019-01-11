@@ -22,6 +22,7 @@ final class Init {
 			Base\Enqueue::class,
 			Base\SettingLinks::class,
 			Base\SubscriberSynchronization::class,
+			Base\Cart::class,
 			Base\Cron::class,
 			Api\Api::class,
 			Widget\SmailyWidget::class,

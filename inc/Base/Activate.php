@@ -30,6 +30,9 @@ class Activate {
 		if ( ! wp_next_scheduled( 'smaily_cron_sync_contacts' ) ) {
 			wp_schedule_event( time(), 'daily', 'smaily_cron_sync_contacts' );
 		}
+		if ( ! wp_next_scheduled( 'smaily_cron_abandoned_carts' ) ) {
+			wp_schedule_event( time(), 'hourly', 'smaily_cron_abandoned_carts' );
+		}
 	}
 
 	/**
@@ -39,24 +42,48 @@ class Activate {
 	 */
 	private static function create_database() {
 		global $wpdb;
-
-		$smaily = "
-                CREATE TABLE IF NOT EXISTS `{$wpdb->prefix}smaily` (
-                `id` int(11) NOT NULL AUTO_INCREMENT ,
-                `enable` tinyint(1) DEFAULT NULL,
-                `subdomain` varchar(255) DEFAULT NULL,
-                `username` varchar(255) DEFAULT NULL,
-                `password` varchar(255) DEFAULT NULL,
-                `autoresponder` varchar(255) DEFAULT NULL,
-                `autoresponder_id` int(10) DEFAULT NULL,
-                `syncronize_additional` varchar(255) DEFAULT NULL,
-                `syncronize` varchar(255) DEFAULT NULL,
-                PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-                ";
-
+		// Create smaily settigs table.
+		$table_name = $wpdb->prefix . 'smaily';
+		$smaily     = "CREATE TABLE $table_name (
+				id int(11) NOT NULL AUTO_INCREMENT,
+				enable tinyint(1) DEFAULT NULL,
+				subdomain varchar(255) DEFAULT NULL,
+				username varchar(255) DEFAULT NULL,
+				password varchar(255) DEFAULT NULL,
+				autoresponder varchar(255) DEFAULT NULL,
+				autoresponder_id int(10) DEFAULT NULL,
+				syncronize_additional varchar(255) DEFAULT NULL,
+				enable_cart tinyint(1) DEFAULT NULL,
+				cart_autoresponder varchar(255) DEFAULT NULL,
+				cart_autoresponder_id int(10) DEFAULT NULL,
+				cart_delay int(10) DEFAULT NULL,
+				cart_options varchar(255) DEFAULT NULL,
+				PRIMARY KEY  (id)
+				) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+				";
 		dbDelta( $smaily );
 
+		// Check if column time_created exists in session table.
+		$time_created = $wpdb->get_results(
+			"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS
+			WHERE table_name = '{$wpdb->prefix}woocommerce_sessions' AND column_name = 'time_created'"
+		);
+
+		// Add time_created column to woocommerce session table.
+		if ( empty( $time_created ) ) {
+			$wpdb->query( "ALTER TABLE {$wpdb->prefix}woocommerce_sessions ADD time_created DATETIME NULL" );
+		}
+
+		// Check if column mail_sent exists in session table.
+		$mail_sent = $wpdb->get_results(
+			"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS
+			WHERE table_name = '{$wpdb->prefix}woocommerce_sessions' AND column_name = 'mail_sent'"
+		);
+
+		// Add mail_sent column to woocommerce session table.
+		if ( empty( $mail_sent ) ) {
+			$wpdb->query( "ALTER TABLE {$wpdb->prefix}woocommerce_sessions ADD mail_sent TINYINT DEFAULT 0" );
+		}
 	}
 
 	/**
@@ -72,6 +99,4 @@ class Activate {
 			$wpdb->insert( $table_name, array( 'enable' => 0 ) );
 		}
 	}
-
-
 }

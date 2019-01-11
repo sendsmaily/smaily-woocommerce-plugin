@@ -30,14 +30,22 @@ class DataHandler {
 			$result[ $key ] = esc_html( $value );
 		}
 
-		$un_escaped_syncronize_additional = isset( $result['syncronize_additional'] ) ? explode( ',', $result['syncronize_additional'] ) : null;
+		$un_escaped_syncronize_additional = ! empty( $result['syncronize_additional'] ) ? explode( ',', $result['syncronize_additional'] ) : array();
 
 		// Escape syncronize_additional fields.
 		$syncronize_additional = [];
 		foreach ( $un_escaped_syncronize_additional as $key => $value ) {
 			$syncronize_additional[ $key ] = esc_html( $value );
 		}
-		return compact( 'result', 'syncronize_additional' );
+
+		$un_escaped_cart_options = ! empty( $result['cart_options'] ) ? explode( ',', $result['cart_options'] ) : array();
+
+		// Escape cart option values.
+		$cart_options = [];
+		foreach ( $un_escaped_cart_options as $key => $value ) {
+			$cart_options [ $key ] = esc_html( $value );
+		}
+		return compact( 'result', 'syncronize_additional', 'cart_options' );
 	}
 
 	/**
