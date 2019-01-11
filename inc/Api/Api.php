@@ -62,9 +62,6 @@ class Api {
 					$api_call = wp_remote_get(
 						'https://' . $sanitized['subdomain'] . '.sendsmaily.net/api/autoresponder.php',
 						[
-							'page'    => 1,
-							'limit'   => 100,
-							'status'  => [ 'ACTIVE' ],
 							'headers' => array(
 								'Authorization' => 'Basic ' . base64_encode( $sanitized['username'] . ':' . $sanitized['password'] ),
 							),
@@ -76,6 +73,9 @@ class Api {
 					// Show error message if no access.
 					if ( $http_code === 401 ) {
 						$response = array( 'error' => 'Invalid API credentials, no connection !' );
+					}
+					if ( is_wp_error( $api_call ) ) {
+						$response = array( 'error' => $api_call->get_error_message() );
 					}
 					// Return autoresponders list back to front end for selection.
 					if ( $http_code === 200 ) {

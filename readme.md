@@ -85,6 +85,14 @@ Cron update data-log is stored in the root folder of Smaily plugin, inside "smai
 
 ## Changelog
 
+### 1.0.3
+
+- Settings form credentials are being validated automatically when allready in database
+
+### 1.0.2
+
+- Fixed a bug where custom fields are not showing in checkout page
+
 ### 1.0.1
 
 - Folder structure changed for CSS and JS

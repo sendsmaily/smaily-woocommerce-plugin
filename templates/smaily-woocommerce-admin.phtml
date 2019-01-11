@@ -6,6 +6,8 @@ $result= DataHandler::get_smaily_results();
 if( isset($result) ){
 	$result    = $result['result'];
 	$isEnabled = $result['enable'];
+	$autoresponder_name = $result['autoresponder'] ? $result['autoresponder'] : null;
+	$autoresponder_id = $result['autoresponder_id'] ? $result['autoresponder_id'] : null;
 }
 
 ?>
@@ -24,16 +26,16 @@ if( isset($result) ){
 				<tr class="form-field form-required">
 					<th scope="row"><label for="subdomain">Subdomain </label></th>
 					<td><input id="subdomain" name="subdomain" class="zoho_input" value="<?php echo ( $result['subdomain'] ) ? $result['subdomain'] : '';  ?>" type="text">
-					<small id="emailHelp" class="form-text text-muted"> For example "demo" from https://demo.sendsmaily.net/</small></td>
+					<small id="emailHelp" class="form-text text-muted"> For example <strong>"demo"</strong> from https://<strong>demo</strong>.sendsmaily.net/</small></td>
 				</tr>
 				<tr class="form-field form-required">
 					<th scope="row"><label for="username">API username </label></th>
-					<td><input name="username" class="zoho_input" value="<?php echo ( $result['username'] ) ? $result['username'] : ''; ?>" type="text">
+					<td><input id="username" name="username" class="zoho_input" value="<?php echo ( $result['username'] ) ? $result['username'] : ''; ?>" type="text">
 					</td>
 				</tr>
 				<tr class="form-field form-required">
 					<th scope="row"><label for="password">API password </label></th>
-					<td><input name="password" class="zoho_input" value="<?php echo ( $result['password'] ) ? $result['password'] : '';?>" type="password">
+					<td><input id="password" name="password" class="zoho_input" value="<?php echo ( $result['password'] ) ? $result['password'] : '';?>" type="password">
 					<small id="emailHelp" class="form-text text-muted"><a href="http://help.smaily.com/en/support/solutions/articles/16000062943-create-api-user" target="_blank">How to create API credentials?</a></small></td>
 				</tr> 
 			</tbody>
@@ -54,8 +56,14 @@ if( isset($result) ){
 			<tr class="form-field form-required">
 				<th scope="row"><label for="autoresponder">Autoresponder ID </label></th>
 				<td>
-					<select id="autoresponders-list" name="autoresponder" class="zoho_input" > 
-						<option value="">-Select-</option>
+					<select id="autoresponders-list" name="autoresponder" class="zoho_input" >
+						<?php 
+						if ( !empty( $autoresponder_name) && !empty( $autoresponder_id )) {
+							$autoresponder = ['name' => $autoresponder_name , 'id' => $autoresponder_id];
+							echo '<option value="' . htmlentities(json_encode($autoresponder)) . '">'. $autoresponder_name .' - (selected)</option>';
+						} else {
+							echo '<option value="">-Select-</option>';
+						}?>
 					</select>
 					<small id="emailHelp" class="form-text text-muted"><a href="http://help.smaily.com/en/support/solutions/articles/16000017234-creating-an-autoresponder" target="_blank">How to set up an autoresponder for confirmation emails?</a></small>
 				</td>
