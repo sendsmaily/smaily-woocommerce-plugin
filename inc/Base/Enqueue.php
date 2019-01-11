@@ -29,7 +29,7 @@ class Enqueue {
 	 */
 	public function enqueue_admin_scripts() {
 		// enque css and js.
-		wp_enqueue_script( 'mypluginscript', SMAILY_PLUGIN_URL . 'static/javascript.js', array( 'jquery' ), '1.0.0', true );
+		wp_enqueue_script( 'mypluginscript', SMAILY_PLUGIN_URL . 'static/javascript.js', array( 'jquery' ), '1.1.0', true );
 		wp_enqueue_style( 'mypluginstyle', SMAILY_PLUGIN_URL . 'static/admin-style.css', array(), '1.0.0' );
 	}
 
