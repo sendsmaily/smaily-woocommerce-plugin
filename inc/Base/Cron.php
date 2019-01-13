@@ -99,7 +99,7 @@ class Cron {
 		// Get Smaily settings.
 		$results = DataHandler::get_smaily_results();
 		// Check if contact sync is enabled.
-		if ( (int) $results['result']['enable_cart'] === 1 ) {
+		if ( isset( $results['result']['enable_cart'] ) && (int) $results['result']['enable_cart'] === 1 ) {
 			// Get delay time.
 			$delay = (int) $results['result']['cart_delay'];
 			// Get all saved woocommerce sessions.
@@ -121,8 +121,8 @@ class Cron {
 				}
 				// Check if delay time has passed from cart update.
 				$cart_updated_time = strtotime( $session['time_created'] );
-				$reminder_time     = strtotime( '+' . $delay . ' hours', $cart_updated_time);
-				$current_time      = strtotime( date( 'Y-m-d H:i' ) . ':00');
+				$reminder_time     = strtotime( '+' . $delay . ' hours', $cart_updated_time );
+				$current_time      = strtotime( date( 'Y-m-d H:i' ) . ':00' );
 
 				if ( $current_time >= $reminder_time ) {
 					// Data to send to smail API.
@@ -132,8 +132,12 @@ class Cron {
 					$customer_data = [];
 					$sync_values   = [ 'first_name', 'last_name', 'email' ];
 					foreach ( $sync_values as $sync_value ) {
-						if ( isset( $customer[ $sync_value ] ) ) {
-							$addresses[ $sync_value ] = $customer[ $sync_value ];
+						// Check if user has enabled extra field in settings.
+						if ( in_array( $sync_value, $results['cart_options'], true ) || $sync_value === 'email' ) {
+							// Add extra field if it's available in customer data.
+							if ( isset( $customer[ $sync_value ] ) ) {
+								$addresses[ $sync_value ] = $customer[ $sync_value ];
+							}
 						}
 					}
 
@@ -141,29 +145,53 @@ class Cron {
 					$cart_page_id          = wc_get_page_id( 'cart' );
 					$cart_page_url         = $cart_page_id ? get_permalink( $cart_page_id ) : '';
 					$addresses['cart_url'] = $cart_page_url;
-
-					// Gather products data.
-					$products_data = [];
-					foreach ( $cart_data as $cart_item ) {
-						$product                      = [];
-						$details                      = wc_get_product( $cart_item['product_id'] ); // Get product by ID.
-						$product['name']              = htmlspecialchars( $details->get_name() );
-						$product['description']       = htmlspecialchars( $details->get_description() );
-						$product['sku']               = htmlspecialchars( $details->get_sku() );
-						$product['description_short'] = htmlspecialchars( $details->get_short_description() );
-						$product['quantity']          = htmlspecialchars( $cart_item['quantity'] );
-						$product['subtotal']          = htmlspecialchars( $cart_item['line_subtotal'] );
-						$products_data[]              = $product;
-					}
-
-					// Append products array to API api call. Up to 10 product details.
-					$i = 1;
-					foreach ( $products_data as $product ) {
-						if ( $i <= 10 ) {
-							foreach ( $product as $key => $value) {
-								$addresses[ 'product_' . $key . '_' . $i ] = htmlspecialchars( $value );
+					// Products data values available.
+					$cart_sync_values = [
+						'product_name',
+						'product_description',
+						'product_sku',
+						'product_quantity',
+						'product_description_short',
+						'product_subtotal',
+					];
+					// Gather products data if user has selected at least one of additional product field to sync.
+					if ( ! empty( array_intersect( $cart_sync_values, $results['cart_options'] ) ) ) {
+						$products_data = [];
+						foreach ( $cart_data as $cart_item ) {
+							// Single product detais array.
+							$product = [];
+							$details = wc_get_product( $cart_item['product_id'] ); // Get product by ID.
+							// Get product details if selected from user settings.
+							if ( in_array( 'product_name', $results['cart_options'], true ) ) {
+								$product['name'] = htmlspecialchars( $details->get_name() );
 							}
-							$i++;
+							if ( in_array( 'product_description', $results['cart_options'], true ) ) {
+								$product['description'] = htmlspecialchars( $details->get_description() );
+							}
+							if ( in_array( 'product_sku', $results['cart_options'], true ) ) {
+								$product['sku'] = htmlspecialchars( $details->get_sku() );
+							}
+							if ( in_array( 'product_description_short', $results['cart_options'], true ) ) {
+								$product['description_short'] = htmlspecialchars( $details->get_short_description() );
+							}
+							if ( in_array( 'product_quantity', $results['cart_options'], true ) ) {
+								$product['quantity'] = htmlspecialchars( $cart_item['quantity'] );
+							}
+							if ( in_array( 'product_subtotal', $results['cart_options'], true ) ) {
+								$product['subtotal'] = htmlspecialchars( $cart_item['line_subtotal'] );
+							}
+							$products_data[] = $product;
+						}
+
+						// Append products array to API api call. Up to 10 product details.
+						$i = 1;
+						foreach ( $products_data as $product ) {
+							if ( $i <= 10 ) {
+								foreach ( $product as $key => $value ) {
+									$addresses[ 'product_' . $key . '_' . $i ] = htmlspecialchars( $value );
+								}
+								$i++;
+							}
 						}
 					}
 
@@ -174,7 +202,6 @@ class Cron {
 
 					// Send data to Smaily.
 					$response = API::ApiCall( 'autoresponder', [ 'body' => $query ], 'POST' );
-
 					// If data sent successfully update mail_sent status in database.
 					if ( array_key_exists( 'code', $response ) && $response['code'] === 101 ) {
 						// Add sent status to cart data.

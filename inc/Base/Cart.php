@@ -16,6 +16,7 @@ class Cart {
 	 */
 	public function register() {
 		add_action( 'woocommerce_add_to_cart', array( $this, 'smaily_update_cart_time' ) );
+		add_action( 'woocommerce_checkout_order_processed', array( $this, 'smaily_checkout_update_mail' ) ); // Checkout newsletter checkbox.
 	}
 
 	/**
@@ -76,5 +77,26 @@ class Cart {
 				'session_key' => $session_key,
 			)
 		);
+	}
+
+	/**
+	 * Sets mail_sent value to 0 if customer checks out with their cart.
+	 */
+	public function smaily_checkout_update_mail() {
+		$wc = WC();
+		if ( $wc->session->has_session() ) {
+			$session_key = $wc->session->generate_customer_id();
+			// Update database mail_sent value to 0.
+			global $wpdb;
+			$wpdb->update(
+				$wpdb->prefix . 'woocommerce_sessions',
+				array(
+					'mail_sent' => '0',
+				),
+				array(
+					'session_key' => $session_key,
+				)
+			);
+		}
 	}
 }
