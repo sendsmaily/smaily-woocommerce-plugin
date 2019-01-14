@@ -13,10 +13,9 @@ require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 class Activate {
 
 	/**
-	 * Creates 2 databases:
-	 * Smaily               - for plugin autoresponder configuration
-	 * Smaily_Newsletter    - for handling subscribers
-	 *
+	 * Creates database for plugin configuration.
+	 * Adds cron schedules.
+	 * 
 	 * @return void
 	 */
 	public static function activate() {
@@ -96,7 +95,13 @@ class Activate {
 		$result = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}smaily", 'ARRAY_A' );
 		if ( empty( $result ) ) {
 			$table_name = $wpdb->prefix . 'smaily';
-			$wpdb->insert( $table_name, array( 'enable' => 0 ) );
+			$wpdb->insert(
+				$table_name,
+				array(
+					'enable'      => 0,
+					'enable_cart' => 0,
+				)
+			);
 		}
 	}
 }
