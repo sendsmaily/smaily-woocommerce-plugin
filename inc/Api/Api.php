@@ -174,14 +174,18 @@ class Api {
 					// Check if autoresponder for cart is selected.
 					if ( empty( $sanitized_cart_autoresponder ) ) {
 						// Return error if no autoresponder for abandoned cart.
-						return array( 'error' => 'Select autoresponder for abandoned cart!' );
+						echo wp_json_encode( array( 'error' => 'Select autoresponder for abandoned cart!' ) );
+						wp_die();
+					}
+					// Check if cart delay time is valid.
+					if ( $cart_dely_time < 1 ) {
+						echo wp_json_encode( array( 'error' => 'Abandoned cart delay time value must be 1 or higher!' ) );
+						wp_die();
 					}
 				}
 				// Error if no sync autoresponder.
 				if ( empty( $autoresponder ) ) {
 					$response = array( 'error' => 'No autoresponder selected, please select autoresponder!' );
-				} elseif ( $cart_dely_time < 1 ) {
-					$response = array( 'error' => 'Abandoned cart delay time value must be 1 or higher!' );
 				} else {
 					// Update DB with user values if autoresponder selected.
 					$result = $wpdb->update(

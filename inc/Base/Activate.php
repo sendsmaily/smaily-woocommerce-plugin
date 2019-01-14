@@ -86,7 +86,7 @@ class Activate {
 	}
 
 	/**
-	 * Marks enable field to 0
+	 * Marks enable fields to 0.
 	 *
 	 * @return void
 	 */

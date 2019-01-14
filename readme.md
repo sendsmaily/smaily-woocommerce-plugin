@@ -35,6 +35,12 @@ Automatically subscribe newsletter subscribers to a Smaily subscribers list, gen
 - Generate data log for each update
 - Default daily synchronization
 
+### Abandoned cart reminder emails
+
+- Automatically notify customers about their abandoned cart
+- Send abandoned cart information to smaily for easy use on templates
+- Set delay time when cart is considered abadoned
+
 ## Requirements
 
 Smaily for WooCommerce requires PHP 5.6+ (PHP 7.0+ recommended). You'll also need to be running WordPress 4.0+ and have WooCommerce 2.2+.
@@ -75,6 +81,30 @@ Scroll to bottom and click "Save Changes" without modifing anything
 ### Where I can find data-log for Cron?
 
 Cron update data-log is stored in the root folder of Smaily plugin, inside "smaily-cron.txt" file.
+
+### How can I access additional Abandoned cart parameters in Smaily template editor?
+
+List of all parameters available in Smaily email templating engine:
+
+- Customer first name: `{{ first_name }}`.
+
+- Customer last name: `{{ last_name }}`.
+
+- Cart page url: `{{ cart_url }}`.
+
+Up to 10 products can be received in Smaily templating engine. You can refrence each product with number 1-10 behind parameter name.
+
+- Product name: `{{ product_name_[1-10] }}`.
+
+- Product description: `{{ product_description_[1-10] }}`.
+
+- Product short description: `{{product_description_short_[1-10] }}`.
+
+- Product SKU: `{{ product_sku_[1-10] }}`.
+
+- Product quantity: `{{ product_quantity_[1-10] }}`.
+
+- Products row price subtotal: `{{ product_subtotal_[1-10] }}`.
 
 ## Screenshots found in /assets
 

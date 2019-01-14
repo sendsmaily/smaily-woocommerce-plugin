@@ -166,8 +166,6 @@
             var errorMessage =
               '<div class = "error notice"><p>Something went wrong with saving data!</p></div>"';
             $(".message-display").html(errorMessage);
-            // Hide loading icon
-            spinner.hide();
           } else {
             // Display message to user.
             var successMessage =
