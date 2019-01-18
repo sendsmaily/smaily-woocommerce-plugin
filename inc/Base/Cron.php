@@ -126,7 +126,7 @@ class Cron {
 			$last_abandoned      = strtotime( '-' . $delay . ' hours', $current_time );
 			$cart_abandoned_time = gmdate( 'Y-m-d\TH:i:s\Z', $last_abandoned );
 			// Get all abandoned carts.
-			$abandoned_carts = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}smaily_abandoned_carts WHERE cart_status='abandoned' AND cart_abandoned_time < '$cart_abandoned_time'", 'ARRAY_A' );
+			$abandoned_carts = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}smaily_abandoned_carts WHERE cart_status='abandoned' AND mail_sent IS NULL AND cart_abandoned_time < '$cart_abandoned_time'", 'ARRAY_A' );
 			foreach ( $abandoned_carts as $cart ) {
 				// Get cart details and cart data from cart.
 				$cart_data = unserialize( $cart['cart_content'] );
@@ -235,7 +235,19 @@ class Cron {
 				// Send data to Smaily.
 				$response = Api::ApiCall( 'autoresponder', [ 'body' => $query ], 'POST' );
 				// If data sent successfully update mail_sent status in database.
-				if ( ! array_key_exists( 'code', $response ) || $response['code'] !== 101 ) {
+				if ( array_key_exists( 'code', $response ) && $response['code'] === 101 ) {
+					$table = $wpdb->prefix . 'smaily_abandoned_carts';
+					$wpdb->update(
+						$table,
+						array(
+							'mail_sent'      => 1,
+							'mail_sent_time' => gmdate( 'Y-m-d\TH:i:s\Z' ),
+						),
+						array(
+							'customer_id' => $customer_id,
+						)
+					);
+				} else {
 					// Log to file if errors.
 					$this->log_to_file( SMAILY_PLUGIN_PATH . 'smaily-cart.txt', wp_json_encode( $response ) );
 				}
@@ -261,7 +273,7 @@ class Cron {
 			$limit = strtotime( gmdate( 'Y-m-d\TH:i:s\Z' ) ) - $cutoff;
 			$time = gmdate( 'Y-m-d\TH:i:s\Z', $limit );
 			// Select all carts before cutoff time.
-			$carts = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}smaily_abandoned_carts WHERE cart_status='open' AND cart_updated < '$time'", 'ARRAY_A' );
+			$carts = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}smaily_abandoned_carts WHERE cart_status='open' AND mail_sent IS NULL AND cart_updated < '$time'", 'ARRAY_A' );
 
 			foreach ( $carts as $cart ) {
 				// Update abandoned status and time.
