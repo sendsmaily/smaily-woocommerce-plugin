@@ -154,6 +154,19 @@ if( isset($settings) ){
 					</td>
 				</tr>
 				<tr class="form-field form-required">
+					<th scope="row"><label for="cart-delay">Cart cutoff time</label></th>
+					<td> Cosinder cart abandoned after:
+						<input	id="cart_cutoff"
+								name="cart_cutoff"
+								style="width:65px;"
+								value="<?php echo ( $result['cart_cutoff'] ) ? $result['cart_cutoff'] : '';  ?>"
+								type="number"
+								min="10">
+						minute(s)
+						<small id="cart-delay-help" class="form-text text-muted">Time when cart is considered abandoned. Minimum 10 minutes.</small>
+					</td>
+				</tr>
+				<tr class="form-field form-required">
 					<th scope="row"><label for="cart-delay">Email delay</label></th>
 					<td> Send abandoned cart email after :
 						<input	id="cart_delay"
@@ -163,7 +176,7 @@ if( isset($settings) ){
 								type="number"
 								min="1">
 						hour(s)
-						<small id="cart-delay-help" class="form-text text-muted">Delay is being calculated from time when customer added their last item into cart</small>
+						<small id="cart-delay-help" class="form-text text-muted">Minimum 1 hour.</small>
 					</td>
 				</tr>
 			</tbody>

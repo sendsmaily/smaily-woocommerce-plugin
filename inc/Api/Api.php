@@ -160,8 +160,9 @@ class Api {
 					}
 				}
 
-				// Sanitize Abandoned cart delay time and enabled status.
+				// Sanitize Abandoned cart delay, cutoff time and enabled status.
 				$cart_dely_time = (int) wp_unslash( sanitize_text_field( $autoresponders['cart_delay'] ) );
+				$cart_cutoff_time = (int) wp_unslash( sanitize_text_field( $autoresponders['cart_cutoff'] ) );
 				$cart_enabled   = isset( $autoresponders['enable_cart'] ) ? wp_unslash( sanitize_text_field( $autoresponders['enable_cart'] ) ) : 0;
 
 				// Save data to database.
@@ -180,6 +181,11 @@ class Api {
 					// Check if cart delay time is valid.
 					if ( $cart_dely_time < 1 ) {
 						echo wp_json_encode( array( 'error' => 'Abandoned cart delay time value must be 1 or higher!' ) );
+						wp_die();
+					}
+					// Check if cart delay time is valid.
+					if ( $cart_cutoff_time < 10 ) {
+						echo wp_json_encode( array( 'error' => 'Abandoned cart cutoff time value must be 10 or higher!' ) );
 						wp_die();
 					}
 				}
@@ -202,6 +208,7 @@ class Api {
 							'cart_autoresponder'    => $sanitized_cart_autoresponder['name'],
 							'cart_autoresponder_id' => $sanitized_cart_autoresponder['id'],
 							'cart_delay'            => $cart_dely_time,
+							'cart_cutoff'           => $cart_cutoff_time,
 							'cart_options'          => isset( $sanitized_cart_options ) ? implode( ',', $sanitized_cart_options ) : null
 						),
 						array( 'id' => 1 )
