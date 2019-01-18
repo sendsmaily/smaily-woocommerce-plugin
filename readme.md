@@ -115,6 +115,10 @@ Up to 10 products can be received in Smaily templating engine. You can refrence 
 
 ## Changelog
 
+### 1.1.0
+
+- New feature. Abandoned Cart remainder emails.
+
 ### 1.0.3
 
 - Settings form credentials are being validated automatically when allready in database

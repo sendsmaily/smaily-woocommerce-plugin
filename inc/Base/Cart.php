@@ -6,7 +6,7 @@
 namespace Smaily_Inc\Base;
 
 /**
- * Update Cart with timestamp and prevent net Crawlers from updating cart time value.
+ * Manages status of user cart in smaily_abandoned_carts table.
  */
 class Cart {
 	/**

@@ -14,6 +14,7 @@ class Activate {
 
 	/**
 	 * Creates database for plugin configuration.
+	 * Creates database for abandoned carts.
 	 * Adds cron schedules.
 	 * 
 	 * @return void

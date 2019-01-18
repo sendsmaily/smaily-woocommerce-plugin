@@ -13,4 +13,4 @@ global $wpdb;
 // Delete Smaily plugin settings table.
 $wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}smaily" );
 // Delete Smaily plugin abandoned cart table.
-$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}smaily_abandoned_carts");
+$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}smaily_abandoned_carts" );
