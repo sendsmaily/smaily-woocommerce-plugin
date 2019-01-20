@@ -17,6 +17,11 @@ class DataHandler {
 	 */
 	public static function get_smaily_results() {
 		global $wpdb;
+		// Stop if no table exists. Required during activation hook.
+		$table_name = $wpdb->prefix . 'smaily';
+		if ( $wpdb->get_var( "SHOW TABLES LIKE '$table_name'" ) !== $table_name ) {
+			return;
+		}
 		$result = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}smaily", 'ARRAY_A' );
 		// If database is empty in beginning return.
 		if ( count( $result ) === 0 ) {

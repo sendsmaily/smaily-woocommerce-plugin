@@ -49,6 +49,7 @@ class Activate {
 		global $wpdb;
 		// Create smaily settigs table.
 		$table_name = $wpdb->prefix . 'smaily';
+		$charset_collate = $wpdb->get_charset_collate();
 		$smaily     = "CREATE TABLE $table_name (
 				id int(11) NOT NULL AUTO_INCREMENT,
 				enable tinyint(1) DEFAULT NULL,
@@ -65,8 +66,7 @@ class Activate {
 				cart_cutoff int(10) DEFAULT NULL,
 				cart_options varchar(255) DEFAULT NULL,
 				PRIMARY KEY  (id)
-				) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-				";
+				) $charset_collate;";
 		dbDelta( $smaily );
 
 		// Create smaily_abandoned_cart table.
@@ -81,8 +81,7 @@ class Activate {
 				mail_sent tinyint(1) DEFAULT NULL,
 				mail_sent_time datetime DEFAULT '0000-00-00 00:00:00',
 				PRIMARY KEY  (id)
-				) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-				";
+				) $charset_collate;";
 		dbDelta( $abandoned );
 	}
 
