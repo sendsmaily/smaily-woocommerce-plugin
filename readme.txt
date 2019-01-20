@@ -128,6 +128,7 @@ Up to 10 products can be received in Smaily templating engine. You can refrence 
 ### 1.1.0
 
 - New feature. Abandoned Cart remainder emails.
+- Bugfix. Displaying rss-feed price.
 
 ### 1.0.3
 
