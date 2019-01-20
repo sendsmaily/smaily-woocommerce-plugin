@@ -78,8 +78,8 @@ class DataHandler {
 				$discount = ceil( ( $price - $splc_price ) / $price * 100 );
 			}
 
-			$price      = number_format( $price, 2, '.', ',' ) . html_entity_decode( $currencysymbol );
-			$splc_price = number_format( $splc_price, 2, '.', ',' ) . html_entity_decode( $currencysymbol );
+			$price      = number_format( floatval( $price ), 2, '.', ',' ) . html_entity_decode( $currencysymbol );
+			$splc_price = number_format( floatval( $splc_price ), 2, '.', ',' ) . html_entity_decode( $currencysymbol );
 
 			$url   = get_permalink( $prod->ID );
 			$image = wp_get_attachment_image_src( get_post_thumbnail_id( $prod->ID ), 'single-post-thumbnail' );

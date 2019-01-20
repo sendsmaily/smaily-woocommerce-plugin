@@ -109,15 +109,17 @@ Up to 10 products can be received in Smaily templating engine. You can refrence 
 ## Screenshots found in /assets
 
 1. WooCommerce Smaily general settings screen.
-2. WooCommerce Smaily widget settings screen.
-3. WooCommerce Smaily widget front screen.
-4. WooCommerce Smaily RSS-feed screen.
+2. WooCommerce Smaily abadoned cart settings screen.
+3. WooCommerce Smaily RSS-feed screen.
+4. WooCommerce Smaily widget settings screen.
+5. WooCommerce Smaily widget front screen.
 
 ## Changelog
 
 ### 1.1.0
 
 - New feature. Abandoned Cart remainder emails.
+- Bugfix. Displaying rss-feed price.
 
 ### 1.0.3
 

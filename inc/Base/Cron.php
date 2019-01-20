@@ -141,7 +141,7 @@ class Cron {
 				$customer      = [
 					'first_name' => $customer_data->first_name ? $customer_data->first_name : '',
 					'last_name'  => $customer_data->last_name ? $customer_data->last_name : '',
-					'email'      => $customer_data->user_email,
+					'email'      => $customer_data->user_email ? $customer_data->user_email : '',
 				];
 				// Continue with data gathering only if there is an email value to send data to.
 				if ( empty( $customer['email'] ) ) {
