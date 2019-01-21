@@ -73,17 +73,6 @@ class Cart {
 							'cart_content' => serialize( $cart ),
 						)
 					);
-				} else {
-					// Empty cart.
-					$insert_query = $wpdb->insert(
-						$table,
-						array(
-							'customer_id'  => $user_id,
-							'cart_updated' => $current_time,
-							'cart_status'  => 'empty',
-							'cart_content' => serialize( $cart ),
-						)
-					);
 				}
 			} else {
 				// If customer has items update cart contents and time.
@@ -98,14 +87,12 @@ class Cart {
 						array( 'customer_id' => $user_id )
 					);
 				} else {
-					// Update cart status to empty.
-					$wpdb->update(
+					// Delete cart if empty.
+					$wpdb->delete(
 						$table,
 						array(
-							'cart_status'  => 'empty',
-							'cart_updated' => $current_time,
-						),
-						array( 'customer_id' => $user_id )
+							'customer_id' => $user_id,
+						)
 					);
 				}
 			}

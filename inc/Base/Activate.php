@@ -72,15 +72,14 @@ class Activate {
 		// Create smaily_abandoned_cart table.
 		$abandoned_table_name = $wpdb->prefix . 'smaily_abandoned_carts';
 		$abandoned            = "CREATE TABLE $abandoned_table_name (
-				id int(11) NOT NULL AUTO_INCREMENT,
-				customer_id int(11) DEFAULT NULL,
+				customer_id int(11) NOT NULL,
 				cart_updated datetime DEFAULT '0000-00-00 00:00:00',
 				cart_content longtext DEFAULT NULL,
 				cart_status varchar(255) DEFAULT NULL,
 				cart_abandoned_time datetime DEFAULT '0000-00-00 00:00:00',
 				mail_sent tinyint(1) DEFAULT NULL,
 				mail_sent_time datetime DEFAULT '0000-00-00 00:00:00',
-				PRIMARY KEY  (id)
+				PRIMARY KEY  (customer_id)
 				) $charset_collate;";
 		dbDelta( $abandoned );
 	}

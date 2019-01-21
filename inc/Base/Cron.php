@@ -126,7 +126,18 @@ class Cron {
 			$last_abandoned      = strtotime( '-' . $delay . ' hours', $current_time );
 			$cart_abandoned_time = gmdate( 'Y-m-d\TH:i:s\Z', $last_abandoned );
 			// Get all abandoned carts.
-			$abandoned_carts = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}smaily_abandoned_carts WHERE cart_status='abandoned' AND mail_sent IS NULL AND cart_abandoned_time < '$cart_abandoned_time'", 'ARRAY_A' );
+			$abandoned_carts = $wpdb->get_results(
+				$wpdb->prepare(
+					"
+					SELECT * FROM {$wpdb->prefix}smaily_abandoned_carts
+					WHERE cart_status='abandoned'
+					AND mail_sent IS NULL
+					AND cart_abandoned_time < %s
+					",
+					$cart_abandoned_time
+				),
+				'ARRAY_A'
+			);
 			foreach ( $abandoned_carts as $cart ) {
 				// Get cart details and cart data from cart.
 				$cart_data = unserialize( $cart['cart_content'] );
@@ -273,7 +284,18 @@ class Cron {
 			$limit = strtotime( gmdate( 'Y-m-d\TH:i:s\Z' ) ) - $cutoff;
 			$time = gmdate( 'Y-m-d\TH:i:s\Z', $limit );
 			// Select all carts before cutoff time.
-			$carts = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}smaily_abandoned_carts WHERE cart_status='open' AND mail_sent IS NULL AND cart_updated < '$time'", 'ARRAY_A' );
+			$carts = $wpdb->get_results(
+				$wpdb->prepare(
+					"
+					SELECT * FROM {$wpdb->prefix}smaily_abandoned_carts
+					WHERE cart_status='open'
+					AND mail_sent IS NULL
+					AND cart_updated < %s
+					",
+					$time
+				),
+				'ARRAY_A'
+			);
 
 			foreach ( $carts as $cart ) {
 				// Update abandoned status and time.
