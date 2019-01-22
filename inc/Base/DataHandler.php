@@ -46,23 +46,23 @@ class DataHandler {
 	 * @param integer $limit Default value 50.
 	 * @return void $rss Rss-feed for Smaily template.
 	 */
-	public static function generate_rss_feed( $limit = 50 ) {
+	public static function generate_rss_feed( $category, $limit = 50 ) {
 
-		$products       = self::get_latest_products( $limit );
+		$products       = self::get_latest_products( $category, $limit );
 		$base_url       = get_site_url();
 		$currencysymbol = get_woocommerce_currency_symbol();
 		$items          = [];
 		foreach ( $products as $prod ) {
 			if ( function_exists( 'wc_get_product' ) ) {
-				$product = wc_get_product( $prod->ID );
+				$product = wc_get_product( $prod->get_id() );
 			} else {
-				$product = new \WC_Product( $prod->ID );
+				$product = new \WC_Product( $prod->get_id() );
 			}
 
-			$price      = $product->get_regular_price();
-			$splc_price = $product->get_sale_price();
+			$price      = floatval( $product->get_price() );
+			$splc_price = floatval( $product->get_sale_price() );
 			$discount   = 0;
-			if ( $splc_price === 0 ) {
+			if ( $splc_price === 0.0 ) {
 				$splc_price = $price;
 			}
 
@@ -73,11 +73,11 @@ class DataHandler {
 			$price      = number_format( $price, 2, '.', ',' ) . html_entity_decode( $currencysymbol );
 			$splc_price = number_format( $splc_price, 2, '.', ',' ) . html_entity_decode( $currencysymbol );
 
-			$url   = get_permalink( $prod->ID );
-			$image = wp_get_attachment_image_src( get_post_thumbnail_id( $prod->ID ), 'single-post-thumbnail' );
+			$url   = get_permalink( $prod->get_id() );
+			$image = wp_get_attachment_image_src( get_post_thumbnail_id( $prod->get_id() ), 'single-post-thumbnail' );
 
 			$image        = $image[0];
-			$create_time  = strtotime( $prod->post_date );
+			$create_time  = strtotime( $prod->get_date_created() );
 			$price_fields = '';
 			if ( $discount > 0 ) {
 				$price_fields = '
@@ -86,11 +86,11 @@ class DataHandler {
 			}
 
 			$items[] = '<item>
-			  <title>' . esc_attr( $prod->post_title ) . '</title>
+			  <title>' . esc_attr( $prod->get_title() ) . '</title>
 			  <link>' . esc_url( $url ) . '</link>
 			  <guid isPermaLink="True">' . esc_url( $url ) . '</guid>
 			  <pubDate>' . date( 'D, d M Y H:i:s', $create_time ) . '</pubDate>
-			  <description>' . htmlentities( $prod->post_content ) . '</description>
+			  <description>' . htmlentities( $prod->get_description() ) . '</description>
 			  <enclosure url="' . esc_url( $image ) . '" />
 			  <smly:price>' . esc_attr( $splc_price ) . '</smly:price>' . $price_fields . '
 			</item>
@@ -105,26 +105,25 @@ class DataHandler {
 
 	/**
 	 * Get latest published products from WooCommerce database.
-	 * Syncs only fields selected from Settings->Additional fields.
 	 *
+	 * @param string $category Limit products by category.
 	 * @param integer $limit Maximum number of products fetched.
 	 * @return array $products WooCommerce products.
 	 */
-	public static function get_latest_products( $limit = 50 ) {
-		global $wpdb;
-		$products = $wpdb->get_results(
-			$wpdb->prepare(
-				"
-				SELECT * FROM {$wpdb->prefix}posts
-				WHERE post_type = 'product' AND post_status='publish'
-				ORDER BY post_date DESC
-				LIMIT %d
-				",
-				$limit
-			)
+	public static function get_latest_products( $category, $limit ) {
+		// Initial query.
+		$product = array(
+			'status'  => 'publish',
+			'limit'   => $limit,
+			'orderby' => 'modified',
+			'order'   => 'DESC',
 		);
-
-		return $products;
+		// Get category to limit results if set.
+		if ( ! empty( $category ) ) {
+			$product['category'] = array( $category );
+		}
+		$wprod = wc_get_products( $product );
+		return $wprod;
 	}
 
 	/**
