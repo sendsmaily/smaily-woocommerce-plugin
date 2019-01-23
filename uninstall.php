@@ -10,6 +10,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 }
 
 global $wpdb;
-// Delete Smaily plugin Databases.
-$wpdb->query( "DROP TABLE IF EXISTS `{$wpdb->prefix}smaily`" );
-$wpdb->query( "DROP TABLE IF EXISTS `{$wpdb->prefix}smaily_newsletter`" );
+// Delete Smaily plugin settings table.
+$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}smaily" );
+// Delete Smaily plugin abandoned cart table.
+$wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}smaily_abandoned_carts" );

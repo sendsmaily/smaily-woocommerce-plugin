@@ -17,6 +17,11 @@ class DataHandler {
 	 */
 	public static function get_smaily_results() {
 		global $wpdb;
+		// Stop if no table exists. Required during activation hook.
+		$table_name = $wpdb->prefix . 'smaily';
+		if ( $wpdb->get_var( "SHOW TABLES LIKE '$table_name'" ) !== $table_name ) {
+			return;
+		}
 		$result = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}smaily", 'ARRAY_A' );
 		// If database is empty in beginning return.
 		if ( count( $result ) === 0 ) {
@@ -30,14 +35,22 @@ class DataHandler {
 			$result[ $key ] = esc_html( $value );
 		}
 
-		$un_escaped_syncronize_additional = isset( $result['syncronize_additional'] ) ? explode( ',', $result['syncronize_additional'] ) : null;
+		$un_escaped_syncronize_additional = ! empty( $result['syncronize_additional'] ) ? explode( ',', $result['syncronize_additional'] ) : array();
 
 		// Escape syncronize_additional fields.
 		$syncronize_additional = [];
 		foreach ( $un_escaped_syncronize_additional as $key => $value ) {
 			$syncronize_additional[ $key ] = esc_html( $value );
 		}
-		return compact( 'result', 'syncronize_additional' );
+
+		$un_escaped_cart_options = ! empty( $result['cart_options'] ) ? explode( ',', $result['cart_options'] ) : array();
+
+		// Escape cart option values.
+		$cart_options = [];
+		foreach ( $un_escaped_cart_options as $key => $value ) {
+			$cart_options [ $key ] = esc_html( $value );
+		}
+		return compact( 'result', 'syncronize_additional', 'cart_options' );
 	}
 
 	/**
@@ -70,8 +83,8 @@ class DataHandler {
 				$discount = ceil( ( $price - $splc_price ) / $price * 100 );
 			}
 
-			$price      = number_format( $price, 2, '.', ',' ) . html_entity_decode( $currencysymbol );
-			$splc_price = number_format( $splc_price, 2, '.', ',' ) . html_entity_decode( $currencysymbol );
+			$price      = number_format( floatval( $price ), 2, '.', ',' ) . html_entity_decode( $currencysymbol );
+			$splc_price = number_format( floatval( $splc_price ), 2, '.', ',' ) . html_entity_decode( $currencysymbol );
 
 			$url   = get_permalink( $prod->get_id() );
 			$image = wp_get_attachment_image_src( get_post_thumbnail_id( $prod->get_id() ), 'single-post-thumbnail' );

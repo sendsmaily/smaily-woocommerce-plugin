@@ -86,7 +86,7 @@ class ProfileSettings {
 
 		// Get fields from sync_additional.
 		$result = DataHandler::get_smaily_results();
-		if ( isset( $result['syncronize_additional'] ) ) {
+		if ( ! empty( $result['syncronize_additional'] ) ) {
 			// All custom fields available.
 			$fields_available = array(
 				'user_gender' => array(

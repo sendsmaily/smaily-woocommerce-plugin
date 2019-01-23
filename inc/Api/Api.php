@@ -113,18 +113,23 @@ class Api {
 			&& isset( $_POST['autoresponder_data'] )
 			&& current_user_can( 'manage_options' )
 		) {
+			// Response to front-end js.
+			$response = array();
 			// Parse form data out of the serialization.
 			$user = array();
 			parse_str( $_POST['user_data'], $user ); // Ajax serialized data, sanitization below.
 			$autoresponders = array();
 			parse_str( $_POST['autoresponder_data'], $autoresponders ); // Ajax serialized data, sanitization below.
-			$autoresponder = json_decode( $autoresponders['autoresponder'], true );
+			$autoresponder      = json_decode( $autoresponders['autoresponder'], true );
+			$cart_autoresponder = json_decode( $autoresponders['cart_autoresponder'], true);
 
 			// Check for nonce-verification and sanitize user input.
 			if ( wp_verify_nonce( sanitize_key( $user['nonce'] ), 'settings-nonce' ) ) {
 				$sanitized_user                  = [];
 				$sanitized_autoresponder         = [];
+				$sanitized_cart_autoresponder    = [];
 				$sanitized_syncronize_additional = [];
+				$sanitized_cart_options          = [];
 				if ( is_array( $user ) ) {
 					foreach ( $user as $key => $value ) {
 						$sanitized_user[ $key ] = wp_unslash( sanitize_text_field( $value ) );
@@ -137,42 +142,85 @@ class Api {
 					}
 				}
 
+				if ( is_array( $cart_autoresponder ) ) {
+					foreach ( $cart_autoresponder as $key => $value ) {
+						$sanitized_cart_autoresponder [ $key ] = wp_unslash( sanitize_text_field( $value ) );
+					}
+				}
+
 				if ( is_array( $autoresponders['syncronize_additional'] ) ) {
 					foreach ( $autoresponders['syncronize_additional'] as $key => $value ) {
 						$sanitized_syncronize_additional[ $key ] = wp_unslash( sanitize_text_field( $value ) );
 					}
 				}
-			}
 
-			// Response to front-end js.
-			$response = array();
+				if ( is_array( $autoresponders['cart_options'] ) ) {
+					foreach ( $autoresponders['cart_options'] as $key => $value) {
+						$sanitized_cart_options [ $key ] = wp_unslash( sanitize_text_field( $value ) );
+					}
+				}
 
-			// Save data to database.
-			global $wpdb;
-			// Smaily table name.
-			$table_name = $wpdb->prefix . 'smaily';
+				// Sanitize Abandoned cart delay, cutoff time and enabled status.
+				$cart_dely_time = (int) wp_unslash( sanitize_text_field( $autoresponders['cart_delay'] ) );
+				$cart_cutoff_time = (int) wp_unslash( sanitize_text_field( $autoresponders['cart_cutoff'] ) );
+				$cart_enabled   = isset( $autoresponders['enable_cart'] ) ? wp_unslash( sanitize_text_field( $autoresponders['enable_cart'] ) ) : 0;
 
-			// Error if no autoresponders.
-			if ( empty( $autoresponder ) ) {
-				$response = array( 'error' => 'No autoresponder selected, please select autoresponder!' );
-			} else {
-				// Update DB with user values if autoresponder selected.
-				$wpdb->update(
-					$table_name,
-					array(
-						'enable'                => isset( $sanitized_user['enable'] ) ? 1 : 0,
-						'subdomain'             => $sanitized_user['subdomain'],
-						'username'              => $sanitized_user['username'],
-						'password'              => $sanitized_user['password'],
-						'autoresponder'         => $sanitized_autoresponder['name'],
-						'autoresponder_id'      => $sanitized_autoresponder['id'],
-						'syncronize_additional' => isset( $sanitized_syncronize_additional ) ? implode( ',', $sanitized_syncronize_additional ) : null,
-						'syncronize'            => null,
-					),
-					array( 'id' => 1 )
-				);
+				// Save data to database.
+				global $wpdb;
+				// Smaily table name.
+				$table_name = $wpdb->prefix . 'smaily';
 
-				$response = array( 'success' => 'Settings updated!' );
+				// Check if abandoned cart is enabled.
+				if ( $cart_enabled ) {
+					// Check if autoresponder for cart is selected.
+					if ( empty( $sanitized_cart_autoresponder ) ) {
+						// Return error if no autoresponder for abandoned cart.
+						echo wp_json_encode( array( 'error' => 'Select autoresponder for abandoned cart!' ) );
+						wp_die();
+					}
+					// Check if cart delay time is valid.
+					if ( $cart_dely_time < 1 ) {
+						echo wp_json_encode( array( 'error' => 'Abandoned cart delay time value must be 1 or higher!' ) );
+						wp_die();
+					}
+					// Check if cart delay time is valid.
+					if ( $cart_cutoff_time < 10 ) {
+						echo wp_json_encode( array( 'error' => 'Abandoned cart cutoff time value must be 10 or higher!' ) );
+						wp_die();
+					}
+				}
+				// Error if no sync autoresponder.
+				if ( empty( $autoresponder ) ) {
+					$response = array( 'error' => 'No autoresponder selected, please select autoresponder!' );
+				} else {
+					// Update DB with user values if autoresponder selected.
+					$result = $wpdb->update(
+						$table_name,
+						array(
+							'enable'                => isset( $sanitized_user['enable'] ) ? 1 : 0,
+							'subdomain'             => $sanitized_user['subdomain'],
+							'username'              => $sanitized_user['username'],
+							'password'              => $sanitized_user['password'],
+							'autoresponder'         => $sanitized_autoresponder['name'],
+							'autoresponder_id'      => $sanitized_autoresponder['id'],
+							'syncronize_additional' => isset( $sanitized_syncronize_additional ) ? implode( ',', $sanitized_syncronize_additional ) : null,
+							'enable_cart'           => $cart_enabled === "on" ? 1 : 0,
+							'cart_autoresponder'    => $sanitized_cart_autoresponder['name'],
+							'cart_autoresponder_id' => $sanitized_cart_autoresponder['id'],
+							'cart_delay'            => $cart_dely_time,
+							'cart_cutoff'           => $cart_cutoff_time,
+							'cart_options'          => isset( $sanitized_cart_options ) ? implode( ',', $sanitized_cart_options ) : null
+						),
+						array( 'id' => 1 )
+					);
+					if ( $result > 0 ) {
+						$response = array( 'success' => 'Settings updated!' );
+					} else if( $result === 0 ) {
+						$response = array( 'success' => 'Settings saved!' );
+					} else {
+						$response = array( 'error' => 'Something went wrong saving settings!');
+					}
+				}
 			}
 
 			// Return message to user.
