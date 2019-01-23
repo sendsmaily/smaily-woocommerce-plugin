@@ -13,10 +13,10 @@ require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 class Activate {
 
 	/**
-	 * Creates 2 databases:
-	 * Smaily               - for plugin autoresponder configuration
-	 * Smaily_Newsletter    - for handling subscribers
-	 *
+	 * Creates database for plugin configuration.
+	 * Creates database for abandoned carts.
+	 * Adds cron schedules.
+	 * 
 	 * @return void
 	 */
 	public static function activate() {
@@ -24,12 +24,20 @@ class Activate {
 		self::create_database();
 		// Write enable->off to first one.
 		self::add_enable();
-		// Flush rewrite rules.
-		flush_rewrite_rules();
-		// Add Cron job.
+		// Add Cron job to sync customers.
 		if ( ! wp_next_scheduled( 'smaily_cron_sync_contacts' ) ) {
 			wp_schedule_event( time(), 'daily', 'smaily_cron_sync_contacts' );
 		}
+		// Sending emails.
+		if ( ! wp_next_scheduled( 'smaily_cron_abandoned_carts_email' ) ) {
+			wp_schedule_event( time(), 'hourly', 'smaily_cron_abandoned_carts_email' );
+		}
+		// Keeping track of abandoned statuses.
+		if ( ! wp_next_scheduled( 'smaily_cron_abandoned_carts_status' ) ) {
+			wp_schedule_event( time(), 'smaily_15_minutes', 'smaily_cron_abandoned_carts_status' );
+		}
+		// Flush rewrite rules.
+		flush_rewrite_rules();
 	}
 
 	/**
@@ -39,28 +47,45 @@ class Activate {
 	 */
 	private static function create_database() {
 		global $wpdb;
-
-		$smaily = "
-                CREATE TABLE IF NOT EXISTS `{$wpdb->prefix}smaily` (
-                `id` int(11) NOT NULL AUTO_INCREMENT ,
-                `enable` tinyint(1) DEFAULT NULL,
-                `subdomain` varchar(255) DEFAULT NULL,
-                `username` varchar(255) DEFAULT NULL,
-                `password` varchar(255) DEFAULT NULL,
-                `autoresponder` varchar(255) DEFAULT NULL,
-                `autoresponder_id` int(10) DEFAULT NULL,
-                `syncronize_additional` varchar(255) DEFAULT NULL,
-                `syncronize` varchar(255) DEFAULT NULL,
-                PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-                ";
-
+		// Create smaily settigs table.
+		$table_name = $wpdb->prefix . 'smaily';
+		$charset_collate = $wpdb->get_charset_collate();
+		$smaily     = "CREATE TABLE $table_name (
+				id int(11) NOT NULL AUTO_INCREMENT,
+				enable tinyint(1) DEFAULT NULL,
+				subdomain varchar(255) DEFAULT NULL,
+				username varchar(255) DEFAULT NULL,
+				password varchar(255) DEFAULT NULL,
+				autoresponder varchar(255) DEFAULT NULL,
+				autoresponder_id int(10) DEFAULT NULL,
+				syncronize_additional varchar(255) DEFAULT NULL,
+				enable_cart tinyint(1) DEFAULT NULL,
+				cart_autoresponder varchar(255) DEFAULT NULL,
+				cart_autoresponder_id int(10) DEFAULT NULL,
+				cart_delay int(10) DEFAULT NULL,
+				cart_cutoff int(10) DEFAULT NULL,
+				cart_options varchar(255) DEFAULT NULL,
+				PRIMARY KEY  (id)
+				) $charset_collate;";
 		dbDelta( $smaily );
 
+		// Create smaily_abandoned_cart table.
+		$abandoned_table_name = $wpdb->prefix . 'smaily_abandoned_carts';
+		$abandoned            = "CREATE TABLE $abandoned_table_name (
+				customer_id int(11) NOT NULL,
+				cart_updated datetime DEFAULT '0000-00-00 00:00:00',
+				cart_content longtext DEFAULT NULL,
+				cart_status varchar(255) DEFAULT NULL,
+				cart_abandoned_time datetime DEFAULT '0000-00-00 00:00:00',
+				mail_sent tinyint(1) DEFAULT NULL,
+				mail_sent_time datetime DEFAULT '0000-00-00 00:00:00',
+				PRIMARY KEY  (customer_id)
+				) $charset_collate;";
+		dbDelta( $abandoned );
 	}
 
 	/**
-	 * Marks enable field to 0
+	 * Marks enable fields to 0.
 	 *
 	 * @return void
 	 */
@@ -69,9 +94,13 @@ class Activate {
 		$result = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}smaily", 'ARRAY_A' );
 		if ( empty( $result ) ) {
 			$table_name = $wpdb->prefix . 'smaily';
-			$wpdb->insert( $table_name, array( 'enable' => 0 ) );
+			$wpdb->insert(
+				$table_name,
+				array(
+					'enable'      => 0,
+					'enable_cart' => 0,
+				)
+			);
 		}
 	}
-
-
 }

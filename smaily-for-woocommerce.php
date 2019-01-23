@@ -13,7 +13,7 @@
  * Plugin Name: Smaily for WooCommerce
  * Plugin URI: https://github.com/sendsmaily/smaily-woocommerce-plugin
  * Description: Smaily email marketing and automation extension plugin for WooCommerce (set up opt-in form, client sync and output RSS-feed) for easy product import into template.
- * Version: 1.0.3
+ * Version: 1.1.0
  * License: GPL3
  * Author: Smaily
  * Author URI: https://smaily.com/
