@@ -29,7 +29,11 @@ class SmailyRss {
 	 * Rewrite rule for url-handling
 	 */
 	public function smaily_rewrite_rules() {
-		add_rewrite_rule( 'smaily-rss-feed/?$', 'index.php?smaily-rss-feed=true', 'top' );
+		add_rewrite_rule(
+			'smaily-rss-feed/?$',
+			'index.php?smaily-rss-feed=true',
+			'top'
+		);
 	}
 
 	/**
@@ -40,6 +44,8 @@ class SmailyRss {
 	 */
 	public function smaily_register_query_var( $vars ) {
 		$vars[] = 'smaily-rss-feed';
+		$vars[] = 'category';
+		$vars[] = 'limit';
 		return $vars;
 	}
 
