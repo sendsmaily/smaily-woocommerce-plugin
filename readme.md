@@ -20,6 +20,8 @@ Automatically subscribe newsletter subscribers to a Smaily subscribers list, gen
 ### WooCommerce Products RSS-feed
 
 - Generate RSS-feed with 50 latest products for easy import to Smaily template
+- Option to customize generated RSS-feed based on products categories
+- Option to limit generated RSS-feed products amount with prefered value
 
 ### Subscribtion Widget
 
@@ -78,6 +80,10 @@ Try re-saving permalinks.
 Go to Admin panel -> Settings -> Permalinks.
 Scroll to bottom and click "Save Changes" without modifing anything
 
+### How can I filter RSS-feed output by category and limit results?
+
+You can access RSS feed by visiting ulr `store_url/smaily-rss-feed` and you can add parameters (category and limit) by appending them to url. For example `store_url/smaily-rss-feed?category=tshirts&limit=3`. Regular RSS-feed shows 50 last updated products.
+
 ### Where I can find data-log for Cron?
 
 Cron update data-log is stored in the root folder of Smaily plugin, inside "smaily-cron.txt" file.
@@ -115,6 +121,10 @@ Up to 10 products can be received in Smaily templating engine. You can refrence 
 5. WooCommerce Smaily widget front screen.
 
 ## Changelog
+
+### 1.1.1
+
+- New feature. Rss-feed now supports category and limit parameters from url.
 
 ### 1.1.0
 
