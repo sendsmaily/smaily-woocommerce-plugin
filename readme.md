@@ -122,6 +122,10 @@ Up to 10 products can be received in Smaily templating engine. You can refrence 
 
 ## Changelog
 
+### 1.2.1
+
+- Bugfix. Rss-feed now displays special characters.
+
 ### 1.2.0
 
 - New feature. Rss-feed now supports category and limit parameters from url.
