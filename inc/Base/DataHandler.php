@@ -97,14 +97,15 @@ class DataHandler {
 			  <smly:old_price>' . esc_attr( $price ) . '</smly:old_price>
 			  <smly:discount>-' . esc_attr( $discount ) . '%</smly:discount>';
 			}
-			// Remove image if inserted to description.
-			$description = preg_replace( '/\[.*caption\]/', '', ( $prod->get_description() ) );
+			// Parse image to form element.
+			$description = do_shortcode( $prod->get_description());
+
 			$items[] = '<item>
-			  <title>' . esc_attr( $prod->get_title() ) . '</title>
+			  <title><![CDATA[' . $prod->get_title() . ']]></title>
 			  <link>' . esc_url( $url ) . '</link>
 			  <guid isPermaLink="True">' . esc_url( $url ) . '</guid>
 			  <pubDate>' . date( 'D, d M Y H:i:s', $create_time ) . '</pubDate>
-			  <description><![CDATA[' . esc_attr( $description ) . ']]></description>
+			  <description><![CDATA[' . $description . ']]></description>
 			  <enclosure url="' . esc_url( $image ) . '" />
 			  <smly:price>' . esc_attr( $splc_price ) . '</smly:price>' . $price_fields . '
 			</item>
