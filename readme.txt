@@ -5,7 +5,7 @@ Requires PHP: 5.6
 Requires at least: 4.0
 Tested up to: 5.0.2
 WC tested up to: 3.5.3
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License: GPLv3
 
 Simple and flexible Smaily newsletter and rss-feed integration for WooCommerce.
@@ -130,6 +130,11 @@ Up to 10 products can be received in Smaily templating engine. You can refrence 
 5. WooCommerce Smaily widget front screen.
 
 == Changelog ==
+
+### 1.2.2
+
+- Bugfix. Rss-feed shows correct discount price and precentage.
+- Bugfix. Rss-feed link works even when not refreshing permalinks.
 
 ### 1.2.1
 

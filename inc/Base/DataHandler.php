@@ -56,6 +56,7 @@ class DataHandler {
 	/**
 	 * Generates RSS-feed based on 50 last products in WooCommerce store
 	 *
+	 * @param string  $category Filter by products category.
 	 * @param integer $limit Default value 50.
 	 * @return void $rss Rss-feed for Smaily template.
 	 */
@@ -72,19 +73,24 @@ class DataHandler {
 				$product = new \WC_Product( $prod->get_id() );
 			}
 
-			$price      = floatval( $product->get_price() );
-			$splc_price = floatval( $product->get_sale_price() );
-			$discount   = 0;
-			if ( $splc_price === 0.0 ) {
-				$splc_price = $price;
-			}
+			$price = floatval( $product->get_price() );
+			$price = number_format( floatval( $price ), 2, '.', ',' ) . html_entity_decode( $currencysymbol );
 
-			if ( $splc_price < $price && $price > 0 ) {
-				$discount = ceil( ( $price - $splc_price ) / $price * 100 );
+			$discount = 0;
+			// Get product price when on sale.
+			if ( $product->is_on_sale() ) {
+				// Regular price.
+				$regular_price = (float) $product->get_regular_price();
+				if ( $regular_price > 0 ) {
+					// Active price (the "Sale price" when on-sale).
+					$sale_price   = (float) $product->get_price();
+					$saving_price = $regular_price - $sale_price;
+					// Discount precentage.
+					$discount     = round( 100 - ( $sale_price / $regular_price * 100 ), 2 );
+				}
+				// Format price and add currency symbol.
+				$regular_price = number_format( floatval( $regular_price ), 2, '.', ',' ) . html_entity_decode( $currencysymbol );
 			}
-
-			$price      = number_format( floatval( $price ), 2, '.', ',' ) . html_entity_decode( $currencysymbol );
-			$splc_price = number_format( floatval( $splc_price ), 2, '.', ',' ) . html_entity_decode( $currencysymbol );
 
 			$url   = get_permalink( $prod->get_id() );
 			$image = wp_get_attachment_image_src( get_post_thumbnail_id( $prod->get_id() ), 'single-post-thumbnail' );
@@ -94,11 +100,11 @@ class DataHandler {
 			$price_fields = '';
 			if ( $discount > 0 ) {
 				$price_fields = '
-			  <smly:old_price>' . esc_attr( $price ) . '</smly:old_price>
+			  <smly:old_price>' . esc_attr( $regular_price ) . '</smly:old_price>
 			  <smly:discount>-' . esc_attr( $discount ) . '%</smly:discount>';
 			}
 			// Parse image to form element.
-			$description = do_shortcode( $prod->get_description());
+			$description = do_shortcode( $prod->get_description() );
 
 			$items[] = '<item>
 			  <title><![CDATA[' . $prod->get_title() . ']]></title>
@@ -107,7 +113,7 @@ class DataHandler {
 			  <pubDate>' . date( 'D, d M Y H:i:s', $create_time ) . '</pubDate>
 			  <description><![CDATA[' . $description . ']]></description>
 			  <enclosure url="' . esc_url( $image ) . '" />
-			  <smly:price>' . esc_attr( $splc_price ) . '</smly:price>' . $price_fields . '
+			  <smly:price>' . esc_attr( $price ) . '</smly:price>' . $price_fields . '
 			</item>
 			';
 		}
@@ -121,7 +127,7 @@ class DataHandler {
 	/**
 	 * Get latest published products from WooCommerce database.
 	 *
-	 * @param string $category Limit products by category.
+	 * @param string  $category Limit products by category.
 	 * @param integer $limit Maximum number of products fetched.
 	 * @return array $products WooCommerce products.
 	 */
