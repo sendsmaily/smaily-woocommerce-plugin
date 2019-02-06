@@ -122,6 +122,11 @@ Up to 10 products can be received in Smaily templating engine. You can refrence 
 
 ## Changelog
 
+### 1.2.2
+
+- Bugfix. Rss-feed shows correct discount price and precentage.
+- Bugfix. Rss-feed link works even when not refreshing permalinks.
+
 ### 1.2.1
 
 - Bugfix. Rss-feed now displays special characters.

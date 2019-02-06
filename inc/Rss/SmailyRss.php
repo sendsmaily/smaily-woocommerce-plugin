@@ -66,8 +66,11 @@ class SmailyRss {
 				return SMAILY_PLUGIN_PATH . 'templates/smaily-rss-feed.php';
 			}
 		}
-
-		// Load normal template when $page_value != "true" as a fallback.
+		// When rewrite rules database hasn't been refreshed yet.
+		if ( array_key_exists( 'pagename', $wp_query->query ) && $wp_query->query['pagename'] === 'smaily-rss-feed' ) {
+			return SMAILY_PLUGIN_PATH . 'templates/smaily-rss-feed.php';
+		}
+		// Load normal template when as a fallback.
 		return $template;
 	}
 
