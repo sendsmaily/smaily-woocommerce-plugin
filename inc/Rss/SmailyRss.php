@@ -70,7 +70,7 @@ class SmailyRss {
 		if ( array_key_exists( 'pagename', $wp_query->query ) && $wp_query->query['pagename'] === 'smaily-rss-feed' ) {
 			return SMAILY_PLUGIN_PATH . 'templates/smaily-rss-feed.php';
 		}
-		// Load normal template when as a fallback.
+		// Load normal template as a fallback.
 		return $template;
 	}
 

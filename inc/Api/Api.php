@@ -67,7 +67,6 @@ class Api {
 							),
 						]
 					);
-
 					// Response code from Smaily API.
 					$http_code = wp_remote_retrieve_response_code( $api_call );
 					// Show error message if no access.
@@ -80,6 +79,7 @@ class Api {
 					// Return autoresponders list back to front end for selection.
 					if ( $http_code === 200 ) {
 						$body = json_decode( wp_remote_retrieve_body( $api_call ), true );
+						// Add autoresponders as a response to Ajax-call for updating autoresponders list.
 						foreach ( $body as $autoresponder ) {
 							array_push(
 								$response,
@@ -89,13 +89,24 @@ class Api {
 								)
 							);
 						}
+						// Add validated autoresponders to settings.
+						global $wpdb;
+						// Smaily table name.
+						$table_name = $wpdb->prefix . 'smaily';
+						$wpdb->update(
+							$table_name,
+							array(
+								'subdomain' => $sanitized['subdomain'],
+								'username'  => $sanitized['username'],
+								'password'  => $sanitized['password']
+							),
+							array( 'id' => 1 )
+						);
 					}
 				}
-
 				// Return response to ajax call.
 				echo wp_json_encode( $response );
 				wp_die();
-
 			}
 		}
 	}
@@ -106,7 +117,6 @@ class Api {
 	 * @return void
 	 */
 	public function save_api_information() {
-
 		// Receive data from Settings form.
 		if (
 			isset( $_POST['user_data'] )
@@ -161,9 +171,12 @@ class Api {
 				}
 
 				// Sanitize Abandoned cart delay, cutoff time and enabled status.
-				$cart_dely_time = (int) wp_unslash( sanitize_text_field( $autoresponders['cart_delay'] ) );
-				$cart_cutoff_time = (int) wp_unslash( sanitize_text_field( $autoresponders['cart_cutoff'] ) );
-				$cart_enabled   = isset( $autoresponders['enable_cart'] ) ? wp_unslash( sanitize_text_field( $autoresponders['enable_cart'] ) ) : 0;
+				$cart_dely_time        = (int) wp_unslash( sanitize_text_field( $autoresponders['cart_delay'] ) );
+				$cart_cutoff_time      = (int) wp_unslash( sanitize_text_field( $autoresponders['cart_cutoff'] ) );
+				$cart_enabled          = isset( $autoresponders['enable_cart'] ) ? 1 : 0;
+				$enabled               = isset( $autoresponders['enable'] ) ? 1 : 0;
+				$syncronize_additional = ( $sanitized_syncronize_additional ) ? implode( ',', $sanitized_syncronize_additional ) : null;
+				$cart_options          = isset( $sanitized_cart_options ) ? implode( ',', $sanitized_cart_options ) : null;
 
 				// Save data to database.
 				global $wpdb;
@@ -189,47 +202,49 @@ class Api {
 						wp_die();
 					}
 				}
-				// Error if no sync autoresponder.
-				if ( empty( $autoresponder ) ) {
-					$response = array( 'error' => 'No autoresponder selected, please select autoresponder!' );
-				} else {
-					// Update DB with user values if autoresponder selected.
-					$result = $wpdb->update(
-						$table_name,
-						array(
-							'enable'                => isset( $sanitized_user['enable'] ) ? 1 : 0,
-							'subdomain'             => $sanitized_user['subdomain'],
-							'username'              => $sanitized_user['username'],
-							'password'              => $sanitized_user['password'],
-							'autoresponder'         => $sanitized_autoresponder['name'],
-							'autoresponder_id'      => $sanitized_autoresponder['id'],
-							'syncronize_additional' => isset( $sanitized_syncronize_additional ) ? implode( ',', $sanitized_syncronize_additional ) : null,
-							'enable_cart'           => $cart_enabled === "on" ? 1 : 0,
-							'cart_autoresponder'    => $sanitized_cart_autoresponder['name'],
-							'cart_autoresponder_id' => $sanitized_cart_autoresponder['id'],
-							'cart_delay'            => $cart_dely_time,
-							'cart_cutoff'           => $cart_cutoff_time,
-							'cart_options'          => isset( $sanitized_cart_options ) ? implode( ',', $sanitized_cart_options ) : null
-						),
-						array( 'id' => 1 )
-					);
-					if ( $result > 0 ) {
-						$response = array( 'success' => 'Settings updated!' );
-					} else if( $result === 0 ) {
-						$response = array( 'success' => 'Settings saved!' );
-					} else {
-						$response = array( 'error' => 'Something went wrong saving settings!');
+
+				// Customer sync enabled.
+				if ( $enabled ) {
+					if ( empty( $sanitized_autoresponder ) ) {
+						echo wp_json_encode( array( 'error' => 'Please select autoresponder for customer synchronization!' ) );
+						wp_die();
 					}
 				}
+
+				// Update DB with user values if autoresponder selected.
+				$result = $wpdb->update(
+					$table_name,
+					array(
+						'enable'                => $enabled,
+						'subdomain'             => $sanitized_user['subdomain'],
+						'username'              => $sanitized_user['username'],
+						'password'              => $sanitized_user['password'],
+						'autoresponder'         => $sanitized_autoresponder['name'],
+						'autoresponder_id'      => $sanitized_autoresponder['id'],
+						'syncronize_additional' => $syncronize_additional,
+						'enable_cart'           => $cart_enabled,
+						'cart_autoresponder'    => $sanitized_cart_autoresponder['name'],
+						'cart_autoresponder_id' => $sanitized_cart_autoresponder['id'],
+						'cart_delay'            => $cart_dely_time,
+						'cart_cutoff'           => $cart_cutoff_time,
+						'cart_options'          => $cart_options,
+					),
+					array( 'id' => 1 )
+				);
+				if ( $result > 0 ) {
+					$response = array( 'success' => 'Settings updated!' );
+				} elseif ( $result === 0 ) {
+					$response = array( 'success' => 'Settings saved!' );
+				} else {
+					$response = array( 'error' => 'Something went wrong saving settings!');
+				}
 			}
-
-			// Return message to user.
-			echo wp_json_encode( $response );
-			wp_die();
-
 		}
-	}
+		// Return message to user.
+		echo wp_json_encode( $response );
+		wp_die();
 
+	}
 
 	/**
 	 * Api call to Smaily with different parameters

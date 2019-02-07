@@ -1,47 +1,73 @@
 "use strict";
 
-(function($) {
-  // Check if autoresponder data is allready validated.
-  $(window).on("load", function() {
-    // Form elements.
-    var spinner = $(".loader");
-    var advancedForm = $("#advancedForm");
-    var startupForm = $("#startupForm");
-    var loaderWraper = $(".loader-wraper");
-    // Smaily credentials.
-    var subdomain = $("#subdomain").val();
-    var username = $("#username").val();
-    var password = $("#password").val();
-    // Validate automatically if set.
-    if (subdomain != "" && username != "" && password != "") {
+(function ($) {
+  // Display messages handler.
+  function displayMessage(text, error = false) {
+    // Generate message.
+    var message = document.createElement('div');
+    if (error) {
+      message.classList.add('error', 'notice', 'is-dismissible');
+    } else {
+      message.classList.add('notice-success', 'notice', 'is-dismissible');
+    }
+    var paragraph = document.createElement('p');
+    // Add text.
+    var t = document.createTextNode(text);
+    paragraph.append(t);
+    // Close button
+    var button = document.createElement('BUTTON');
+    button.classList.add('notice-dismiss');
+    button.onclick = function () {
+      $(this).closest('div').hide();
+    }
+    paragraph.appendChild(button);
+    message.appendChild(paragraph);
+    // Append to message-display.
+    document.querySelector('.message-display').appendChild(message);
+  }
+
+  // Top tabs handler.
+  $("#tabs").tabs();
+  // Add custom class for active tab.
+  $("#tabs-list li a").click(function () {
+    $('a.nav-tab-active').removeClass('nav-tab-active');
+    $(this).addClass('nav-tab-active');
+  });
+
+  // Hide spinner.
+  $('.loader').hide();
+
+  // First Form on Settings page to check if subdomain / username / password are correct.
+  $().ready(function () {
+    $("#startupForm").submit(function (e) {
+      e.preventDefault();
+      var spinner = $(".loader");
+      var validateButton = $("#validate-credentials-btn");
       // Show loading icon.
       spinner.show();
+      var smly = $(this);
       // Call to WordPress API.
       $.post(
         ajaxurl,
         {
           action: "validate_api",
-          form_data: startupForm.serialize()
+          form_data: smly.serialize()
         },
-        function(response) {
+        function (response) {
           var data = $.parseJSON(response);
           // Show Error messages to user if any exist.
           if (data["error"]) {
-            var errorMessage =
-              '<div class = "error notice"><p>' + data["error"] + "</p></div>";
-            $(".message-display").html(errorMessage);
+            displayMessage($data['error'], true);
             // Hide loading icon
             spinner.hide();
           } else if (!data) {
-            var errorMessage =
-              '<div class = "error notice"><p>Something went wrong with request to Smaily</p></div>"';
-            $(".message-display").html(errorMessage);
+            displayMessage('Something went wrong with request to Smaily', true);
             // Hide loading icon
             spinner.hide();
           } else {
             // Add autoresponders to autoresponders list inside next form.
-            $.each(data, function(index, item) {
-              // Sync autoresponders list.
+            $.each(data, function (index, item) {
+              // Sync autoresponders list
               $("#autoresponders-list").append(
                 $("<option>", {
                   value: JSON.stringify({ name: item["name"], id: item["id"] }),
@@ -55,76 +81,11 @@
                   text: item["name"]
                 })
               );
+              // Success message.
+              displayMessage('Smaily credentials sucessfully validated!');
             });
             // Hide validate button.
-            loaderWraper.hide();
-            // Show next form
-            advancedForm.show();
-            // Hide loading icon
-            spinner.hide();
-          }
-        }
-      );
-    }
-  });
-
-  // First Form on Settings page to check if subdomain / username / password are correct.
-  $().ready(function() {
-    $("#startupForm").submit(function(e) {
-      e.preventDefault();
-
-      var spinner = $(".loader");
-      var advancedForm = $("#advancedForm");
-      var loaderWraper = $(".loader-wraper");
-
-      // Show loading icon.
-      spinner.show();
-      var smly = $(this);
-
-      // Call to WordPress API.
-      $.post(
-        ajaxurl,
-        {
-          action: "validate_api",
-          form_data: smly.serialize()
-        },
-        function(response) {
-          var data = $.parseJSON(response);
-          // Show Error messages to user if any exist.
-          if (data["error"]) {
-            var errorMessage =
-              '<div class = "error notice"><p>' + data["error"] + "</p></div>";
-            $(".message-display").html(errorMessage);
-            // Hide loading icon
-            spinner.hide();
-          } else if (!data) {
-            var errorMessage =
-              '<div class = "error notice"><p>Something went wrong with request to Smaily</p></div>"';
-            $(".message-display").html(errorMessage);
-            // Hide loading icon
-            spinner.hide();
-          } else {
-            // Add autoresponders to autoresponders list inside next form.
-            $.each(data, function(index, item) {
-              // Sync autoresponders list
-              $("#autoresponders-list").append(
-                $("<option>", {
-                  value: JSON.stringify({ name: item["name"], id: item["id"] }),
-                  text: item["name"]
-                })
-              );
-              // Abandoned cart autoresponders list
-              $("#cart-autoresponders-list").append(
-                $("<option>", {
-                  value: JSON.stringify({ name: item["name"], id: item["id"] }),
-                  text: item["name"]
-                })
-              );
-            });
-            // Hide validate button.
-            loaderWraper.hide();
-            // Show next form
-            advancedForm.show();
+            validateButton.hide();
             // Hide loader icon.
             spinner.hide();
           }
@@ -134,7 +95,7 @@
     });
 
     // Second form on settings page to save user info to database.
-    $("#advancedForm").submit(function(event) {
+    $("#advancedForm").submit(function (event) {
       event.preventDefault();
       // Scroll back to top if saved.
       $("html, body").animate(
@@ -145,6 +106,8 @@
       );
       var user_data = $("#startupForm").serialize();
       var api_data = $("#advancedForm").serialize();
+      var spinner = $(".loader");
+      spinner.show();
       // Call to WordPress  API.
       $.post(
         ajaxurl,
@@ -155,24 +118,16 @@
           // First form data.
           user_data: user_data
         },
-        function(response) {
+        function (response) {
+          spinner.hide();
           // Response message from back-end.
           var data = $.parseJSON(response);
           if (data["error"]) {
-            var errorMessage =
-              '<div class = "error notice"><p>' + data["error"] + "</p></div>";
-            $(".message-display").html(errorMessage);
+            displayMessage($data['error'], true);
           } else if (!data) {
-            var errorMessage =
-              '<div class = "error notice"><p>Something went wrong with saving data!</p></div>"';
-            $(".message-display").html(errorMessage);
+            displayMessage('Something went wrong with saving data!', true)
           } else {
-            // Display message to user.
-            var successMessage =
-              '<div class = "notice notice-success is-dismissible"><p>' +
-              data["success"] +
-              "</p></div>";
-            $(".message-display").html(successMessage);
+            displayMessage(data['success']);
           }
         }
       );
