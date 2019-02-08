@@ -1,5 +1,4 @@
 /* SPINNER */
-
 .loader {
   display: inline-block;
   box-sizing: border-box;
@@ -31,46 +30,131 @@
   }
 }
 
-
 /* Add animation to "page content" */
-
 .animate-bottom {
   position: relative;
   -webkit-animation-name: animatebottom;
   -webkit-animation-duration: 1s;
   animation-name: animatebottom;
-  animation-duration: 1s
+  animation-duration: 1s;
 }
 
 @-webkit-keyframes animatebottom {
   from {
     bottom: -100px;
-    opacity: 0
+    opacity: 0;
   }
   to {
     bottom: 0px;
-    opacity: 1
+    opacity: 1;
   }
 }
 
 @keyframes animatebottom {
   from {
     bottom: -100px;
-    opacity: 0
+    opacity: 0;
   }
   to {
     bottom: 0;
-    opacity: 1
+    opacity: 1;
   }
-}
-
-/* admin page error notices */
-.error notice {
-  position: absolute;
-  top: 200px;
 }
 
 /* Validate button */
 #validate-credentials-btn {
   margin-bottom: 20px;
+}
+
+/*  Smaily title */
+#capital-s {
+  color: #e91e63;
+  font-weight: 500;
+  font-size: 150%;
+}
+
+#smaily-title {
+  font-family: "Source Sans Pro", sans-serif;
+  letter-spacing: 1px;
+}
+
+/*  Explanation text */
+small {
+  display: block;
+}
+
+input {
+  max-width: 50%;
+}
+
+select {
+  min-width: 50%;
+}
+
+.nav-tab-wrapper {
+  display: block;
+}
+
+/* Enable checkboxes */
+.smaily-toggle {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  top: -99999px;
+}
+
+.smaily-toggle + label {
+  font-family: arial;
+  vertical-align: middle;
+  width: 80px;
+  height: 30px;
+  display: inline-block;
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background-color: #bdc3c7;
+  -webkit-transition: 0.25s ease-in-out;
+  -moz-transition: 0.25s ease-out;
+  -o-transition: 0.25s ease-out;
+  transition: 0.25s ease-out;
+}
+
+.smaily-toggle + label:before {
+  content: "ON OFF";
+  width: 22px;
+  height: 22px;
+  left: 4px;
+  top: 4px;
+  border-radius: 11px;
+  z-index: 2;
+  position: absolute;
+  background: #7f8c9a;
+  font-size: 14.99px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-indent: -32px;
+  word-spacing: 40px;
+  color: #fff;
+  white-space: nowrap;
+  -webkit-transition: 0.25s ease-out;
+  -moz-transition: 0.25s ease-out;
+  -o-transition: 0.25s ease-out;
+  transition: 0.25s ease-out;
+}
+
+.smaily-toggle:checked + label {
+  background-color: #e91e63;
+}
+
+input.smaily-toggle:focus + label {
+  outline: 0;
+}
+
+.smaily-toggle:checked + label:before {
+  background-color: white;
+  color: white;
+  left: 54px;
 }

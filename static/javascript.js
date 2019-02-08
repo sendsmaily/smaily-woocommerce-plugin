@@ -1,45 +1,54 @@
 "use strict";
 
-(function ($) {
+(function($) {
   // Display messages handler.
-  function displayMessage(text, error = false) {
+  function displayMessage(text) {
+    var error =
+      arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
     // Generate message.
-    var message = document.createElement('div');
+    var message = document.createElement("div");
+    // Add classes based on error / success.
     if (error) {
-      message.classList.add('error', 'notice', 'is-dismissible');
+      message.classList.add("error");
+      message.classList.add("notice");
+      message.classList.add("is-dismissible");
     } else {
-      message.classList.add('notice-success', 'notice', 'is-dismissible');
+      message.classList.add("notice-success");
+      message.classList.add("notice");
+      message.classList.add("is-dismissible");
     }
-    var paragraph = document.createElement('p');
+    var paragraph = document.createElement("p");
     // Add text.
-    var t = document.createTextNode(text);
-    paragraph.append(t);
-    // Close button
-    var button = document.createElement('BUTTON');
-    button.classList.add('notice-dismiss');
-    button.onclick = function () {
-      $(this).closest('div').hide();
-    }
-    paragraph.appendChild(button);
+    paragraph.innerHTML = text;
     message.appendChild(paragraph);
+    // Close button
+    var button = document.createElement("BUTTON");
+    button.classList.add("notice-dismiss");
+    button.onclick = function() {
+      $(this)
+        .closest("div")
+        .hide();
+    };
+    message.appendChild(button);
     // Append to message-display.
-    document.querySelector('.message-display').appendChild(message);
+    document.querySelector(".message-display").appendChild(message);
   }
 
   // Top tabs handler.
   $("#tabs").tabs();
   // Add custom class for active tab.
-  $("#tabs-list li a").click(function () {
-    $('a.nav-tab-active').removeClass('nav-tab-active');
-    $(this).addClass('nav-tab-active');
+  $("#tabs-list li a").click(function() {
+    $("a.nav-tab-active").removeClass("nav-tab-active");
+    $(this).addClass("nav-tab-active");
   });
 
   // Hide spinner.
-  $('.loader').hide();
+  $(".loader").hide();
 
   // First Form on Settings page to check if subdomain / username / password are correct.
-  $().ready(function () {
-    $("#startupForm").submit(function (e) {
+  $().ready(function() {
+    $("#startupForm").submit(function(e) {
       e.preventDefault();
       var spinner = $(".loader");
       var validateButton = $("#validate-credentials-btn");
@@ -53,20 +62,20 @@
           action: "validate_api",
           form_data: smly.serialize()
         },
-        function (response) {
+        function(response) {
           var data = $.parseJSON(response);
           // Show Error messages to user if any exist.
           if (data["error"]) {
-            displayMessage($data['error'], true);
+            displayMessage(data["error"], true);
             // Hide loading icon
             spinner.hide();
           } else if (!data) {
-            displayMessage('Something went wrong with request to Smaily', true);
+            displayMessage("Something went wrong with request to Smaily", true);
             // Hide loading icon
             spinner.hide();
           } else {
             // Add autoresponders to autoresponders list inside next form.
-            $.each(data, function (index, item) {
+            $.each(data, function(index, item) {
               // Sync autoresponders list
               $("#autoresponders-list").append(
                 $("<option>", {
@@ -82,7 +91,7 @@
                 })
               );
               // Success message.
-              displayMessage('Smaily credentials sucessfully validated!');
+              displayMessage("Smaily credentials sucessfully validated!");
             });
             // Hide validate button.
             validateButton.hide();
@@ -95,7 +104,7 @@
     });
 
     // Second form on settings page to save user info to database.
-    $("#advancedForm").submit(function (event) {
+    $("#advancedForm").submit(function(event) {
       event.preventDefault();
       // Scroll back to top if saved.
       $("html, body").animate(
@@ -118,16 +127,16 @@
           // First form data.
           user_data: user_data
         },
-        function (response) {
+        function(response) {
           spinner.hide();
           // Response message from back-end.
           var data = $.parseJSON(response);
           if (data["error"]) {
-            displayMessage($data['error'], true);
+            displayMessage(data["error"], true);
           } else if (!data) {
-            displayMessage('Something went wrong with saving data!', true)
+            displayMessage("Something went wrong with saving data!", true);
           } else {
-            displayMessage(data['success']);
+            displayMessage(data["success"]);
           }
         }
       );

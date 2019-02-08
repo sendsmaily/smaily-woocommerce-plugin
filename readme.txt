@@ -5,7 +5,7 @@ Requires PHP: 5.6
 Requires at least: 4.0
 Tested up to: 5.0.2
 WC tested up to: 3.5.3
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 License: GPLv3
 
 Simple and flexible Smaily newsletter and rss-feed integration for WooCommerce.
@@ -70,15 +70,17 @@ All development for Smaily for WooCommerce is [handled via GitHub](https://githu
 
 = Usage =
 
-1. Go to WooCommerce -> Smaily email marketing and automation
+1. Open Smaily settings from admin menu sidepanel.
 2. Insert your Smaily API authentication information to get started.
-3. Select if you want to use Cron for contact synchronization between WooCommerce and Smaily
-4. Next, click validate API information.
+3. Next, click validate API information.
+4. Select if you want to use cron for contact synchronization between WooCommerce and Smaily
 5. Select your autoresponder and fields you want to synchronize
-6. Click Save Changes
-7. If you want to use Smaily Widget please fill out settings page before using.
-8. Cron is set up to synchronize contacts daily. To view and manage cron settings use Cron plugins for example "WP Crontrol".
-9. That's it, your WooCommerce store is now integrated with Smaily Plugin!
+6. Select if you want to use cron for abandoned cart remainder emails.
+7. Select autoresponder for abandoned cart, fields to zynchronize and delay settings.
+8. Click Save Changes
+9. If you want to use Smaily Widget please fill out settings page before using.
+10. Cron is set up to synchronize contacts daily. To view and manage cron settings use Cron plugins for example "WP Crontrol".
+11. That's it, your WooCommerce store is now integrated with Smaily Plugin!
 
 == Frequently Asked Questions == 
 
@@ -123,13 +125,18 @@ Up to 10 products can be received in Smaily templating engine. You can refrence 
 
 == Screenshots ==
 
-1. WooCommerce Smaily general settings screen.
-2. WooCommerce Smaily abadoned cart settings screen.
-3. WooCommerce Smaily RSS-feed screen.
-4. WooCommerce Smaily widget settings screen.
-5. WooCommerce Smaily widget front screen.
+1. WooCommerce Smaily validate settings screen.
+2. WooCommerce Smaily general settings screen.
+4. WooCommerce Smaily abadoned cart settings screen.
+5. WooCommerce Smaily RSS-feed screen.
+5. WooCommerce Smaily widget settings screen.
+6. WooCommerce Smaily widget front screen.
 
 == Changelog ==
+
+### 1.2.3
+
+- Admin panel changed for better customer experience.
 
 ### 1.2.2
 

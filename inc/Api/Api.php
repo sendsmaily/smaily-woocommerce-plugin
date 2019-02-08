@@ -216,9 +216,6 @@ class Api {
 					$table_name,
 					array(
 						'enable'                => $enabled,
-						'subdomain'             => $sanitized_user['subdomain'],
-						'username'              => $sanitized_user['username'],
-						'password'              => $sanitized_user['password'],
 						'autoresponder'         => $sanitized_autoresponder['name'],
 						'autoresponder_id'      => $sanitized_autoresponder['id'],
 						'syncronize_additional' => $syncronize_additional,
