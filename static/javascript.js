@@ -90,9 +90,9 @@
                   text: item["name"]
                 })
               );
-              // Success message.
-              displayMessage("Smaily credentials sucessfully validated!");
             });
+            // Success message.
+            displayMessage("Smaily credentials sucessfully validated!");
             // Hide validate button.
             validateButton.hide();
             // Hide loader icon.
