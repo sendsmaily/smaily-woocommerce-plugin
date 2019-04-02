@@ -93,33 +93,6 @@ $autoresponder_list = DataHandler::get_autoresponder_list();
 					</td>
 				</tr>
 				<tr class="form-field">
-					<th scope="row"><label for="autoresponder">Autoresponder ID </label></th>
-					<td>
-						<select id="autoresponders-list" name="autoresponder"  >
-							<?php
-							// Show selected autoresponder.
-							if ( ! empty( $autoresponder_name ) && ! empty( $autoresponder_id ) ) {
-								$autoresponder = [ 'name' => $autoresponder_name, 'id' => $autoresponder_id ];
-								echo '<option value="' . htmlentities( json_encode( $autoresponder ) ) . '">' . $autoresponder_name . ' - (selected)</option>';
-							} else {
-								echo '<option value="">-Select-</option>';
-							}
-							// Show all autoresponders from Smaily.
-							if ( ! empty( $autoresponder_list ) && ! array_key_exists( 'empty', $autoresponder_list ) ) {
-								foreach ( $autoresponder_list as $autoresponder ) {
-									echo '<option value="' . htmlentities( json_encode( $autoresponder ) ) . '">' . $autoresponder['name'] . '</option>';
-								}
-							}
-							// Show info that no autoresponders available.
-							if ( array_key_exists( 'empty', $autoresponder_list ) ) {
-								echo '<option value="">No autoresponders created</option>';
-							}
-							?>
-						</select>
-						<small id="autoresponder-help" class="form-text text-muted"><a href="http://help.smaily.com/en/support/solutions/articles/16000017234-creating-an-autoresponder" target="_blank">How to set up an autoresponder for confirmation emails?</a></small>
-					</td>
-				</tr>
-				<tr class="form-field">
 					<th scope="row"><label for="syncronize_additional">Syncronize additional fields </label></th>
 					<td>
 						<select name="syncronize_additional[]"  multiple="multiple" style="height:250px;">
@@ -210,7 +183,7 @@ $autoresponder_list = DataHandler::get_autoresponder_list();
 								];
 								// Add options for select and select them if allready saved before.
 								foreach ( $cart_fields as $value => $name ) {
-									$select = in_array( $value, $cart_options ) ? 'selected' : "";
+									$select = in_array( $value, $cart_options ) ? 'selected' : '';
 									echo( "<option value='$value' $select>$name</option>" );
 								}
 								?>
@@ -229,19 +202,6 @@ $autoresponder_list = DataHandler::get_autoresponder_list();
 									min="10">
 							minute(s)
 							<small id="cart-delay-help" class="form-text text-muted">Minimum 10 minutes.</small>
-						</td>
-					</tr>
-					<tr class="form-field">
-						<th scope="row"><label for="cart-delay">Email delay</label></th>
-						<td> Send abandoned cart email after :
-							<input	id="cart_delay"
-									name="cart_delay"
-									style="width:65px;"
-									value="<?php echo ( $result['cart_delay'] ) ? $result['cart_delay'] : ''; ?>"
-									type="number"
-									min="1">
-							hour(s)
-							<small id="cart-delay-help" class="form-text text-muted">Minimum 1 hour.</small>
 						</td>
 					</tr>
 				</tbody>

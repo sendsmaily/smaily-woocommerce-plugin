@@ -58,9 +58,19 @@ class Api {
 				} elseif ( $sanitized['password'] === '' ) {
 					$response = array( 'error' => 'Please enter password!' );
 				} else {
+					// Get subdomain if entered as full url.
+					if ( filter_var( $sanitized['subdomain'], FILTER_VALIDATE_URL ) ) {
+						// Get host adress.
+						$url = wp_parse_url( $sanitized['subdomain']);
+						// Get only subdomain from host adress.
+						$doman = explode('.', $url['host'])[0];
+						// Use that subdomain.
+						$sanitized['subdomain'] = $doman;
+					}
+
 					// If all fields are set make api call.
 					$api_call = wp_remote_get(
-						'https://' . $sanitized['subdomain'] . '.sendsmaily.net/api/autoresponder.php',
+						'https://' . $sanitized['subdomain'] . '.sendsmaily.net/api/workflows.php?trigger_type=form_submitted',
 						[
 							'headers' => array(
 								'Authorization' => 'Basic ' . base64_encode( $sanitized['username'] . ':' . $sanitized['password'] ),
@@ -84,7 +94,7 @@ class Api {
 							array_push(
 								$response,
 								array(
-									'name' => $autoresponder['name'],
+									'name' => $autoresponder['title'],
 									'id'   => $autoresponder['id'],
 								)
 							);
@@ -98,7 +108,7 @@ class Api {
 							array(
 								'subdomain' => $sanitized['subdomain'],
 								'username'  => $sanitized['username'],
-								'password'  => $sanitized['password']
+								'password'  => $sanitized['password'],
 							),
 							array( 'id' => 1 )
 						);
@@ -130,25 +140,17 @@ class Api {
 			parse_str( $_POST['user_data'], $user ); // Ajax serialized data, sanitization below.
 			$autoresponders = array();
 			parse_str( $_POST['autoresponder_data'], $autoresponders ); // Ajax serialized data, sanitization below.
-			$autoresponder      = json_decode( $autoresponders['autoresponder'], true );
 			$cart_autoresponder = json_decode( $autoresponders['cart_autoresponder'], true);
 
 			// Check for nonce-verification and sanitize user input.
 			if ( wp_verify_nonce( sanitize_key( $user['nonce'] ), 'settings-nonce' ) ) {
 				$sanitized_user                  = [];
-				$sanitized_autoresponder         = [];
 				$sanitized_cart_autoresponder    = [];
 				$sanitized_syncronize_additional = [];
 				$sanitized_cart_options          = [];
 				if ( is_array( $user ) ) {
 					foreach ( $user as $key => $value ) {
 						$sanitized_user[ $key ] = wp_unslash( sanitize_text_field( $value ) );
-					}
-				}
-
-				if ( is_array( $autoresponder ) ) {
-					foreach ( $autoresponder as $key => $value ) {
-						$sanitized_autoresponder[ $key ] = wp_unslash( sanitize_text_field( $value ) );
 					}
 				}
 
@@ -171,7 +173,6 @@ class Api {
 				}
 
 				// Sanitize Abandoned cart delay, cutoff time and enabled status.
-				$cart_dely_time        = (int) wp_unslash( sanitize_text_field( $autoresponders['cart_delay'] ) );
 				$cart_cutoff_time      = (int) wp_unslash( sanitize_text_field( $autoresponders['cart_cutoff'] ) );
 				$cart_enabled          = isset( $autoresponders['enable_cart'] ) ? 1 : 0;
 				$enabled               = isset( $autoresponders['enable'] ) ? 1 : 0;
@@ -191,22 +192,9 @@ class Api {
 						echo wp_json_encode( array( 'error' => 'Select autoresponder for abandoned cart!' ) );
 						wp_die();
 					}
-					// Check if cart delay time is valid.
-					if ( $cart_dely_time < 1 ) {
-						echo wp_json_encode( array( 'error' => 'Abandoned cart delay time value must be 1 or higher!' ) );
-						wp_die();
-					}
-					// Check if cart delay time is valid.
+					// Check if cart cutoff time is valid.
 					if ( $cart_cutoff_time < 10 ) {
 						echo wp_json_encode( array( 'error' => 'Abandoned cart cutoff time value must be 10 or higher!' ) );
-						wp_die();
-					}
-				}
-
-				// Customer sync enabled.
-				if ( $enabled ) {
-					if ( empty( $sanitized_autoresponder ) ) {
-						echo wp_json_encode( array( 'error' => 'Please select autoresponder for customer synchronization!' ) );
 						wp_die();
 					}
 				}
@@ -216,13 +204,10 @@ class Api {
 					$table_name,
 					array(
 						'enable'                => $enabled,
-						'autoresponder'         => $sanitized_autoresponder['name'],
-						'autoresponder_id'      => $sanitized_autoresponder['id'],
 						'syncronize_additional' => $syncronize_additional,
 						'enable_cart'           => $cart_enabled,
 						'cart_autoresponder'    => $sanitized_cart_autoresponder['name'],
 						'cart_autoresponder_id' => $sanitized_cart_autoresponder['id'],
-						'cart_delay'            => $cart_dely_time,
 						'cart_cutoff'           => $cart_cutoff_time,
 						'cart_options'          => $cart_options,
 					),
@@ -247,11 +232,12 @@ class Api {
 	 * Api call to Smaily with different parameters
 	 *
 	 * @param string $endpoint  Api endpont without .php.
-	 * @param array  $data       Data to send to Smaily. Authentication info is received from Smaily settings.
+	 * @param string $params    Additional params to attatch to ApiCall for workflows.
+	 * @param array  $data      Data to send to Smaily. Authentication info is received from Smaily settings.
 	 * @param string $method    GET or POST method.
 	 * @return array $response  Response from Smaily API
 	 */
-	public static function ApiCall( string $endpoint, array $data = [], $method = 'GET' ) {
+	public static function ApiCall( string $endpoint, string $params = '', array $data = [], $method = 'GET' ) {
 		// Response.
 		$response = [];
 		// Smaily settings from database.
@@ -263,7 +249,7 @@ class Api {
 
 		// API call with GET request.
 		if ( $method === 'GET' ) {
-			$api_call = wp_remote_get( 'https://' . $result['subdomain'] . '.sendsmaily.net/api/' . $endpoint . '.php', $data );
+			$api_call = wp_remote_get( 'https://' . $result['subdomain'] . '.sendsmaily.net/api/' . $endpoint . '.php' . $params, $data );
 
 			// Response code from Smaily API.
 			$http_code = wp_remote_retrieve_response_code( $api_call );
@@ -271,7 +257,7 @@ class Api {
 			// If Method POST.
 		} elseif ( $method === 'POST' ) {
 			// Add authorization to data of request.
-			$api_call = wp_remote_post( 'https://' . $result['subdomain'] . '.sendsmaily.net/api/' . $endpoint . '.php', $data );
+			$api_call = wp_remote_post( 'https://' . $result['subdomain'] . '.sendsmaily.net/api/' . $endpoint . '.php' . $params, $data );
 			// Response code from Smaily API.
 			$http_code = wp_remote_retrieve_response_code( $api_call );
 

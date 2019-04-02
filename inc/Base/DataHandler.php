@@ -211,7 +211,7 @@ class DataHandler {
 	}
 
 	/**
-	 * Gets autoresponders list from Smaily if user has validated API credentials.
+	 * Gets form_submitted autoresponders list from Smaily if user has validated API credentials.
 	 *
 	 * @return void
 	 */
@@ -225,14 +225,14 @@ class DataHandler {
 			&& ! empty( $result['username'] )
 			&& ! empty( $result['password'] ) ) {
 			// Get Smaily autoresponders.
-			$autoresponders = Api::ApiCall( 'autoresponder' );
+			$autoresponders = Api::ApiCall( 'workflows', '?trigger_type=form_submitted' );
 			// Return autoresponders list if available.
 			if ( ! empty( $autoresponders ) && ! array_key_exists( 'error', $autoresponders ) ) {
 				$autoresponders_list = [];
 				foreach ( $autoresponders as $autoresponder ) {
 					$element               = [];
 					$element['id']         = $autoresponder['id'];
-					$element['name']       = $autoresponder['name'];
+					$element['name']       = $autoresponder['title'];
 					$autoresponders_list[] = $element;
 				}
 				$response = $autoresponders_list;
