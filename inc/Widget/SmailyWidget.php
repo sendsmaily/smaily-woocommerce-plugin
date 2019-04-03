@@ -65,6 +65,17 @@ class SmailyWidget extends \WP_Widget {
 		// Get current url.
 		$current_url = ( isset( $_SERVER['HTTPS'] ) ? 'https' : 'http' ) . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
+		// Language code if using WPML.
+		$lang = '';
+		if ( defined( 'ICL_LANGUAGE_CODE' ) ) {
+			$lang = ICL_LANGUAGE_CODE;
+		// Language code if using polylang.
+		} elseif ( function_exists( 'pll_current_language' ) ) {
+			$lang = pll_current_language();
+		} else {
+			$lang = get_locale();
+		}
+
 		echo $args['before_widget'];
 
 		if ( ! empty( $instance['title'] ) ) {
@@ -87,6 +98,7 @@ class SmailyWidget extends \WP_Widget {
 				<div>
 				<input type="hidden" name="success_url" value="' . esc_url( $current_url ) . '" />
 				<input type="hidden" name="failure_url" value="' . esc_url( $current_url ) . '" />
+				<input type="hidden" name="language" value="' . esc_html( $lang ) . '" />
 		';
 		// Optional autoresponder when selected.
 		echo $autoresponder_id ? '<input type="hidden" name="autoresponder" value="' . esc_html( $autoresponder_id ) . '" />' : '';
@@ -137,13 +149,12 @@ class SmailyWidget extends \WP_Widget {
 			type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
 
-
 		<!-- Autoresponder -->
+		<?php if ( ! array_key_exists( 'empty', $autoresponder_list ) ) : ?>
 		<p>
 		<label for="<?php echo esc_attr( $this->get_field_id( 'autoresponder' ) ); ?>">
 			<?php esc_attr_e( 'Autoresponder:', 'smaily_widget' ); ?>
 		</label>
-
 		<select id="<?php echo esc_attr( $this->get_field_id( 'autoresponder' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'autoresponder' ) ); ?>" class="widefat" style="width:100%;">
 			<?php
 			// Show selected autoresponder.
@@ -158,12 +169,9 @@ class SmailyWidget extends \WP_Widget {
 					echo '<option value="' . htmlentities( json_encode( $autoresponder ) ) . '">' . $autoresponder['name'] . '</option>';
 				}
 			}
-			// Show info that no autoresponders available.
-			if ( array_key_exists( 'empty', $autoresponder_list ) ) {
-				echo '<option value="">No autoresponders created</option>';
-			}
 			?>
 		</select>
+		<?php endif; ?>
 		<?php
 
 	}

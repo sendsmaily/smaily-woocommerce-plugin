@@ -70,9 +70,9 @@ class SubscriberSynchronization {
 
 		// Language code if using WPML.
 		$lang = '';
-		if ( defined( ICL_LANGUAGE_CODE ) ) {
+		if ( defined( 'ICL_LANGUAGE_CODE' ) ) {
 			$lang = ICL_LANGUAGE_CODE;
-		// Language code if using polylang.
+			// Language code if using polylang.
 		} elseif ( function_exists( 'pll_current_language' ) ) {
 			$lang = pll_current_language();
 		} else {
