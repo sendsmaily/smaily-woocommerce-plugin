@@ -22,10 +22,11 @@ class Cron {
 		add_filter( 'cron_schedules', array( $this, 'smaily_cron_schedules' ) );
 		// Action hook for contact syncronization.
 		add_action( 'smaily_cron_sync_contacts', array( $this, 'smaily_sync_contacts' ) );
-		// Cron for sending abandoned cart emails.
-		add_action( 'smaily_cron_abandoned_carts_email', array( $this, 'smaily_abandoned_carts_email' ) );
 		// Cron for updating abandoned cart statuses.
 		add_action( 'smaily_cron_abandoned_carts_status', array( $this, 'smaily_abandoned_carts_status' ) );
+		// Cron for sending abandoned cart emails.
+		add_action( 'smaily_cron_abandoned_carts_email', array( $this, 'smaily_abandoned_carts_email' ) );
+
 	}
 
 	/**

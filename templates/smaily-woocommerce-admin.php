@@ -10,8 +10,6 @@ if ( isset( $settings ) ) {
 	$result                  = $settings['result'];
 	$is_enabled              = $result['enable'];
 	$cart_enabled            = $result['enable_cart'];
-	$autoresponder_name      = $result['autoresponder'];
-	$autoresponder_id        = $result['autoresponder_id'];
 	$cart_autoresponder_name = $result['cart_autoresponder'];
 	$cart_autoresponder_id   = $result['cart_autoresponder_id'];
 }

@@ -54,11 +54,11 @@ class SmailyWidget extends \WP_Widget {
 		if ( isset( $result ) ) {
 			$result = $result['result'];
 		}
-		
+
 		// Get autoresponder id from instance if saved.
 		$autoresponder_id = '';
 		if ( isset( $instance['autoresponder'] ) && ! empty( $instance['autoresponder'] ) ) {
-			$autoresponder = json_decode( $instance['autoresponder'], true);
+			$autoresponder    = json_decode( $instance['autoresponder'], true );
 			$autoresponder_id = $autoresponder['id'];
 		}
 
@@ -69,7 +69,7 @@ class SmailyWidget extends \WP_Widget {
 		$lang = '';
 		if ( defined( 'ICL_LANGUAGE_CODE' ) ) {
 			$lang = ICL_LANGUAGE_CODE;
-		// Language code if using polylang.
+			// Language code if using polylang.
 		} elseif ( function_exists( 'pll_current_language' ) ) {
 			$lang = pll_current_language();
 		} else {
@@ -102,7 +102,7 @@ class SmailyWidget extends \WP_Widget {
 		';
 		// Optional autoresponder when selected.
 		echo $autoresponder_id ? '<input type="hidden" name="autoresponder" value="' . esc_html( $autoresponder_id ) . '" />' : '';
-		echo  '</div>
+		echo '</div>
 				<p>
 					<label>Email</label>
 					<input type="text" name="email" value="" />
@@ -189,7 +189,7 @@ class SmailyWidget extends \WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
 
-		$instance['title']   = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( $new_instance['title'] ) : '';
+		$instance['title']         = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( $new_instance['title'] ) : '';
 		$instance['autoresponder'] = ( ! empty( $new_instance['autoresponder'] ) ) ? sanitize_text_field( $new_instance['autoresponder'] ) : '';
 
 		return $instance;
