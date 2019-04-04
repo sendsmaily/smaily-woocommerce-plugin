@@ -74,6 +74,10 @@ class SmailyWidget extends \WP_Widget {
 			$lang = pll_current_language();
 		} else {
 			$lang = get_locale();
+			if ( strlen( $lang ) > 0 ) {
+				// Remove any value past underscore if exists.
+				$lang = explode( '_', $lang )[0];
+			}
 		}
 
 		echo $args['before_widget'];

@@ -61,11 +61,16 @@ class Api {
 					// Get subdomain if entered as full url.
 					if ( filter_var( $sanitized['subdomain'], FILTER_VALIDATE_URL ) ) {
 						// Get host adress.
-						$url = wp_parse_url( $sanitized['subdomain']);
+						$url = wp_parse_url( $sanitized['subdomain'] );
 						// Get only subdomain from host adress.
-						$doman = explode('.', $url['host'])[0];
-						// Use that subdomain.
-						$sanitized['subdomain'] = $doman;
+						$doman = explode( '.', $url['host'] )[0];
+						// If sendsmaily as subdomain return error message.
+						if ( $domain === 'sendsmaily' ) {
+							$response = array( 'error' => 'Wrong subdomain !' );
+						} else {
+							// Use that subdomain.
+							$sanitized['subdomain'] = $doman;
+						}
 					}
 
 					// If all fields are set make api call.
