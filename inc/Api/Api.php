@@ -58,21 +58,31 @@ class Api {
 				} elseif ( $sanitized['password'] === '' ) {
 					$response = array( 'error' => 'Please enter password!' );
 				} else {
-					// Get subdomain if entered as full url.
-					if ( filter_var( $sanitized['subdomain'], FILTER_VALIDATE_URL ) ) {
+					$domain_field_element_count = count( explode( '.', $sanitized['subdomain'] ) );
+					// Validate Subdomain if entered as full url.
+					if ( $domain_field_element_count >= 2 ) {
 						// Get host adress.
 						$url = wp_parse_url( $sanitized['subdomain'] );
-						// Get only subdomain from host adress.
-						$doman = explode( '.', $url['host'] )[0];
-						// If sendsmaily as subdomain return error message.
-						if ( $domain === 'sendsmaily' ) {
-							$response = array( 'error' => 'Wrong subdomain !' );
+						// Get path adress in case of url without "https://".
+						$path = isset( $url['path'] ) ? explode( '.', $url['path'] ) : [];
+						// Get host adress.
+						$host = isset( $url['host'] ) ? explode( '.', $url['host'] ) : [];
+						// Atleast one of values must have 3 parts.
+						if ( count( $path ) >= 3 || count( $host ) >= 3 ) {
+							// If only path adress like demo.sendsmaily.net return first member.
+							if ( empty( $host ) ) {
+								$sanitized['subdomain'] = $path[0];
+							} else {
+								$sanitized['subdomain'] = $host[0];
+							}
 						} else {
-							// Use that subdomain.
-							$sanitized['subdomain'] = $doman;
+							// Two members as smaily.net.
+							// Error message for not correct subdomain.
+							$response = array( 'error' => 'Wrong subdomain fromat !' );
+							echo wp_json_encode( $response );
+							wp_die();
 						}
 					}
-
 					// If all fields are set make api call.
 					$api_call = wp_remote_get(
 						'https://' . $sanitized['subdomain'] . '.sendsmaily.net/api/workflows.php?trigger_type=form_submitted',
@@ -87,6 +97,9 @@ class Api {
 					// Show error message if no access.
 					if ( $http_code === 401 ) {
 						$response = array( 'error' => 'Invalid API credentials, no connection !' );
+					}
+					if ( $http_code === 404 ) {
+						$response = array( 'error' => 'Invalid subdomain, no connection !' );
 					}
 					if ( is_wp_error( $api_call ) ) {
 						$response = array( 'error' => $api_call->get_error_message() );
