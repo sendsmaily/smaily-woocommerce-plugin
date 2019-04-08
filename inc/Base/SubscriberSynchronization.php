@@ -45,7 +45,7 @@ class SubscriberSynchronization {
 		$data = DataHandler::get_user_data( $user_id );
 
 		// Make API call to Smaily for subscriber update.
-		Api::ApiCall( 'contact', [ 'body' => $data ], 'POST' );
+		Api::ApiCall( 'contact', '', [ 'body' => $data ], 'POST' );
 		// Subscribed to newsletter.
 	}
 
@@ -68,6 +68,23 @@ class SubscriberSynchronization {
 		$store = get_site_url();
 		$data['store'] = isset( $store ) ? $store : 'woocommerce';
 
+		// Language code if using WPML.
+		$lang = '';
+		if ( defined( 'ICL_LANGUAGE_CODE' ) ) {
+			$lang = ICL_LANGUAGE_CODE;
+			// Language code if using polylang.
+		} elseif ( function_exists( 'pll_current_language' ) ) {
+			$lang = pll_current_language();
+		} else {
+			$lang = get_locale();
+			if ( strlen( $lang ) > 0 ) {
+				// Remove any value past underscore if exists.
+				$lang = explode( '_', $lang )[0];
+			}
+		}
+		// Add language code.
+		$data['language'] = $lang;
+
 		// Append fields to data array when available.
 		// Add first name.
 		if ( isset( $_POST['billing_first_name'] ) ) {
@@ -84,7 +101,7 @@ class SubscriberSynchronization {
 
 		// Make API call  to Smaily for subscriber update.
 		if ( isset( $data['email'] ) ) {
-			Api::ApiCall( 'contact', [ 'body' => $data ], 'POST' );
+			Api::ApiCall( 'contact', '', [ 'body' => $data ], 'POST' );
 		}
 		// Subscribed to newsletter.
 	}

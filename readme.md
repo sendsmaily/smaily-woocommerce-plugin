@@ -66,15 +66,27 @@ All development for Smaily for WooCommerce is [handled via GitHub](https://githu
 2. Insert your Smaily API authentication information to get started.
 3. Next, click validate API information.
 4. Select if you want to use cron for contact synchronization between WooCommerce and Smaily
-5. Select your autoresponder and fields you want to synchronize
-6. Select if you want to use cron for abandoned cart remainder emails.
-7. Select autoresponder for abandoned cart, fields to zynchronize and delay settings.
-8. Click Save Changes
-9. If you want to use Smaily Widget please fill out settings page before using.
-10. Cron is set up to synchronize contacts daily. To view and manage cron settings use Cron plugins for example "WP Crontrol".
-11. That's it, your WooCommerce store is now integrated with Smaily Plugin!
+5. Select if you want to use cron for abandoned cart remainder emails.
+6. Select autoresponder for abandoned cart, fields to zynchronize and delay settings.
+7. Click Save Changes
+8. If you want to use Smaily Widget please fill out settings page before using.
+9. Cron is set up to synchronize contacts daily. To view and manage cron settings use Cron plugins for example "WP Crontrol".
+10. That's it, your WooCommerce store is now integrated with Smaily Plugin!
 
 ## Frequently Asked Questions
+
+## How to set up widget for signup form?
+
+1. Validate your smaily credentials in Smaily settings menu.
+2. Move to **Appearance -> Widget** menu from admin page sidepanel.
+3. Add Smaily Newsletter widget to your prefered location on page.
+4. If you want you can select Title for your subscribe newsletter form.
+
+If you have added Form Submitted automation triggers from Smaily site under Automation tab you can see all availabe autoresponders in your widget settings.
+
+There is no need to select autoresponder for widget form, but if you want to customize different approach from opt-in automation trigger you can do that.
+
+When no autoresponder selected regular opt-in workflow will run. You can add delay, filter by field and send email after subscription. For that edit settings in Smaily automation page.
 
 ### Why RSS-feed is displaying "page not found"?
 
@@ -124,6 +136,10 @@ Up to 10 products can be received in Smaily templating engine. You can refrence 
 6. WooCommerce Smaily widget front screen.
 
 ## Changelog
+
+### 1.3.0
+
+- Optimization and bug removal due to new automation workflows.
 
 ### 1.2.3
 

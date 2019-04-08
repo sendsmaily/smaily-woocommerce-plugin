@@ -19,10 +19,10 @@ class ProfileSettings {
 	 */
 	public function register() {
 
-		// Show additional profile fields only if plugin is activated.
+		// Show additional profile fields only if credentials are validated.
 		$result = DataHandler::get_smaily_results();
 
-		if ( isset( $result['result']['autoresponder'] ) ) {
+		if ( isset( $result['result']['subdomain'] ) ) {
 			// Add fields to registration form and account area.
 			add_action( 'woocommerce_register_form', array( $this, 'smaily_print_user_frontend_fields' ), 10 );
 			add_action( 'woocommerce_edit_account_form', array( $this, 'smaily_print_user_frontend_fields' ), 10 );

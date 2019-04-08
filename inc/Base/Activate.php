@@ -28,14 +28,15 @@ class Activate {
 		if ( ! wp_next_scheduled( 'smaily_cron_sync_contacts' ) ) {
 			wp_schedule_event( time(), 'daily', 'smaily_cron_sync_contacts' );
 		}
-		// Sending emails.
-		if ( ! wp_next_scheduled( 'smaily_cron_abandoned_carts_email' ) ) {
-			wp_schedule_event( time(), 'hourly', 'smaily_cron_abandoned_carts_email' );
-		}
 		// Keeping track of abandoned statuses.
 		if ( ! wp_next_scheduled( 'smaily_cron_abandoned_carts_status' ) ) {
 			wp_schedule_event( time(), 'smaily_15_minutes', 'smaily_cron_abandoned_carts_status' );
 		}
+		// Sending emails.
+		if ( ! wp_next_scheduled( 'smaily_cron_abandoned_carts_email' ) ) {
+			wp_schedule_event( time(), 'smaily_15_minutes', 'smaily_cron_abandoned_carts_email' );
+		}
+
 		// Flush rewrite rules.
 		flush_rewrite_rules();
 	}
@@ -56,13 +57,10 @@ class Activate {
 				subdomain varchar(255) DEFAULT NULL,
 				username varchar(255) DEFAULT NULL,
 				password varchar(255) DEFAULT NULL,
-				autoresponder varchar(255) DEFAULT NULL,
-				autoresponder_id int(10) DEFAULT NULL,
 				syncronize_additional varchar(255) DEFAULT NULL,
 				enable_cart tinyint(1) DEFAULT NULL,
 				cart_autoresponder varchar(255) DEFAULT NULL,
 				cart_autoresponder_id int(10) DEFAULT NULL,
-				cart_delay int(10) DEFAULT NULL,
 				cart_cutoff int(10) DEFAULT NULL,
 				cart_options varchar(255) DEFAULT NULL,
 				PRIMARY KEY  (id)

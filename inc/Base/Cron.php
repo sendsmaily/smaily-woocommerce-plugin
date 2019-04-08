@@ -22,10 +22,11 @@ class Cron {
 		add_filter( 'cron_schedules', array( $this, 'smaily_cron_schedules' ) );
 		// Action hook for contact syncronization.
 		add_action( 'smaily_cron_sync_contacts', array( $this, 'smaily_sync_contacts' ) );
-		// Cron for sending abandoned cart emails.
-		add_action( 'smaily_cron_abandoned_carts_email', array( $this, 'smaily_abandoned_carts_email' ) );
 		// Cron for updating abandoned cart statuses.
 		add_action( 'smaily_cron_abandoned_carts_status', array( $this, 'smaily_abandoned_carts_status' ) );
+		// Cron for sending abandoned cart emails.
+		add_action( 'smaily_cron_abandoned_carts_email', array( $this, 'smaily_abandoned_carts_email' ) );
+
 	}
 
 	/**
@@ -60,7 +61,7 @@ class Cron {
 			);
 
 			// Make API call to Smaily to get unsubscribers.
-			$unsubscribers = Api::ApiCall( 'contact', [ 'body' => $data ] );
+			$unsubscribers = Api::ApiCall( 'contact', '' , [ 'body' => $data ] );
 			// List of unsubscribed emails.
 			$unsubscribers_emails = [];
 			foreach ( $unsubscribers as $key => $value ) {
@@ -99,7 +100,7 @@ class Cron {
 			}
 
 			// Update all subscribers to Smaily.
-			$response = Api::ApiCall( 'contact', [ 'body' => $list ], 'POST' );
+			$response = Api::ApiCall( 'contact', '', [ 'body' => $list ], 'POST' );
 
 			$this->log_to_file( SMAILY_PLUGIN_PATH . 'smaily-cron.txt', $response['message'] );
 		}
@@ -118,24 +119,14 @@ class Cron {
 		$results = DataHandler::get_smaily_results();
 		// Check if contact sync is enabled.
 		if ( isset( $results['result']['enable_cart'] ) && (int) $results['result']['enable_cart'] === 1 ) {
-			// Get delay time.
-			$delay = (int) $results['result']['cart_delay'];
-			// Time.
-			$current_time = strtotime( gmdate( 'Y-m-d\TH:i:s\Z' ) );
-			// Check if delay time has passed from cart update.
-			$last_abandoned      = strtotime( '-' . $delay . ' hours', $current_time );
-			$cart_abandoned_time = gmdate( 'Y-m-d\TH:i:s\Z', $last_abandoned );
+
 			// Get all abandoned carts.
 			$abandoned_carts = $wpdb->get_results(
-				$wpdb->prepare(
-					"
-					SELECT * FROM {$wpdb->prefix}smaily_abandoned_carts
-					WHERE cart_status='abandoned'
-					AND mail_sent IS NULL
-					AND cart_abandoned_time < %s
-					",
-					$cart_abandoned_time
-				),
+				"
+				SELECT * FROM {$wpdb->prefix}smaily_abandoned_carts
+				WHERE cart_status='abandoned'
+				AND mail_sent IS NULL
+				",
 				'ARRAY_A'
 			);
 			foreach ( $abandoned_carts as $cart ) {
@@ -244,7 +235,7 @@ class Cron {
 				];
 
 				// Send data to Smaily.
-				$response = Api::ApiCall( 'autoresponder', [ 'body' => $query ], 'POST' );
+				$response = Api::ApiCall( 'autoresponder', '', [ 'body' => $query ], 'POST' );
 				// If data sent successfully update mail_sent status in database.
 				if ( array_key_exists( 'code', $response ) && $response['code'] === 101 ) {
 					$table = $wpdb->prefix . 'smaily_abandoned_carts';

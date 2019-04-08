@@ -55,8 +55,30 @@ class SmailyWidget extends \WP_Widget {
 			$result = $result['result'];
 		}
 
+		// Get autoresponder id from instance if saved.
+		$autoresponder_id = '';
+		if ( isset( $instance['autoresponder'] ) && ! empty( $instance['autoresponder'] ) ) {
+			$autoresponder    = json_decode( $instance['autoresponder'], true );
+			$autoresponder_id = $autoresponder['id'];
+		}
+
 		// Get current url.
 		$current_url = ( isset( $_SERVER['HTTPS'] ) ? 'https' : 'http' ) . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+
+		// Language code if using WPML.
+		$lang = '';
+		if ( defined( 'ICL_LANGUAGE_CODE' ) ) {
+			$lang = ICL_LANGUAGE_CODE;
+			// Language code if using polylang.
+		} elseif ( function_exists( 'pll_current_language' ) ) {
+			$lang = pll_current_language();
+		} else {
+			$lang = get_locale();
+			if ( strlen( $lang ) > 0 ) {
+				// Remove any value past underscore if exists.
+				$lang = explode( '_', $lang )[0];
+			}
+		}
 
 		echo $args['before_widget'];
 
@@ -65,45 +87,26 @@ class SmailyWidget extends \WP_Widget {
 		}
 
 		// Widget front-end.
-		if ( isset( $_GET['message'] ) || isset( $_GET['code'] ) ) {
+		// Echo messages if available.
+		if ( isset( $_GET['message'] ) ) {
 			echo '
 				<div class="smaily-newsletter-alert">
 				<p>' . esc_html( $_GET['message'] ) . '
 				<span class="smaily-newsletter-closebtn" onclick="this.parentElement.style.display=\'none\'">&times;</span>
 				</p>
 				</div>
-				<form class="smaily-newsletter-form" action="https://' . $result['subdomain'] . '.sendsmaily.net/api/opt-in/" method="post" autocomplete="off">
-					<div>
-					<input type="hidden" name="key" value="' . esc_html( $instance['api_key'] ) . '" />
-					<input type="hidden" name="autoresponder" value="' . $result['autoresponder_id'] . '" />
-					<input type="hidden" name="success_url" value="' . esc_url( $current_url ) . '" />
-					<input type="hidden" name="failure_url" value="' . esc_url( $current_url ) . '" />
-					</div>
-					<p>
-						<label>Email</label>
-						<input type="text" name="email" value="" />
-					</p>
-					<p>
-						<label>Name</label>
-						<input type="text" name="name" value="" />
-					</p>
-					<p>
-						<button class="ui pink basic button" type="submit">Subscribe</button>
-					</p>
-					<div style="overflow:hidden;height:0px;">
-						<input type="text" name="re-email" value="" />
-					</div>
-				</form>
 				';
-		} else {
-			echo '
-			<form class="smaily-newsletter-form" action="https://' . $result['subdomain'] . '.sendsmaily.net/api/opt-in/" method="post" autocomplete="off">
+		}
+		// Main form.
+		echo '<form class="smaily-newsletter-form" action="https://' . esc_html( $result['subdomain'] ) . '.sendsmaily.net/api/opt-in/" method="post" autocomplete="off">
 				<div>
-				<input type="hidden" name="key" value="' . esc_html( $instance['api_key'] ) . '" />
-				<input type="hidden" name="autoresponder" value="' . $result['autoresponder_id'] . '" />
 				<input type="hidden" name="success_url" value="' . esc_url( $current_url ) . '" />
 				<input type="hidden" name="failure_url" value="' . esc_url( $current_url ) . '" />
-				</div>
+				<input type="hidden" name="language" value="' . esc_html( $lang ) . '" />
+		';
+		// Optional autoresponder when selected.
+		echo $autoresponder_id ? '<input type="hidden" name="autoresponder" value="' . esc_html( $autoresponder_id ) . '" />' : '';
+		echo '</div>
 				<p>
 					<label>Email</label>
 					<input type="text" name="email" value="" />
@@ -119,8 +122,7 @@ class SmailyWidget extends \WP_Widget {
 					<input type="text" name="re-email" value="" />
 				</div>
 			</form>
-			';
-		}
+		';
 
 		echo $args['after_widget'];
 	}
@@ -134,9 +136,9 @@ class SmailyWidget extends \WP_Widget {
 	 */
 	public function form( $instance ) {
 
-		$title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( 'Smaily Newsletter', 'smaily_widget' );
+		$autoresponder_list = DataHandler::get_autoresponder_list();
 
-		$api_key = ! empty( $instance['api_key'] ) ? $instance['api_key'] : esc_html__( 'Please insert API key', 'smaily_widget' );
+		$title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( 'Smaily Newsletter', 'smaily_widget' );
 
 		?>
 		<!--  Title -->
@@ -151,18 +153,29 @@ class SmailyWidget extends \WP_Widget {
 			type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
 
-
-		<!-- API Key -->
+		<!-- Autoresponder -->
+		<?php if ( ! array_key_exists( 'empty', $autoresponder_list ) ) : ?>
 		<p>
-		<label for="<?php echo esc_attr( $this->get_field_id( 'api_key' ) ); ?>">
-			<?php esc_attr_e( 'API Key:', 'smaily_widget' ); ?>
-		</label> 
-		<input 
-			class="widefat" 
-			id="<?php echo esc_attr( $this->get_field_id( 'api_key' ) ); ?>" 
-			name="<?php echo esc_attr( $this->get_field_name( 'api_key' ) ); ?>" 
-			type="text" value="<?php echo esc_attr( $api_key ); ?>">
-		</p>
+		<label for="<?php echo esc_attr( $this->get_field_id( 'autoresponder' ) ); ?>">
+			<?php esc_attr_e( 'Autoresponder:', 'smaily_widget' ); ?>
+		</label>
+		<select id="<?php echo esc_attr( $this->get_field_id( 'autoresponder' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'autoresponder' ) ); ?>" class="widefat" style="width:100%;">
+			<?php
+			// Show selected autoresponder.
+			if ( ! empty( $instance['autoresponder'] ) ) {
+				$current_autoresponder = json_decode( $instance['autoresponder'], true );
+				echo '<option value="' . $instance['autoresponder'] . '">' . $current_autoresponder['name'] . '</option>';
+			}
+			// Show all autoresponders from Smaily.
+			if ( ! empty( $autoresponder_list ) && ! array_key_exists( 'empty', $autoresponder_list ) ) {
+				echo '<option value="">-No Autoresponder-</option>';
+				foreach ( $autoresponder_list as $autoresponder ) {
+					echo '<option value="' . htmlentities( json_encode( $autoresponder ) ) . '">' . $autoresponder['name'] . '</option>';
+				}
+			}
+			?>
+		</select>
+		<?php endif; ?>
 		<?php
 
 	}
@@ -180,8 +193,8 @@ class SmailyWidget extends \WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
 
-		$instance['title']   = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( $new_instance['title'] ) : '';
-		$instance['api_key'] = ( ! empty( $new_instance['api_key'] ) ) ? sanitize_text_field( $new_instance['api_key'] ) : '';
+		$instance['title']         = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( $new_instance['title'] ) : '';
+		$instance['autoresponder'] = ( ! empty( $new_instance['autoresponder'] ) ) ? sanitize_text_field( $new_instance['autoresponder'] ) : '';
 
 		return $instance;
 	}
