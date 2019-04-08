@@ -137,6 +137,10 @@ Up to 10 products can be received in Smaily templating engine. You can refrence 
 
 ## Changelog
 
+### 1.3.1
+
+- Fixes plugin styles affecting admin panel styles (#22)
+
 ### 1.3.0
 
 - Optimization and bug removal due to new automation workflows.
