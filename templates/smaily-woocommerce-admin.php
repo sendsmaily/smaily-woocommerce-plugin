@@ -15,7 +15,7 @@ if ( isset( $settings ) ) {
 }
 $autoresponder_list = DataHandler::get_autoresponder_list();
 ?>
-<div class="wrap">
+<div class="wrap smaily-settings">
 	<h1><span id="smaily-title"><span id="capital-s">S</span>maily</span> Plugin Settings
 		<div class="loader"></div>
 	</h1>
