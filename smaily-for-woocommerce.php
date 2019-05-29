@@ -75,7 +75,8 @@ if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
 	if ( ! class_exists( 'Smaily_Inc\\Init.php' ) ) {
 		Smaily_Inc\Init::register_services();
 	}
-
+	// Load translations.
+	add_action( 'plugins_loaded', 'smaily_for_woocommerce_load_textdomain' );
 	// register activation hook.
 	register_activation_hook( __FILE__, 'activate_smaily_plugin' );
 	// register deactivation hook.
@@ -91,12 +92,21 @@ if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
 }
 
 /**
+ * Add translation folder to plugin.
+ */
+function smaily_for_woocommerce_load_textdomain() {
+	load_plugin_textdomain( 'smaily', false, basename( dirname( __FILE__ ) ) . '/lang' );
+
+}
+
+/**
  * Display error message to user if WooCommerce not installed.
  *
  * @return void
  */
 function smaily_plugin_admin_notices() {
-	echo "<div class='update-message notice inline notice-warning notice-alt'><p> Woocommerce  Smaily not able to activate . Woocommerce needed to function properly. Is WooCommerce installed?</p></div>";
+	$message = __( 'Woocommerce  Smaily not able to activate . Woocommerce needed to function properly. Is WooCommerce installed?', 'smaily' );
+	echo "<div class='update-message notice inline notice-warning notice-alt'><p>" . esc_html( $message ) . '</p></div>';
 }
 
 /**
