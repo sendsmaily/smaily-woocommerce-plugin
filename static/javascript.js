@@ -46,7 +46,8 @@
   // Hide spinner.
   $(".loader").hide();
 
-  // First Form on Settings page to check if subdomain / username / password are correct.
+  // First Form on Settings page to check if
+  // subdomain / username / password are correct.
   $().ready(function() {
     $("#startupForm").submit(function(e) {
       e.preventDefault();
@@ -70,7 +71,7 @@
             // Hide loading icon
             spinner.hide();
           } else if (!data) {
-            displayMessage("Something went wrong with request to Smaily", true);
+            displayMessage(smaily_translations.went_wrong, true);
             // Hide loading icon
             spinner.hide();
           } else {
@@ -92,7 +93,7 @@
               );
             });
             // Success message.
-            displayMessage("Smaily credentials sucessfully validated!");
+            displayMessage(smaily_translations.validated);
             // Hide validate button.
             validateButton.hide();
             // Hide loader icon.
@@ -134,7 +135,7 @@
           if (data["error"]) {
             displayMessage(data["error"], true);
           } else if (!data) {
-            displayMessage("Something went wrong with saving data!", true);
+            displayMessage(smaily_translations.data_error, true);
           } else {
             displayMessage(data["success"]);
           }
