@@ -18,8 +18,8 @@ class SmailyWidget extends \WP_Widget {
 	public function __construct() {
 		parent::__construct(
 			'smaily_widget', // Base ID.
-			esc_html__( 'Smaily Newsletter', 'smaily_widget' ), // Name.
-			array( 'description' => esc_html__( 'WooCommerce Smaily Newsletter Widget', 'smaily_widget' ) ) // Args.
+			esc_html__( 'Smaily Newsletter', 'smaily' ), // Name.
+			array( 'description' => esc_html__( 'WooCommerce Smaily Newsletter Widget', 'smaily' ) ) // Args.
 		);
 	}
 
@@ -108,15 +108,17 @@ class SmailyWidget extends \WP_Widget {
 		echo $autoresponder_id ? '<input type="hidden" name="autoresponder" value="' . esc_html( $autoresponder_id ) . '" />' : '';
 		echo '</div>
 				<p>
-					<label>Email</label>
+					<label>' . esc_html__( 'Email', 'smaily' ) .'</label>
 					<input type="text" name="email" value="" />
 				</p>
 				<p>
-					<label>Name</label>
+					<label>' . esc_html__( 'Name', 'smaily' ) . '</label>
 					<input type="text" name="name" value="" />
 				</p>
 				<p>
-					<button class="ui pink basic button" type="submit">Subscribe</button>
+					<button class="ui pink basic button" type="submit">' .
+						esc_html__( 'Subscribe', 'smaily' ) .
+					'</button>
 				</p>
 				<div style="overflow:hidden;height:0px;">
 					<input type="text" name="re-email" value="" />
@@ -138,13 +140,13 @@ class SmailyWidget extends \WP_Widget {
 
 		$autoresponder_list = DataHandler::get_autoresponder_list();
 
-		$title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( 'Smaily Newsletter', 'smaily_widget' );
+		$title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( 'Smaily Newsletter', 'smaily' );
 
 		?>
 		<!--  Title -->
 		<p>
 		<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
-			<?php esc_attr_e( 'Title:', 'smaily_widget' ); ?>
+			<?php esc_attr_e( 'Title:', 'smaily' ); ?>
 		</label> 
 		<input 
 			class="widefat" 
@@ -157,7 +159,7 @@ class SmailyWidget extends \WP_Widget {
 		<?php if ( ! array_key_exists( 'empty', $autoresponder_list ) ) : ?>
 		<p>
 		<label for="<?php echo esc_attr( $this->get_field_id( 'autoresponder' ) ); ?>">
-			<?php esc_attr_e( 'Autoresponder:', 'smaily_widget' ); ?>
+			<?php esc_attr_e( 'Autoresponder:', 'smaily' ); ?>
 		</label>
 		<select id="<?php echo esc_attr( $this->get_field_id( 'autoresponder' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'autoresponder' ) ); ?>" class="widefat" style="width:100%;">
 			<?php
