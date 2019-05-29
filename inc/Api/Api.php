@@ -75,13 +75,25 @@ class Api {
 
 		// Show error messages to user if no data is entered to form.
 		if ( $sanitized['subdomain'] === '' ) {
-			echo wp_json_encode( array( 'error' => 'Please enter subdomain!' ) );
+			echo wp_json_encode(
+				array(
+					'error' => esc_html__( 'Please enter subdomain!', 'smaily' ),
+				)
+			);
 			wp_die();
 		} elseif ( $sanitized['username'] === '' ) {
-			echo wp_json_encode( array( 'error' => 'Please enter username!' ) );
+			echo wp_json_encode(
+				array(
+					'error' => esc_html__( 'Please enter username!', 'smaily' ),
+				)
+			);
 			wp_die();
 		} elseif ( $sanitized['password'] === '' ) {
-			echo wp_json_encode( array( 'error' => 'Please enter password!' ) );
+			echo wp_json_encode(
+				array(
+					'error' => esc_hmtl__( 'Please enter password!', 'smaily' ),
+				)
+			);
 			wp_die();
 		}
 
@@ -98,10 +110,18 @@ class Api {
 		$http_code = wp_remote_retrieve_response_code( $api_call );
 		// Show error message if no access.
 		if ( $http_code === 401 ) {
-			echo wp_json_encode( array( 'error' => 'Invalid API credentials, no connection !' ) );
+			echo wp_json_encode(
+				array(
+					'error' => esc_html__( 'Invalid API credentials, no connection !', 'smaily' ),
+				)
+			);
 			wp_die();
 		} elseif ( $http_code === 404 ) {
-			echo wp_json_encode( array( 'error' => 'Invalid subdomain, no connection !' ) );
+			echo wp_json_encode(
+				array(
+					'error' => esc_html__( 'Invalid subdomain, no connection !', 'smaily' ),
+				)
+			);
 			wp_die();
 		} elseif ( is_wp_error( $api_call ) ) {
 			echo wp_json_encode( array( 'error' => $api_call->get_error_message() ) );
@@ -157,7 +177,8 @@ class Api {
 			$user = array();
 			parse_str( $_POST['user_data'], $user ); // Ajax serialized data, sanitization below.
 			$autoresponders = array();
-			parse_str( $_POST['autoresponder_data'], $autoresponders ); // Ajax serialized data, sanitization below.
+			// phpcs:ignore Ajax serialized data, sanitization below.
+			parse_str( $_POST['autoresponder_data'], $autoresponders );
 			$cart_autoresponder = json_decode( $autoresponders['cart_autoresponder'], true);
 
 			// Check for nonce-verification and sanitize user input.
@@ -207,12 +228,20 @@ class Api {
 					// Check if autoresponder for cart is selected.
 					if ( empty( $sanitized_cart_autoresponder ) ) {
 						// Return error if no autoresponder for abandoned cart.
-						echo wp_json_encode( array( 'error' => 'Select autoresponder for abandoned cart!' ) );
+						echo wp_json_encode(
+							array(
+								'error' => esc_html( 'Select autoresponder for abandoned cart!', 'smaily' ),
+							)
+						);
 						wp_die();
 					}
 					// Check if cart cutoff time is valid.
 					if ( $cart_cutoff_time < 10 ) {
-						echo wp_json_encode( array( 'error' => 'Abandoned cart cutoff time value must be 10 or higher!' ) );
+						echo wp_json_encode(
+							array(
+								'error' => esc_html( 'Abandoned cart cutoff time value must be 10 or higher!', 'smaily' ),
+							)
+						);
 						wp_die();
 					}
 				}
@@ -232,11 +261,17 @@ class Api {
 					array( 'id' => 1 )
 				);
 				if ( $result > 0 ) {
-					$response = array( 'success' => 'Settings updated!' );
+					$response = array(
+						'success' => esc_hmtl( 'Settings updated!', 'smaily' ),
+					);
 				} elseif ( $result === 0 ) {
-					$response = array( 'success' => 'Settings saved!' );
+					$response = array(
+						'success' => esc_html( 'Settings saved!', 'smaily' ),
+					);
 				} else {
-					$response = array( 'error' => 'Something went wrong saving settings!');
+					$response = array(
+						'error' => esc_html( 'Something went wrong saving settings!', 'smaily' ),
+					);
 				}
 			}
 		}
@@ -283,7 +318,9 @@ class Api {
 
 		// Show error message if no access.
 		if ( $http_code === 401 ) {
-			$response = array( 'error' => 'Check details, no connection !' );
+			$response = array(
+				'error' => esc_html__( 'Check details, no connection !', 'smaily' ),
+			);
 		}
 		// Return autoresponders list back to front end for selection.
 		if ( $http_code === 200 ) {
