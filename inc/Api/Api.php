@@ -199,13 +199,15 @@ class Api {
 					}
 				}
 
-				if ( is_array( $autoresponders['syncronize_additional'] ) ) {
+				if ( isset( $autoresponders['syncronize_additional'] ) &&
+					is_array( $autoresponders['syncronize_additional'] ) ) {
 					foreach ( $autoresponders['syncronize_additional'] as $key => $value ) {
 						$sanitized_syncronize_additional[ $key ] = wp_unslash( sanitize_text_field( $value ) );
 					}
 				}
 
-				if ( is_array( $autoresponders['cart_options'] ) ) {
+				if ( isset( $autoresponders['cart_options'] ) &&
+					is_array( $autoresponders['cart_options'] ) ) {
 					foreach ( $autoresponders['cart_options'] as $key => $value) {
 						$sanitized_cart_options [ $key ] = wp_unslash( sanitize_text_field( $value ) );
 					}
@@ -230,7 +232,7 @@ class Api {
 						// Return error if no autoresponder for abandoned cart.
 						echo wp_json_encode(
 							array(
-								'error' => esc_html( 'Select autoresponder for abandoned cart!', 'smaily' ),
+								'error' => esc_html__( 'Select autoresponder for abandoned cart!', 'smaily' ),
 							)
 						);
 						wp_die();
@@ -239,7 +241,7 @@ class Api {
 					if ( $cart_cutoff_time < 10 ) {
 						echo wp_json_encode(
 							array(
-								'error' => esc_html( 'Abandoned cart cutoff time value must be 10 or higher!', 'smaily' ),
+								'error' => esc_html__( 'Abandoned cart cutoff time value must be 10 or higher!', 'smaily' ),
 							)
 						);
 						wp_die();
@@ -262,15 +264,15 @@ class Api {
 				);
 				if ( $result > 0 ) {
 					$response = array(
-						'success' => esc_hmtl( 'Settings updated!', 'smaily' ),
+						'success' => esc_html__( 'Settings updated!', 'smaily' ),
 					);
 				} elseif ( $result === 0 ) {
 					$response = array(
-						'success' => esc_html( 'Settings saved!', 'smaily' ),
+						'success' => esc_html__( 'Settings saved!', 'smaily' ),
 					);
 				} else {
 					$response = array(
-						'error' => esc_html( 'Something went wrong saving settings!', 'smaily' ),
+						'error' => esc_html__( 'Something went wrong saving settings!', 'smaily' ),
 					);
 				}
 			}

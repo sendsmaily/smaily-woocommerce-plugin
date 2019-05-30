@@ -12,7 +12,7 @@
  * @wordpress-plugin
  * Plugin Name: Smaily for WooCommerce
  * Plugin URI: https://github.com/sendsmaily/smaily-woocommerce-plugin
- * Description: Smaily email marketing and automation extension plugin for WooCommerce (set up opt-in form, client sync and output RSS-feed) for easy product import into template.
+ * Description: Smaily email marketing and automation extension plugin for WooCommerce. Set up easy sync for your contacts, add opt-in subscription form, import products directly to your email template and send abandoned cart reminder emails.
  * Version: 1.3.1
  * License: GPL3
  * Author: Smaily
@@ -105,7 +105,7 @@ function smaily_for_woocommerce_load_textdomain() {
  * @return void
  */
 function smaily_plugin_admin_notices() {
-	$message = __( 'Woocommerce  Smaily not able to activate . Woocommerce needed to function properly. Is WooCommerce installed?', 'smaily' );
+	$message = __( 'Smaily for WooCommerce is not able to activate . WooCommerce needed to function properly. Is WooCommerce installed?', 'smaily' );
 	echo "<div class='update-message notice inline notice-warning notice-alt'><p>" . esc_html( $message ) . '</p></div>';
 }
 

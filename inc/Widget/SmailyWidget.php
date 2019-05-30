@@ -19,7 +19,7 @@ class SmailyWidget extends \WP_Widget {
 		parent::__construct(
 			'smaily_widget', // Base ID.
 			esc_html__( 'Smaily Newsletter', 'smaily' ), // Name.
-			array( 'description' => esc_html__( 'WooCommerce Smaily Newsletter Widget', 'smaily' ) ) // Args.
+			array( 'description' => esc_html__( 'Smaily for WooCommerce Newsletter Widget', 'smaily' ) ) // Args.
 		);
 	}
 
@@ -170,7 +170,7 @@ class SmailyWidget extends \WP_Widget {
 			}
 			// Show all autoresponders from Smaily.
 			if ( ! empty( $autoresponder_list ) && ! array_key_exists( 'empty', $autoresponder_list ) ) {
-				echo '<option value="">-No Autoresponder-</option>';
+				echo '<option value="">' . esc_html__( '-No Autoresponder-', 'smaily' ) . ' </option>';
 				foreach ( $autoresponder_list as $autoresponder ) {
 					echo '<option value="' . htmlentities( json_encode( $autoresponder ) ) . '">' . $autoresponder['name'] . '</option>';
 				}

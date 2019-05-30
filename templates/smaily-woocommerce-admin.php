@@ -334,7 +334,7 @@ $autoresponder_list = DataHandler::get_autoresponder_list();
 									value="<?php echo ( $result['cart_cutoff'] ) ? $result['cart_cutoff'] : ''; ?>"
 									type="number"
 									min="10">
-							minute(s)
+							<?php echo esc_html__( 'minute(s)', 'smaily' ); ?>
 							<small id="cart-delay-help" class="form-text text-muted">
 							<?php echo esc_html__( 'Minimum 10 minutes.', 'smaily' ); ?>
 							</small>
