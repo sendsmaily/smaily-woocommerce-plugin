@@ -28,9 +28,9 @@ class Enqueue {
 	 * @return void
 	 */
 	public function enqueue_admin_scripts() {
-		// enque css and js.
-		wp_enqueue_script(
-			'mypluginscript',
+
+		wp_register_script(
+			'smailypluginscript',
 			SMAILY_PLUGIN_URL . 'static/javascript.js',
 			array(
 				'jquery',
@@ -39,7 +39,36 @@ class Enqueue {
 			SMAILY_PLUGIN_VERSION,
 			true
 		);
-		wp_enqueue_style( 'mypluginstyle', SMAILY_PLUGIN_URL . 'static/admin-style.css', array(), SMAILY_PLUGIN_VERSION );
+
+		// enque css and js.
+		wp_enqueue_script(
+			'smailypluginscript',
+			SMAILY_PLUGIN_URL . 'static/javascript.js',
+			array(
+				'jquery',
+				'jquery-ui-tabs',
+			),
+			SMAILY_PLUGIN_VERSION,
+			true
+		);
+		wp_enqueue_style(
+			'smailypluginstyle',
+			SMAILY_PLUGIN_URL . 'static/admin-style.css',
+			array(),
+			SMAILY_PLUGIN_VERSION
+		);
+
+		$translations = array(
+			'went_wrong' => __( 'Something went wrong connecting to Smaily!', 'smaily' ),
+			'validated'  => __( 'Smaily credentials sucessfully validated!', 'smaily' ),
+			'data_error' => __( 'Something went wrong with saving data!', 'smaily' ),
+		);
+		// add translations to JS.
+		wp_localize_script(
+			'smailypluginscript',
+			'smaily_translations',
+			$translations
+		);
 	}
 
 	/**
@@ -49,10 +78,7 @@ class Enqueue {
 	 */
 	public function enqueue_front_scripts() {
 		// enque css and js.
-		wp_enqueue_style( 'mypluginstyle', SMAILY_PLUGIN_URL . 'static/front-style.css', array(), SMAILY_PLUGIN_VERSION );
-
+		wp_enqueue_style( 'smailypluginstyle', SMAILY_PLUGIN_URL . 'static/front-style.css', array(), SMAILY_PLUGIN_VERSION );
 	}
-
-
 
 }

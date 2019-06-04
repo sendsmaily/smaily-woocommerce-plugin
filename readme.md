@@ -137,6 +137,10 @@ Up to 10 products can be received in Smaily templating engine. You can refrence 
 
 ## Changelog
 
+### 1.3.2
+
+- Add Estonian language support.
+
 ### 1.3.1
 
 - Fixes plugin styles affecting admin panel styles (#22)

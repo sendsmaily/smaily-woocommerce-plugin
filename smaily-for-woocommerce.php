@@ -12,8 +12,8 @@
  * @wordpress-plugin
  * Plugin Name: Smaily for WooCommerce
  * Plugin URI: https://github.com/sendsmaily/smaily-woocommerce-plugin
- * Description: Smaily email marketing and automation extension plugin for WooCommerce (set up opt-in form, client sync and output RSS-feed) for easy product import into template.
- * Version: 1.3.1
+ * Description: Smaily email marketing and automation extension plugin for WooCommerce. Set up easy sync for your contacts, add opt-in subscription form, import products directly to your email template and send abandoned cart reminder emails.
+ * Version: 1.3.2
  * License: GPL3
  * Author: Smaily
  * Author URI: https://smaily.com/
@@ -53,7 +53,7 @@ use Smaily_Inc\Base\Cron;
 define( 'SMAILY_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'SMAILY_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'SMAILY_PLUGIN_NAME', plugin_basename( __FILE__ ) );
-define( 'SMAILY_PLUGIN_VERSION', '1.3.1' );
+define( 'SMAILY_PLUGIN_VERSION', '1.3.2' );
 
 // Required to use functions is_plugin_active and deactivate_plugins.
 require_once ABSPATH . 'wp-admin/includes/plugin.php';
@@ -75,7 +75,8 @@ if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
 	if ( ! class_exists( 'Smaily_Inc\\Init.php' ) ) {
 		Smaily_Inc\Init::register_services();
 	}
-
+	// Load translations.
+	add_action( 'plugins_loaded', 'smaily_for_woocommerce_load_textdomain' );
 	// register activation hook.
 	register_activation_hook( __FILE__, 'activate_smaily_plugin' );
 	// register deactivation hook.
@@ -91,12 +92,21 @@ if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
 }
 
 /**
+ * Add translation folder to plugin.
+ */
+function smaily_for_woocommerce_load_textdomain() {
+	load_plugin_textdomain( 'smaily', false, basename( dirname( __FILE__ ) ) . '/lang' );
+
+}
+
+/**
  * Display error message to user if WooCommerce not installed.
  *
  * @return void
  */
 function smaily_plugin_admin_notices() {
-	echo "<div class='update-message notice inline notice-warning notice-alt'><p> Woocommerce  Smaily not able to activate . Woocommerce needed to function properly. Is WooCommerce installed?</p></div>";
+	$message = __( 'Smaily for WooCommerce is not able to activate . WooCommerce needed to function properly. Is WooCommerce installed?', 'smaily' );
+	echo "<div class='update-message notice inline notice-warning notice-alt'><p>" . esc_html( $message ) . '</p></div>';
 }
 
 /**
