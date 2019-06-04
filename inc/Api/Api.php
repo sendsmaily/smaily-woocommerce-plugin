@@ -292,7 +292,7 @@ class Api {
 	 * @param string $method    GET or POST method.
 	 * @return array $response  Response from Smaily API
 	 */
-	public static function ApiCall( string $endpoint, string $params = '', array $data = [], $method = 'GET' ) {
+	public static function ApiCall( $endpoint, $params = '', array $data = [], $method = 'GET' ) {
 		// Response.
 		$response = [];
 		// Smaily settings from database.
