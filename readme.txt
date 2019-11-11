@@ -5,7 +5,7 @@ Requires PHP: 5.6
 Requires at least: 4.0
 Tested up to: 5.3
 WC tested up to: 3.8.0
-Stable tag: 1.3.3
+Stable tag: 1.3.4
 License: GPLv3
 
 Simple and flexible Smaily newsletter and rss-feed integration for WooCommerce.
@@ -145,6 +145,9 @@ Up to 10 products can be received in Smaily templating engine. You can refrence 
 
 == Changelog ==
 
+### 1.3.4
+
+- Compatibility with Wordpress 5.3 and WooCommerce 3.8.0
 
 ### 1.3.3
 

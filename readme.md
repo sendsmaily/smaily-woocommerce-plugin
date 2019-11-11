@@ -137,6 +137,10 @@ Up to 10 products can be received in Smaily templating engine. You can refrence 
 
 ## Changelog
 
+### 1.3.4
+
+- Compatibility with Wordpress 5.3 and WooCommerce 3.8.0
+
 ### 1.3.3
 
 - Support for PHP 5.6
