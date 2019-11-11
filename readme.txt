@@ -3,9 +3,9 @@ Contributors: sendsmaily, kaarel
 Tags: woocommerce, smaily, newsletter, email
 Requires PHP: 5.6
 Requires at least: 4.0
-Tested up to: 5.2.1
-WC tested up to: 3.6.4
-Stable tag: 1.3.3
+Tested up to: 5.3
+WC tested up to: 3.8.0
+Stable tag: 1.3.4
 License: GPLv3
 
 Simple and flexible Smaily newsletter and rss-feed integration for WooCommerce.
@@ -81,7 +81,7 @@ All development for Smaily for WooCommerce is [handled via GitHub](https://githu
 9. Cron is set up to synchronize contacts daily. To view and manage cron settings use Cron plugins for example "WP Crontrol".
 10. That's it, your WooCommerce store is now integrated with Smaily Plugin!
 
-== Frequently Asked Questions == 
+== Frequently Asked Questions ==
 
 = How to set up widget for signup form? =
 
@@ -145,6 +145,9 @@ Up to 10 products can be received in Smaily templating engine. You can refrence 
 
 == Changelog ==
 
+### 1.3.4
+
+- Compatibility with Wordpress 5.3 and WooCommerce 3.8.0
 
 ### 1.3.3
 
