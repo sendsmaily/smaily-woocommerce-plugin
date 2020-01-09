@@ -6,13 +6,11 @@ services:
     restart: always
     ports:
       - 8080:80
-    depends_on:
-      - wordpress_db
     environment:
       WORDPRESS_DB_HOST: wordpress_db
       WORDPRESS_DB_PASSWORD: examplepass
     volumes:
-      - ./www/html:/var/www/html
+      - wordpress:/var/www/html
       - ./:/var/www/html/wp-content/plugins/smaily-woocommerce-plugin
 
   wordpress_db:
@@ -22,6 +20,7 @@ services:
       MYSQL_DATABASE: wordpress
       MYSQL_ROOT_PASSWORD: examplepass
     volumes:
-      - wordpress_data:/var/lib/mysql
+      - wordpress_db:/var/lib/mysql
 volumes:
-  wordpress_data:
+  wordpress:
+  wordpress_db:
