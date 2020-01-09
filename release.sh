@@ -109,6 +109,9 @@ rm -f trunk/CHANGELOG.txt
 rm -f trunk/CONTRIBUTING.md
 rm -f trunk/CODE_OF_CONDUCT.md
 rm -f trunk/release.sh
+rm -f docker-compose.yml
+rm -f Dockerfile
+rm -Rf www
 
 # DO THE ADD ALL NOT KNOWN FILES UNIX COMMAND
 svn add --force * --auto-props --parents --depth infinity -q

@@ -2,7 +2,7 @@
 FROM wordpress:5.3.0-php7.3-apache
 
 # install curl and jq
-RUN apt update && apt install -y jq curl
+RUN apt-get update && apt-get install -y jq curl
 
 # install latest tested release of woocommerce from github
 RUN mkdir /usr/src/wordpress/wp-content/plugins/woocommerce \
