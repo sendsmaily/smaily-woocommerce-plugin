@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+  wordpress:
+    build: docker
+    restart: always
+    ports:
+      - 8080:80
+    depends_on:
+      - wordpress_db
+    environment:
+      WORDPRESS_DB_HOST: wordpress_db
+      WORDPRESS_DB_PASSWORD: examplepass
+    volumes:
+      - ./docker/www/html:/var/www/html
+      - ./:/var/www/html/wp-content/plugins/smaily-woocommerce-plugin
+
+  wordpress_db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_ROOT_PASSWORD: examplepass
+    volumes:
+      - wordpress_data:/var/lib/mysql
+volumes:
+  wordpress_data:
