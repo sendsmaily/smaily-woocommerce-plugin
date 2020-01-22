@@ -190,16 +190,16 @@ $autoresponder_list = DataHandler::get_autoresponder_list();
 						<?php
 						// All available option fields.
 						$sync_options = [
-							'store'            => __( 'Store Name', 'smaily' ),
-							'customer_group'   => __( 'Customer Group', 'smaily' ),
-							'customer_id'      => __( 'Customer ID', 'smaily' ),
-							'first_registered' => __( 'First Registered', 'smaily' ),
+							'store'            => __( 'Store URL', 'smaily' ),
 							'first_name'       => __( 'Firstname', 'smaily' ),
 							'last_name'        => __( 'Lastname', 'smaily' ),
 							'nickname'         => __( 'Nickname', 'smaily' ),
+							'customer_group'   => __( 'Customer Group', 'smaily' ),
+							'customer_id'      => __( 'Customer ID', 'smaily' ),
+							'first_registered' => __( 'First Registered', 'smaily' ),
 							'user_dob'         => __( 'Date Of Birth', 'smaily' ),
 							'user_gender'      => __( 'Gender', 'smaily' ),
-							'user_url'         => __( 'Website', 'smaily' ),
+							'user_url'         => __( 'Customer Website URL', 'smaily' ),
 							'user_phone'       => __( 'Phone', 'smaily' ),
 						];
 						// Add options for select and select them if allready saved before.
@@ -345,7 +345,7 @@ $autoresponder_list = DataHandler::get_autoresponder_list();
 		</div>
 
 		</div>
-		<button type="submit" name="save" class="button-primary"> 
+		<button type="submit" name="save" class="button-primary">
 		<?php echo esc_html__( 'Save Settings', 'smaily' ); ?>
 		</button>
 	</form>
