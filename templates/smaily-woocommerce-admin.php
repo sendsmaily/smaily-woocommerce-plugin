@@ -199,7 +199,6 @@ $autoresponder_list = DataHandler::get_autoresponder_list();
 							'first_registered' => __( 'First Registered', 'smaily' ),
 							'user_dob'         => __( 'Date Of Birth', 'smaily' ),
 							'user_gender'      => __( 'Gender', 'smaily' ),
-							'user_url'         => __( 'Customer Website URL', 'smaily' ),
 							'user_phone'       => __( 'Phone', 'smaily' ),
 						];
 						// Add options for select and select them if allready saved before.

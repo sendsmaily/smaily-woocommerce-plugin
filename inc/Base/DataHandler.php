@@ -179,7 +179,6 @@ class DataHandler {
 		$lastname         = isset( $user_meta['last_name'][0] ) ? $user_meta['last_name'][0] : '';
 		$nickname         = isset( $user_meta['nickname'][0] ) ? $user_meta['nickname'][0] : '';
 		$first_registered = isset( $user_data->user_registered ) ? $user_data->user_registered : '';
-		$website          = isset( $user_data->user_url ) ? $user_data->user_url : '';
 		$phone            = isset( $user_meta['user_phone'][0] ) ? $user_meta['user_phone'][0] : '';
 		// All user data.
 		$all_user_data = array(
@@ -193,7 +192,6 @@ class DataHandler {
 			'nickname'         => $nickname,
 			'user_dob'         => $birthday,
 			'user_gender'      => $gender,
-			'user_url'         => $website,
 			'user_phone'       => $phone,
 		);
 
