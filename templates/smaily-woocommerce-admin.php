@@ -190,16 +190,16 @@ $autoresponder_list = DataHandler::get_autoresponder_list();
 						<?php
 						// All available option fields.
 						$sync_options = [
-							'store'            => __( 'Store URL', 'smaily' ),
-							'first_name'       => __( 'Firstname', 'smaily' ),
-							'last_name'        => __( 'Lastname', 'smaily' ),
-							'nickname'         => __( 'Nickname', 'smaily' ),
 							'customer_group'   => __( 'Customer Group', 'smaily' ),
 							'customer_id'      => __( 'Customer ID', 'smaily' ),
-							'first_registered' => __( 'First Registered', 'smaily' ),
 							'user_dob'         => __( 'Date Of Birth', 'smaily' ),
+							'first_registered' => __( 'First Registered', 'smaily' ),
+							'first_name'       => __( 'Firstname', 'smaily' ),
 							'user_gender'      => __( 'Gender', 'smaily' ),
+							'last_name'        => __( 'Lastname', 'smaily' ),
+							'nickname'         => __( 'Nickname', 'smaily' ),
 							'user_phone'       => __( 'Phone', 'smaily' ),
+							'store'            => __( 'Store URL', 'smaily' ),
 						];
 						// Add options for select and select them if allready saved before.
 						foreach ( $sync_options as $value => $name ) {
