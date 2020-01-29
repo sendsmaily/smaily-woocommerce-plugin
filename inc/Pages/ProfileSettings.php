@@ -126,16 +126,6 @@ class ProfileSettings {
 					'hide_in_registration' => false,
 
 				),
-				'user_url'    => array(
-					'type'                 => 'text',
-					'label'                => __( 'Website', 'smaily' ),
-					'required'             => false,
-					'class'                => array( 'regular-text' ),
-					'hide_in_account'      => false,
-					'hide_in_admin'        => true,
-					'hide_in_checkout'     => false,
-					'hide_in_registration' => false,
-				),
 			);
 
 			$add_fields = array(
@@ -190,7 +180,7 @@ class ProfileSettings {
 		// Get available account fields.
 		$fields = $this->smaily_get_account_fields();
 		// Fields to append to billing information.
-		$billing_details_list = [ 'user_gender', 'user_phone', 'user_dob', 'user_url' ];
+		$billing_details_list = [ 'user_gender', 'user_phone', 'user_dob' ];
 		// Fields to append to Additional information.
 		$order_details_list = [ 'user_newsletter' ];
 
@@ -352,7 +342,6 @@ class ProfileSettings {
 			'user_pass',
 			'user_login',
 			'user_nicename',
-			'user_url',
 			'user_email',
 			'display_name',
 			'nickname',
