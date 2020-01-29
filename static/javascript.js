@@ -77,13 +77,6 @@
           } else {
             // Add autoresponders to autoresponders list inside next form.
             $.each(data, function(index, item) {
-              // Sync autoresponders list
-              $("#autoresponders-list").append(
-                $("<option>", {
-                  value: JSON.stringify({ name: item["name"], id: item["id"] }),
-                  text: item["name"]
-                })
-              );
               // Abandoned cart autoresponders list.
               $("#cart-autoresponders-list").append(
                 $("<option>", {
