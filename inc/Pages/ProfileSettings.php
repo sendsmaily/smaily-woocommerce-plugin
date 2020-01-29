@@ -180,7 +180,7 @@ class ProfileSettings {
 		// Get available account fields.
 		$fields = $this->smaily_get_account_fields();
 		// Fields to append to billing information.
-		$billing_details_list = [ 'user_gender', 'user_phone', 'user_dob'];
+		$billing_details_list = [ 'user_gender', 'user_phone', 'user_dob' ];
 		// Fields to append to Additional information.
 		$order_details_list = [ 'user_newsletter' ];
 
