@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Smaily for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-29 08:41+0000\n"
-"PO-Revision-Date: 2020-01-29 08:55+0000\n"
+"POT-Creation-Date: 2020-01-29 11:02+0000\n"
+"PO-Revision-Date: 2020-01-29 11:03+0000\n"
 "Last-Translator: kaarel.rooparg@gmail.com <kaarel.rooparg@gmail.com>\n"
 "Language-Team: Eesti\n"
 "Language: et\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.3.1; wp-5.3"
+"X-Loco-Version: 2.3.1; wp-5.3.2"
 
 #: smaily-for-woocommerce.php:108
 msgid ""
@@ -227,43 +227,47 @@ msgstr "Minimaalne aeg 10 minutit."
 msgid "Save Settings"
 msgstr "Salvesta"
 
-#: inc/Api/Api.php:80
+#: inc/Api/Api.php:78
 msgid "Please enter subdomain!"
 msgstr "Palun sisesta alamdomeen!"
 
-#: inc/Api/Api.php:87
+#: inc/Api/Api.php:81
 msgid "Please enter username!"
 msgstr "Palun sisesta kasutajatunnus!"
 
-#: inc/Api/Api.php:115
+#: inc/Api/Api.php:84
+msgid "Please enter password!"
+msgstr "Palun sisesta parool!"
+
+#: inc/Api/Api.php:101
 msgid "Invalid API credentials, no connection !"
 msgstr "Vale kasutajatunnus või parool, ühendus puudub!"
 
-#: inc/Api/Api.php:122
+#: inc/Api/Api.php:104
 msgid "Invalid subdomain, no connection !"
 msgstr "Vale alamdomeen, ühendus puudub!"
 
-#: inc/Api/Api.php:235
+#: inc/Api/Api.php:215
 msgid "Select autoresponder for abandoned cart!"
 msgstr "Vali unustatud ostukorvi automaatvastaja!"
 
-#: inc/Api/Api.php:244
+#: inc/Api/Api.php:224
 msgid "Abandoned cart cutoff time value must be 10 or higher!"
 msgstr "Unustatud ostukorvi viivitus peab olema vähemalt 10 minutit!"
 
-#: inc/Api/Api.php:267
+#: inc/Api/Api.php:247
 msgid "Settings updated!"
 msgstr "Sätted uuendatud!"
 
-#: inc/Api/Api.php:271
+#: inc/Api/Api.php:251
 msgid "Settings saved!"
 msgstr "Sätted salvestatud!"
 
-#: inc/Api/Api.php:275
+#: inc/Api/Api.php:255
 msgid "Something went wrong saving settings!"
 msgstr "Midagi läks sätete salvestamisel valesti!"
 
-#: inc/Api/Api.php:324
+#: inc/Api/Api.php:304
 msgid "Check details, no connection !"
 msgstr "Kontrolli sisselogimisandmeid, ühendus puudub!"
 
