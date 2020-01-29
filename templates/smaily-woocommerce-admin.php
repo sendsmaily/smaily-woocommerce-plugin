@@ -199,11 +199,11 @@ $autoresponder_list = DataHandler::get_autoresponder_list();
 							'last_name'        => __( 'Lastname', 'smaily' ),
 							'nickname'         => __( 'Nickname', 'smaily' ),
 							'user_phone'       => __( 'Phone', 'smaily' ),
-							'store'            => __( 'Store URL', 'smaily' ),
+							'site_title'       => __( 'Site Title', 'smaily' ),
 						];
 						// Add options for select and select them if allready saved before.
 						foreach ( $sync_options as $value => $name ) {
-							$selected = in_array( $value, $sync_additional ) ? 'selected' : "";
+							$selected = in_array( $value, $sync_additional ) ? 'selected' : '';
 							echo( "<option value='$value' $selected>$name</option>" );
 						}
 						?>
@@ -213,7 +213,7 @@ $autoresponder_list = DataHandler::get_autoresponder_list();
 							class="form-text text-muted">
 							<?php
 							echo esc_html__(
-								'Select fields you wish to synchronize along with subscriber email',
+								'Select fields you wish to synchronize along with subscriber email and store URL',
 								'smaily'
 							);
 							?>

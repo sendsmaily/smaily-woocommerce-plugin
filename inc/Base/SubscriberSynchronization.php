@@ -65,8 +65,7 @@ class SubscriberSynchronization {
 		$data = [];
 
 		// Add store url for refrence in Smaily database.
-		$store = get_site_url();
-		$data['store'] = isset( $store ) ? $store : 'woocommerce';
+		$data['store'] = get_site_url();
 
 		// Language code if using WPML.
 		$lang = '';

@@ -180,10 +180,10 @@ class DataHandler {
 		$nickname         = isset( $user_meta['nickname'][0] ) ? $user_meta['nickname'][0] : '';
 		$first_registered = isset( $user_data->user_registered ) ? $user_data->user_registered : '';
 		$phone            = isset( $user_meta['user_phone'][0] ) ? $user_meta['user_phone'][0] : '';
+		$site_title       = get_bloginfo( 'name' ) ? get_bloginfo( 'name' ) : '';
 		// All user data.
 		$all_user_data = array(
 			'email'            => $email,
-			'store'            => get_site_url(),
 			'customer_group'   => $customer_group,
 			'customer_id'      => $user_id,
 			'first_registered' => $first_registered,
@@ -193,25 +193,28 @@ class DataHandler {
 			'user_dob'         => $birthday,
 			'user_gender'      => $gender,
 			'user_phone'       => $phone,
+			'site_title'       => $site_title,
 		);
 
-		// Only sync fields selected from admin panel.
-		$admin_sync_fields = array( 'email' => $email );
-		// If some fields selected add to return value.
+		// Default values that are always synced.
+		$user_sync_data = array(
+			'email' => $email,
+			'store' => get_site_url(),
+		);
+		// Sync also fields selected from admin panel.
 		if ( ! empty( $syncronize_additional ) ) {
 			foreach ( $syncronize_additional as $sync_option ) {
-				$admin_sync_fields[ $sync_option ] = $all_user_data[ $sync_option ];
+				$user_sync_data[ $sync_option ] = $all_user_data[ $sync_option ];
 			}
 		}
 
-		return $admin_sync_fields;
-
+		return $user_sync_data;
 	}
 
 	/**
 	 * Gets form_submitted autoresponders list from Smaily if user has validated API credentials.
 	 *
-	 * @return void
+	 * @return array
 	 */
 	public static function get_autoresponder_list() {
 		$response = [];
