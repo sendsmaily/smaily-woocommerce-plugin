@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Smaily for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-29 08:41+0000\n"
+"POT-Creation-Date: 2020-01-29 11:02+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -217,43 +217,47 @@ msgstr ""
 msgid "Save Settings"
 msgstr ""
 
-#: inc/Api/Api.php:80
+#: inc/Api/Api.php:78
 msgid "Please enter subdomain!"
 msgstr ""
 
-#: inc/Api/Api.php:87
+#: inc/Api/Api.php:81
 msgid "Please enter username!"
 msgstr ""
 
-#: inc/Api/Api.php:115
+#: inc/Api/Api.php:84
+msgid "Please enter password!"
+msgstr ""
+
+#: inc/Api/Api.php:101
 msgid "Invalid API credentials, no connection !"
 msgstr ""
 
-#: inc/Api/Api.php:122
+#: inc/Api/Api.php:104
 msgid "Invalid subdomain, no connection !"
 msgstr ""
 
-#: inc/Api/Api.php:235
+#: inc/Api/Api.php:215
 msgid "Select autoresponder for abandoned cart!"
 msgstr ""
 
-#: inc/Api/Api.php:244
+#: inc/Api/Api.php:224
 msgid "Abandoned cart cutoff time value must be 10 or higher!"
 msgstr ""
 
-#: inc/Api/Api.php:267
+#: inc/Api/Api.php:247
 msgid "Settings updated!"
 msgstr ""
 
-#: inc/Api/Api.php:271
+#: inc/Api/Api.php:251
 msgid "Settings saved!"
 msgstr ""
 
-#: inc/Api/Api.php:275
+#: inc/Api/Api.php:255
 msgid "Something went wrong saving settings!"
 msgstr ""
 
-#: inc/Api/Api.php:324
+#: inc/Api/Api.php:304
 msgid "Check details, no connection !"
 msgstr ""
 
