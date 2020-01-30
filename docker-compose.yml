@@ -8,7 +8,7 @@ services:
       - 8080:80
     environment:
       WORDPRESS_DB_HOST: wordpress_db
-      WORDPRESS_DB_PASSWORD: examplepass
+      WORDPRESS_DB_PASSWORD: smailydev1
     volumes:
       - wordpress:/var/www/html
       - ./:/var/www/html/wp-content/plugins/smaily-woocommerce-plugin
@@ -18,7 +18,7 @@ services:
     restart: always
     environment:
       MYSQL_DATABASE: wordpress
-      MYSQL_ROOT_PASSWORD: examplepass
+      MYSQL_ROOT_PASSWORD: smailydev1
     volumes:
       - wordpress_db:/var/lib/mysql
   phpmyadmin:
@@ -30,7 +30,7 @@ services:
       - '8888:80'
     environment:
       PMA_HOST: wordpress_db
-      MYSQL_ROOT_PASSWORD: smaily1
+      MYSQL_ROOT_PASSWORD: smailydev1
 volumes:
   wordpress:
   wordpress_db:
