@@ -28,7 +28,8 @@ class SettingLinks {
 	public function settings_link( $links ) {
 		// receive all current links and add custom link to the list.
 		$settings_link = '<a href="admin.php?page=smaily-settings">' . esc_html__( 'Settings', 'smaily' ) . '</a>';
-		array_push( $links, $settings_link );
+		// Settings before disable.
+		array_unshift( $links, $settings_link );
 		return $links;
 	}
 }
