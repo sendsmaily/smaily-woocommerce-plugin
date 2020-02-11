@@ -61,7 +61,7 @@ class Cron {
 			);
 
 			// Make API call to Smaily to get unsubscribers.
-			$unsubscribers = Api::ApiCall( 'contact', '' , [ 'body' => $data ] );
+			$unsubscribers = Api::ApiCall( 'contact', '', [ 'body' => $data ] );
 			// List of unsubscribed emails.
 			$unsubscribers_emails = [];
 			foreach ( $unsubscribers as $key => $value ) {
@@ -165,18 +165,14 @@ class Cron {
 				}
 			}
 
-			// Get cart page url.
-			$cart_page_id          = wc_get_page_id( 'cart' ); // TODO: check if page ostukorv or smth?
-			$cart_page_url         = $cart_page_id ? get_permalink( $cart_page_id ) : '';
-			$addresses['cart_url'] = $cart_page_url;
 			// Products data values available.
 			$cart_sync_values = [
 				'product_name',
 				'product_description',
 				'product_sku',
 				'product_quantity',
-				'product_description_short',  // TODO: is it necessary?
-				'product_subtotal',			 // TODO: is it necessary?
+				'product_base_price',
+				'product_price',
 			];
 			// Add empty product data for addresses. Fields available would be filled out later with data.
 			// Required for legacy API so that all fields are always updated.
@@ -185,53 +181,63 @@ class Cron {
 					$addresses[ $key . '_' . $i ] = '';
 				}
 			}
+			$selected_fields = array_intersect( $cart_sync_values, $results['cart_options'] );
 			// Gather products data if user has selected at least one of additional product field to sync.
-			if ( ! empty( array_intersect( $cart_sync_values, $results['cart_options'] ) ) ) {
+			if ( ! empty( $selected_fields ) ) {
 				$products_data = [];
 				foreach ( $cart_data as $cart_item ) {
 					// Single product detais array.
 					$product = [];
-					$details = wc_get_product( $cart_item['product_id'] ); // Get product by ID.
 					// Get product details if selected from user settings.
-					if ( in_array( 'product_name', $results['cart_options'], true ) ) {
-						$product['name'] = htmlspecialchars( $details->get_name() );
+					$details = wc_get_product( $cart_item['product_id'] );
+					foreach ( $selected_fields as $selected_field ) {
+						switch ( $selected_field ) {
+							case 'product_name':
+								$product['product_name'] = $details->get_name();
+								break;
+							case 'product_description':
+								$product['product_description'] = $details->get_description();
+								break;
+							case 'product_sku':
+								$product['product_sku'] = $details->get_sku();
+								break;
+							case 'product_quantity':
+								$product['product_quantity'] = $cart_item['quantity'];
+								break;
+							case 'product_price':
+								$product['product_price'] = $this->get_sale_price( $details );
+								break;
+							case 'product_base_price':
+								$product['product_base_price'] = $this->get_base_price( $details );
+								break;
+							default:
+								break;
+						}
 					}
-					if ( in_array( 'product_description', $results['cart_options'], true ) ) {
-						$product['description'] = htmlspecialchars( $details->get_description() );
-					}
-					if ( in_array( 'product_sku', $results['cart_options'], true ) ) {
-						$product['sku'] = htmlspecialchars( $details->get_sku() );
-					}
-					if ( in_array( 'product_description_short', $results['cart_options'], true ) ) {
-						$product['description_short'] = htmlspecialchars( $details->get_short_description() );
-					}
-					if ( in_array( 'product_quantity', $results['cart_options'], true ) ) {
-						$product['quantity'] = htmlspecialchars( $cart_item['quantity'] );
-					}
-					if ( in_array( 'product_subtotal', $results['cart_options'], true ) ) {
-						$product['subtotal'] = htmlspecialchars( $cart_item['line_subtotal'] );
-					}
-					// TODO: check product_price and product_base_price fields.
+
 					$products_data[] = $product;
 				}
 
 				// Append products array to API api call. Up to 10 product details.
 				$i = 1;
 				foreach ( $products_data as $product ) {
-					if ( $i <= 10 ) {
-						foreach ( $product as $key => $value ) {
-							$addresses[ 'product_' . $key . '_' . $i ] = htmlspecialchars( $value );
-						}
-						$i++;
+					if ( $i > 10 ) {
+						$addresses['over_10_products'] = 'true';
+						break;
 					}
+
+					foreach ( $product as $key => $value ) {
+						$addresses[ $key . '_' . $i ] = htmlspecialchars( $value );
+					}
+					$i++;
 				}
 			}
+
 			// Query for Smaily autoresponder.
 			$query = [
 				'autoresponder' => $results['result']['cart_autoresponder_id'], // autoresponder ID.
 				'addresses'     => [ $addresses ],
 			];
-
 			// Send data to Smaily.
 			$response = Api::ApiCall( 'autoresponder', '', [ 'body' => $query ], 'POST' );
 			// If data sent successfully update mail_sent status in database.
@@ -245,9 +251,47 @@ class Cron {
 	}
 
 	/**
+	 * Get product sale display price without html tags.
+	 *
+	 * @param WC_Product $product WooCommerce product object.
+	 * @return string
+	 */
+	public function get_sale_price( $product ) {
+		$price = wc_price(
+			wc_get_price_to_display(
+				$product,
+				array(
+					'price' => $product->get_sale_price(),
+				)
+			)
+		);
+
+		return wp_strip_all_tags( $price );
+	}
+
+	/**
+	 * Get product regular display price without html tags.
+	 *
+	 * @param WC_Product $product WooCommerce product object.
+	 * @return string
+	 */
+	public function get_base_price( $product ) {
+		$price = wc_price(
+			wc_get_price_to_display(
+				$product,
+				array(
+					'price' => $product->get_regular_price(),
+				)
+			)
+		);
+
+		return wp_strip_all_tags( $price );
+	}
+
+	/**
 	 * Update mail_sent and mail_sent_time status in smaily_abandoned_carts table.
 	 *
-	 * @param int $customer_id Customer ID
+	 * @param int $customer_id Customer ID.
 	 * @return void
 	 */
 	public function update_mail_sent_status( $customer_id ) {
@@ -268,7 +312,7 @@ class Cron {
 	}
 
 	/**
-	 * Get abandoned carts from smaily_abandoned_carts table
+	 * Get abandoned carts from smaily_abandoned_carts table.
 	 *
 	 * @return array
 	 */
