@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Smaily for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-29 08:41+0000\n"
+"POT-Creation-Date: 2020-02-11 14:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -172,48 +172,52 @@ msgid "Product Name"
 msgstr ""
 
 #: templates/smaily-woocommerce-admin.php:300
-msgid "Product Description (long)"
+msgid "Product Description"
 msgstr ""
 
 #: templates/smaily-woocommerce-admin.php:301
-msgid "Product Description (short)"
-msgstr ""
-
-#: templates/smaily-woocommerce-admin.php:302
 msgid "Product SKU"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:303
+#: templates/smaily-woocommerce-admin.php:302
 msgid "Product Quantity"
 msgstr ""
 
+#: templates/smaily-woocommerce-admin.php:303
+msgid "Product Base Price"
+msgstr ""
+
 #: templates/smaily-woocommerce-admin.php:304
+msgid "Product Price"
+msgstr ""
+
+#: templates/smaily-woocommerce-admin.php:305
 msgid "Product Row Subtotal"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:315
+#: templates/smaily-woocommerce-admin.php:316
 msgid ""
 "Select fields wish to send to Smaily template along with subscriber email "
 "and store url."
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:326
+#: templates/smaily-woocommerce-admin.php:327
 msgid "Cart cutoff time"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:329
+#: templates/smaily-woocommerce-admin.php:330
 msgid "Consider cart abandoned after:"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:336
+#: templates/smaily-woocommerce-admin.php:337
 msgid "minute(s)"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:338
+#: templates/smaily-woocommerce-admin.php:339
 msgid "Minimum 10 minutes."
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:348
+#: templates/smaily-woocommerce-admin.php:349
 msgid "Save Settings"
 msgstr ""
 

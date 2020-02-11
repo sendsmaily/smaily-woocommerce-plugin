@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Smaily for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-29 08:41+0000\n"
-"PO-Revision-Date: 2020-01-29 08:54+0000\n"
+"POT-Creation-Date: 2020-02-11 14:40+0000\n"
+"PO-Revision-Date: 2020-02-11 14:41+0000\n"
 "Last-Translator: kaarel.rooparg@gmail.com <kaarel.rooparg@gmail.com>\n"
 "Language-Team: Estonian (Estonia)\n"
 "Language: et_EE\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.3.1; wp-5.3"
+"X-Loco-Version: 2.3.1; wp-5.3.2"
 
 #: smaily-for-woocommerce.php:108
 msgid ""
@@ -180,26 +180,30 @@ msgid "Product Name"
 msgstr "Toote nimi"
 
 #: templates/smaily-woocommerce-admin.php:300
-msgid "Product Description (long)"
-msgstr "Toote kirjeldus (pikk)"
+msgid "Product Description"
+msgstr "Toote kirjeldus"
 
 #: templates/smaily-woocommerce-admin.php:301
-msgid "Product Description (short)"
-msgstr "Toote kirjeldus (lühike)"
-
-#: templates/smaily-woocommerce-admin.php:302
 msgid "Product SKU"
 msgstr "Toote SKU"
 
-#: templates/smaily-woocommerce-admin.php:303
+#: templates/smaily-woocommerce-admin.php:302
 msgid "Product Quantity"
 msgstr "Toote kogus"
 
+#: templates/smaily-woocommerce-admin.php:303
+msgid "Product Base Price"
+msgstr "Toote alghind"
+
 #: templates/smaily-woocommerce-admin.php:304
+msgid "Product Price"
+msgstr "Toote hind"
+
+#: templates/smaily-woocommerce-admin.php:305
 msgid "Product Row Subtotal"
 msgstr "Toote rea kogusumma"
 
-#: templates/smaily-woocommerce-admin.php:315
+#: templates/smaily-woocommerce-admin.php:316
 msgid ""
 "Select fields wish to send to Smaily template along with subscriber email "
 "and store url."
@@ -207,23 +211,23 @@ msgstr ""
 "Vali väärtused, mis soovid lisada Smaily kirja mallile. Automaatselt "
 "saadetakse kasutaja email ja poe internetiaadress."
 
-#: templates/smaily-woocommerce-admin.php:326
+#: templates/smaily-woocommerce-admin.php:327
 msgid "Cart cutoff time"
 msgstr "Ostukorvi unustamise viivitus"
 
-#: templates/smaily-woocommerce-admin.php:329
+#: templates/smaily-woocommerce-admin.php:330
 msgid "Consider cart abandoned after:"
 msgstr "Ostukorv loetakse unustatuks peale:"
 
-#: templates/smaily-woocommerce-admin.php:336
+#: templates/smaily-woocommerce-admin.php:337
 msgid "minute(s)"
 msgstr "minutit"
 
-#: templates/smaily-woocommerce-admin.php:338
+#: templates/smaily-woocommerce-admin.php:339
 msgid "Minimum 10 minutes."
 msgstr "Minimaalne aeg 10 minutit."
 
-#: templates/smaily-woocommerce-admin.php:348
+#: templates/smaily-woocommerce-admin.php:349
 msgid "Save Settings"
 msgstr "Salvesta"
 
