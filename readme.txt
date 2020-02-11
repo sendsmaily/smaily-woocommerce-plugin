@@ -5,7 +5,7 @@ Requires PHP: 5.6
 Requires at least: 4.0
 Tested up to: 5.3.2
 WC tested up to: 3.9.1
-Stable tag: 1.3.5
+Stable tag: 1.4.0
 License: GPLv3
 
 Simple and flexible Smaily newsletter and rss-feed integration for WooCommerce.
@@ -117,21 +117,23 @@ List of all parameters available in Smaily email templating engine:
 
 - Customer last name: `{{ last_name }}`.
 
-- Cart page url: `{{ cart_url }}`.
-
-Up to 10 products can be received in Smaily templating engine. You can refrence each product with number 1-10 behind parameter name.
+Up to 10 products can be received in Smaily templating engine. You can reference each product with number 1-10 behind parameter name.
 
 - Product name: `{{ product_name_[1-10] }}`.
 
 - Product description: `{{ product_description_[1-10] }}`.
 
-- Product short description: `{{product_description_short_[1-10] }}`.
-
 - Product SKU: `{{ product_sku_[1-10] }}`.
 
 - Product quantity: `{{ product_quantity_[1-10] }}`.
 
-- Products row price subtotal: `{{ product_subtotal_[1-10] }}`.
+- Products price: `{{ product_price_[1-10] }}`.
+
+- Product base price : `{{ product_base_price_[1-10] }}`.
+
+Also you can determine if customer had more than 10 items in cart
+
+- More than 10 items: `{{ over_10_products }}`.
 
 
 == Screenshots ==
@@ -144,6 +146,12 @@ Up to 10 products can be received in Smaily templating engine. You can refrence 
 6. WooCommerce Smaily widget front screen.
 
 == Changelog ==
+
+### 1.4.0
+
+- Standardize Abandoned Cart email template parameters across integrations
+- Removed `product_description_short`, `cart_url` and `product_subtotal` parameters
+- Added `product_base_price` and `product_price` parameters
 
 ### 1.3.5
 
