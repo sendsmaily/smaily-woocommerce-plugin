@@ -297,10 +297,11 @@ $autoresponder_list = DataHandler::get_autoresponder_list();
 									'first_name'          => __( 'Customer First Name', 'smaily' ),
 									'last_name'           => __( 'Customer Last Name', 'smaily' ),
 									'product_name'        => __( 'Product Name', 'smaily' ),
-									'product_description' => __( 'Product Description (long)', 'smaily' ),
-									'product_description_short' => __( 'Product Description (short)', 'smaily' ),
+									'product_description' => __( 'Product Description', 'smaily' ),
 									'product_sku'         => __( 'Product SKU', 'smaily' ),
 									'product_quantity'    => __( 'Product Quantity', 'smaily' ),
+									'product_base_price'  => __( 'Product Base Price', 'smaily' ),
+									'product_price'       => __( 'Product Price', 'smaily' ),
 									'product_subtotal'    => __( 'Product Row Subtotal', 'smaily' ),
 								];
 								// Add options for select and select them if allready saved before.
