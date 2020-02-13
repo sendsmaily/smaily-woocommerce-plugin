@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Smaily for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-11 14:40+0000\n"
-"PO-Revision-Date: 2020-02-11 14:41+0000\n"
+"POT-Creation-Date: 2020-02-13 12:09+0000\n"
+"PO-Revision-Date: 2020-02-13 12:10+0000\n"
 "Last-Translator: kaarel.rooparg@gmail.com <kaarel.rooparg@gmail.com>\n"
 "Language-Team: Estonian\n"
 "Language: et\n"
@@ -199,11 +199,7 @@ msgstr "Toote alghind"
 msgid "Product Price"
 msgstr "Toote hind"
 
-#: templates/smaily-woocommerce-admin.php:305
-msgid "Product Row Subtotal"
-msgstr "Toote rea kogusumma"
-
-#: templates/smaily-woocommerce-admin.php:316
+#: templates/smaily-woocommerce-admin.php:315
 msgid ""
 "Select fields wish to send to Smaily template along with subscriber email "
 "and store url."
@@ -211,23 +207,23 @@ msgstr ""
 "Vali väärtused, mis soovid lisada Smaily kirja mallile. Automaatselt "
 "saadetakse kasutaja email ja poe internetiaadress."
 
-#: templates/smaily-woocommerce-admin.php:327
+#: templates/smaily-woocommerce-admin.php:326
 msgid "Cart cutoff time"
 msgstr "Ostukorvi unustamise viivitus"
 
-#: templates/smaily-woocommerce-admin.php:330
+#: templates/smaily-woocommerce-admin.php:329
 msgid "Consider cart abandoned after:"
 msgstr "Ostukorv loetakse unustatuks peale:"
 
-#: templates/smaily-woocommerce-admin.php:337
+#: templates/smaily-woocommerce-admin.php:336
 msgid "minute(s)"
 msgstr "minutit"
 
-#: templates/smaily-woocommerce-admin.php:339
+#: templates/smaily-woocommerce-admin.php:338
 msgid "Minimum 10 minutes."
 msgstr "Minimaalne aeg 10 minutit."
 
-#: templates/smaily-woocommerce-admin.php:349
+#: templates/smaily-woocommerce-admin.php:348
 msgid "Save Settings"
 msgstr "Salvesta"
 
@@ -343,6 +339,14 @@ msgstr "Smaily kasutajatunnused salvestatud!"
 #: inc/Base/Enqueue.php:64
 msgid "Something went wrong with saving data!"
 msgstr "Midagi läks valesti andmete salvestamisel!"
+
+#: inc/Base/Upgrade.php:101
+msgid ""
+"Smaily for Woocommerce plugin has changed abandoned cart exported fields.\n"
+"\t\t\t\tPlease check your plugin settings!"
+msgstr ""
+"Smaily WooCommerce-le on muutnud unustatud ostukorvi lisaväljasid. Palun "
+"kontrollige pistikmooduli sätteid!"
 
 #: inc/Base/SettingLinks.php:30
 msgid "Settings"

@@ -98,10 +98,12 @@ class Upgrade {
 	public function smaily_woocommerce_upgraded_notice() {
 
 		if ( get_transient( 'smaily_woocommerce_upgrade_1_4_0_notice' ) ) {
-			$message = 'Smaily for Woocommerce plugin has changed Abandoned Cart exported fields.' .
-					'Please check your plugin settings!';
-
-			echo ( '<div class="notice notice-warning"><p>' . esc_html__( $message, 'smaily' ) . '</p></div>' );
+			$message = __(
+				'Smaily for Woocommerce plugin has changed abandoned cart exported fields.
+				Please check your plugin settings!',
+				'smaily'
+			);
+			echo ( '<div class="notice notice-warning"><p>' . esc_html( $message ) . '</p></div>' );
 			delete_transient( 'smaily_woocommerce_upgrade_1_4_0_notice' );
 		}
 
