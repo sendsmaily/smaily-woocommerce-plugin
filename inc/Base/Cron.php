@@ -266,7 +266,7 @@ class Cron {
 			)
 		);
 
-		return wp_strip_all_tags( $price );
+		return wp_strip_all_tags( html_entity_decode( $price ) );
 	}
 
 	/**
@@ -285,7 +285,7 @@ class Cron {
 			)
 		);
 
-		return wp_strip_all_tags( $price );
+		return wp_strip_all_tags( html_entity_decode( $price ) );
 	}
 
 	/**
