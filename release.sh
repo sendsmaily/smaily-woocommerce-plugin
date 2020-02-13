@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # By Mike Jolley, based on work by Barry Kooij ;)
 # License: GPL v3
@@ -109,6 +109,7 @@ rm -f trunk/CHANGELOG.txt
 rm -f trunk/CONTRIBUTING.md
 rm -f trunk/CODE_OF_CONDUCT.md
 rm -f trunk/release.sh
+rm -f trunk/.vscode
 rm -f docker-compose.yml
 rm -f Dockerfile
 rm -Rf www
