@@ -302,7 +302,6 @@ $autoresponder_list = DataHandler::get_autoresponder_list();
 									'product_quantity'    => __( 'Product Quantity', 'smaily' ),
 									'product_base_price'  => __( 'Product Base Price', 'smaily' ),
 									'product_price'       => __( 'Product Price', 'smaily' ),
-									'product_subtotal'    => __( 'Product Row Subtotal', 'smaily' ),
 								];
 								// Add options for select and select them if allready saved before.
 								foreach ( $cart_fields as $value => $name ) {
