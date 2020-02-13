@@ -19,6 +19,7 @@ final class Init {
 		return array(
 			Pages\Admin::class,
 			Pages\ProfileSettings::class,
+			Base\Upgrade::class,
 			Base\Enqueue::class,
 			Base\SettingLinks::class,
 			Base\SubscriberSynchronization::class,
