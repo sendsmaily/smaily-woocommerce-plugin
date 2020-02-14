@@ -210,8 +210,6 @@ class Cron {
 							case 'product_base_price':
 								$product['product_base_price'] = $this->get_base_price( $details );
 								break;
-							default:
-								break;
 						}
 					}
 
