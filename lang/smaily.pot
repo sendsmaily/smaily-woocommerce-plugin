@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Smaily for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-29 08:41+0000\n"
+"POT-Creation-Date: 2020-02-13 12:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -172,23 +172,23 @@ msgid "Product Name"
 msgstr ""
 
 #: templates/smaily-woocommerce-admin.php:300
-msgid "Product Description (long)"
+msgid "Product Description"
 msgstr ""
 
 #: templates/smaily-woocommerce-admin.php:301
-msgid "Product Description (short)"
-msgstr ""
-
-#: templates/smaily-woocommerce-admin.php:302
 msgid "Product SKU"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:303
+#: templates/smaily-woocommerce-admin.php:302
 msgid "Product Quantity"
 msgstr ""
 
+#: templates/smaily-woocommerce-admin.php:303
+msgid "Product Base Price"
+msgstr ""
+
 #: templates/smaily-woocommerce-admin.php:304
-msgid "Product Row Subtotal"
+msgid "Product Price"
 msgstr ""
 
 #: templates/smaily-woocommerce-admin.php:315
@@ -328,6 +328,12 @@ msgstr ""
 
 #: inc/Base/Enqueue.php:64
 msgid "Something went wrong with saving data!"
+msgstr ""
+
+#: inc/Base/Upgrade.php:101
+msgid ""
+"Smaily for Woocommerce plugin has changed abandoned cart exported fields.\n"
+"\t\t\t\tPlease check your plugin settings!"
 msgstr ""
 
 #: inc/Base/SettingLinks.php:30

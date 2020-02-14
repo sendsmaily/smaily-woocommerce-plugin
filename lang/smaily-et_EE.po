@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Smaily for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-29 08:41+0000\n"
-"PO-Revision-Date: 2020-01-29 08:54+0000\n"
+"POT-Creation-Date: 2020-02-13 12:09+0000\n"
+"PO-Revision-Date: 2020-02-13 12:10+0000\n"
 "Last-Translator: kaarel.rooparg@gmail.com <kaarel.rooparg@gmail.com>\n"
 "Language-Team: Estonian (Estonia)\n"
 "Language: et_EE\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.3.1; wp-5.3"
+"X-Loco-Version: 2.3.1; wp-5.3.2"
 
 #: smaily-for-woocommerce.php:108
 msgid ""
@@ -180,24 +180,24 @@ msgid "Product Name"
 msgstr "Toote nimi"
 
 #: templates/smaily-woocommerce-admin.php:300
-msgid "Product Description (long)"
-msgstr "Toote kirjeldus (pikk)"
+msgid "Product Description"
+msgstr "Toote kirjeldus"
 
 #: templates/smaily-woocommerce-admin.php:301
-msgid "Product Description (short)"
-msgstr "Toote kirjeldus (lühike)"
-
-#: templates/smaily-woocommerce-admin.php:302
 msgid "Product SKU"
 msgstr "Toote SKU"
 
-#: templates/smaily-woocommerce-admin.php:303
+#: templates/smaily-woocommerce-admin.php:302
 msgid "Product Quantity"
 msgstr "Toote kogus"
 
+#: templates/smaily-woocommerce-admin.php:303
+msgid "Product Base Price"
+msgstr "Toote alghind"
+
 #: templates/smaily-woocommerce-admin.php:304
-msgid "Product Row Subtotal"
-msgstr "Toote rea kogusumma"
+msgid "Product Price"
+msgstr "Toote hind"
 
 #: templates/smaily-woocommerce-admin.php:315
 msgid ""
@@ -339,6 +339,14 @@ msgstr "Smaily kasutajatunnused salvestatud!"
 #: inc/Base/Enqueue.php:64
 msgid "Something went wrong with saving data!"
 msgstr "Midagi läks valesti andmete salvestamisel!"
+
+#: inc/Base/Upgrade.php:101
+msgid ""
+"Smaily for Woocommerce plugin has changed abandoned cart exported fields.\n"
+"\t\t\t\tPlease check your plugin settings!"
+msgstr ""
+"Smaily WooCommerce-le on muutnud unustatud ostukorvi lisaväljasid. Palun "
+"kontrollige pistikmooduli sätteid!"
 
 #: inc/Base/SettingLinks.php:30
 msgid "Settings"

@@ -5,7 +5,7 @@ Requires PHP: 5.6
 Requires at least: 4.0
 Tested up to: 5.3.2
 WC tested up to: 3.9.1
-Stable tag: 1.3.5
+Stable tag: 1.4.0
 License: GPLv3
 
 Simple and flexible Smaily newsletter and rss-feed integration for WooCommerce.
@@ -117,21 +117,23 @@ List of all parameters available in Smaily email templating engine:
 
 - Customer last name: `{{ last_name }}`.
 
-- Cart page url: `{{ cart_url }}`.
-
-Up to 10 products can be received in Smaily templating engine. You can refrence each product with number 1-10 behind parameter name.
+Up to 10 products can be received in Smaily templating engine. You can reference each product with number 1-10 behind parameter name.
 
 - Product name: `{{ product_name_[1-10] }}`.
 
 - Product description: `{{ product_description_[1-10] }}`.
 
-- Product short description: `{{product_description_short_[1-10] }}`.
-
 - Product SKU: `{{ product_sku_[1-10] }}`.
 
 - Product quantity: `{{ product_quantity_[1-10] }}`.
 
-- Products row price subtotal: `{{ product_subtotal_[1-10] }}`.
+- Products price: `{{ product_price_[1-10] }}`.
+
+- Product base price : `{{ product_base_price_[1-10] }}`.
+
+Also you can determine if customer had more than 10 items in cart
+
+- More than 10 items: `{{ over_10_products }}`.
 
 
 == Screenshots ==
@@ -145,65 +147,60 @@ Up to 10 products can be received in Smaily templating engine. You can refrence 
 
 == Changelog ==
 
-### 1.3.5
+= 1.4.0 =
+- Standardize Abandoned Cart email template parameters across integrations
+- Removed `product_description_short`, `cart_url` and `product_subtotal` parameters
+- Added `product_base_price` and `product_price` parameters
 
+= 1.3.5 =
 - Add `Site title` field to available synchronize additional fields
 - Store URL field is now always sent with subscriber data
 
-### 1.3.4
-
+= 1.3.4 =
 - Compatibility with Wordpress 5.3 and WooCommerce 3.8.0
 
-### 1.3.3
-
+= 1.3.3 =
 - Support for PHP 5.6
 
-### 1.3.2
-
+= 1.3.2 =
 - Add Estonian language support.
 
-### 1.3.1
-
+= 1.3.1 =
 - Fixes plugin styles affecting admin panel styles (#22)
 
-### 1.3.0
-
+= 1.3.0 =
 - Optimization and bug removal due to new automation workflows.
 
-### 1.2.3
-
+= 1.2.3 =
 - Admin panel changed for better customer experience.
 
-### 1.2.2
-
+= 1.2.2 =
 - Bugfix. Rss-feed shows correct discount price and precentage.
 - Bugfix. Rss-feed link works even when not refreshing permalinks.
 
-### 1.2.1
-
+= 1.2.1 =
 - Bugfix. Rss-feed now displays special characters.
 
-### 1.2.0
-
+= 1.2.0 =
 - New feature. Rss-feed now supports category and limit parameters from url.
 
-### 1.1.0
-
+= 1.1.0 =
 - New feature. Abandoned Cart remainder emails.
 - Bugfix. Displaying rss-feed price.
 
-### 1.0.3
-
+= 1.0.3 =
 - Settings form credentials are being validated automatically when allready in database
 
-### 1.0.2
-
+= 1.0.2 =
 - Fixed a bug where custom fields are not showing in checkout page.
 
-### 1.0.1
-
+= 1.0.1 =
 - Folder structure changed for CSS and JS
 
-### 1.0.0
-
+= 1.0.0 =
 - This is the first public release.
+
+== Upgrade Notice ==
+
+= 1.4.0 =
+This update will change abandoned cart exported fields. Please check your settings after update!
