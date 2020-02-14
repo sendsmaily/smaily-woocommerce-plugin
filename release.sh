@@ -109,7 +109,7 @@ rm -f trunk/CHANGELOG.txt
 rm -f trunk/CONTRIBUTING.md
 rm -f trunk/CODE_OF_CONDUCT.md
 rm -f trunk/release.sh
-rm -f trunk/.vscode
+rm -fR trunk/.vscode
 rm -f docker-compose.yml
 rm -f Dockerfile
 rm -Rf www
