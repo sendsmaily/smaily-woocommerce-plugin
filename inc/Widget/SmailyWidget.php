@@ -156,7 +156,7 @@ class SmailyWidget extends \WP_Widget {
 		</p>
 
 		<!-- Autoresponder -->
-		<?php if ( ! array_key_exists( 'empty', $autoresponder_list ) ) : ?>
+		<?php if ( ! empty( $autoresponder_list ) && ! array_key_exists( 'empty', $autoresponder_list ) ) : ?>
 		<p>
 		<label for="<?php echo esc_attr( $this->get_field_id( 'autoresponder' ) ); ?>">
 			<?php esc_attr_e( 'Autoresponder:', 'smaily' ); ?>
