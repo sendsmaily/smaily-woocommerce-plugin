@@ -232,7 +232,12 @@ class DataHandler {
 		// Get Smaily autoresponders.
 		$autoresponders = Api::ApiCall( 'workflows', '?trigger_type=form_submitted' );
 		// Return autoresponders list if available.
-		if ( ! empty( $autoresponders ) && ! array_key_exists( 'error', $autoresponders ) ) {
+
+		if ( array_key_exists( 'error', $autoresponders ) ) {
+			return $response;
+		}
+
+		if ( ! empty( $autoresponders ) ) {
 			$autoresponders_list = [];
 			foreach ( $autoresponders as $autoresponder ) {
 				$element               = [];
