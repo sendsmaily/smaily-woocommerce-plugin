@@ -222,26 +222,30 @@ class DataHandler {
 		$settings = self::get_smaily_results();
 		$result   = $settings['result'];
 		// Get autoresponders if credentials available.
-		if ( ! empty( $result['subdomain'] )
-			&& ! empty( $result['username'] )
-			&& ! empty( $result['password'] ) ) {
-			// Get Smaily autoresponders.
-			$autoresponders = Api::ApiCall( 'workflows', '?trigger_type=form_submitted' );
-			// Return autoresponders list if available.
-			if ( ! empty( $autoresponders ) && ! array_key_exists( 'error', $autoresponders ) ) {
-				$autoresponders_list = [];
-				foreach ( $autoresponders as $autoresponder ) {
-					$element               = [];
-					$element['id']         = $autoresponder['id'];
-					$element['name']       = $autoresponder['title'];
-					$autoresponders_list[] = $element;
-				}
-				$response = $autoresponders_list;
-				// If no autoresponders created return empty.
-			} else {
-				$response = [ 'empty' => true ];
-			}
+		if ( empty( $result['subdomain'] ) ||
+			empty( $result['username'] ) ||
+			empty( $result['password'] )
+		) {
+			return $response;
 		}
+
+		// Get Smaily autoresponders.
+		$autoresponders = Api::ApiCall( 'workflows', '?trigger_type=form_submitted' );
+		// Return autoresponders list if available.
+		if ( ! empty( $autoresponders ) && ! array_key_exists( 'error', $autoresponders ) ) {
+			$autoresponders_list = [];
+			foreach ( $autoresponders as $autoresponder ) {
+				$element               = [];
+				$element['id']         = $autoresponder['id'];
+				$element['name']       = $autoresponder['title'];
+				$autoresponders_list[] = $element;
+			}
+			$response = $autoresponders_list;
+			// If no autoresponders created return empty.
+		} else {
+			$response = [ 'empty' => true ];
+		}
+
 		return $response;
 	}
 
