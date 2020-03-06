@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Smaily for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-06 07:27+0000\n"
-"PO-Revision-Date: 2020-03-06 07:36+0000\n"
+"POT-Creation-Date: 2020-03-06 14:14+0000\n"
+"PO-Revision-Date: 2020-03-06 14:15+0000\n"
 "Last-Translator: kaarel.rooparg@gmail.com <kaarel.rooparg@gmail.com>\n"
 "Language-Team: Estonian (Estonia)\n"
 "Language: et_EE\n"
@@ -40,8 +40,8 @@ msgstr "Unustatud Ostukorv"
 
 #: templates/smaily-woocommerce-admin.php:53
 msgid ""
-"There seems to be a problem with your connection to Smaily. Please revaidate "
-"your credentials!"
+"There seems to be a problem with your connection to Smaily. Please "
+"revalidate your credentials!"
 msgstr ""
 "Ilmnes probleem Smaily kontoga ühendumisel. Palun valideerige "
 "kasutajatunnused!"
@@ -256,7 +256,7 @@ msgid "Missing form data!"
 msgstr "Puuduvad vormi andmed!"
 
 #: inc/Api/Api.php:183
-msgid "You are not authenticated to edit settings!"
+msgid "You are not authorized to edit settings!"
 msgstr "Teil puuduvad õigused sätteid muuta!"
 
 #: inc/Api/Api.php:202

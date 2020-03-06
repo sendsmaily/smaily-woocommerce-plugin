@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Smaily for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-06 07:27+0000\n"
+"POT-Creation-Date: 2020-03-06 14:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -39,8 +39,8 @@ msgstr ""
 
 #: templates/smaily-woocommerce-admin.php:53
 msgid ""
-"There seems to be a problem with your connection to Smaily. Please revaidate "
-"your credentials!"
+"There seems to be a problem with your connection to Smaily. Please "
+"revalidate your credentials!"
 msgstr ""
 
 #: templates/smaily-woocommerce-admin.php:69
@@ -244,7 +244,7 @@ msgid "Missing form data!"
 msgstr ""
 
 #: inc/Api/Api.php:183
-msgid "You are not authenticated to edit settings!"
+msgid "You are not authorized to edit settings!"
 msgstr ""
 
 #: inc/Api/Api.php:202
