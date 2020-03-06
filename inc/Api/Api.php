@@ -180,7 +180,7 @@ class Api {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			echo wp_json_encode(
 				array(
-					'error' => esc_html__( 'You are not authenticated to edit settings!', 'smaily' ),
+					'error' => esc_html__( 'You are not authorized to edit settings!', 'smaily' ),
 				)
 			);
 			wp_die();

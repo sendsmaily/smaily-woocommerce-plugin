@@ -51,7 +51,7 @@ $autoresponder_error = empty( $autoresponder_list ) && ! empty( $result['subdoma
 			<p>
 			<?php
 				esc_html_e(
-					'There seems to be a problem with your connection to Smaily. Please revaidate your credentials!',
+					'There seems to be a problem with your connection to Smaily. Please revalidate your credentials!',
 					'smaily'
 				);
 			?>
