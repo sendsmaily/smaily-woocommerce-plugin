@@ -15,7 +15,7 @@ if ( isset( $settings ) ) {
 }
 $autoresponder_list  = DataHandler::get_autoresponder_list();
 // get_autoresponder_list will return empty array only if error with current credentials.
-$autoresponder_error = empty( $autoresponder_list ) && isset( $result['subdomain'] );
+$autoresponder_error = empty( $autoresponder_list ) && ! empty( $result['subdomain'] );
 ?>
 <div class="wrap smaily-settings">
 	<h1>
