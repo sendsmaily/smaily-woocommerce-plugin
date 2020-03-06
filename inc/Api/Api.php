@@ -276,7 +276,7 @@ class Api {
 			'enable_cart'           => $cart_enabled,
 		);
 
-		// Update DB with user values if autoresponder selected.
+		// Update DB with user values if abandoned cart enabled.
 		if ( $cart_enabled ) {
 			$update_values['cart_autoresponder']    = $sanitized_cart_autoresponder['name'];
 			$update_values['cart_autoresponder_id'] = $sanitized_cart_autoresponder['id'];
