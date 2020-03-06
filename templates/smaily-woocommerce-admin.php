@@ -13,7 +13,9 @@ if ( isset( $settings ) ) {
 	$cart_autoresponder_name = $result['cart_autoresponder'];
 	$cart_autoresponder_id   = $result['cart_autoresponder_id'];
 }
-$autoresponder_list = DataHandler::get_autoresponder_list();
+$autoresponder_list  = DataHandler::get_autoresponder_list();
+// get_autoresponder_list will return empty array only if error with current credentials.
+$autoresponder_error = empty( $autoresponder_list ) && isset( $result['subdomain'] );
 ?>
 <div class="wrap smaily-settings">
 	<h1>
@@ -44,7 +46,18 @@ $autoresponder_list = DataHandler::get_autoresponder_list();
 		</ul>
 		</div>
 		<div class="message-display"></div>
-
+		<?php if ( $autoresponder_error ) : ?>
+		<div class="error-autoresponders error notice">
+			<p>
+			<?php
+				esc_html_e(
+					'There seems to be a problem with your connection to Smaily. Please revaidate your credentials!',
+					'smaily'
+				);
+			?>
+			</p>
+		</div>
+		<?php endif; ?>
 		<div id="general">
 		<form method="POST" id="startupForm" action="">
 			<?php wp_nonce_field( 'settings-nonce', 'nonce', false ); ?>
