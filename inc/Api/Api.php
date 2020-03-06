@@ -308,7 +308,8 @@ class Api {
 		wp_die();
 
 	}
-
+	// TODO: This method shoud not manipulate data but only pass received results.
+	// Let calling functions determine how to implement error handling.
 	/**
 	 * Api call to Smaily with different parameters
 	 *
@@ -344,17 +345,15 @@ class Api {
 
 		}
 
-		// Show error message if no access.
-		if ( $http_code === 401 ) {
-			$response = array(
+		// Return error message.
+		if ( $http_code !== 200 ) {
+			return array(
 				'error' => esc_html__( 'Check details, no connection !', 'smaily' ),
 			);
 		}
-		// Return autoresponders list back to front end for selection.
-		if ( $http_code === 200 ) {
-			$body     = json_decode( wp_remote_retrieve_body( $api_call ), true );
-			$response = $body;
-		}
+
+		$body     = json_decode( wp_remote_retrieve_body( $api_call ), true );
+		$response = $body;
 
 		// Response from API call.
 		return $response;
