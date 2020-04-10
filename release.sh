@@ -53,9 +53,11 @@ SVN_REPO="https://plugins.svn.wordpress.org/${PLUGIN_SLUG}/"
 # CHECKOUT SVN DIR IF NOT EXISTS
 if [[ ! -d $TEMP_SVN_REPO ]];
 then
-	echo "Checking out WordPress.org plugin repository"
-	svn checkout $SVN_REPO $TEMP_SVN_REPO --depth immediates || { echo "Unable to checkout repo."; exit 1; }
-	svn update $TEMP_SVN_REPO/trunk --set-depth infinity
+    echo "Checking out WordPress.org plugin repository"
+    svn checkout $SVN_REPO $TEMP_SVN_REPO --depth immediates || { echo "Unable to checkout repo."; exit 1; }
+    svn update $TEMP_SVN_REPO/assets --set-depth infinity
+    svn update $TEMP_SVN_REPO/tags/${VERSION} --set-depth infinity
+    svn update $TEMP_SVN_REPO/trunk --set-depth infinity
 fi
 
 # Ensure we are on master branch.
@@ -72,47 +74,50 @@ cd $TEMP_SVN_REPO
 echo "Updating SVN"
 svn update || { echo "Unable to update SVN."; exit 1; }
 
-# DELETE TRUNK
+# UPDATE ASSETS
+echo "Updating assets"
+rm -Rf assets/
+cp -R $GIT_REPO_PATH/assets assets/
+
+# REPLACE TRUNK
 echo "Replacing trunk"
 rm -Rf trunk/
-
-# COPY GIT DIR TO TRUNK
 cp -R $GIT_REPO_PATH trunk/
 
 # REMOVE UNWANTED FILES & FOLDERS
 echo "Removing unwanted files"
 rm -Rf trunk/.git
 rm -Rf trunk/.github
+rm -Rf trunk/.vscode
 rm -Rf trunk/.wordpress-org
-rm -Rf trunk/tests
 rm -Rf trunk/apigen
+rm -Rf trunk/assets
+rm -Rf trunk/tests
+rm -f trunk/.coveralls.yml
+rm -f trunk/.editorconfig
 rm -f trunk/.gitattributes
 rm -f trunk/.gitignore
 rm -f trunk/.gitmodules
-rm -f trunk/.travis.yml
-rm -f trunk/Gruntfile.js
-rm -f trunk/package.json
 rm -f trunk/.jscrsrc
 rm -f trunk/.jshintrc
+rm -f trunk/.scrutinizer.yml
 rm -f trunk/.stylelintrc
+rm -f trunk/.travis.yml
+rm -f trunk/apigen.neon
+rm -f trunk/CHANGELOG.txt
+rm -f trunk/CODE_OF_CONDUCT.md
 rm -f trunk/composer.json
 rm -f trunk/composer.lock
+rm -f trunk/CONTRIBUTING.md
+rm -f trunk/docker-compose.yml
+rm -f trunk/Dockerfile
+rm -f trunk/Gruntfile.js
+rm -f trunk/package.json
 rm -f trunk/phpcs.xml
 rm -f trunk/phpunit.xml
 rm -f trunk/phpunit.xml.dist
 rm -f trunk/README.md
-rm -f trunk/.coveralls.yml
-rm -f trunk/.editorconfig
-rm -f trunk/.scrutinizer.yml
-rm -f trunk/apigen.neon
-rm -f trunk/CHANGELOG.txt
-rm -f trunk/CONTRIBUTING.md
-rm -f trunk/CODE_OF_CONDUCT.md
 rm -f trunk/release.sh
-rm -fR trunk/.vscode
-rm -f docker-compose.yml
-rm -f Dockerfile
-rm -Rf www
 
 # DO THE ADD ALL NOT KNOWN FILES UNIX COMMAND
 svn add --force * --auto-props --parents --depth infinity -q
@@ -127,6 +132,7 @@ done
 
 # COPY TRUNK TO TAGS/$VERSION
 echo "Copying trunk to new tag"
+svn rm tags/${VERSION} || { echo "Failed to remove tag."; exit 1; }
 svn copy trunk tags/${VERSION} || { echo "Unable to create tag."; exit 1; }
 
 # DO SVN COMMIT
