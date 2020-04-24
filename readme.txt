@@ -3,9 +3,9 @@ Contributors: sendsmaily, kaarel
 Tags: woocommerce, smaily, newsletter, email
 Requires PHP: 5.6
 Requires at least: 4.0
-Tested up to: 5.3.2
-WC tested up to: 3.9.3
-Stable tag: 1.4.1
+Tested up to: 5.4
+WC tested up to: 4.0.1
+Stable tag: 1.4.2
 License: GPLv3
 
 Simple and flexible Smaily newsletter and rss-feed integration for WooCommerce.
@@ -146,6 +146,10 @@ Also you can determine if customer had more than 10 items in cart
 6. WooCommerce Smaily widget front screen.
 
 == Changelog ==
+
+= 1.4.2 =
+
+- Bugfix - provide translations for widget responses.
 
 = 1.4.1 =
 - Admin page now shows error message in case of deleting API credentials in Smaily

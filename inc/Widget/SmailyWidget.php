@@ -63,7 +63,10 @@ class SmailyWidget extends \WP_Widget {
 		}
 
 		// Get current url.
-		$current_url = ( isset( $_SERVER['HTTPS'] ) ? 'https' : 'http' ) . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		$current_host = ( isset( $_SERVER['HTTPS'] ) ? 'https' : 'http' ) . '://' . $_SERVER['HTTP_HOST'];
+		// Remove params from redirect links.
+		$current_path = explode( '?', $_SERVER['REQUEST_URI'] );
+		$current_url = $current_host . $current_path[0];
 
 		// Language code if using WPML.
 		$lang = '';
@@ -88,10 +91,22 @@ class SmailyWidget extends \WP_Widget {
 
 		// Widget front-end.
 		// Echo messages if available.
-		if ( isset( $_GET['message'] ) ) {
+		if ( isset( $_GET['code'] ) ) {
+			switch ( $_GET['code'] ) {
+				case 101:
+					$message = __( 'Subscription registration successful.', 'smaily' );
+					break;
+				case 204:
+					$message = __( 'Subscription do not contain a valid email address.', 'smaily' );
+					break;
+				default:
+					$message = __( 'Subscription registration failed.', 'smaily' );
+					break;
+			}
+
 			echo '
 				<div class="smaily-newsletter-alert">
-				<p>' . esc_html( $_GET['message'] ) . '
+				<p>' . esc_html( $message ) . '
 				<span class="smaily-newsletter-closebtn" onclick="this.parentElement.style.display=\'none\'">&times;</span>
 				</p>
 				</div>
