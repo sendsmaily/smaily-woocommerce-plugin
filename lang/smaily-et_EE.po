@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Smaily for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-24 08:48+0000\n"
-"PO-Revision-Date: 2020-04-24 08:54+0000\n"
+"POT-Creation-Date: 2020-04-27 16:22+0000\n"
+"PO-Revision-Date: 2020-04-27 16:23+0000\n"
 "Last-Translator: \n"
 "Language-Team: Estonian (Estonia)\n"
 "Language: et_EE\n"
@@ -329,12 +329,12 @@ msgid "Subscription registration successful."
 msgstr "Registreerumine õnnestus."
 
 #: inc/Widget/SmailyWidget.php:100
-msgid "Subscription do not contain a valid email address."
+msgid "Subscription does not contain a valid email address."
 msgstr "Registreeritud email on vigane."
 
 #: inc/Widget/SmailyWidget.php:103
 msgid "Subscription registration failed."
-msgstr "Registreerimune ebaõnnestus."
+msgstr "Registreerumine ebaõnnestus."
 
 #: inc/Widget/SmailyWidget.php:126
 msgid "Email"

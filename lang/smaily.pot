@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Smaily for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-24 08:48+0000\n"
+"POT-Creation-Date: 2020-04-27 16:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -317,7 +317,7 @@ msgid "Subscription registration successful."
 msgstr ""
 
 #: inc/Widget/SmailyWidget.php:100
-msgid "Subscription do not contain a valid email address."
+msgid "Subscription does not contain a valid email address."
 msgstr ""
 
 #: inc/Widget/SmailyWidget.php:103
