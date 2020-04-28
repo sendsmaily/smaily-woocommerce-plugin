@@ -64,6 +64,9 @@ class SmailyWidget extends \WP_Widget {
 
 		// Get current url.
 		$current_url = ( isset( $_SERVER['HTTPS'] ) ? 'https' : 'http' ) . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+		// Remove params from redirect links.
+		$params = array( 'code', 'message' );
+		$return_url = remove_query_arg( $params, $current_url );
 
 		// Language code if using WPML.
 		$lang = '';
@@ -88,10 +91,22 @@ class SmailyWidget extends \WP_Widget {
 
 		// Widget front-end.
 		// Echo messages if available.
-		if ( isset( $_GET['message'] ) ) {
+		if ( isset( $_GET['code'] ) ) {
+			switch ( $_GET['code'] ) {
+				case 101:
+					$message = __( 'Subscription registration successful.', 'smaily' );
+					break;
+				case 204:
+					$message = __( 'Subscription does not contain a valid email address.', 'smaily' );
+					break;
+				default:
+					$message = __( 'Subscription registration failed.', 'smaily' );
+					break;
+			}
+
 			echo '
 				<div class="smaily-newsletter-alert">
-				<p>' . esc_html( $_GET['message'] ) . '
+				<p>' . esc_html( $message ) . '
 				<span class="smaily-newsletter-closebtn" onclick="this.parentElement.style.display=\'none\'">&times;</span>
 				</p>
 				</div>
@@ -100,8 +115,8 @@ class SmailyWidget extends \WP_Widget {
 		// Main form.
 		echo '<form class="smaily-newsletter-form" action="https://' . esc_html( $result['subdomain'] ) . '.sendsmaily.net/api/opt-in/" method="post" autocomplete="off">
 				<div>
-				<input type="hidden" name="success_url" value="' . esc_url( $current_url ) . '" />
-				<input type="hidden" name="failure_url" value="' . esc_url( $current_url ) . '" />
+				<input type="hidden" name="success_url" value="' . esc_url( $return_url ) . '" />
+				<input type="hidden" name="failure_url" value="' . esc_url( $return_url ) . '" />
 				<input type="hidden" name="language" value="' . esc_html( $lang ) . '" />
 		';
 		// Optional autoresponder when selected.

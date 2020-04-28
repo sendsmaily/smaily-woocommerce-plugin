@@ -139,6 +139,10 @@ Also you can determine if customer had more than 10 items in cart
 
 ## Changelog
 
+### 1.4.2
+
+- Bugfix - provide translations for widget responses.
+
 ### 1.4.1
 
 - Admin page now shows error message in case of deleting API credentials in Smaily

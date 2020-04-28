@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Smaily for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-03-06 14:14+0000\n"
+"POT-Creation-Date: 2020-04-27 16:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -304,7 +304,7 @@ msgid "Additional Information"
 msgstr ""
 
 #. Base ID.
-#: inc/Widget/SmailyWidget.php:21 inc/Widget/SmailyWidget.php:143
+#: inc/Widget/SmailyWidget.php:21 inc/Widget/SmailyWidget.php:158
 msgid "Smaily Newsletter"
 msgstr ""
 
@@ -312,27 +312,39 @@ msgstr ""
 msgid "Smaily for WooCommerce Newsletter Widget"
 msgstr ""
 
-#: inc/Widget/SmailyWidget.php:111
+#: inc/Widget/SmailyWidget.php:97
+msgid "Subscription registration successful."
+msgstr ""
+
+#: inc/Widget/SmailyWidget.php:100
+msgid "Subscription does not contain a valid email address."
+msgstr ""
+
+#: inc/Widget/SmailyWidget.php:103
+msgid "Subscription registration failed."
+msgstr ""
+
+#: inc/Widget/SmailyWidget.php:126
 msgid "Email"
 msgstr ""
 
-#: inc/Widget/SmailyWidget.php:115
+#: inc/Widget/SmailyWidget.php:130
 msgid "Name"
 msgstr ""
 
-#: inc/Widget/SmailyWidget.php:120
+#: inc/Widget/SmailyWidget.php:135
 msgid "Subscribe"
 msgstr ""
 
-#: inc/Widget/SmailyWidget.php:149
+#: inc/Widget/SmailyWidget.php:164
 msgid "Title:"
 msgstr ""
 
-#: inc/Widget/SmailyWidget.php:162
+#: inc/Widget/SmailyWidget.php:177
 msgid "Autoresponder:"
 msgstr ""
 
-#: inc/Widget/SmailyWidget.php:173
+#: inc/Widget/SmailyWidget.php:188
 msgid "-No Autoresponder-"
 msgstr ""
 
