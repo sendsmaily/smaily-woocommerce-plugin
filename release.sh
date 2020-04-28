@@ -132,7 +132,10 @@ done
 
 # COPY TRUNK TO TAGS/$VERSION
 echo "Copying trunk to new tag"
-svn rm tags/${VERSION} || { echo "Failed to remove tag."; exit 1; }
+if [[ -d $TEMP_SVN_REPO/tags/${VERSION} ]];
+then
+    svn rm tags/${VERSION} || { echo "Failed to remove tag."; exit 1; }
+fi
 svn copy trunk tags/${VERSION} || { echo "Unable to create tag."; exit 1; }
 
 # DO SVN COMMIT
