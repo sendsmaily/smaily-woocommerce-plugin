@@ -12,9 +12,9 @@ if ( isset( $settings ) ) {
 	$cart_enabled            = $result['enable_cart'];
 	$cart_autoresponder_name = $result['cart_autoresponder'];
 	$cart_autoresponder_id   = $result['cart_autoresponder_id'];
-	$cb_display_selected     = 'visible_checked';
-	$cb_order_selected       = 'after'; // TODO: Add to backend.
-	$cb_loc_selected         = 'checkout_billing_form'; // TODO: Add to backend.
+	$cb_display_selected     = $result['checkbox_display'];
+	$cb_order_selected       = $result['checkbox_order'];
+	$cb_loc_selected         = $result['checkbox_location'];
 }
 $autoresponder_list  = DataHandler::get_autoresponder_list();
 // get_autoresponder_list will return empty array only if error with current credentials.
@@ -422,9 +422,9 @@ $autoresponder_error = empty( $autoresponder_list ) && ! empty( $result['subdoma
 							<select id="checkbox-location" name="checkbox_location">
 							<?php
 							$cb_loc_available = array(
-								'customer_details'       => __( 'Customer details', 'smaily' ),
-								'checkout_billing_form'  => __( 'Billing form', 'smaily' ),
-								'checkout_shipping_form' => __( 'Shipping form', 'smaily' ),
+								'order_notes'                => __( 'Order notes', 'smaily' ),
+								'checkout_billing_form'      => __( 'Billing form', 'smaily' ),
+								'checkout_shipping_form'     => __( 'Shipping form', 'smaily' ),
 								'checkout_registration_form' => __( 'Registration form', 'smaily' ),
 							);
 							// Display option and select saved value.
