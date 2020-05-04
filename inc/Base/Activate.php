@@ -22,8 +22,8 @@ class Activate {
 	public static function activate() {
 		// Create both databases.
 		self::create_database();
-		// Write enable->off to first one.
-		self::add_enable();
+		// Write defaults.
+		self::add_defaults();
 		// Add Cron job to sync customers.
 		if ( ! wp_next_scheduled( 'smaily_cron_sync_contacts' ) ) {
 			wp_schedule_event( time(), 'daily', 'smaily_cron_sync_contacts' );
@@ -53,16 +53,19 @@ class Activate {
 		$charset_collate = $wpdb->get_charset_collate();
 		$smaily     = "CREATE TABLE $table_name (
 				id int(11) NOT NULL AUTO_INCREMENT,
-				enable tinyint(1) DEFAULT NULL,
+				enable tinyint(1) DEFAULT 0,
 				subdomain varchar(255) DEFAULT NULL,
 				username varchar(255) DEFAULT NULL,
 				password varchar(255) DEFAULT NULL,
 				syncronize_additional varchar(255) DEFAULT NULL,
-				enable_cart tinyint(1) DEFAULT NULL,
+				enable_cart tinyint(1) DEFAULT 0,
 				cart_autoresponder varchar(255) DEFAULT NULL,
 				cart_autoresponder_id int(10) DEFAULT NULL,
 				cart_cutoff int(10) DEFAULT NULL,
 				cart_options varchar(255) DEFAULT NULL,
+				checkbox_display varchar(255) DEFAULT 'visible_unchecked',
+				checkbox_order varchar(255) DEFAULT 'after',
+				checkbox_location varchar(255) DEFAULT 'checkot_billing_form',
 				PRIMARY KEY  (id)
 				) $charset_collate;";
 		dbDelta( $smaily );
@@ -83,11 +86,11 @@ class Activate {
 	}
 
 	/**
-	 * Marks enable fields to 0.
+	 * Add default fields to db if first install.
 	 *
 	 * @return void
 	 */
-	private static function add_enable() {
+	private static function add_defaults() {
 		global $wpdb;
 		$result = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}smaily", 'ARRAY_A' );
 		if ( empty( $result ) ) {
@@ -95,8 +98,11 @@ class Activate {
 			$wpdb->insert(
 				$table_name,
 				array(
-					'enable'      => 0,
-					'enable_cart' => 0,
+					'enable'            => 0,
+					'enable_cart'       => 0,
+					'checkbox_display'  => 'visible_unchecked',
+					'checkbox_order'    => 'after',
+					'checkbox_location' => 'checkout_billing_form',
 				)
 			);
 		}
