@@ -12,6 +12,9 @@ if ( isset( $settings ) ) {
 	$cart_enabled            = $result['enable_cart'];
 	$cart_autoresponder_name = $result['cart_autoresponder'];
 	$cart_autoresponder_id   = $result['cart_autoresponder_id'];
+	$cb_display_selected     = 'visible_checked';
+	$cb_order_selected       = 'after'; // TODO: Add to backend.
+	$cb_loc_selected         = 'checkout_billing_form'; // TODO: Add to backend.
 }
 $autoresponder_list  = DataHandler::get_autoresponder_list();
 // get_autoresponder_list will return empty array only if error with current credentials.
@@ -41,6 +44,11 @@ $autoresponder_error = empty( $autoresponder_list ) && ! empty( $result['subdoma
 			<li>
 				<a href="#cart" class="nav-tab">
 					<?php echo esc_html__( 'Abandoned Cart', 'smaily' ); ?>
+				</a>
+			</li>
+			<li>
+				<a href="#checkout_subscribe" class="nav-tab">
+					<?php echo esc_html__( 'Checkout', 'smaily' ); ?>
 				</a>
 			</li>
 		</ul>
@@ -350,6 +358,83 @@ $autoresponder_error = empty( $autoresponder_list ) && ! empty( $result['subdoma
 							<small id="cart-delay-help" class="form-text text-muted">
 							<?php echo esc_html__( 'Minimum 10 minutes.', 'smaily' ); ?>
 							</small>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div id="checkout_subscribe">
+			<table class="form-table">
+				<tbody>
+					<tr class="form-field">
+						<th scope="row">
+							<label for="checkbox_display">
+							<?php echo esc_html__( 'Display', 'smaily' ); ?>
+							</label>
+						</th>
+						<td id="smaily_checkout_display_visibility">
+							<?php
+							$checkbox_display_values = array(
+								'visible_unchecked' => __( 'Visible unchecked', 'smaily' ),
+								'visible_checked'   => __( 'Visible checked', 'smaily' ),
+								'hidden_unchecked'  => __( 'Hidden unchecked', 'smaily' ),
+
+							);
+							foreach ( $checkbox_display_values as $dp_value => $dp_translation ) {
+								$checked = $cb_display_selected === $dp_value ? 'checked' : '';
+
+								$input  = '<label for="checkbox_' . $dp_value . '">';
+								$input .= '<input type="radio" ';
+								$input .= 'id="checkbox_' . $dp_value . '" ';
+								$input .= 'name="checkbox_display" ';
+								$input .= 'value="' . $dp_value . '" ' . $checked . '>';
+								$input .= $dp_translation . '</label>';
+								echo( $input );
+							}
+							?>
+						</td>
+					</tr>
+					<tr class="form-field">
+						<th scope="row">
+							<label for="checkbox_order">
+							<?php echo esc_html__( 'Before / After', 'smaily' ); ?>
+							</label>
+						</th>
+						<td>
+							<select id="cb-before-after" name="checkbox_order">
+								<option value="before" <?php echo( 'before' === $cb_order_selected ? 'selected' : '' ); ?> >
+									<?php echo esc_html__( 'Before', 'smaily' ); ?>
+								</option>
+							<option value="after" <?php echo( 'after' === $cb_order_selected ? 'selected' : '' ); ?>>
+								<?php echo esc_html__( 'After', 'smaily' ); ?>
+							</option>
+							</select>
+						</td>
+					</tr>
+					<tr class="form-field">
+						<th scope="row">
+							<label for="checkbox_location">
+							<?php echo esc_html__( 'Display location', 'smaily' ); ?>
+							</label>
+						</th>
+						<td>
+							<select id="checkbox-location" name="checkbox_location">
+							<?php
+							$cb_loc_available = array(
+								'customer_details'       => __( 'Customer details', 'smaily' ),
+								'checkout_billing_form'  => __( 'Billing form', 'smaily' ),
+								'checkout_shipping_form' => __( 'Shipping form', 'smaily' ),
+								'checkout_registration_form' => __( 'Registration form', 'smaily' ),
+							);
+							// Display option and select saved value.
+							foreach ( $cb_loc_available as $loc_value => $loc_translation ) {
+								$selected = $cb_loc_selected === $loc_value ? 'selected' : '';
+								echo( "<option value='$loc_value' $selected>$loc_translation</option>" );
+							}
+							?>
+							</select>
+
 						</td>
 					</tr>
 				</tbody>
