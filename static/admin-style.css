@@ -158,3 +158,9 @@ input.smaily-toggle:focus + label {
   color: white;
   left: 54px;
 }
+
+/* Checkout tab display radio buttons */
+#smaily_checkout_display_visibility label {
+  display: block;
+  padding-bottom: 10px;
+}
