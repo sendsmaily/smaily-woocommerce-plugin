@@ -139,6 +139,10 @@ Also you can determine if customer had more than 10 items in cart
 
 ## Changelog
 
+### 1.5.0
+
+- Feature - add more options to manipulate opt-in checkbox on checkout page.
+
 ### 1.4.2
 
 - Bugfix - provide translations for widget responses.
