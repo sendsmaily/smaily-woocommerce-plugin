@@ -133,9 +133,10 @@ Also you can determine if customer had more than 10 items in cart
 1. WooCommerce Smaily validate settings screen.
 2. WooCommerce Smaily general settings screen.
 3. WooCommerce Smaily abadoned cart settings screen.
-4. WooCommerce Smaily RSS-feed screen.
-5. WooCommerce Smaily widget settings screen.
-6. WooCommerce Smaily widget front screen.
+4. WooCommerce Smaily checkout opt-in screen.
+5. WooCommerce Smaily RSS-feed screen.
+6. WooCommerce Smaily widget settings screen.
+7. WooCommerce Smaily widget front screen.
 
 ## Changelog
 
