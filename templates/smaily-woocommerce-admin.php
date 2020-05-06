@@ -48,7 +48,7 @@ $autoresponder_error = empty( $autoresponder_list ) && ! empty( $result['subdoma
 			</li>
 			<li>
 				<a href="#checkout_subscribe" class="nav-tab">
-					<?php echo esc_html__( 'Checkout', 'smaily' ); ?>
+					<?php echo esc_html__( 'Checkout Opt-in', 'smaily' ); ?>
 				</a>
 			</li>
 		</ul>
@@ -142,7 +142,7 @@ $autoresponder_error = empty( $autoresponder_list ) && ! empty( $result['subdoma
 						<td>
 							<?php
 							echo esc_html__(
-								'To add a subscribe widget, use Widgets menu. Fill out settings before using.',
+								'To add a subscribe widget, use Widgets menu. Validate credentials before using.',
 								'smaily'
 							);
 							?>
@@ -369,6 +369,21 @@ $autoresponder_error = empty( $autoresponder_list ) && ! empty( $result['subdoma
 				<tbody>
 					<tr class="form-field">
 						<th scope="row">
+							<label for="checkbox_description">
+							<?php echo esc_html__( 'Subscription checkbox', 'smaily' ); ?>
+							</label>
+						</th>
+						<td id="checkbox_description">
+						<?php
+						esc_html_e(
+							'Customers can subscribe by checking "subscribe to newsletter" checkbox on checkout page.',
+							'smaily'
+						);
+						?>
+						</td>
+					</tr>
+					<tr class="form-field">
+						<th scope="row">
 							<label for="checkbox_display">
 							<?php echo esc_html__( 'Display', 'smaily' ); ?>
 							</label>
@@ -415,7 +430,7 @@ $autoresponder_error = empty( $autoresponder_list ) && ! empty( $result['subdoma
 					<tr class="form-field">
 						<th scope="row">
 							<label for="checkbox_location">
-							<?php echo esc_html__( 'Display location', 'smaily' ); ?>
+							<?php echo esc_html__( 'Location', 'smaily' ); ?>
 							</label>
 						</th>
 						<td>
