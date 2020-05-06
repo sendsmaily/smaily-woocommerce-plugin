@@ -22,7 +22,8 @@ class ProfileSettings {
 		// Show additional profile fields only if credentials are validated.
 		$result = DataHandler::get_smaily_results();
 
-		if ( isset( $result['result']['subdomain'] ) ) {
+		// No subdomain before successful credential validation.
+		if ( ! empty( $result['result']['subdomain'] ) ) {
 			// Add fields to registration form and account area.
 			add_action( 'woocommerce_register_form', array( $this, 'smaily_print_user_frontend_fields' ), 10 );
 			add_action( 'woocommerce_edit_account_form', array( $this, 'smaily_print_user_frontend_fields' ), 10 );
@@ -71,7 +72,7 @@ class ProfileSettings {
 	 */
 	public function smaily_checkout_newsletter_checkbox() {
 		$settings = DataHandler::get_smaily_results()['result'];
-		$display = $settings['checkbox_display'];
+		$display  = $settings['checkbox_display'];
 		?>
 		<p
 		class="form-row form-row-wide"
@@ -85,7 +86,7 @@ class ProfileSettings {
 					name="user_newsletter"
 					id="user_newsletter"
 					value="1"
-					<?php echo( 'visible_checked' == $display ? 'checked' : '' ); ?>>
+					<?php echo( 'visible_checked' === $display ? 'checked' : '' ); ?>>
 					<?php esc_html_e( 'Subscribe to newsletter', 'smaily' ); ?>
 				</label>
 			</span>
