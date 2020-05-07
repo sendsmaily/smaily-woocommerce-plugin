@@ -23,12 +23,3 @@
 .smaily-newsletter-form button[type="submit"]:hover {
   background-color: #45a049;
 }
-
-#smaily-checkout-subscribe {
-  font-family: -apple-system, blinkmacsystemfont, "Helvetica Neue", helvetica,
-    sans-serif;
-  letter-spacing: normal;
-  font-size: 1.6rem;
-  font-weight: 400;
-  margin: 0 0 0.5rem 0;
-}

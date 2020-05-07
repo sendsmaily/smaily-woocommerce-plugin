@@ -72,9 +72,9 @@ class ProfileSettings {
 	 */
 	public function smaily_checkout_newsletter_checkbox() {
 		$settings = DataHandler::get_smaily_results()['result'];
-		$checked  = 'visible_checked' === $settings['checkbox_display'] ? 1 : 0;
-		$hidden   = 'hidden_unchecked' === $settings['checkbox_display'] ? true : false;
-		if ( ! $hidden ) {
+		$checked  = intval( $settings['checkbox_auto_checked'] );
+		$enabled  = intval( $settings['enable_checkbox'] );
+		if ( $enabled ) {
 			woocommerce_form_field(
 				'user_newsletter',
 				array(

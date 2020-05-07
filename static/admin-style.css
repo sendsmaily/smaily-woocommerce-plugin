@@ -164,3 +164,8 @@ input.smaily-toggle:focus + label {
   display: block;
   padding-bottom: 10px;
 }
+
+/* Checkout tab location select boxes */
+#smaily_checkout_display_location select {
+  min-width: fit-content;
+}
