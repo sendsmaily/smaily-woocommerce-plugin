@@ -72,26 +72,19 @@ class ProfileSettings {
 	 */
 	public function smaily_checkout_newsletter_checkbox() {
 		$settings = DataHandler::get_smaily_results()['result'];
-		$display  = $settings['checkbox_display'];
-		?>
-		<p
-		class="form-row form-row-wide"
-		id="smaily-checkout-subscribe"
-		style=<?php echo( 'hidden_unchecked' === $display ? '"display:none;"' : '""' ); ?>>
-			<span class="woocommerce-input-wrapper">
-				<label for="user_newsletter" class="checkbox">
-					<input
-					type="checkbox"
-					class="input-checkbox"
-					name="user_newsletter"
-					id="user_newsletter"
-					value="1"
-					<?php echo( 'visible_checked' === $display ? 'checked' : '' ); ?>>
-					<?php esc_html_e( 'Subscribe to newsletter', 'smaily' ); ?>
-				</label>
-			</span>
-		</p>
-		<?php
+		$checked  = 'visible_checked' === $settings['checkbox_display'] ? 1 : 0;
+		$hidden   = 'hidden_unchecked' === $settings['checkbox_display'] ? true : false;
+		if ( ! $hidden ) {
+			woocommerce_form_field(
+				'user_newsletter',
+				array(
+					'type'  => 'checkbox',
+					'id'    => 'smaily-checkout-subscribe',
+					'label' => __( 'Subscribe to newsletter', 'smaily' ),
+				),
+				$checked
+			);
+		}
 	}
 
 	/**
