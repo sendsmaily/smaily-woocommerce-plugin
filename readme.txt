@@ -1,5 +1,5 @@
 === Smaily for WooCommerce ===
-Contributors: sendsmaily, kaarel
+Contributors: sendsmaily, kaarel, tomabel
 Tags: woocommerce, smaily, newsletter, email
 Requires PHP: 5.6
 Requires at least: 4.0
