@@ -12,6 +12,8 @@ if ( isset( $settings ) ) {
 	$cart_enabled            = $result['enable_cart'];
 	$cart_autoresponder_name = $result['cart_autoresponder'];
 	$cart_autoresponder_id   = $result['cart_autoresponder_id'];
+	$cb_enabled              = 1; // $result['enable_checkbox'];
+	$cb_auto_checked         = 1; // $result['checkbox_auto_checked'];
 	$cb_display_selected     = $result['checkbox_display'];
 	$cb_order_selected       = $result['checkbox_order'];
 	$cb_loc_selected         = $result['checkbox_location'];
@@ -384,47 +386,33 @@ $autoresponder_error = empty( $autoresponder_list ) && ! empty( $result['subdoma
 					</tr>
 					<tr class="form-field">
 						<th scope="row">
-							<label for="checkbox_display">
-							<?php echo esc_html__( 'Display', 'smaily' ); ?>
+							<label for="checkbox_enable">
+								<?php echo esc_html__( 'Enabled', 'smaily' ); ?>
 							</label>
 						</th>
-						<td id="smaily_checkout_display_visibility">
-							<?php
-							$checkbox_display_values = array(
-								'visible_unchecked' => __( 'Visible unchecked', 'smaily' ),
-								'visible_checked'   => __( 'Visible checked', 'smaily' ),
-								'hidden_unchecked'  => __( 'Hidden unchecked', 'smaily' ),
-
-							);
-							foreach ( $checkbox_display_values as $dp_value => $dp_translation ) {
-								$checked = $cb_display_selected === $dp_value ? 'checked' : '';
-
-								$input  = '<label for="checkbox_' . $dp_value . '">';
-								$input .= '<input type="radio" ';
-								$input .= 'id="checkbox_' . $dp_value . '" ';
-								$input .= 'name="checkbox_display" ';
-								$input .= 'value="' . $dp_value . '" ' . $checked . '>';
-								$input .= $dp_translation . '</label>';
-								echo( $input );
-							}
-							?>
+						<td>
+							<input
+								name  ="enable_checkbox"
+								type  ="checkbox"
+								class ="smaily-toggle"
+								id    ="checkbox-enable"
+								<?php checked( $cb_enabled ); ?>/>
+							<label for="checkbox-enable"></label>
 						</td>
 					</tr>
 					<tr class="form-field">
 						<th scope="row">
-							<label for="checkbox_order">
-							<?php echo esc_html__( 'Before / After', 'smaily' ); ?>
+							<label for="checkbox_auto_checked">
+								<?php echo esc_html__( 'Checked by default', 'smaily' ); ?>
 							</label>
 						</th>
 						<td>
-							<select id="cb-before-after" name="checkbox_order">
-								<option value="before" <?php echo( 'before' === $cb_order_selected ? 'selected' : '' ); ?> >
-									<?php echo esc_html__( 'Before', 'smaily' ); ?>
-								</option>
-							<option value="after" <?php echo( 'after' === $cb_order_selected ? 'selected' : '' ); ?>>
-								<?php echo esc_html__( 'After', 'smaily' ); ?>
-							</option>
-							</select>
+							<input
+								name  ="checkbox_auto_checked"
+								type  ="checkbox"
+								id    ="checkbox-auto-checked"
+								<?php checked( $cb_auto_checked ); ?>
+							/>
 						</td>
 					</tr>
 					<tr class="form-field">
@@ -433,23 +421,33 @@ $autoresponder_error = empty( $autoresponder_list ) && ! empty( $result['subdoma
 							<?php echo esc_html__( 'Location', 'smaily' ); ?>
 							</label>
 						</th>
-						<td>
-							<select id="checkbox-location" name="checkbox_location">
-							<?php
-							$cb_loc_available = array(
-								'order_notes'                => __( 'Order notes', 'smaily' ),
-								'checkout_billing_form'      => __( 'Billing form', 'smaily' ),
-								'checkout_shipping_form'     => __( 'Shipping form', 'smaily' ),
-								'checkout_registration_form' => __( 'Registration form', 'smaily' ),
-							);
-							// Display option and select saved value.
-							foreach ( $cb_loc_available as $loc_value => $loc_translation ) {
-								$selected = $cb_loc_selected === $loc_value ? 'selected' : '';
-								echo( "<option value='$loc_value' $selected>$loc_translation</option>" );
-							}
-							?>
+						<td id="smaily_checkout_display_location">
+							<select id="cb-before-after" name="checkbox_order">
+								<option value="before" <?php echo( 'before' === $cb_order_selected ? 'selected' : '' ); ?> >
+									<?php echo esc_html__( 'Before', 'smaily' ); ?>
+								</option>
+								<option value="after" <?php echo( 'after' === $cb_order_selected ? 'selected' : '' ); ?>>
+									<?php echo esc_html__( 'After', 'smaily' ); ?>
+								</option>
 							</select>
-
+							<select id="checkbox-location" name="checkbox_location">
+								<?php
+								$cb_loc_available = array(
+									'order_notes'                => __( 'Order notes', 'smaily' ),
+									'checkout_billing_form'      => __( 'Billing form', 'smaily' ),
+									'checkout_shipping_form'     => __( 'Shipping form', 'smaily' ),
+									'checkout_registration_form' => __( 'Registration form', 'smaily' ),
+								);
+								// Display option and select saved value.
+								foreach ( $cb_loc_available as $loc_value => $loc_translation ) : ?>
+									<option
+										value="<?php echo esc_html( $loc_value ); ?>"
+										<?php echo $cb_loc_selected === $loc_value ? 'selected' : ''; ?>
+									>
+										<?php echo esc_html( $loc_translation ); ?>
+									</option>
+								<?php endforeach; ?>
+							</select>
 						</td>
 					</tr>
 				</tbody>
