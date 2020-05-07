@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Smaily for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-06 07:42+0000\n"
+"POT-Creation-Date: 2020-05-07 15:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -21,268 +21,256 @@ msgid ""
 "function properly. Is WooCommerce installed?"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:28
+#: templates/smaily-woocommerce-admin.php:29
 msgid "Plugin Settings"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:36
+#: templates/smaily-woocommerce-admin.php:37
 msgid "General"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:41
+#: templates/smaily-woocommerce-admin.php:42
 msgid "Customer Synchronization"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:46
+#: templates/smaily-woocommerce-admin.php:47
 msgid "Abandoned Cart"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:51
+#: templates/smaily-woocommerce-admin.php:52
 msgid "Checkout Opt-in"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:61
+#: templates/smaily-woocommerce-admin.php:62
 msgid ""
 "There seems to be a problem with your connection to Smaily. Please "
 "revalidate your credentials!"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:77
+#: templates/smaily-woocommerce-admin.php:78
 msgid "Subdomain"
 msgstr ""
 
 #. 1: Openin strong tag 2: Closing strong tag
-#: templates/smaily-woocommerce-admin.php:90
+#: templates/smaily-woocommerce-admin.php:91
 #, php-format
 msgid "For example %1$s\"demo\"%2$s from https://%1$sdemo%2$s.sendsmaily.net/"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:104
+#: templates/smaily-woocommerce-admin.php:105
 msgid "API username"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:118
+#: templates/smaily-woocommerce-admin.php:119
 msgid "API password"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:131
+#: templates/smaily-woocommerce-admin.php:132
 msgid "How to create API credentials?"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:139
+#: templates/smaily-woocommerce-admin.php:140
 msgid "Subscribe Widget"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:144
+#: templates/smaily-woocommerce-admin.php:145
 msgid ""
 "To add a subscribe widget, use Widgets menu. Validate credentials before "
 "using."
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:154
+#: templates/smaily-woocommerce-admin.php:155
 msgid "Product RSS feed"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:162
+#: templates/smaily-woocommerce-admin.php:163
 msgid ""
 "Copy this URL into your template editor's RSS block, to receive RSS-feed."
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:177
+#: templates/smaily-woocommerce-admin.php:178
 msgid "Validate API information"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:190
+#: templates/smaily-woocommerce-admin.php:191
 msgid "Enable Customer synchronization"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:206
+#: templates/smaily-woocommerce-admin.php:207
 msgid "Syncronize additional fields"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:214
+#: templates/smaily-woocommerce-admin.php:215
 msgid "Customer Group"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:215
+#: templates/smaily-woocommerce-admin.php:216
 msgid "Customer ID"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:216
+#: templates/smaily-woocommerce-admin.php:217
 msgid "Date Of Birth"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:217
+#: templates/smaily-woocommerce-admin.php:218
 msgid "First Registered"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:218
+#: templates/smaily-woocommerce-admin.php:219
 msgid "Firstname"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:219 inc/Pages/ProfileSettings.php:144
+#: templates/smaily-woocommerce-admin.php:220 inc/Pages/ProfileSettings.php:138
 msgid "Gender"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:220
+#: templates/smaily-woocommerce-admin.php:221
 msgid "Lastname"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:221
+#: templates/smaily-woocommerce-admin.php:222
 msgid "Nickname"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:222 inc/Pages/ProfileSettings.php:158
+#: templates/smaily-woocommerce-admin.php:223 inc/Pages/ProfileSettings.php:152
 msgid "Phone"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:223
+#: templates/smaily-woocommerce-admin.php:224
 msgid "Site Title"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:236
+#: templates/smaily-woocommerce-admin.php:237
 msgid ""
 "Select fields you wish to synchronize along with subscriber email and store "
 "URL"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:254
+#: templates/smaily-woocommerce-admin.php:255
 msgid "Enable Abandoned Cart reminder"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:270
+#: templates/smaily-woocommerce-admin.php:271
 msgid "Cart Autoresponder ID"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:284
+#: templates/smaily-woocommerce-admin.php:285
 msgid " - (selected)"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:287
+#: templates/smaily-woocommerce-admin.php:288
 msgid "-Select-"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:300
+#: templates/smaily-woocommerce-admin.php:301
 msgid "No autoresponders created"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:310
+#: templates/smaily-woocommerce-admin.php:311
 msgid "Additional cart fields"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:318
+#: templates/smaily-woocommerce-admin.php:319
 msgid "Customer First Name"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:319
+#: templates/smaily-woocommerce-admin.php:320
 msgid "Customer Last Name"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:320
+#: templates/smaily-woocommerce-admin.php:321
 msgid "Product Name"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:321
+#: templates/smaily-woocommerce-admin.php:322
 msgid "Product Description"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:322
+#: templates/smaily-woocommerce-admin.php:323
 msgid "Product SKU"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:323
+#: templates/smaily-woocommerce-admin.php:324
 msgid "Product Quantity"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:324
+#: templates/smaily-woocommerce-admin.php:325
 msgid "Product Base Price"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:325
+#: templates/smaily-woocommerce-admin.php:326
 msgid "Product Price"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:336
+#: templates/smaily-woocommerce-admin.php:337
 msgid ""
 "Select fields wish to send to Smaily template along with subscriber email "
 "and store url."
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:347
+#: templates/smaily-woocommerce-admin.php:348
 msgid "Cart cutoff time"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:350
+#: templates/smaily-woocommerce-admin.php:351
 msgid "Consider cart abandoned after:"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:357
+#: templates/smaily-woocommerce-admin.php:358
 msgid "minute(s)"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:359
+#: templates/smaily-woocommerce-admin.php:360
 msgid "Minimum 10 minutes."
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:373
+#: templates/smaily-woocommerce-admin.php:374
 msgid "Subscription checkbox"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:378
+#: templates/smaily-woocommerce-admin.php:379
 msgid ""
 "Customers can subscribe by checking \"subscribe to newsletter\" checkbox on "
 "checkout page."
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:388
-msgid "Display"
+#: templates/smaily-woocommerce-admin.php:389
+msgid "Enable"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:394
-msgid "Visible unchecked"
+#: templates/smaily-woocommerce-admin.php:405
+msgid "Checked by default"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:395
-msgid "Visible checked"
-msgstr ""
-
-#: templates/smaily-woocommerce-admin.php:396
-msgid "Hidden unchecked"
-msgstr ""
-
-#: templates/smaily-woocommerce-admin.php:416
-msgid "Before / After"
-msgstr ""
-
-#: templates/smaily-woocommerce-admin.php:422
-msgid "Before"
-msgstr ""
-
-#: templates/smaily-woocommerce-admin.php:425
-msgid "After"
-msgstr ""
-
-#: templates/smaily-woocommerce-admin.php:433
+#: templates/smaily-woocommerce-admin.php:420
 msgid "Location"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:440
+#: templates/smaily-woocommerce-admin.php:426
+msgid "Before"
+msgstr ""
+
+#: templates/smaily-woocommerce-admin.php:429
+msgid "After"
+msgstr ""
+
+#: templates/smaily-woocommerce-admin.php:435
 msgid "Order notes"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:441
+#: templates/smaily-woocommerce-admin.php:436
 msgid "Billing form"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:442
+#: templates/smaily-woocommerce-admin.php:437
 msgid "Shipping form"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:443
+#: templates/smaily-woocommerce-admin.php:438
 msgid "Registration form"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:461
+#: templates/smaily-woocommerce-admin.php:458
 msgid "Save Settings"
 msgstr ""
 
@@ -322,51 +310,51 @@ msgstr ""
 msgid "Abandoned cart cutoff time value must be 10 or higher!"
 msgstr ""
 
-#: inc/Api/Api.php:302
+#: inc/Api/Api.php:304
 msgid "Settings updated!"
 msgstr ""
 
-#: inc/Api/Api.php:306
+#: inc/Api/Api.php:308
 msgid "Settings saved!"
 msgstr ""
 
-#: inc/Api/Api.php:310
+#: inc/Api/Api.php:312
 msgid "Something went wrong saving settings!"
 msgstr ""
 
-#: inc/Api/Api.php:359
+#: inc/Api/Api.php:361
 msgid "Check details, no connection !"
 msgstr ""
 
-#: inc/Pages/ProfileSettings.php:89 inc/Pages/ProfileSettings.php:184
+#: inc/Pages/ProfileSettings.php:83 inc/Pages/ProfileSettings.php:178
 msgid "Subscribe to newsletter"
 msgstr ""
 
-#: inc/Pages/ProfileSettings.php:148
+#: inc/Pages/ProfileSettings.php:142
 msgid "Male"
 msgstr ""
 
-#: inc/Pages/ProfileSettings.php:149
+#: inc/Pages/ProfileSettings.php:143
 msgid "Female"
 msgstr ""
 
-#: inc/Pages/ProfileSettings.php:159
+#: inc/Pages/ProfileSettings.php:153
 msgid "Enter phone number"
 msgstr ""
 
-#: inc/Pages/ProfileSettings.php:169
+#: inc/Pages/ProfileSettings.php:163
 msgid "Birthday"
 msgstr ""
 
-#: inc/Pages/ProfileSettings.php:170
+#: inc/Pages/ProfileSettings.php:164
 msgid "Enter birthday"
 msgstr ""
 
-#: inc/Pages/ProfileSettings.php:211
+#: inc/Pages/ProfileSettings.php:205
 msgid "Subscribe newsletter"
 msgstr ""
 
-#: inc/Pages/ProfileSettings.php:259
+#: inc/Pages/ProfileSettings.php:253
 msgid "Additional Information"
 msgstr ""
 

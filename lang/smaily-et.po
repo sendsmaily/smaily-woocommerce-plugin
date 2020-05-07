@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Smaily for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-06 07:42+0000\n"
-"PO-Revision-Date: 2020-05-06 08:10+0000\n"
+"POT-Creation-Date: 2020-05-07 15:18+0000\n"
+"PO-Revision-Date: 2020-05-07 15:26+0000\n"
 "Last-Translator: \n"
 "Language-Team: Estonian\n"
 "Language: et\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.3.3; wp-5.4"
+"X-Loco-Version: 2.3.3; wp-5.4.1"
 
 #: smaily-for-woocommerce.php:108
 msgid ""
@@ -22,27 +22,27 @@ msgstr ""
 "Smaily pistikmoodulit ei saa käivitada. WooCommerce moodul on vajalik Smaily "
 "mooduli käivitamiseks. Kas WooCommerce on installitud?"
 
-#: templates/smaily-woocommerce-admin.php:28
+#: templates/smaily-woocommerce-admin.php:29
 msgid "Plugin Settings"
 msgstr "Mooduli Sätted"
 
-#: templates/smaily-woocommerce-admin.php:36
+#: templates/smaily-woocommerce-admin.php:37
 msgid "General"
 msgstr "Üldsätted"
 
-#: templates/smaily-woocommerce-admin.php:41
+#: templates/smaily-woocommerce-admin.php:42
 msgid "Customer Synchronization"
 msgstr "Kasutajate Sünkroniseerimine"
 
-#: templates/smaily-woocommerce-admin.php:46
+#: templates/smaily-woocommerce-admin.php:47
 msgid "Abandoned Cart"
 msgstr "Unustatud Ostukorv"
 
-#: templates/smaily-woocommerce-admin.php:51
+#: templates/smaily-woocommerce-admin.php:52
 msgid "Checkout Opt-in"
-msgstr "Liitumine tellimuslehel"
+msgstr "Liitumine kassa lehel"
 
-#: templates/smaily-woocommerce-admin.php:61
+#: templates/smaily-woocommerce-admin.php:62
 msgid ""
 "There seems to be a problem with your connection to Smaily. Please "
 "revalidate your credentials!"
@@ -50,34 +50,34 @@ msgstr ""
 "Ilmnes probleem Smaily kontoga ühendumisel. Palun valideerige "
 "kasutajatunnused!"
 
-#: templates/smaily-woocommerce-admin.php:77
+#: templates/smaily-woocommerce-admin.php:78
 msgid "Subdomain"
 msgstr "Alamdomeen"
 
 #. 1: Openin strong tag 2: Closing strong tag
-#: templates/smaily-woocommerce-admin.php:90
+#: templates/smaily-woocommerce-admin.php:91
 #, php-format
 msgid "For example %1$s\"demo\"%2$s from https://%1$sdemo%2$s.sendsmaily.net/"
 msgstr ""
 "Näiteks %1$s\"demo\"%2$s aadressil https://%1$sdemo%2$s.sendsmaily.net/"
 
-#: templates/smaily-woocommerce-admin.php:104
+#: templates/smaily-woocommerce-admin.php:105
 msgid "API username"
 msgstr "API kasutajatunnus"
 
-#: templates/smaily-woocommerce-admin.php:118
+#: templates/smaily-woocommerce-admin.php:119
 msgid "API password"
 msgstr "API parool"
 
-#: templates/smaily-woocommerce-admin.php:131
+#: templates/smaily-woocommerce-admin.php:132
 msgid "How to create API credentials?"
 msgstr "Kuidas luua Smaily API konto?"
 
-#: templates/smaily-woocommerce-admin.php:139
+#: templates/smaily-woocommerce-admin.php:140
 msgid "Subscribe Widget"
 msgstr "Uudiskirja moodul"
 
-#: templates/smaily-woocommerce-admin.php:144
+#: templates/smaily-woocommerce-admin.php:145
 msgid ""
 "To add a subscribe widget, use Widgets menu. Validate credentials before "
 "using."
@@ -85,70 +85,70 @@ msgstr ""
 "Uudiskirjaga liitumise vormi lisamiseks kasuta Moodulite menüüd. Valideerige "
 "kasutajatunnused enne kasutamist."
 
-#: templates/smaily-woocommerce-admin.php:154
+#: templates/smaily-woocommerce-admin.php:155
 msgid "Product RSS feed"
 msgstr "Toodete uudisvoog"
 
-#: templates/smaily-woocommerce-admin.php:162
+#: templates/smaily-woocommerce-admin.php:163
 msgid ""
 "Copy this URL into your template editor's RSS block, to receive RSS-feed."
 msgstr ""
 "Kopeeri see link oma uudiskirja malli redigeerimise aknasse, et automaatselt "
 "lisada uudiskirjale tooteid."
 
-#: templates/smaily-woocommerce-admin.php:177
+#: templates/smaily-woocommerce-admin.php:178
 msgid "Validate API information"
 msgstr "Valideeri API kasutajatunnused"
 
-#: templates/smaily-woocommerce-admin.php:190
+#: templates/smaily-woocommerce-admin.php:191
 msgid "Enable Customer synchronization"
 msgstr "Aktiveeri kasutajate sünkronisatsioon"
 
-#: templates/smaily-woocommerce-admin.php:206
+#: templates/smaily-woocommerce-admin.php:207
 msgid "Syncronize additional fields"
 msgstr "Sünkroniseeri lisaväljad"
 
-#: templates/smaily-woocommerce-admin.php:214
+#: templates/smaily-woocommerce-admin.php:215
 msgid "Customer Group"
 msgstr "Kasutaja roll"
 
-#: templates/smaily-woocommerce-admin.php:215
+#: templates/smaily-woocommerce-admin.php:216
 msgid "Customer ID"
 msgstr "Kasutaja ID"
 
-#: templates/smaily-woocommerce-admin.php:216
+#: templates/smaily-woocommerce-admin.php:217
 msgid "Date Of Birth"
 msgstr "Sünnikuupäev"
 
-#: templates/smaily-woocommerce-admin.php:217
+#: templates/smaily-woocommerce-admin.php:218
 msgid "First Registered"
 msgstr "Registreerumise aeg"
 
-#: templates/smaily-woocommerce-admin.php:218
+#: templates/smaily-woocommerce-admin.php:219
 msgid "Firstname"
 msgstr "Eesnimi"
 
-#: templates/smaily-woocommerce-admin.php:219 inc/Pages/ProfileSettings.php:144
+#: templates/smaily-woocommerce-admin.php:220 inc/Pages/ProfileSettings.php:138
 msgid "Gender"
 msgstr "Sugu"
 
-#: templates/smaily-woocommerce-admin.php:220
+#: templates/smaily-woocommerce-admin.php:221
 msgid "Lastname"
 msgstr "Perenimi"
 
-#: templates/smaily-woocommerce-admin.php:221
+#: templates/smaily-woocommerce-admin.php:222
 msgid "Nickname"
 msgstr "Hüüdnimi"
 
-#: templates/smaily-woocommerce-admin.php:222 inc/Pages/ProfileSettings.php:158
+#: templates/smaily-woocommerce-admin.php:223 inc/Pages/ProfileSettings.php:152
 msgid "Phone"
 msgstr "Telefon"
 
-#: templates/smaily-woocommerce-admin.php:223
+#: templates/smaily-woocommerce-admin.php:224
 msgid "Site Title"
 msgstr "Veebilehe pealkiri"
 
-#: templates/smaily-woocommerce-admin.php:236
+#: templates/smaily-woocommerce-admin.php:237
 msgid ""
 "Select fields you wish to synchronize along with subscriber email and store "
 "URL"
@@ -156,63 +156,63 @@ msgstr ""
 "Vali väljad mida soovid sünkroniseerida lisaks kasutaja meilile ning poe URL-"
 "le"
 
-#: templates/smaily-woocommerce-admin.php:254
+#: templates/smaily-woocommerce-admin.php:255
 msgid "Enable Abandoned Cart reminder"
 msgstr "Käivita unustatud ostukorvi meeldetuletused"
 
-#: templates/smaily-woocommerce-admin.php:270
+#: templates/smaily-woocommerce-admin.php:271
 msgid "Cart Autoresponder ID"
 msgstr "Unustatud ostukorvi automaatvastaja"
 
-#: templates/smaily-woocommerce-admin.php:284
+#: templates/smaily-woocommerce-admin.php:285
 msgid " - (selected)"
 msgstr " - (valitud)"
 
-#: templates/smaily-woocommerce-admin.php:287
+#: templates/smaily-woocommerce-admin.php:288
 msgid "-Select-"
 msgstr "-Vali-"
 
-#: templates/smaily-woocommerce-admin.php:300
+#: templates/smaily-woocommerce-admin.php:301
 msgid "No autoresponders created"
 msgstr "Ei ole loonud ühtegi automaatvastajat"
 
-#: templates/smaily-woocommerce-admin.php:310
+#: templates/smaily-woocommerce-admin.php:311
 msgid "Additional cart fields"
 msgstr "Ostukorvi lisaväärtused"
 
-#: templates/smaily-woocommerce-admin.php:318
+#: templates/smaily-woocommerce-admin.php:319
 msgid "Customer First Name"
 msgstr "Kasutaja eesnimi"
 
-#: templates/smaily-woocommerce-admin.php:319
+#: templates/smaily-woocommerce-admin.php:320
 msgid "Customer Last Name"
 msgstr "Kasutaja perenimi"
 
-#: templates/smaily-woocommerce-admin.php:320
+#: templates/smaily-woocommerce-admin.php:321
 msgid "Product Name"
 msgstr "Toote nimi"
 
-#: templates/smaily-woocommerce-admin.php:321
+#: templates/smaily-woocommerce-admin.php:322
 msgid "Product Description"
 msgstr "Toote kirjeldus"
 
-#: templates/smaily-woocommerce-admin.php:322
+#: templates/smaily-woocommerce-admin.php:323
 msgid "Product SKU"
 msgstr "Toote SKU"
 
-#: templates/smaily-woocommerce-admin.php:323
+#: templates/smaily-woocommerce-admin.php:324
 msgid "Product Quantity"
 msgstr "Toote kogus"
 
-#: templates/smaily-woocommerce-admin.php:324
+#: templates/smaily-woocommerce-admin.php:325
 msgid "Product Base Price"
 msgstr "Toote alghind"
 
-#: templates/smaily-woocommerce-admin.php:325
+#: templates/smaily-woocommerce-admin.php:326
 msgid "Product Price"
 msgstr "Toote hind"
 
-#: templates/smaily-woocommerce-admin.php:336
+#: templates/smaily-woocommerce-admin.php:337
 msgid ""
 "Select fields wish to send to Smaily template along with subscriber email "
 "and store url."
@@ -220,27 +220,27 @@ msgstr ""
 "Vali väärtused, mis soovid lisada Smaily kirja mallile. Automaatselt "
 "saadetakse kasutaja email ja poe internetiaadress."
 
-#: templates/smaily-woocommerce-admin.php:347
+#: templates/smaily-woocommerce-admin.php:348
 msgid "Cart cutoff time"
 msgstr "Ostukorvi unustamise viivitus"
 
-#: templates/smaily-woocommerce-admin.php:350
+#: templates/smaily-woocommerce-admin.php:351
 msgid "Consider cart abandoned after:"
 msgstr "Ostukorv loetakse unustatuks peale:"
 
-#: templates/smaily-woocommerce-admin.php:357
+#: templates/smaily-woocommerce-admin.php:358
 msgid "minute(s)"
 msgstr "minutit"
 
-#: templates/smaily-woocommerce-admin.php:359
+#: templates/smaily-woocommerce-admin.php:360
 msgid "Minimum 10 minutes."
 msgstr "Minimaalne aeg 10 minutit."
 
-#: templates/smaily-woocommerce-admin.php:373
+#: templates/smaily-woocommerce-admin.php:374
 msgid "Subscription checkbox"
 msgstr "Liitumise märkeruut"
 
-#: templates/smaily-woocommerce-admin.php:378
+#: templates/smaily-woocommerce-admin.php:379
 msgid ""
 "Customers can subscribe by checking \"subscribe to newsletter\" checkbox on "
 "checkout page."
@@ -248,55 +248,43 @@ msgstr ""
 "Kliendid saavad liituda uudiskirjaga märkides tellimuslehel ruudu \"liitu "
 "uudiskirjaga\"."
 
-#: templates/smaily-woocommerce-admin.php:388
-msgid "Display"
-msgstr "Kuvamine"
+#: templates/smaily-woocommerce-admin.php:389
+msgid "Enable"
+msgstr "Aktiveeri"
 
-#: templates/smaily-woocommerce-admin.php:394
-msgid "Visible unchecked"
-msgstr "Nähtav ja märkimata"
+#: templates/smaily-woocommerce-admin.php:405
+msgid "Checked by default"
+msgstr "Vaikimisi märgitud"
 
-#: templates/smaily-woocommerce-admin.php:395
-msgid "Visible checked"
-msgstr "Nähtav ja märgitud"
-
-#: templates/smaily-woocommerce-admin.php:396
-msgid "Hidden unchecked"
-msgstr "Peidetud ja märkimata"
-
-#: templates/smaily-woocommerce-admin.php:416
-msgid "Before / After"
-msgstr "Enne / Pärast"
-
-#: templates/smaily-woocommerce-admin.php:422
-msgid "Before"
-msgstr "Enne"
-
-#: templates/smaily-woocommerce-admin.php:425
-msgid "After"
-msgstr "Pärast"
-
-#: templates/smaily-woocommerce-admin.php:433
+#: templates/smaily-woocommerce-admin.php:420
 msgid "Location"
 msgstr "Asukoht"
 
-#: templates/smaily-woocommerce-admin.php:440
+#: templates/smaily-woocommerce-admin.php:426
+msgid "Before"
+msgstr "Enne"
+
+#: templates/smaily-woocommerce-admin.php:429
+msgid "After"
+msgstr "Pärast"
+
+#: templates/smaily-woocommerce-admin.php:435
 msgid "Order notes"
 msgstr "Tellimuse märkmeid"
 
-#: templates/smaily-woocommerce-admin.php:441
+#: templates/smaily-woocommerce-admin.php:436
 msgid "Billing form"
 msgstr "Kontaktandmete vormi"
 
-#: templates/smaily-woocommerce-admin.php:442
+#: templates/smaily-woocommerce-admin.php:437
 msgid "Shipping form"
 msgstr "Tarneviisi vormi"
 
-#: templates/smaily-woocommerce-admin.php:443
+#: templates/smaily-woocommerce-admin.php:438
 msgid "Registration form"
 msgstr "Registreerumise vormi"
 
-#: templates/smaily-woocommerce-admin.php:461
+#: templates/smaily-woocommerce-admin.php:458
 msgid "Save Settings"
 msgstr "Salvesta"
 
@@ -336,51 +324,51 @@ msgstr "Vali unustatud ostukorvi automaatvastaja!"
 msgid "Abandoned cart cutoff time value must be 10 or higher!"
 msgstr "Unustatud ostukorvi viivitus peab olema vähemalt 10 minutit!"
 
-#: inc/Api/Api.php:302
+#: inc/Api/Api.php:304
 msgid "Settings updated!"
 msgstr "Sätted uuendatud!"
 
-#: inc/Api/Api.php:306
+#: inc/Api/Api.php:308
 msgid "Settings saved!"
 msgstr "Sätted salvestatud!"
 
-#: inc/Api/Api.php:310
+#: inc/Api/Api.php:312
 msgid "Something went wrong saving settings!"
 msgstr "Midagi läks sätete salvestamisel valesti!"
 
-#: inc/Api/Api.php:359
+#: inc/Api/Api.php:361
 msgid "Check details, no connection !"
 msgstr "Kontrolli sisselogimisandmeid, ühendus puudub!"
 
-#: inc/Pages/ProfileSettings.php:89 inc/Pages/ProfileSettings.php:184
+#: inc/Pages/ProfileSettings.php:83 inc/Pages/ProfileSettings.php:178
 msgid "Subscribe to newsletter"
 msgstr "Liitu uudiskirjaga"
 
-#: inc/Pages/ProfileSettings.php:148
+#: inc/Pages/ProfileSettings.php:142
 msgid "Male"
 msgstr "Mees"
 
-#: inc/Pages/ProfileSettings.php:149
+#: inc/Pages/ProfileSettings.php:143
 msgid "Female"
 msgstr "Naine"
 
-#: inc/Pages/ProfileSettings.php:159
+#: inc/Pages/ProfileSettings.php:153
 msgid "Enter phone number"
 msgstr "Sisesta telefoninumber"
 
-#: inc/Pages/ProfileSettings.php:169
+#: inc/Pages/ProfileSettings.php:163
 msgid "Birthday"
 msgstr "Sünnikuupäev"
 
-#: inc/Pages/ProfileSettings.php:170
+#: inc/Pages/ProfileSettings.php:164
 msgid "Enter birthday"
 msgstr "Sisesta sünnikuupäev"
 
-#: inc/Pages/ProfileSettings.php:211
+#: inc/Pages/ProfileSettings.php:205
 msgid "Subscribe newsletter"
 msgstr "Liitu uudiskirjaga"
 
-#: inc/Pages/ProfileSettings.php:259
+#: inc/Pages/ProfileSettings.php:253
 msgid "Additional Information"
 msgstr "Lisainformatsioon"
 
@@ -446,7 +434,7 @@ msgid ""
 "Smaily for Woocommerce plugin has changed abandoned cart exported fields.\n"
 "\t\t\t\tPlease check your plugin settings!"
 msgstr ""
-"Smaily WooCommerce-le on muutnud unustatud ostukorvi lisaväljasid. Palun "
+"Smaily for WooCommerce on muutnud unustatud ostukorvi lisaväljasid. Palun "
 "kontrollige pistikmooduli sätteid!"
 
 #: inc/Base/Upgrade.php:114
@@ -455,7 +443,7 @@ msgid ""
 "behaviour.\n"
 "\t\t\t\tPlease check your plugin settings!"
 msgstr ""
-"Smaily WooCommerce-le on muutnud tellimuslehel uudiskirjaga liitumise "
+"Smaily for WooCommerce on muutnud tellimuslehel uudiskirjaga liitumise "
 "märkeruudu funktsionaalsust. \n"
 "Palun vaadake üle pistikmooduli sätted!"
 
@@ -465,7 +453,7 @@ msgstr "Sätted"
 
 #. Name of the plugin
 msgid "Smaily for WooCommerce"
-msgstr "Smaily WooCommerce-le"
+msgstr "Smaily for WooCommerce"
 
 #. Description of the plugin
 msgid ""

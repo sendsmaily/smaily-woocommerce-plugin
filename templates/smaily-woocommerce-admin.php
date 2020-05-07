@@ -386,7 +386,7 @@ $autoresponder_error = empty( $autoresponder_list ) && ! empty( $result['subdoma
 					<tr class="form-field">
 						<th scope="row">
 							<label for="checkbox_enable">
-								<?php echo esc_html__( 'Enabled', 'smaily' ); ?>
+								<?php echo esc_html__( 'Enable', 'smaily' ); ?>
 							</label>
 						</th>
 						<td>
