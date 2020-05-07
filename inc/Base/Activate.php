@@ -63,9 +63,10 @@ class Activate {
 				cart_autoresponder_id int(10) DEFAULT NULL,
 				cart_cutoff int(10) DEFAULT NULL,
 				cart_options varchar(255) DEFAULT NULL,
-				checkbox_display varchar(255) DEFAULT 'visible_unchecked',
+				enable_checkbox tinyint(1) DEFAULT 0,
+				checkbox_auto_checked tinyint(1) DEFAULT 0,
 				checkbox_order varchar(255) DEFAULT 'after',
-				checkbox_location varchar(255) DEFAULT 'checkot_billing_form',
+				checkbox_location varchar(255) DEFAULT 'checkout_billing_form',
 				PRIMARY KEY  (id)
 				) $charset_collate;";
 		dbDelta( $smaily );
@@ -98,11 +99,12 @@ class Activate {
 			$wpdb->insert(
 				$table_name,
 				array(
-					'enable'            => 0,
-					'enable_cart'       => 0,
-					'checkbox_display'  => 'visible_unchecked',
-					'checkbox_order'    => 'after',
-					'checkbox_location' => 'checkout_billing_form',
+					'enable'                => 0,
+					'enable_cart'           => 0,
+					'enable_checkbox'       => 0,
+					'checkbox_auto_checked' => 0,
+					'checkbox_order'        => 'after',
+					'checkbox_location'     => 'checkout_billing_form',
 				)
 			);
 		}

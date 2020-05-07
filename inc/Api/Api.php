@@ -267,9 +267,10 @@ class Api {
 		}
 
 		// Checkout newsletter checkbox.
-		$checkbox_display  = wp_unslash( sanitize_text_field( $autoresponders['checkbox_display'] ) );
-		$checkbox_order    = wp_unslash( sanitize_text_field( $autoresponders['checkbox_order'] ) );
-		$checkbox_location = wp_unslash( sanitize_text_field( $autoresponders['checkbox_location'] ) );
+		$checkbox_enabled      = isset( $autoresponders['enable_checkbox'] ) ? 1 : 0;
+		$checkbox_auto_checked = isset( $autoresponders['checkbox_auto_checked'] ) ? 1 : 0;
+		$checkbox_order        = wp_unslash( sanitize_text_field( $autoresponders['checkbox_order'] ) );
+		$checkbox_location     = wp_unslash( sanitize_text_field( $autoresponders['checkbox_location'] ) );
 
 		// Save data to database.
 		global $wpdb;
@@ -279,7 +280,8 @@ class Api {
 			'enable'                => $enabled,
 			'syncronize_additional' => $syncronize_additional,
 			'enable_cart'           => $cart_enabled,
-			'checkbox_display'      => $checkbox_display,
+			'enable_checkbox'       => $checkbox_enabled,
+			'checkbox_auto_checked' => $checkbox_auto_checked,
 			'checkbox_order'        => $checkbox_order,
 			'checkbox_location'     => $checkbox_location,
 		);

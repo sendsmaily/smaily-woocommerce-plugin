@@ -12,9 +12,8 @@ if ( isset( $settings ) ) {
 	$cart_enabled            = $result['enable_cart'];
 	$cart_autoresponder_name = $result['cart_autoresponder'];
 	$cart_autoresponder_id   = $result['cart_autoresponder_id'];
-	$cb_enabled              = 1; // $result['enable_checkbox'];
-	$cb_auto_checked         = 1; // $result['checkbox_auto_checked'];
-	$cb_display_selected     = $result['checkbox_display'];
+	$cb_enabled              = intval( $result['enable_checkbox'] );
+	$cb_auto_checked         = intval( $result['checkbox_auto_checked'] );
 	$cb_order_selected       = $result['checkbox_order'];
 	$cb_loc_selected         = $result['checkbox_location'];
 }
