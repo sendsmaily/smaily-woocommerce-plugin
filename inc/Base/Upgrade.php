@@ -47,6 +47,9 @@ class Upgrade {
 						set_transient( 'smaily_woocommerce_upgrade_1_4_0_notice', 1 );
 						$this->upgrade_1_4_0();
 					}
+					if ( version_compare( $version, '1.5.0', '=' ) ) {
+						set_transient( 'smaily_woocommerce_upgrade_1_5_0_notice', 1 );
+					}
 				}
 			}
 		}
@@ -107,6 +110,15 @@ class Upgrade {
 			delete_transient( 'smaily_woocommerce_upgrade_1_4_0_notice' );
 		}
 
+		if ( get_transient( 'smaily_woocommerce_upgrade_1_5_0_notice' ) ) {
+			$message = __(
+				'Smaily for Woocommerce plugin has changed checkout subscription checkbox behaviour.
+				Please check your plugin settings!',
+				'smaily'
+			);
+			echo ( '<div class="notice notice-warning"><p>' . esc_html( $message ) . '</p></div>' );
+			delete_transient( 'smaily_woocommerce_upgrade_1_5_0_notice' );
+		}
 	}
 
 }

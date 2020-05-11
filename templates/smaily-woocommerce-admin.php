@@ -12,6 +12,10 @@ if ( isset( $settings ) ) {
 	$cart_enabled            = $result['enable_cart'];
 	$cart_autoresponder_name = $result['cart_autoresponder'];
 	$cart_autoresponder_id   = $result['cart_autoresponder_id'];
+	$cb_enabled              = intval( $result['enable_checkbox'] );
+	$cb_auto_checked         = intval( $result['checkbox_auto_checked'] );
+	$cb_order_selected       = $result['checkbox_order'];
+	$cb_loc_selected         = $result['checkbox_location'];
 }
 $autoresponder_list  = DataHandler::get_autoresponder_list();
 // get_autoresponder_list will return empty array only if error with current credentials.
@@ -41,6 +45,11 @@ $autoresponder_error = empty( $autoresponder_list ) && ! empty( $result['subdoma
 			<li>
 				<a href="#cart" class="nav-tab">
 					<?php echo esc_html__( 'Abandoned Cart', 'smaily' ); ?>
+				</a>
+			</li>
+			<li>
+				<a href="#checkout_subscribe" class="nav-tab">
+					<?php echo esc_html__( 'Checkout Opt-in', 'smaily' ); ?>
 				</a>
 			</li>
 		</ul>
@@ -134,7 +143,7 @@ $autoresponder_error = empty( $autoresponder_list ) && ! empty( $result['subdoma
 						<td>
 							<?php
 							echo esc_html__(
-								'To add a subscribe widget, use Widgets menu. Fill out settings before using.',
+								'To add a subscribe widget, use Widgets menu. Validate credentials before using.',
 								'smaily'
 							);
 							?>
@@ -350,6 +359,94 @@ $autoresponder_error = empty( $autoresponder_list ) && ! empty( $result['subdoma
 							<small id="cart-delay-help" class="form-text text-muted">
 							<?php echo esc_html__( 'Minimum 10 minutes.', 'smaily' ); ?>
 							</small>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div id="checkout_subscribe">
+			<table class="form-table">
+				<tbody>
+					<tr class="form-field">
+						<th scope="row">
+							<label for="checkbox_description">
+							<?php echo esc_html__( 'Subscription checkbox', 'smaily' ); ?>
+							</label>
+						</th>
+						<td id="checkbox_description">
+						<?php
+						esc_html_e(
+							'Customers can subscribe by checking "subscribe to newsletter" checkbox on checkout page.',
+							'smaily'
+						);
+						?>
+						</td>
+					</tr>
+					<tr class="form-field">
+						<th scope="row">
+							<label for="checkbox_enable">
+								<?php echo esc_html__( 'Enable', 'smaily' ); ?>
+							</label>
+						</th>
+						<td>
+							<input
+								name  ="enable_checkbox"
+								type  ="checkbox"
+								class ="smaily-toggle"
+								id    ="checkbox-enable"
+								<?php checked( $cb_enabled ); ?>/>
+							<label for="checkbox-enable"></label>
+						</td>
+					</tr>
+					<tr class="form-field">
+						<th scope="row">
+							<label for="checkbox_auto_checked">
+								<?php echo esc_html__( 'Checked by default', 'smaily' ); ?>
+							</label>
+						</th>
+						<td>
+							<input
+								name  ="checkbox_auto_checked"
+								type  ="checkbox"
+								id    ="checkbox-auto-checked"
+								<?php checked( $cb_auto_checked ); ?>
+							/>
+						</td>
+					</tr>
+					<tr class="form-field">
+						<th scope="row">
+							<label for="checkbox_location">
+							<?php echo esc_html__( 'Location', 'smaily' ); ?>
+							</label>
+						</th>
+						<td id="smaily_checkout_display_location">
+							<select id="cb-before-after" name="checkbox_order">
+								<option value="before" <?php echo( 'before' === $cb_order_selected ? 'selected' : '' ); ?> >
+									<?php echo esc_html__( 'Before', 'smaily' ); ?>
+								</option>
+								<option value="after" <?php echo( 'after' === $cb_order_selected ? 'selected' : '' ); ?>>
+									<?php echo esc_html__( 'After', 'smaily' ); ?>
+								</option>
+							</select>
+							<select id="checkbox-location" name="checkbox_location">
+								<?php
+								$cb_loc_available = array(
+									'order_notes'                => __( 'Order notes', 'smaily' ),
+									'checkout_billing_form'      => __( 'Billing form', 'smaily' ),
+									'checkout_shipping_form'     => __( 'Shipping form', 'smaily' ),
+									'checkout_registration_form' => __( 'Registration form', 'smaily' ),
+								);
+								// Display option and select saved value.
+								foreach ( $cb_loc_available as $loc_value => $loc_translation ) : ?>
+									<option
+										value="<?php echo esc_html( $loc_value ); ?>"
+										<?php echo $cb_loc_selected === $loc_value ? 'selected' : ''; ?>
+									>
+										<?php echo esc_html( $loc_translation ); ?>
+									</option>
+								<?php endforeach; ?>
+							</select>
 						</td>
 					</tr>
 				</tbody>

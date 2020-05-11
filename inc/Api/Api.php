@@ -206,10 +206,10 @@ class Api {
 		}
 
 		// Sanitize user input.
-		$sanitized_user                  = [];
-		$sanitized_cart_autoresponder    = [];
-		$sanitized_syncronize_additional = [];
-		$sanitized_cart_options          = [];
+		$sanitized_user                  = array();
+		$sanitized_cart_autoresponder    = array();
+		$sanitized_syncronize_additional = array();
+		$sanitized_cart_options          = array();
 		if ( is_array( $user ) ) {
 			foreach ( $user as $key => $value ) {
 				$sanitized_user[ $key ] = wp_unslash( sanitize_text_field( $value ) );
@@ -266,6 +266,12 @@ class Api {
 			}
 		}
 
+		// Checkout newsletter checkbox.
+		$checkbox_enabled      = isset( $autoresponders['enable_checkbox'] ) ? 1 : 0;
+		$checkbox_auto_checked = isset( $autoresponders['checkbox_auto_checked'] ) ? 1 : 0;
+		$checkbox_order        = wp_unslash( sanitize_text_field( $autoresponders['checkbox_order'] ) );
+		$checkbox_location     = wp_unslash( sanitize_text_field( $autoresponders['checkbox_location'] ) );
+
 		// Save data to database.
 		global $wpdb;
 		$table_name = $wpdb->prefix . 'smaily';
@@ -274,6 +280,10 @@ class Api {
 			'enable'                => $enabled,
 			'syncronize_additional' => $syncronize_additional,
 			'enable_cart'           => $cart_enabled,
+			'enable_checkbox'       => $checkbox_enabled,
+			'checkbox_auto_checked' => $checkbox_auto_checked,
+			'checkbox_order'        => $checkbox_order,
+			'checkbox_location'     => $checkbox_location,
 		);
 
 		// Update DB with user values if abandoned cart enabled.
@@ -308,7 +318,7 @@ class Api {
 		wp_die();
 
 	}
-	// TODO: This method shoud not manipulate data but only pass received results.
+	// TODO: This method should not manipulate data but only pass received results.
 	// Let calling functions determine how to implement error handling.
 	/**
 	 * Api call to Smaily with different parameters

@@ -22,13 +22,18 @@ class ProfileSettings {
 		// Show additional profile fields only if credentials are validated.
 		$result = DataHandler::get_smaily_results();
 
-		if ( isset( $result['result']['subdomain'] ) ) {
+		// No subdomain before successful credential validation.
+		if ( ! empty( $result['result']['subdomain'] ) ) {
 			// Add fields to registration form and account area.
 			add_action( 'woocommerce_register_form', array( $this, 'smaily_print_user_frontend_fields' ), 10 );
 			add_action( 'woocommerce_edit_account_form', array( $this, 'smaily_print_user_frontend_fields' ), 10 );
 
 			// Show fields in checkout area.
 			add_filter( 'woocommerce_checkout_fields', array( $this, 'smaily_checkout_fields' ), 10, 1 );
+
+			// Add checkbox to admin preferred location.
+			$cb_location = self::generate_checkbox_location();
+			add_action( $cb_location, array( $this, 'smaily_checkout_newsletter_checkbox' ) );
 
 			// Add fields to admin area.
 			add_action( 'show_user_profile', array( $this, 'smaily_print_user_admin_fields' ), 30 ); // admin: edit profile.
@@ -44,7 +49,46 @@ class ProfileSettings {
 	}
 
 	/**
-	 * Add fields to reqistration area and account area
+	 * Generates correctly formatted woocommerce hook based of plugin settings.
+	 *
+	 * @return string
+	 */
+	public static function generate_checkbox_location() {
+		$settings = DataHandler::get_smaily_results()['result'];
+
+		$order    = $settings['checkbox_order'];
+		$location = $settings['checkbox_location'];
+
+		// Syntax - woocommerce_before_checkout_billing_form.
+		$location = 'woocommerce_' . $order . '_' . $location;
+
+		return $location;
+	}
+
+	/**
+	 * Add newsletter subscribe button to admin preferred place in checkout page.
+	 *
+	 * @return void
+	 */
+	public function smaily_checkout_newsletter_checkbox() {
+		$settings = DataHandler::get_smaily_results()['result'];
+		$checked  = intval( $settings['checkbox_auto_checked'] );
+		$enabled  = intval( $settings['enable_checkbox'] );
+		if ( $enabled ) {
+			woocommerce_form_field(
+				'user_newsletter',
+				array(
+					'type'  => 'checkbox',
+					'id'    => 'smaily-checkout-subscribe',
+					'label' => __( 'Subscribe to newsletter', 'smaily' ),
+				),
+				$checked
+			);
+		}
+	}
+
+	/**
+	 * Add fields to registration area and account area
 	 *
 	 * @return void
 	 */
@@ -131,7 +175,7 @@ class ProfileSettings {
 			$add_fields = array(
 				'user_newsletter' => array(
 					'type'                 => 'checkbox',
-					'label'                => __( 'Subscribe newsletter', 'smaily' ),
+					'label'                => __( 'Subscribe to newsletter', 'smaily' ),
 					'required'             => false,
 					'hide_in_account'      => false,
 					'hide_in_admin'        => false,
@@ -180,9 +224,7 @@ class ProfileSettings {
 		// Get available account fields.
 		$fields = $this->smaily_get_account_fields();
 		// Fields to append to billing information.
-		$billing_details_list = [ 'user_gender', 'user_phone', 'user_dob' ];
-		// Fields to append to Additional information.
-		$order_details_list = [ 'user_newsletter' ];
+		$billing_details_list = array( 'user_gender', 'user_phone', 'user_dob' );
 
 		foreach ( $fields as $key => $field_args ) {
 
@@ -193,10 +235,6 @@ class ProfileSettings {
 			// Append billing details to customer billing details list.
 			if ( in_array( $key, $billing_details_list, true ) ) {
 				$checkout_fields['billing'][ $key ] = $field_args;
-			}
-			// Append newsletter to additional information.
-			if ( in_array( $key, $order_details_list, true ) ) {
-				$checkout_fields['order'][ $key ] = $field_args;
 			}
 		}
 
