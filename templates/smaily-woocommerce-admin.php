@@ -20,6 +20,8 @@ if ( isset( $settings ) ) {
 $autoresponder_list  = DataHandler::get_autoresponder_list();
 // get_autoresponder_list will return empty array only if error with current credentials.
 $autoresponder_error = empty( $autoresponder_list ) && ! empty( $result['subdomain'] );
+
+$wc_categories_list = DataHandler::get_woocommerce_categories_list();
 ?>
 <div class="wrap smaily-settings">
 	<h1>
@@ -50,6 +52,11 @@ $autoresponder_error = empty( $autoresponder_list ) && ! empty( $result['subdoma
 			<li>
 				<a href="#checkout_subscribe" class="nav-tab">
 					<?php echo esc_html__( 'Checkout Opt-in', 'smaily' ); ?>
+				</a>
+			</li>
+			<li>
+				<a href="#rss" class="nav-tab">
+					<?php echo esc_html__( 'RSS Feed', 'smaily' ); ?>
 				</a>
 			</li>
 		</ul>
@@ -447,6 +454,78 @@ $autoresponder_error = empty( $autoresponder_list ) && ! empty( $result['subdoma
 									</option>
 								<?php endforeach; ?>
 							</select>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div id="rss">
+			<table class="form-table">
+				<tbody>
+					<tr class="form-field">
+						<th scope="row">
+							<label>
+							<?php echo esc_html__( 'Limit', 'smaily' ); ?>
+							</label>
+						</th>
+						<td>
+							<input type="number" id="quantity" name="quantity" min="1" max="250">
+							<small>
+								<?php
+								echo esc_html__(
+									'Limit how many products you will add to your field. Maximum 250.',
+									'smaily'
+								);
+								?>
+							</small>
+						</td>
+					</tr>
+					<tr class="form-field">
+						<th scope="row">
+							<label for="rss-category">
+							<?php echo esc_html__( 'Select RSS category', 'smaily' ); ?>
+							</label>
+
+						</th>
+						<td>
+							<select id="rss-categories-list" name="rss_category">
+								<?php
+								// Show all autoresponders from Smaily.
+								if ( ! empty( $wc_categories_list ) ) {
+									foreach ( $wc_categories_list as $category ) {
+										echo '<option value="' .  $category->term_id . '">' .
+											esc_html( $category->name ) .
+										'</option>';
+									}
+								}
+								?>
+							</select>
+							<small>
+								<?php
+								echo esc_html__(
+									'Show products from specific category',
+									'smaily'
+								);
+								?>
+							</small>
+						</td>
+					</tr>
+					<tr class="form-field">
+						<th scope="row">
+							<label>
+								<?php echo esc_html__( 'Product RSS feed', 'smaily' ); ?>
+							</label>
+						</th>
+						<td>
+							<strong>
+								<?php echo esc_url( get_site_url() ); ?>/smaily-rss-feed
+							</strong>
+							<?php
+							echo esc_html__(
+								"Copy this URL into your template editor's RSS block, to receive RSS-feed.",
+								'smaily'
+							);
+							?>
 						</td>
 					</tr>
 				</tbody>

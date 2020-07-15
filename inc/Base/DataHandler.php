@@ -255,4 +255,18 @@ class DataHandler {
 		return $response;
 	}
 
+	public static function get_woocommerce_categories_list() {
+		$orderby = 'name';
+		$order = 'asc';
+		$hide_empty = false;
+		$cat_args = array(
+			'orderby'    => $orderby,
+			'order'      => $order,
+			'hide_empty' => $hide_empty,
+		);
+
+		$product_categories = get_terms( 'product_cat', $cat_args );
+		return $product_categories;
+	}
+
 }
