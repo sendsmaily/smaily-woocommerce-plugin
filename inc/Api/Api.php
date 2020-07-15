@@ -97,6 +97,7 @@ class Api {
 			wp_die();
 		}
 
+		$useragent = 'WordPress/' . get_bloginfo( 'version' ) . '; ' . get_bloginfo( 'url' ) . '; WooCommerce/' . WC_VERSION . '; smaily-for-woocommerce/' . SMAILY_PLUGIN_VERSION;
 		// If all fields are set make api call.
 		$api_call = wp_remote_get(
 			'https://' . $sanitized['subdomain'] . '.sendsmaily.net/api/workflows.php?trigger_type=form_submitted',
@@ -104,6 +105,7 @@ class Api {
 				'headers' => array(
 					'Authorization' => 'Basic ' . base64_encode( $sanitized['username'] . ':' . $sanitized['password'] ),
 				),
+				'user-agent' => $useragent,
 			]
 		);
 		// Response code from Smaily API.
@@ -338,6 +340,10 @@ class Api {
 
 		// Add authorization to data of request.
 		$data = array_merge( $data, [ 'headers' => array( 'Authorization' => 'Basic ' . base64_encode( $result['username'] . ':' . $result['password'] ) ) ] );
+
+		// Add User-Agent string to data of request.
+		$useragent = 'WordPress/' . get_bloginfo( 'version' ) . '; ' . get_bloginfo( 'url' ) . '; WooCommerce/' . WC_VERSION . '; smaily-for-woocommerce/' . SMAILY_PLUGIN_VERSION;
+		$data = array_merge( $data, [ 'user-agent' => $useragent ] );
 
 		// API call with GET request.
 		if ( $method === 'GET' ) {
