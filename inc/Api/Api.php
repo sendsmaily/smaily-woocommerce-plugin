@@ -272,6 +272,19 @@ class Api {
 		$checkbox_order        = wp_unslash( sanitize_text_field( $autoresponders['checkbox_order'] ) );
 		$checkbox_location     = wp_unslash( sanitize_text_field( $autoresponders['checkbox_location'] ) );
 
+		// RSS settings
+		$rss_category = wp_unslash( sanitize_text_field( $autoresponders['rss_category'] ) );
+		$rss_limit    = (int) wp_unslash( sanitize_text_field( $autoresponders['rss_limit'] ) );
+
+		if ( $rss_limit > 250 || $rss_limit < 1 ) {
+			echo wp_json_encode(
+				array(
+					'error' => esc_html__( 'RSS product limit value must be between 1 and 250!', 'smaily' ),
+				)
+			);
+			wp_die();
+		}
+
 		// Save data to database.
 		global $wpdb;
 		$table_name = $wpdb->prefix . 'smaily';
@@ -284,6 +297,8 @@ class Api {
 			'checkbox_auto_checked' => $checkbox_auto_checked,
 			'checkbox_order'        => $checkbox_order,
 			'checkbox_location'     => $checkbox_location,
+			'rss_category'          => $rss_category,
+			'rss_limit'             => $rss_limit,
 		);
 
 		// Update DB with user values if abandoned cart enabled.

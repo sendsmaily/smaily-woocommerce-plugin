@@ -16,6 +16,8 @@ if ( isset( $settings ) ) {
 	$cb_auto_checked         = intval( $result['checkbox_auto_checked'] );
 	$cb_order_selected       = $result['checkbox_order'];
 	$cb_loc_selected         = $result['checkbox_location'];
+	$rss_category            = $result['rss_category'];
+	$rss_limit               = $result['rss_limit'];
 }
 $autoresponder_list  = DataHandler::get_autoresponder_list();
 // get_autoresponder_list will return empty array only if error with current credentials.
@@ -469,7 +471,7 @@ $wc_categories_list = DataHandler::get_woocommerce_categories_list();
 							</label>
 						</th>
 						<td>
-							<input type="number" id="quantity" name="quantity" min="1" max="250">
+							<input type="number" id="rss_limit" name="rss_limit" min="1" max="250" value="<?php echo esc_html( $rss_limit ); ?>">
 							<small>
 								<?php
 								echo esc_html__(
@@ -488,16 +490,18 @@ $wc_categories_list = DataHandler::get_woocommerce_categories_list();
 
 						</th>
 						<td>
-							<select id="rss-categories-list" name="rss_category">
+							<select id="rss_category" name="rss_category">
 								<?php
-								// Show all autoresponders from Smaily.
-								if ( ! empty( $wc_categories_list ) ) {
-									foreach ( $wc_categories_list as $category ) {
-										echo '<option value="' .  $category->term_id . '">' .
-											esc_html( $category->name ) .
-										'</option>';
-									}
-								}
+
+								// Display WooCommerce categories and saved category.
+								foreach ( $wc_categories_list as $category ) : ?>
+									<option
+										value="<?php echo esc_html( $category->slug ); ?>"
+										<?php echo $rss_category === $category->slug ? 'selected' : ''; ?>
+									>
+										<?php echo esc_html( $category->name ); ?>
+									</option>
+								<?php endforeach; ?>
 								?>
 							</select>
 							<small>
