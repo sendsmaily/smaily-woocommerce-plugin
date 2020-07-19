@@ -255,11 +255,16 @@ class DataHandler {
 		return $response;
 	}
 
+	/**
+	 * Get all WooCommerce product categories.
+	 *
+	 * @return array Product categories
+	 */
 	public static function get_woocommerce_categories_list() {
-		$orderby = 'name';
-		$order = 'asc';
+		$orderby    = 'name';
+		$order      = 'asc';
 		$hide_empty = false;
-		$cat_args = array(
+		$cat_args   = array(
 			'orderby'    => $orderby,
 			'order'      => $order,
 			'hide_empty' => $hide_empty,
@@ -267,6 +272,27 @@ class DataHandler {
 
 		$product_categories = get_terms( 'product_cat', $cat_args );
 		return $product_categories;
+	}
+
+	/**
+	 * Get Product RSS Feed URL.
+	 *
+	 * @param string $rss_category Category slug.
+	 * @param int $rss_limit
+	 * @return string RSS URL e.g. example.com/smaily-rss-feed?category=uncategorized&limit=250
+	 */
+	public static function make_rss_feed_url( $rss_category = null, $rss_limit = null ) {
+		$parameters   = array();
+		$rss_url_base = get_site_url() . '/smaily-rss-feed/?';
+
+		if ( isset( $rss_category ) && $rss_category !== '' ) {
+			$parameters['category'] = $rss_category;
+		}
+
+		if ( isset( $rss_limit ) ) {
+			$parameters['limit'] = $rss_limit;
+		}
+		return $rss_url_base . http_build_query( $parameters );
 	}
 
 }

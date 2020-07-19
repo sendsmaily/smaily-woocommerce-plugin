@@ -67,8 +67,8 @@ class Activate {
 				checkbox_auto_checked tinyint(1) DEFAULT 0,
 				checkbox_order varchar(255) DEFAULT 'after',
 				checkbox_location varchar(255) DEFAULT 'checkout_billing_form',
-				rss_limit smallint(3) DEFAULT 1,
-				rss_category varchar(255) DEFAULT 'uncategorized'
+				rss_limit smallint(3) DEFAULT 50,
+				rss_category varchar(255) DEFAULT '',
 				PRIMARY KEY  (id)
 				) $charset_collate;";
 		dbDelta( $smaily );

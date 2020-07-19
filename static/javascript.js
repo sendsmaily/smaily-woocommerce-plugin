@@ -71,7 +71,7 @@
             // Hide loading icon
             spinner.hide();
           } else if (!data) {
-            displayMessage(smaily_translations.went_wrong, true);
+            displayMessage(smaily_frontend_helper.went_wrong, true);
             // Hide loading icon
             spinner.hide();
           } else {
@@ -93,7 +93,7 @@
               );
             });
             // Success message.
-            displayMessage(smaily_translations.validated);
+            displayMessage(smaily_frontend_helper.validated);
             // Hide validate button.
             validateButton.hide();
             // Hide loader icon.
@@ -135,13 +135,30 @@
           if (data["error"]) {
             displayMessage(data["error"], true);
           } else if (!data) {
-            displayMessage(smaily_translations.data_error, true);
+            displayMessage(smaily_frontend_helper.data_error, true);
           } else {
             displayMessage(data["success"]);
           }
         }
       );
       return false;
+    });
+
+    $(".smaily-rss-options").change(function(event) {
+      var rss_url_base = smaily_frontend_helper.rss_url;
+      var parameters = {};
+
+      var rss_category = $('#rss-category').val();
+      if (rss_category != "") {
+        parameters.category = rss_category;
+      }
+
+      var rss_limit = $('#rss-limit').val();
+      if (rss_limit != "") {
+        parameters.limit = rss_limit;
+      }
+
+      $('#smaily-rss-feed-url').html(rss_url_base + $.param(parameters));
     });
   });
 })(jQuery);

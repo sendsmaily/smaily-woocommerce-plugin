@@ -158,24 +158,6 @@ $wc_categories_list = DataHandler::get_woocommerce_categories_list();
 							?>
 						</td>
 					</tr>
-					<tr class="form-field">
-						<th scope="row">
-							<label>
-							<?php echo esc_html__( 'Product RSS feed', 'smaily' ); ?>
-							</label>
-						</th>
-						<td>
-							<strong>
-								<?php echo esc_url( get_site_url() ); ?>/smaily-rss-feed
-							</strong>
-							<?php
-							echo esc_html__(
-								"Copy this URL into your template editor's RSS block, to receive RSS-feed.",
-								'smaily'
-							);
-							?>
-							</td>
-					</tr>
 				</tbody>
 			</table>
 
@@ -467,11 +449,18 @@ $wc_categories_list = DataHandler::get_woocommerce_categories_list();
 					<tr class="form-field">
 						<th scope="row">
 							<label>
-							<?php echo esc_html__( 'Limit', 'smaily' ); ?>
+								<?php echo esc_html__( 'Product limit', 'smaily' ); ?>
 							</label>
 						</th>
 						<td>
-							<input type="number" id="rss_limit" name="rss_limit" min="1" max="250" value="<?php echo esc_html( $rss_limit ); ?>">
+							<input
+								type="number"
+								id="rss-limit"
+								name="rss_limit"
+								class="smaily-rss-options"
+								min="1" max="250"
+								value="<?php echo esc_html( $rss_limit ); ?>"
+							/>
 							<small>
 								<?php
 								echo esc_html__(
@@ -485,15 +474,14 @@ $wc_categories_list = DataHandler::get_woocommerce_categories_list();
 					<tr class="form-field">
 						<th scope="row">
 							<label for="rss-category">
-							<?php echo esc_html__( 'Select RSS category', 'smaily' ); ?>
+								<?php echo esc_html__( 'Product category', 'smaily' ); ?>
 							</label>
 
 						</th>
 						<td>
-							<select id="rss_category" name="rss_category">
+							<select id="rss-category" name="rss_category" class="smaily-rss-options">
 								<?php
-
-								// Display WooCommerce categories and saved category.
+								// Display available WooCommerce product categories and saved category.
 								foreach ( $wc_categories_list as $category ) : ?>
 									<option
 										value="<?php echo esc_html( $category->slug ); ?>"
@@ -502,7 +490,9 @@ $wc_categories_list = DataHandler::get_woocommerce_categories_list();
 										<?php echo esc_html( $category->name ); ?>
 									</option>
 								<?php endforeach; ?>
-								?>
+								<option value="" <?php echo empty( $rss_category ) ? 'selected' : ''; ?>>
+									<?php echo esc_html__( 'All products', 'smaily' ); ?>
+								</option>
 							</select>
 							<small>
 								<?php
@@ -521,8 +511,8 @@ $wc_categories_list = DataHandler::get_woocommerce_categories_list();
 							</label>
 						</th>
 						<td>
-							<strong>
-								<?php echo esc_url( get_site_url() ); ?>/smaily-rss-feed
+							<strong id="smaily-rss-feed-url" name="rss_feed_url">
+								<?php echo esc_html( DataHandler::make_rss_feed_url( $rss_category, $rss_limit ) ); ?>
 							</strong>
 							<?php
 							echo esc_html__(
