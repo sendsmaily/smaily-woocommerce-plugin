@@ -1,24 +1,209 @@
-#, fuzzy
+# Copyright (C) 2020 Smaily
+# This file is distributed under the same license as the Smaily for WooCommerce plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Smaily for WooCommerce\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-07 15:18+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: \n"
-"Language: \n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: Smaily for WooCommerce 1.5.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/smaily-for-woocommerce"
+"Last-Translator: Tom Abel <tom@smaily.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.2.2; wp-5.2.1"
+"POT-Creation-Date: 2020-07-20T14:37:21+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.4.0\n"
+"X-Domain: smaily\n"
+
+#. Plugin Name of the plugin
+msgid "Smaily for WooCommerce"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://github.com/sendsmaily/smaily-woocommerce-plugin"
+msgstr ""
+
+#. Description of the plugin
+msgid "Smaily email marketing and automation extension plugin for WooCommerce. Set up easy sync for your contacts, add opt-in subscription form, import products directly to your email template and send abandoned cart reminder emails."
+msgstr ""
+
+#. Author of the plugin
+msgid "Smaily"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://smaily.com/"
+msgstr ""
+
+#: inc/Api/Api.php:80
+msgid "Please enter subdomain!"
+msgstr ""
+
+#: inc/Api/Api.php:87
+msgid "Please enter username!"
+msgstr ""
+
+#: inc/Api/Api.php:115
+msgid "Invalid API credentials, no connection !"
+msgstr ""
+
+#: inc/Api/Api.php:122
+msgid "Invalid subdomain, no connection !"
+msgstr ""
+
+#: inc/Api/Api.php:174
+msgid "Missing form data!"
+msgstr ""
+
+#: inc/Api/Api.php:183
+msgid "You are not authorized to edit settings!"
+msgstr ""
+
+#: inc/Api/Api.php:202
+msgid "Nonce verification failed!"
+msgstr ""
+
+#: inc/Api/Api.php:253
+msgid "Select autoresponder for abandoned cart!"
+msgstr ""
+
+#: inc/Api/Api.php:262
+msgid "Abandoned cart cutoff time value must be 10 or higher!"
+msgstr ""
+
+#: inc/Api/Api.php:304
+msgid "Settings updated!"
+msgstr ""
+
+#: inc/Api/Api.php:308
+msgid "Settings saved!"
+msgstr ""
+
+#: inc/Api/Api.php:312
+msgid "Something went wrong saving settings!"
+msgstr ""
+
+#: inc/Api/Api.php:361
+msgid "Check details, no connection !"
+msgstr ""
+
+#: inc/Base/Enqueue.php:62
+msgid "Something went wrong connecting to Smaily!"
+msgstr ""
+
+#: inc/Base/Enqueue.php:63
+msgid "Smaily credentials sucessfully validated!"
+msgstr ""
+
+#: inc/Base/Enqueue.php:64
+msgid "Something went wrong with saving data!"
+msgstr ""
+
+#: inc/Base/SettingLinks.php:30
+msgid "Settings"
+msgstr ""
+
+#: inc/Base/Upgrade.php:104
+msgid ""
+"Smaily for Woocommerce plugin has changed abandoned cart exported fields.\n"
+"\t\t\t\tPlease check your plugin settings!"
+msgstr ""
+
+#: inc/Base/Upgrade.php:114
+msgid ""
+"Smaily for Woocommerce plugin has changed checkout subscription checkbox behaviour.\n"
+"\t\t\t\tPlease check your plugin settings!"
+msgstr ""
+
+#: inc/Pages/ProfileSettings.php:83
+#: inc/Pages/ProfileSettings.php:178
+msgid "Subscribe to newsletter"
+msgstr ""
+
+#: inc/Pages/ProfileSettings.php:138
+#: templates/smaily-woocommerce-admin.php:220
+msgid "Gender"
+msgstr ""
+
+#: inc/Pages/ProfileSettings.php:142
+msgid "Male"
+msgstr ""
+
+#: inc/Pages/ProfileSettings.php:143
+msgid "Female"
+msgstr ""
+
+#: inc/Pages/ProfileSettings.php:152
+#: templates/smaily-woocommerce-admin.php:223
+msgid "Phone"
+msgstr ""
+
+#: inc/Pages/ProfileSettings.php:153
+msgid "Enter phone number"
+msgstr ""
+
+#: inc/Pages/ProfileSettings.php:163
+msgid "Birthday"
+msgstr ""
+
+#: inc/Pages/ProfileSettings.php:164
+msgid "Enter birthday"
+msgstr ""
+
+#: inc/Pages/ProfileSettings.php:205
+msgid "Subscribe newsletter"
+msgstr ""
+
+#: inc/Pages/ProfileSettings.php:253
+msgid "Additional Information"
+msgstr ""
+
+#: inc/Widget/SmailyWidget.php:21
+#: inc/Widget/SmailyWidget.php:158
+msgid "Smaily Newsletter"
+msgstr ""
+
+#: inc/Widget/SmailyWidget.php:22
+msgid "Smaily for WooCommerce Newsletter Widget"
+msgstr ""
+
+#: inc/Widget/SmailyWidget.php:97
+msgid "Subscription registration successful."
+msgstr ""
+
+#: inc/Widget/SmailyWidget.php:100
+msgid "Subscription does not contain a valid email address."
+msgstr ""
+
+#: inc/Widget/SmailyWidget.php:103
+msgid "Subscription registration failed."
+msgstr ""
+
+#: inc/Widget/SmailyWidget.php:126
+msgid "Email"
+msgstr ""
+
+#: inc/Widget/SmailyWidget.php:130
+msgid "Name"
+msgstr ""
+
+#: inc/Widget/SmailyWidget.php:135
+msgid "Subscribe"
+msgstr ""
+
+#: inc/Widget/SmailyWidget.php:164
+msgid "Title:"
+msgstr ""
+
+#: inc/Widget/SmailyWidget.php:177
+msgid "Autoresponder:"
+msgstr ""
+
+#: inc/Widget/SmailyWidget.php:188
+msgid "-No Autoresponder-"
+msgstr ""
 
 #: smaily-for-woocommerce.php:108
-msgid ""
-"Smaily for WooCommerce is not able to activate . WooCommerce needed to "
-"function properly. Is WooCommerce installed?"
+msgid "Smaily for WooCommerce is not able to activate . WooCommerce needed to function properly. Is WooCommerce installed?"
 msgstr ""
 
 #: templates/smaily-woocommerce-admin.php:29
@@ -42,18 +227,15 @@ msgid "Checkout Opt-in"
 msgstr ""
 
 #: templates/smaily-woocommerce-admin.php:62
-msgid ""
-"There seems to be a problem with your connection to Smaily. Please "
-"revalidate your credentials!"
+msgid "There seems to be a problem with your connection to Smaily. Please revalidate your credentials!"
 msgstr ""
 
 #: templates/smaily-woocommerce-admin.php:78
 msgid "Subdomain"
 msgstr ""
 
-#. 1: Openin strong tag 2: Closing strong tag
+#. translators: 1: Openin strong tag 2: Closing strong tag
 #: templates/smaily-woocommerce-admin.php:91
-#, php-format
 msgid "For example %1$s\"demo\"%2$s from https://%1$sdemo%2$s.sendsmaily.net/"
 msgstr ""
 
@@ -74,9 +256,7 @@ msgid "Subscribe Widget"
 msgstr ""
 
 #: templates/smaily-woocommerce-admin.php:145
-msgid ""
-"To add a subscribe widget, use Widgets menu. Validate credentials before "
-"using."
+msgid "To add a subscribe widget, use Widgets menu. Validate credentials before using."
 msgstr ""
 
 #: templates/smaily-woocommerce-admin.php:155
@@ -84,8 +264,7 @@ msgid "Product RSS feed"
 msgstr ""
 
 #: templates/smaily-woocommerce-admin.php:163
-msgid ""
-"Copy this URL into your template editor's RSS block, to receive RSS-feed."
+msgid "Copy this URL into your template editor's RSS block, to receive RSS-feed."
 msgstr ""
 
 #: templates/smaily-woocommerce-admin.php:178
@@ -120,10 +299,6 @@ msgstr ""
 msgid "Firstname"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:220 inc/Pages/ProfileSettings.php:138
-msgid "Gender"
-msgstr ""
-
 #: templates/smaily-woocommerce-admin.php:221
 msgid "Lastname"
 msgstr ""
@@ -132,18 +307,12 @@ msgstr ""
 msgid "Nickname"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:223 inc/Pages/ProfileSettings.php:152
-msgid "Phone"
-msgstr ""
-
 #: templates/smaily-woocommerce-admin.php:224
 msgid "Site Title"
 msgstr ""
 
 #: templates/smaily-woocommerce-admin.php:237
-msgid ""
-"Select fields you wish to synchronize along with subscriber email and store "
-"URL"
+msgid "Select fields you wish to synchronize along with subscriber email and store URL"
 msgstr ""
 
 #: templates/smaily-woocommerce-admin.php:255
@@ -203,9 +372,7 @@ msgid "Product Price"
 msgstr ""
 
 #: templates/smaily-woocommerce-admin.php:337
-msgid ""
-"Select fields wish to send to Smaily template along with subscriber email "
-"and store url."
+msgid "Select fields wish to send to Smaily template along with subscriber email and store url."
 msgstr ""
 
 #: templates/smaily-woocommerce-admin.php:348
@@ -229,9 +396,7 @@ msgid "Subscription checkbox"
 msgstr ""
 
 #: templates/smaily-woocommerce-admin.php:379
-msgid ""
-"Customers can subscribe by checking \"subscribe to newsletter\" checkbox on "
-"checkout page."
+msgid "Customers can subscribe by checking \"subscribe to newsletter\" checkbox on checkout page."
 msgstr ""
 
 #: templates/smaily-woocommerce-admin.php:389
@@ -272,186 +437,4 @@ msgstr ""
 
 #: templates/smaily-woocommerce-admin.php:458
 msgid "Save Settings"
-msgstr ""
-
-#: inc/Api/Api.php:80
-msgid "Please enter subdomain!"
-msgstr ""
-
-#: inc/Api/Api.php:87
-msgid "Please enter username!"
-msgstr ""
-
-#: inc/Api/Api.php:115
-msgid "Invalid API credentials, no connection !"
-msgstr ""
-
-#: inc/Api/Api.php:122
-msgid "Invalid subdomain, no connection !"
-msgstr ""
-
-#: inc/Api/Api.php:174
-msgid "Missing form data!"
-msgstr ""
-
-#: inc/Api/Api.php:183
-msgid "You are not authorized to edit settings!"
-msgstr ""
-
-#: inc/Api/Api.php:202
-msgid "Nonce verification failed!"
-msgstr ""
-
-#: inc/Api/Api.php:253
-msgid "Select autoresponder for abandoned cart!"
-msgstr ""
-
-#: inc/Api/Api.php:262
-msgid "Abandoned cart cutoff time value must be 10 or higher!"
-msgstr ""
-
-#: inc/Api/Api.php:304
-msgid "Settings updated!"
-msgstr ""
-
-#: inc/Api/Api.php:308
-msgid "Settings saved!"
-msgstr ""
-
-#: inc/Api/Api.php:312
-msgid "Something went wrong saving settings!"
-msgstr ""
-
-#: inc/Api/Api.php:361
-msgid "Check details, no connection !"
-msgstr ""
-
-#: inc/Pages/ProfileSettings.php:83 inc/Pages/ProfileSettings.php:178
-msgid "Subscribe to newsletter"
-msgstr ""
-
-#: inc/Pages/ProfileSettings.php:142
-msgid "Male"
-msgstr ""
-
-#: inc/Pages/ProfileSettings.php:143
-msgid "Female"
-msgstr ""
-
-#: inc/Pages/ProfileSettings.php:153
-msgid "Enter phone number"
-msgstr ""
-
-#: inc/Pages/ProfileSettings.php:163
-msgid "Birthday"
-msgstr ""
-
-#: inc/Pages/ProfileSettings.php:164
-msgid "Enter birthday"
-msgstr ""
-
-#: inc/Pages/ProfileSettings.php:205
-msgid "Subscribe newsletter"
-msgstr ""
-
-#: inc/Pages/ProfileSettings.php:253
-msgid "Additional Information"
-msgstr ""
-
-#. Base ID.
-#: inc/Widget/SmailyWidget.php:21 inc/Widget/SmailyWidget.php:158
-msgid "Smaily Newsletter"
-msgstr ""
-
-#: inc/Widget/SmailyWidget.php:22
-msgid "Smaily for WooCommerce Newsletter Widget"
-msgstr ""
-
-#: inc/Widget/SmailyWidget.php:97
-msgid "Subscription registration successful."
-msgstr ""
-
-#: inc/Widget/SmailyWidget.php:100
-msgid "Subscription does not contain a valid email address."
-msgstr ""
-
-#: inc/Widget/SmailyWidget.php:103
-msgid "Subscription registration failed."
-msgstr ""
-
-#: inc/Widget/SmailyWidget.php:126
-msgid "Email"
-msgstr ""
-
-#: inc/Widget/SmailyWidget.php:130
-msgid "Name"
-msgstr ""
-
-#: inc/Widget/SmailyWidget.php:135
-msgid "Subscribe"
-msgstr ""
-
-#: inc/Widget/SmailyWidget.php:164
-msgid "Title:"
-msgstr ""
-
-#: inc/Widget/SmailyWidget.php:177
-msgid "Autoresponder:"
-msgstr ""
-
-#: inc/Widget/SmailyWidget.php:188
-msgid "-No Autoresponder-"
-msgstr ""
-
-#: inc/Base/Enqueue.php:62
-msgid "Something went wrong connecting to Smaily!"
-msgstr ""
-
-#: inc/Base/Enqueue.php:63
-msgid "Smaily credentials sucessfully validated!"
-msgstr ""
-
-#: inc/Base/Enqueue.php:64
-msgid "Something went wrong with saving data!"
-msgstr ""
-
-#: inc/Base/Upgrade.php:104
-msgid ""
-"Smaily for Woocommerce plugin has changed abandoned cart exported fields.\n"
-"\t\t\t\tPlease check your plugin settings!"
-msgstr ""
-
-#: inc/Base/Upgrade.php:114
-msgid ""
-"Smaily for Woocommerce plugin has changed checkout subscription checkbox "
-"behaviour.\n"
-"\t\t\t\tPlease check your plugin settings!"
-msgstr ""
-
-#: inc/Base/SettingLinks.php:30
-msgid "Settings"
-msgstr ""
-
-#. Name of the plugin
-msgid "Smaily for WooCommerce"
-msgstr ""
-
-#. Description of the plugin
-msgid ""
-"Smaily email marketing and automation extension plugin for WooCommerce. Set "
-"up easy sync for your contacts, add opt-in subscription form, import "
-"products directly to your email template and send abandoned cart reminder "
-"emails."
-msgstr ""
-
-#. URI of the plugin
-msgid "https://github.com/sendsmaily/smaily-woocommerce-plugin"
-msgstr ""
-
-#. Author of the plugin
-msgid "Smaily"
-msgstr ""
-
-#. Author URI of the plugin
-msgid "https://smaily.com/"
 msgstr ""
