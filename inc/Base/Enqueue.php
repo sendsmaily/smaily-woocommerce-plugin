@@ -65,7 +65,7 @@ class Enqueue {
 				'went_wrong' => __( 'Something went wrong connecting to Smaily!', 'smaily' ),
 				'validated'  => __( 'Smaily credentials sucessfully validated!', 'smaily' ),
 				'data_error' => __( 'Something went wrong with saving data!', 'smaily' ),
-				'rss_url'    => DataHandler::get_rss_feed_url(),
+				'rss_url'    => DataHandler::make_rss_feed_url(),
 			),
 		);
 	}
