@@ -16,7 +16,7 @@ class Activate {
 	 * Creates database for plugin configuration.
 	 * Creates database for abandoned carts.
 	 * Adds cron schedules.
-	 * 
+	 *
 	 * @return void
 	 */
 	public static function activate() {
@@ -69,6 +69,8 @@ class Activate {
 				checkbox_location varchar(255) DEFAULT 'checkout_billing_form',
 				rss_limit smallint(3) DEFAULT 50,
 				rss_category varchar(255) DEFAULT '',
+				rss_order_by varchar(255) DEFAULT 'modified',
+				rss_order varchar(255) DEFAULT 'DESC',
 				PRIMARY KEY  (id)
 				) $charset_collate;";
 		dbDelta( $smaily );

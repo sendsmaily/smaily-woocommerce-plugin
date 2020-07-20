@@ -46,6 +46,8 @@ class SmailyRss {
 		$vars[] = 'smaily-rss-feed';
 		$vars[] = 'category';
 		$vars[] = 'limit';
+		$vars[] = 'order_by';
+		$vars[] = 'order';
 		return $vars;
 	}
 

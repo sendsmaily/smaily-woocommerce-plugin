@@ -18,6 +18,8 @@ if ( isset( $settings ) ) {
 	$cb_loc_selected         = $result['checkbox_location'];
 	$rss_category            = $result['rss_category'];
 	$rss_limit               = $result['rss_limit'];
+	$rss_order_by            = $result['rss_order_by'];
+	$rss_order               = $result['rss_order'];
 }
 $autoresponder_list  = DataHandler::get_autoresponder_list();
 // get_autoresponder_list will return empty array only if error with current credentials.
@@ -476,7 +478,6 @@ $wc_categories_list = DataHandler::get_woocommerce_categories_list();
 							<label for="rss-category">
 								<?php echo esc_html__( 'Product category', 'smaily' ); ?>
 							</label>
-
 						</th>
 						<td>
 							<select id="rss-category" name="rss_category" class="smaily-rss-options">
@@ -506,20 +507,60 @@ $wc_categories_list = DataHandler::get_woocommerce_categories_list();
 					</tr>
 					<tr class="form-field">
 						<th scope="row">
+							<label for="rss_order_by">
+								<?php echo esc_html__( 'Order products by', 'smaily' ); ?>
+							</label>
+						</th>
+						<td id="smaily_rss_order_options">
+							<select id="rss-order-by" name="rss_order_by" class="smaily-rss-options">
+								<?php
+								$sort_categories_available = array(
+									'modified' => __( 'Modified At', 'smaily' ),
+									'none'     => __( 'None', 'smaily' ),
+									'id'       => __( 'ID', 'smaily' ),
+									'name'     => __( 'Name', 'smaily' ),
+									'type'     => __( 'Type', 'smaily' ),
+									'rand'     => __( 'Random', 'smaily' ),
+									'date'     => __( 'Created At', 'smaily' ),
+								);
+								// Display option and select saved value.
+								foreach ( $sort_categories_available as $sort_value => $sort_name ) : ?>
+									<option
+										value="<?php echo esc_html( $sort_value ); ?>"
+										<?php echo $rss_order_by === $sort_value ? 'selected' : ''; ?>
+									>
+										<?php echo esc_html( $sort_name ); ?>
+									</option>
+								<?php endforeach; ?>
+							</select>
+							<select id="rss-order" name="rss_order" class="smaily-rss-options">
+								<option value="ASC" <?php echo( 'ASC' === $rss_order ? 'selected' : '' ); ?> >
+									<?php echo esc_html__( 'Ascending', 'smaily' ); ?>
+								</option>
+								<option value="DESC" <?php echo( 'DESC' === $rss_order ? 'selected' : '' ); ?>>
+									<?php echo esc_html__( 'Descending', 'smaily' ); ?>
+								</option>
+							</select>
+						</td>
+					</tr>
+					<tr class="form-field">
+						<th scope="row">
 							<label>
 								<?php echo esc_html__( 'Product RSS feed', 'smaily' ); ?>
 							</label>
 						</th>
 						<td>
 							<strong id="smaily-rss-feed-url" name="rss_feed_url">
-								<?php echo esc_html( DataHandler::make_rss_feed_url( $rss_category, $rss_limit ) ); ?>
+								<?php echo esc_html( DataHandler::make_rss_feed_url( $rss_category, $rss_limit, $rss_order_by, $rss_order ) ); ?>
 							</strong>
+							<small>
 							<?php
 							echo esc_html__(
 								"Copy this URL into your template editor's RSS block, to receive RSS-feed.",
 								'smaily'
 							);
 							?>
+							</small>
 						</td>
 					</tr>
 				</tbody>
