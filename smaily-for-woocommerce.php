@@ -105,7 +105,11 @@ function smaily_for_woocommerce_load_textdomain() {
  * @return void
  */
 function smaily_plugin_admin_notices() {
-	$message = __( 'Smaily for WooCommerce is not able to activate . WooCommerce needed to function properly. Is WooCommerce installed?', 'smaily' );
+	$message = __(
+		'Smaily for WooCommerce is not able to activate.'
+		. ' WooCommerce needed to function properly. Is WooCommerce installed?',
+		'smaily'
+	);
 	echo "<div class='update-message notice inline notice-warning notice-alt'><p>" . esc_html( $message ) . '</p></div>';
 }
 

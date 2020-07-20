@@ -112,14 +112,14 @@ class Api {
 		if ( $http_code === 401 ) {
 			echo wp_json_encode(
 				array(
-					'error' => esc_html__( 'Invalid API credentials, no connection !', 'smaily' ),
+					'error' => esc_html__( 'Invalid API credentials, no connection!', 'smaily' ),
 				)
 			);
 			wp_die();
 		} elseif ( $http_code === 404 ) {
 			echo wp_json_encode(
 				array(
-					'error' => esc_html__( 'Invalid subdomain, no connection !', 'smaily' ),
+					'error' => esc_html__( 'Invalid subdomain, no connection!', 'smaily' ),
 				)
 			);
 			wp_die();
@@ -377,7 +377,7 @@ class Api {
 		// Return error message.
 		if ( $http_code !== 200 ) {
 			return array(
-				'error' => esc_html__( 'Check details, no connection !', 'smaily' ),
+				'error' => esc_html__( 'Check details, no connection!', 'smaily' ),
 			);
 		}
 
