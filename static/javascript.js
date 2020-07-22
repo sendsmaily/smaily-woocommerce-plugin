@@ -71,7 +71,7 @@
             // Hide loading icon
             spinner.hide();
           } else if (!data) {
-            displayMessage(smaily_frontend_helper.went_wrong, true);
+            displayMessage(smaily_translations.went_wrong, true);
             // Hide loading icon
             spinner.hide();
           } else {
@@ -93,7 +93,7 @@
               );
             });
             // Success message.
-            displayMessage(smaily_frontend_helper.validated);
+            displayMessage(smaily_translations.validated);
             // Hide validate button.
             validateButton.hide();
             // Hide loader icon.
@@ -135,7 +135,7 @@
           if (data["error"]) {
             displayMessage(data["error"], true);
           } else if (!data) {
-            displayMessage(smaily_frontend_helper.data_error, true);
+            displayMessage(smaily_translations.data_error, true);
           } else {
             displayMessage(data["success"]);
           }
