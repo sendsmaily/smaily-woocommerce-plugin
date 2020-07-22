@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Smaily for WooCommerce\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/smaily-for-"
 "woocommerce\n"
-"POT-Creation-Date: 2020-07-20T14:42:17+00:00\n"
-"PO-Revision-Date: 2020-07-20 18:03+0300\n"
+"POT-Creation-Date: 2020-07-22T10:54:24+00:00\n"
+"PO-Revision-Date: 2020-07-22 13:56+0300\n"
 "Last-Translator: \n"
 "Language-Team: Estonian\n"
 "Language: et\n"
@@ -99,15 +99,15 @@ msgstr "Midagi läks sätete salvestamisel valesti!"
 msgid "Check details, no connection!"
 msgstr "Kontrolli sisselogimisandmeid, ühendus puudub!"
 
-#: inc/Base/Enqueue.php:65
+#: inc/Base/Enqueue.php:62
 msgid "Something went wrong connecting to Smaily!"
 msgstr "Midagi läks valesti Smailyga ühendamisega!"
 
-#: inc/Base/Enqueue.php:66
+#: inc/Base/Enqueue.php:63
 msgid "Smaily credentials sucessfully validated!"
 msgstr "Smaily kasutajatunnused salvestatud!"
 
-#: inc/Base/Enqueue.php:67
+#: inc/Base/Enqueue.php:64
 msgid "Something went wrong with saving data!"
 msgstr "Midagi läks valesti andmete salvestamisel!"
 
@@ -494,48 +494,44 @@ msgid "Order products by"
 msgstr "Järjesta tooteid"
 
 #: templates/smaily-woocommerce-admin.php:518
-msgid "Modified At"
-msgstr "Viimati muudetud"
-
-#: templates/smaily-woocommerce-admin.php:519
-msgid "None"
-msgstr "Puudub"
-
-#: templates/smaily-woocommerce-admin.php:520
-msgid "ID"
-msgstr "ID"
-
-#: templates/smaily-woocommerce-admin.php:522
-msgid "Type"
-msgstr "Tüüp"
-
-#: templates/smaily-woocommerce-admin.php:523
-msgid "Random"
-msgstr "Suvaline"
-
-#: templates/smaily-woocommerce-admin.php:524
 msgid "Created At"
 msgstr "Loomisaeg"
 
-#: templates/smaily-woocommerce-admin.php:538
+#: templates/smaily-woocommerce-admin.php:519
+msgid "ID"
+msgstr "ID"
+
+#: templates/smaily-woocommerce-admin.php:520
+msgid "Modified At"
+msgstr "Viimati muudetud"
+
+#: templates/smaily-woocommerce-admin.php:522
+msgid "Random"
+msgstr "Suvaline"
+
+#: templates/smaily-woocommerce-admin.php:523
+msgid "Type"
+msgstr "Tüüp"
+
+#: templates/smaily-woocommerce-admin.php:537
 msgid "Ascending"
 msgstr "Kasvav"
 
-#: templates/smaily-woocommerce-admin.php:541
+#: templates/smaily-woocommerce-admin.php:540
 msgid "Descending"
 msgstr "Kahanev"
 
-#: templates/smaily-woocommerce-admin.php:549
+#: templates/smaily-woocommerce-admin.php:548
 msgid "Product RSS feed"
 msgstr "Toodete uudisvoog"
 
-#: templates/smaily-woocommerce-admin.php:558
+#: templates/smaily-woocommerce-admin.php:557
 msgid ""
 "Copy this URL into your template editor's RSS block, to receive RSS-feed."
 msgstr ""
 "Kopeeri see link oma uudiskirja malli redigeerimise aknasse, et automaatselt "
 "lisada uudiskirjale tooteid."
 
-#: templates/smaily-woocommerce-admin.php:572
+#: templates/smaily-woocommerce-admin.php:571
 msgid "Save Settings"
 msgstr "Salvesta"

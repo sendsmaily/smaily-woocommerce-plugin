@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-07-20T14:42:17+00:00\n"
+"POT-Creation-Date: 2020-07-22T10:54:24+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: smaily\n"
@@ -90,15 +90,15 @@ msgstr ""
 msgid "Check details, no connection!"
 msgstr ""
 
-#: inc/Base/Enqueue.php:65
+#: inc/Base/Enqueue.php:62
 msgid "Something went wrong connecting to Smaily!"
 msgstr ""
 
-#: inc/Base/Enqueue.php:66
+#: inc/Base/Enqueue.php:63
 msgid "Smaily credentials sucessfully validated!"
 msgstr ""
 
-#: inc/Base/Enqueue.php:67
+#: inc/Base/Enqueue.php:64
 msgid "Something went wrong with saving data!"
 msgstr ""
 
@@ -457,45 +457,41 @@ msgid "Order products by"
 msgstr ""
 
 #: templates/smaily-woocommerce-admin.php:518
-msgid "Modified At"
-msgstr ""
-
-#: templates/smaily-woocommerce-admin.php:519
-msgid "None"
-msgstr ""
-
-#: templates/smaily-woocommerce-admin.php:520
-msgid "ID"
-msgstr ""
-
-#: templates/smaily-woocommerce-admin.php:522
-msgid "Type"
-msgstr ""
-
-#: templates/smaily-woocommerce-admin.php:523
-msgid "Random"
-msgstr ""
-
-#: templates/smaily-woocommerce-admin.php:524
 msgid "Created At"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:538
+#: templates/smaily-woocommerce-admin.php:519
+msgid "ID"
+msgstr ""
+
+#: templates/smaily-woocommerce-admin.php:520
+msgid "Modified At"
+msgstr ""
+
+#: templates/smaily-woocommerce-admin.php:522
+msgid "Random"
+msgstr ""
+
+#: templates/smaily-woocommerce-admin.php:523
+msgid "Type"
+msgstr ""
+
+#: templates/smaily-woocommerce-admin.php:537
 msgid "Ascending"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:541
+#: templates/smaily-woocommerce-admin.php:540
 msgid "Descending"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:549
+#: templates/smaily-woocommerce-admin.php:548
 msgid "Product RSS feed"
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:558
+#: templates/smaily-woocommerce-admin.php:557
 msgid "Copy this URL into your template editor's RSS block, to receive RSS-feed."
 msgstr ""
 
-#: templates/smaily-woocommerce-admin.php:572
+#: templates/smaily-woocommerce-admin.php:571
 msgid "Save Settings"
 msgstr ""

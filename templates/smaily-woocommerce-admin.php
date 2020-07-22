@@ -515,13 +515,12 @@ $wc_categories_list = DataHandler::get_woocommerce_categories_list();
 							<select id="rss-order-by" name="rss_order_by" class="smaily-rss-options">
 								<?php
 								$sort_categories_available = array(
-									'modified' => __( 'Modified At', 'smaily' ),
-									'none'     => __( 'None', 'smaily' ),
-									'id'       => __( 'ID', 'smaily' ),
-									'name'     => __( 'Name', 'smaily' ),
-									'type'     => __( 'Type', 'smaily' ),
-									'rand'     => __( 'Random', 'smaily' ),
 									'date'     => __( 'Created At', 'smaily' ),
+									'id'       => __( 'ID', 'smaily' ),
+									'modified' => __( 'Modified At', 'smaily' ),
+									'name'     => __( 'Name', 'smaily' ),
+									'rand'     => __( 'Random', 'smaily' ),
+									'type'     => __( 'Type', 'smaily' ),
 								);
 								// Display option and select saved value.
 								foreach ( $sort_categories_available as $sort_value => $sort_name ) : ?>
