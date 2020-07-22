@@ -56,7 +56,7 @@ class DataHandler {
 	}
 
 	/**
-	 * Generates RSS-feed based on 50 last products in WooCommerce store
+	 * Generates RSS-feed based on products in WooCommerce store.
 	 *
 	 * @param string  $category Filter by products category.
 	 * @param integer $limit Default value 50.
@@ -64,7 +64,7 @@ class DataHandler {
 	 */
 	public static function generate_rss_feed( $category, $limit, $order_by, $order ) {
 
-		$products       = self::get_latest_products( $category, $limit, $order_by, $order );
+		$products       = self::get_products( $category, $limit, $order_by, $order );
 		$base_url       = get_site_url();
 		$currencysymbol = get_woocommerce_currency_symbol();
 		$items          = [];
@@ -127,7 +127,7 @@ class DataHandler {
 	}
 
 	/**
-	 * Get latest published products from WooCommerce database.
+	 * Get published products from WooCommerce database.
 	 *
 	 * @param string  $category Limit products by category.
 	 * @param integer $limit Maximum number of products fetched.
@@ -135,7 +135,7 @@ class DataHandler {
 	 * @param string  $order Ascending/Descending.
 	 * @return array $products WooCommerce products.
 	 */
-	public static function get_latest_products( $category, $limit, $order_by, $order ) {
+	public static function get_products( $category, $limit, $order_by, $order ) {
 		// Initial query.
 		$product = array(
 			'status'  => 'publish',
