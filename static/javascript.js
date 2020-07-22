@@ -143,5 +143,33 @@
       );
       return false;
     });
+
+    // Generate RSS product feed URL if options change.
+    $(".smaily-rss-options").change(function(event) {
+      var rss_url_base = smaily_settings['rss_feed_url'] + '?';
+      var parameters = {};
+
+      var rss_category = $('#rss-category').val();
+      if (rss_category != "") {
+        parameters.category = rss_category;
+      }
+
+      var rss_limit = $('#rss-limit').val();
+      if (rss_limit != "") {
+        parameters.limit = rss_limit;
+      }
+
+      var rss_order_by = $('#rss-order-by').val();
+      if (rss_order_by != "none") {
+        parameters.order_by = rss_order_by;
+      }
+
+      var rss_order = $('#rss-order').val();
+      if (rss_order_by != "none" && rss_order_by != "rand") {
+        parameters.order = rss_order;
+      }
+
+      $('#smaily-rss-feed-url').html(rss_url_base + $.param(parameters));
+    });
   });
 })(jQuery);

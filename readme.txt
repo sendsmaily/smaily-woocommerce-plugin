@@ -2,7 +2,7 @@
 Contributors: sendsmaily, kaarel, tomabel
 Tags: woocommerce, smaily, newsletter, email
 Requires PHP: 5.6
-Requires at least: 4.0
+Requires at least: 4.5
 Tested up to: 5.4.1
 WC tested up to: 4.1.0
 Stable tag: 1.5.0
@@ -100,10 +100,6 @@ When no autoresponder selected regular opt-in workflow will run. You can add del
 Try re-saving permalinks.
 Go to admin panel -> Settings -> Permalinks.
 Scroll to bottom and click "Save Changes" without modifing anything
-
-=How can I filter RSS-feed output by category and limit results?=
-
-You can access RSS feed by visiting ulr `store_url/smaily-rss-feed` and you can add parameters (category and limit) by appending them to url. For example `store_url/smaily-rss-feed?category=tshirts&limit=3`. Regular RSS-feed shows 50 last updated products.
 
 = Where I can find data-log for Cron? =
 

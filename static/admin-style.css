@@ -169,3 +169,10 @@ input.smaily-toggle:focus + label {
 #smaily_checkout_display_location select {
   min-width: fit-content;
 }
+
+/* RSS order select boxes */
+#smaily_rss_order_options select {
+  min-width: fit-content;
+}
+
+

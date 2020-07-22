@@ -56,15 +56,15 @@ class DataHandler {
 	}
 
 	/**
-	 * Generates RSS-feed based on 50 last products in WooCommerce store
+	 * Generates RSS-feed based on products in WooCommerce store.
 	 *
 	 * @param string  $category Filter by products category.
 	 * @param integer $limit Default value 50.
 	 * @return void $rss Rss-feed for Smaily template.
 	 */
-	public static function generate_rss_feed( $category, $limit = 50 ) {
+	public static function generate_rss_feed( $category, $limit, $order_by, $order ) {
 
-		$products       = self::get_latest_products( $category, $limit );
+		$products       = self::get_products( $category, $limit, $order_by, $order );
 		$base_url       = get_site_url();
 		$currencysymbol = get_woocommerce_currency_symbol();
 		$items          = [];
@@ -127,20 +127,30 @@ class DataHandler {
 	}
 
 	/**
-	 * Get latest published products from WooCommerce database.
+	 * Get published products from WooCommerce database.
 	 *
 	 * @param string  $category Limit products by category.
 	 * @param integer $limit Maximum number of products fetched.
+	 * @param string  $order_by Order products by this.
+	 * @param string  $order Ascending/Descending.
 	 * @return array $products WooCommerce products.
 	 */
-	public static function get_latest_products( $category, $limit ) {
+	public static function get_products( $category, $limit, $order_by, $order ) {
 		// Initial query.
 		$product = array(
 			'status'  => 'publish',
 			'limit'   => $limit,
-			'orderby' => 'modified',
+			'orderby' => 'none',
 			'order'   => 'DESC',
 		);
+
+		if ( ! empty( $order_by ) ) {
+			$product['orderby'] = $order_by;
+		}
+
+		if ( ! empty( $order ) ) {
+			$product['order'] = $order;
+		}
 		// Get category to limit results if set.
 		if ( ! empty( $category ) ) {
 			$product['category'] = array( $category );
@@ -253,6 +263,52 @@ class DataHandler {
 		}
 
 		return $response;
+	}
+
+	/**
+	 * Get all WooCommerce product categories.
+	 *
+	 * @return array Product categories
+	 */
+	public static function get_woocommerce_categories_list() {
+		$cat_args = array(
+			'orderby'    => 'name',
+			'order'      => 'asc',
+			'hide_empty' => false,
+		);
+
+		$product_categories = get_terms( 'product_cat', $cat_args );
+		return $product_categories;
+	}
+
+	/**
+	 * Get Product RSS Feed URL.
+	 *
+	 * @param string $rss_category Category slug.
+	 * @param int $rss_limit Limit of products.
+	 * @param string $rss_order_by Order products by.
+	 * @param string $rss_order ASC/DESC order
+	 * @return string RSS URL e.g. example.com/smaily-rss-feed?category=uncategorized&limit=250
+	 */
+	public static function make_rss_feed_url( $rss_category = null, $rss_limit = null, $rss_order_by = null, $rss_order = null ) {
+		$parameters   = array();
+		$rss_url_base = get_site_url() . '/smaily-rss-feed/?';
+
+		if ( isset( $rss_category ) && $rss_category !== '' ) {
+			$parameters['category'] = $rss_category;
+		}
+		if ( isset( $rss_limit ) ) {
+			$parameters['limit'] = $rss_limit;
+		}
+		if ( isset( $rss_order_by ) && $rss_order_by !== 'none' ) {
+			$parameters['order_by'] = $rss_order_by;
+		}
+		// Check if providing ?order is even necessary.
+		if ( isset( $rss_order ) && $rss_order_by !== 'none' && $rss_order_by !== 'rand' ) {
+			$parameters['order'] = $rss_order;
+		}
+
+		return add_query_arg( $parameters, get_site_url( null, 'smaily-rss-feed' ) );
 	}
 
 }

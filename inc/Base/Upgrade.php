@@ -102,8 +102,8 @@ class Upgrade {
 
 		if ( get_transient( 'smaily_woocommerce_upgrade_1_4_0_notice' ) ) {
 			$message = __(
-				'Smaily for Woocommerce plugin has changed abandoned cart exported fields.
-				Please check your plugin settings!',
+				'Smaily for Woocommerce plugin has changed abandoned cart exported fields.'
+				. ' Please check your plugin settings!',
 				'smaily'
 			);
 			echo ( '<div class="notice notice-warning"><p>' . esc_html( $message ) . '</p></div>' );
@@ -112,8 +112,8 @@ class Upgrade {
 
 		if ( get_transient( 'smaily_woocommerce_upgrade_1_5_0_notice' ) ) {
 			$message = __(
-				'Smaily for Woocommerce plugin has changed checkout subscription checkbox behaviour.
-				Please check your plugin settings!',
+				'Smaily for Woocommerce plugin has changed checkout subscription checkbox behaviour.'
+				. ' Please check your plugin settings!',
 				'smaily'
 			);
 			echo ( '<div class="notice notice-warning"><p>' . esc_html( $message ) . '</p></div>' );
