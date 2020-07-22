@@ -146,7 +146,7 @@
 
     // Generate RSS product feed URL if options change.
     $(".smaily-rss-options").change(function(event) {
-      var rss_url_base = smaily_frontend_helper.rss_url;
+      var rss_url_base = smaily_settings['rss_feed_url'] + '?';
       var parameters = {};
 
       var rss_category = $('#rss-category').val();

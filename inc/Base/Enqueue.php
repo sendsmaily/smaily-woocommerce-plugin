@@ -58,15 +58,24 @@ class Enqueue {
 			SMAILY_PLUGIN_VERSION
 		);
 
+		$translations = array(
+			'went_wrong' => __( 'Something went wrong connecting to Smaily!', 'smaily' ),
+			'validated'  => __( 'Smaily credentials sucessfully validated!', 'smaily' ),
+			'data_error' => __( 'Something went wrong with saving data!', 'smaily' ),
+		);
+		// Translations for frontend JS.
 		wp_localize_script(
 			'smailypluginscript',
-			'smaily_frontend_helper',
-			array(
-				'went_wrong' => __( 'Something went wrong connecting to Smaily!', 'smaily' ),
-				'validated'  => __( 'Smaily credentials sucessfully validated!', 'smaily' ),
-				'data_error' => __( 'Something went wrong with saving data!', 'smaily' ),
-				'rss_url'    => DataHandler::make_rss_feed_url(),
-			),
+			'smaily_translations',
+			$translations,
+		);
+
+		// Settings for frontend JS.
+		$default_settings = array();
+		$settings         = apply_filters( 'smaily_settings', $default_settings );
+		wp_add_inline_script(
+			'smailypluginscript',
+			'var smaily_settings = ' . wp_json_encode( $settings ) . ';'
 		);
 	}
 

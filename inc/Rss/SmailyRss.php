@@ -5,6 +5,7 @@
 
 namespace Smaily_Inc\Rss;
 
+use Smaily_Inc\Base\DataHandler;
 /**
  * Handles RSS generation for Smaily newsletter
  */
@@ -22,7 +23,8 @@ class SmailyRss {
 		add_filter( 'query_vars', array( $this, 'smaily_register_query_var' ) );
 		/* Template Include */
 		add_filter( 'template_include', array( $this, 'smaily_rss_feed_template_include' ) );
-
+		/* Frontend settings */
+		add_filter( 'smaily_settings', array( $this, 'smaily_rss_settings' ) );
 	}
 
 	/**
@@ -74,6 +76,17 @@ class SmailyRss {
 		}
 		// Load normal template as a fallback.
 		return $template;
+	}
+
+	/**
+	 * Add RSS settings to settings array.
+	 *
+	 * @param array $settings
+	 * @return array
+	 */
+	public function smaily_rss_settings( $settings ) {
+		$settings['rss_feed_url'] = DataHandler::make_rss_feed_url();
+		return $settings;
 	}
 
 }
