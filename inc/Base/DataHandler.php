@@ -308,7 +308,7 @@ class DataHandler {
 			$parameters['order'] = $rss_order;
 		}
 
-		return $rss_url_base . http_build_query( $parameters );
+		return add_query_arg( $parameters, get_site_url( null, 'smaily-rss-feed' ) );
 	}
 
 }
