@@ -19,9 +19,10 @@ Automatically subscribe newsletter subscribers to a Smaily subscribers list, gen
 
 ### WooCommerce Products RSS-feed
 
-- Generate RSS-feed with 50 latest products for easy import to Smaily template
+- Generate RSS-feed with products for easy import to Smaily template
 - Option to customize generated RSS-feed based on products categories
 - Option to limit generated RSS-feed products amount with prefered value
+- Option to order generated RSS-feed products by several categories
 
 ### Subscribtion Widget
 
@@ -139,6 +140,11 @@ Also you can determine if customer had more than 10 items in cart
 7. WooCommerce Smaily widget front screen.
 
 ## Changelog
+
+### 1.6.0
+
+- Feature - generate RSS URL from form options.
+- Feature - add options to order products in RSS feed.
 
 ### 1.5.0
 
