@@ -63,11 +63,19 @@ class Enqueue {
 			'validated'  => __( 'Smaily credentials sucessfully validated!', 'smaily' ),
 			'data_error' => __( 'Something went wrong with saving data!', 'smaily' ),
 		);
-		// add translations to JS.
+		// Translations for frontend JS.
 		wp_localize_script(
 			'smailypluginscript',
 			'smaily_translations',
-			$translations
+			$translations,
+		);
+
+		// Settings for frontend JS.
+		$default_settings = array();
+		$settings         = apply_filters( 'smaily_settings', $default_settings );
+		wp_add_inline_script(
+			'smailypluginscript',
+			'var smaily_settings = ' . wp_json_encode( $settings ) . ';'
 		);
 	}
 
