@@ -67,7 +67,7 @@ class Enqueue {
 		wp_localize_script(
 			'smailypluginscript',
 			'smaily_translations',
-			$translations,
+			$translations
 		);
 
 		// Settings for frontend JS.
