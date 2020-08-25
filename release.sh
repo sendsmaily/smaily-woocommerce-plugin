@@ -138,6 +138,7 @@ rm -f trunk/phpcs.xml
 rm -f trunk/phpunit.xml
 rm -f trunk/phpunit.xml.dist
 rm -f trunk/README.md
+rm -f trunk/CHANGELOG.md
 rm -f trunk/release.sh
 
 # DO THE ADD ALL NOT KNOWN FILES UNIX COMMAND
