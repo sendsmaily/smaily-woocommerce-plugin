@@ -159,7 +159,7 @@ msgstr ""
 
 #: inc/Widget/SmailyWidget.php:21
 #: inc/Widget/SmailyWidget.php:158
-msgid "Smaily Newsletter (WooCommerce)"
+msgid "Smaily for WooCommerce Form"
 msgstr ""
 
 #: inc/Widget/SmailyWidget.php:22

@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Smaily for WooCommerce\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/smaily-for-"
 "woocommerce\n"
-"POT-Creation-Date: 2020-07-22T10:54:24+00:00\n"
-"PO-Revision-Date: 2020-11-11 14:12+0200\n"
+"POT-Creation-Date: 2020-11-11 14:06+0200\n"
+"PO-Revision-Date: 2020-11-11 16:15+0200\n"
 "Last-Translator: \n"
 "Language-Team: Estonian\n"
 "Language: et\n"
@@ -172,8 +172,8 @@ msgid "Additional Information"
 msgstr "Lisainformatsioon"
 
 #: inc/Widget/SmailyWidget.php:21 inc/Widget/SmailyWidget.php:158
-msgid "Smaily Newsletter (WooCommerce)"
-msgstr "Smaily Uudiskiri (WooCommerce)"
+msgid "Smaily for WooCommerce Form"
+msgstr "Smaily for WooCommerce vorm"
 
 #: inc/Widget/SmailyWidget.php:22
 msgid "Smaily for WooCommerce Newsletter Widget"
@@ -535,3 +535,6 @@ msgstr ""
 #: templates/smaily-woocommerce-admin.php:571
 msgid "Save Settings"
 msgstr "Salvesta"
+
+#~ msgid "Smaily Newsletter (WooCommerce)"
+#~ msgstr "Smaily Uudiskiri (WooCommerce)"
