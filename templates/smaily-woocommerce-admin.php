@@ -134,7 +134,7 @@ $wc_categories_list = DataHandler::get_woocommerce_categories_list();
 						<input
 							id="password"
 							name="password"
-							value="<?php echo ( $result['password'] ) ? esc_html($result['password']) : ''; ?>"
+							value="<?php echo ( $result['password'] ) ? esc_html( $result['password'] ) : ''; ?>"
 							type="password">
 						<small id="password-help" class="form-text text-muted">
 							<a
