@@ -4,7 +4,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/smaily-for-"
 "woocommerce\n"
 "POT-Creation-Date: 2020-07-22T10:54:24+00:00\n"
-"PO-Revision-Date: 2020-07-22 13:56+0300\n"
+"PO-Revision-Date: 2020-11-11 14:12+0200\n"
 "Last-Translator: \n"
 "Language-Team: Estonian (Estonia)\n"
 "Language: et_EE\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 2.3.1\n"
+"X-Generator: Poedit 2.4.1\n"
 "X-Loco-Version: 2.3.3; wp-5.4.1\n"
 
 #. Plugin Name of the plugin
@@ -172,8 +172,8 @@ msgid "Additional Information"
 msgstr "Lisainformatsioon"
 
 #: inc/Widget/SmailyWidget.php:21 inc/Widget/SmailyWidget.php:158
-msgid "Smaily Newsletter"
-msgstr "Smaily Uudiskiri"
+msgid "Smaily Newsletter (WooCommerce)"
+msgstr "Smaily Uudiskiri (WooCommerce)"
 
 #: inc/Widget/SmailyWidget.php:22
 msgid "Smaily for WooCommerce Newsletter Widget"
