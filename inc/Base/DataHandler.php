@@ -34,6 +34,11 @@ class DataHandler {
 		// Escape db values for output and usage.
 		$result = [];
 		foreach ( $un_escaped_result as $key => $value ) {
+			// Smaily may include & in generated password. Don't convert & to HTML entity as it is used for Base64 authorization.
+			if ($key === 'password') {
+				$result[ $key ] = $value;
+				continue;
+			}
 			$result[ $key ] = esc_html( $value );
 		}
 
