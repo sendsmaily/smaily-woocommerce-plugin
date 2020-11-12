@@ -1,8 +1,9 @@
 # Changelog
 
 ### 1.6.1
-- Improve naming of widget so it's more distinguishable.
-- Bugfix - validate credentials fails if password contains '&' character.
+- Improve naming of widget so it's more distinguishable. [issue #64](https://github.com/sendsmaily/smaily-woocommerce-plugin/issues/64)
+- Bugfix - validate credentials fails if password contains '&' character. [issue #62](https://github.com/sendsmaily/smaily-woocommerce-plugin/issues/62)
+
 ### 1.6.0
 
 - Feature - generate RSS URL from form options.
