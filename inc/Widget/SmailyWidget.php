@@ -18,7 +18,7 @@ class SmailyWidget extends \WP_Widget {
 	public function __construct() {
 		parent::__construct(
 			'smaily_widget', // Base ID.
-			esc_html__( 'Smaily Newsletter', 'smaily' ), // Name.
+			esc_html__( 'Smaily for WooCommerce Form', 'smaily' ), // Name.
 			array( 'description' => esc_html__( 'Smaily for WooCommerce Newsletter Widget', 'smaily' ) ) // Args.
 		);
 	}
@@ -155,7 +155,7 @@ class SmailyWidget extends \WP_Widget {
 
 		$autoresponder_list = DataHandler::get_autoresponder_list();
 
-		$title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( 'Smaily Newsletter', 'smaily' );
+		$title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( 'Smaily for WooCommerce Form', 'smaily' );
 
 		?>
 		<!--  Title -->
