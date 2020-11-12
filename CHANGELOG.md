@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.6.1
+- Improve naming of widget so it's more distinguishable.
+- Bugfix - validate credentials fails if password contains '&' character.
 ### 1.6.0
 
 - Feature - generate RSS URL from form options.
