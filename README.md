@@ -80,7 +80,7 @@ All development for Smaily for WooCommerce is [handled via GitHub](https://githu
 
 1. Validate your smaily credentials in Smaily settings menu.
 2. Move to **Appearance -> Widget** menu from admin page sidepanel.
-3. Add Smaily Newsletter widget to your prefered location on page.
+3. Add Smaily for WooCommerce Form to your prefered location on page.
 4. If you want you can select Title for your subscribe newsletter form.
 
 If you have added Form Submitted automation triggers from Smaily site under Automation tab you can see all availabe autoresponders in your widget settings.
