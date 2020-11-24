@@ -13,6 +13,7 @@ A list of changes regarding the next version release:
 - [ ] Updated README.md
 - [ ] Updated readme.txt
 - [ ] Updated CHANGELOG.md
+- [ ] Updated CONTRIBUTING.md
 - [ ] Updated plugin version number
 - [ ] Updated screenshots in assets folder
 - [ ] Updated translations
