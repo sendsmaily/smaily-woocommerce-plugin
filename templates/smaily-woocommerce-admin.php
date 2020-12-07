@@ -85,6 +85,17 @@ $wc_categories_list = DataHandler::get_woocommerce_categories_list();
 				<tbody>
 					<tr class="form-field">
 						<th scope="row">
+						</th>
+						<td>
+							<a
+								href="http://help.smaily.com/en/support/solutions/articles/16000062943-create-api-user"
+								target="_blank">
+								<?php echo esc_html__( 'How to create API credentials?', 'smaily' ); ?>
+							</a>
+						</td>
+					</tr>
+					<tr class="form-field">
+						<th scope="row">
 							<label for="subdomain">
 								<?php echo esc_html__( 'Subdomain', 'smaily' ); ?>
 							</label>
@@ -136,13 +147,6 @@ $wc_categories_list = DataHandler::get_woocommerce_categories_list();
 							name="password"
 							value="<?php echo ( $result['password'] ) ? esc_html( $result['password'] ) : ''; ?>"
 							type="password">
-						<small id="password-help" class="form-text text-muted">
-							<a
-								href="http://help.smaily.com/en/support/solutions/articles/16000062943-create-api-user"
-								target="_blank">
-								<?php echo esc_html__( 'How to create API credentials?', 'smaily' ); ?>
-							</a>
-						</small>
 						</td>
 					</tr>
 					<tr class="form-field">
