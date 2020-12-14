@@ -1,7 +1,6 @@
 # Changelog
 
 ### 1.6.1
-- WordPress 5.6 compatibility. [issue #70](https://github.com/sendsmaily/smaily-woocommerce-plugin/issues/70)
 - Improve naming of widget so it's more distinguishable. [issue #64](https://github.com/sendsmaily/smaily-woocommerce-plugin/issues/64)
 - Bugfix - validate credentials fails if password contains '&' character. [issue #62](https://github.com/sendsmaily/smaily-woocommerce-plugin/issues/62)
 
