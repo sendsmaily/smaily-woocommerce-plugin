@@ -200,7 +200,7 @@ Also you can determine if customer had more than 10 items in cart
 - Bugfix. RSS-feed now displays special characters.
 
 = 1.2.0 =
-- New feature. RSS-feed now supports category and limit parameters from url.
+- New feature. RSS-feed now supports category and limit parameters from URL.
 
 = 1.1.0 =
 - New feature. Abandoned Cart remainder emails.

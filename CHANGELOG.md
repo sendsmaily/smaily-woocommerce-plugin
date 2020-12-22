@@ -67,7 +67,7 @@
 
 ### 1.2.0
 
-- New feature. RSS-feed now supports category and limit parameters from url.
+- New feature. RSS-feed now supports category and limit parameters from URL.
 
 ### 1.1.0
 
