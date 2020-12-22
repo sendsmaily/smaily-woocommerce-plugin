@@ -8,13 +8,13 @@ WC tested up to: 4.1.0
 Stable tag: 1.6.1
 License: GPLv3
 
-Simple and flexible Smaily newsletter and rss-feed integration for WooCommerce.
+Simple and flexible Smaily newsletter and RSS-feed integration for WooCommerce.
 
 == Description ==
 
-Smaily email marketing and automation extension plugin for WooCommerce.
+Smaily email marketing and automation plugin for WooCommerce.
 
-Automatically subscribe newsletter subscribers to a Smaily subscribers list, generate rss-feed based on products for easy template import and add Newsletter Subscribtion widget for opt-in sign-up form.
+Automatically synchronize customers to Smaily, easily import products into templates using RSS-feed and collect newsletter subscribers using Newsletter Subscription widget.
 
 = Features =
 
@@ -193,18 +193,18 @@ Also you can determine if customer had more than 10 items in cart
 - Admin panel changed for better customer experience.
 
 = 1.2.2 =
-- Bugfix. Rss-feed shows correct discount price and precentage.
-- Bugfix. Rss-feed link works even when not refreshing permalinks.
+- Bugfix. RSS-feed shows correct discount price and precentage.
+- Bugfix. RSS-feed link works even when not refreshing permalinks.
 
 = 1.2.1 =
-- Bugfix. Rss-feed now displays special characters.
+- Bugfix. RSS-feed now displays special characters.
 
 = 1.2.0 =
-- New feature. Rss-feed now supports category and limit parameters from url.
+- New feature. RSS-feed now supports category and limit parameters from URL.
 
 = 1.1.0 =
 - New feature. Abandoned Cart remainder emails.
-- Bugfix. Displaying rss-feed price.
+- Bugfix. Displaying RSS-feed price.
 
 = 1.0.3 =
 - Settings form credentials are being validated automatically when allready in database

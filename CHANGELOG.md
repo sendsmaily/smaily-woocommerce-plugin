@@ -59,21 +59,21 @@
 
 ### 1.2.2
 
-- Bugfix. Rss-feed shows correct discount price and precentage.
-- Bugfix. Rss-feed link works even when not refreshing permalinks.
+- Bugfix. RSS-feed shows correct discount price and precentage.
+- Bugfix. RSS-feed link works even when not refreshing permalinks.
 
 ### 1.2.1
 
-- Bugfix. Rss-feed now displays special characters.
+- Bugfix. RSS-feed now displays special characters.
 
 ### 1.2.0
 
-- New feature. Rss-feed now supports category and limit parameters from url.
+- New feature. RSS-feed now supports category and limit parameters from URL.
 
 ### 1.1.0
 
 - New feature. Abandoned Cart remainder emails.
-- Bugfix. Displaying rss-feed price.
+- Bugfix. Displaying RSS-feed price.
 
 ### 1.0.3
 

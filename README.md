@@ -1,12 +1,12 @@
 # Smaily for WooCommerce
 
-Simple and flexible Smaily newsletter and rss-feed integration for WooCommerce.
+Simple and flexible Smaily newsletter and RSS-feed integration for WooCommerce.
 
 ## Description
 
-Smaily email marketing and automation extension plugin for WooCommerce.
+Smaily email marketing and automation plugin for WooCommerce.
 
-Automatically subscribe newsletter subscribers to a Smaily subscribers list, generate rss-feed based on products for easy template import and add Newsletter Subscribtion widget for opt-in sign-up form.
+Automatically synchronize customers to Smaily, easily import products into templates using RSS-feed and collect newsletter subscribers using Newsletter Subscription widget.
 
 ## Features
 
@@ -97,7 +97,7 @@ Scroll to bottom and click "Save Changes" without modifing anything
 
 ### How can I filter RSS-feed output by category and limit results?
 
-You can access RSS feed by visiting ulr `store_url/smaily-rss-feed` and you can add parameters (category and limit) by appending them to url. For example `store_url/smaily-rss-feed?category=tshirts&limit=3`. Regular RSS-feed shows 50 last updated products.
+You can access RSS feed by visiting ulr `store_url/smaily-rss-feed` and you can add parameters (category and limit) by appending them to URL. For example `store_url/smaily-rss-feed?category=tshirts&limit=3`. Regular RSS-feed shows 50 last updated products.
 
 ### Where I can find data-log for Cron?
 
