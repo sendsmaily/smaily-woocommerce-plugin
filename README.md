@@ -1,12 +1,12 @@
 # Smaily for WooCommerce
 
-Simple and flexible Smaily newsletter and rss-feed integration for WooCommerce.
+Simple and flexible Smaily newsletter and RSS-feed integration for WooCommerce.
 
 ## Description
 
-Smaily email marketing and automation extension plugin for WooCommerce.
+Smaily email marketing and automation plugin for WooCommerce.
 
-Automatically subscribe newsletter subscribers to a Smaily subscribers list, generate rss-feed based on products for easy template import and add Newsletter Subscribtion widget for opt-in sign-up form.
+Automatically synchronize customers to Smaily, easily import products into templates using RSS-feed and collect newsletter subscribers using Newsletter Subscription widget.
 
 ## Features
 
