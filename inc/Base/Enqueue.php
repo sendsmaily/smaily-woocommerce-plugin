@@ -19,6 +19,8 @@ class Enqueue {
 		// add javascript and css files to plugin.
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_front_scripts' ) );
+		// Must have low priority to dequeue successfully.
+		add_action( 'admin_enqueue_scripts', array( $this, 'dequeue_admin_styles' ), 100 );
 
 	}
 
@@ -87,6 +89,28 @@ class Enqueue {
 	public function enqueue_front_scripts() {
 		// enque css and js.
 		wp_enqueue_style( 'smailypluginstyle', SMAILY_PLUGIN_URL . 'static/front-style.css', array(), SMAILY_PLUGIN_VERSION );
+	}
+
+	/**
+	 * Dequeues all 3rd party styles on Smaily module settings page.
+	 *
+	 * @return void
+	 */
+	public function dequeue_admin_styles() {
+
+		if ( ! is_admin() && get_current_screen()->base !== 'toplevel_page_smaily-settings' ) {
+			return;
+		}
+		$allowed_styles = array( 'admin-bar', 'colors', 'ie', 'wp-auth-check', 'smailypluginstyle' );
+
+		global $wp_styles;
+
+		foreach ( $wp_styles->queue as $handle ) {
+			if ( in_array( $handle, $allowed_styles, true ) ) {
+				continue;
+			}
+			wp_dequeue_style( $handle );
+		}
 	}
 
 }
