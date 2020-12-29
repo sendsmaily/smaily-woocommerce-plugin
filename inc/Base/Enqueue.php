@@ -98,19 +98,21 @@ class Enqueue {
 	 */
 	public function dequeue_admin_styles() {
 
-		if ( ! is_admin() && get_current_screen()->base !== 'toplevel_page_smaily-settings' ) {
+		if ( get_current_screen()->base !== 'toplevel_page_smaily-settings' ) {
 			return;
 		}
-		$allowed_styles = array( 'admin-bar', 'colors', 'ie', 'wp-auth-check', 'smailypluginstyle' );
 
 		global $wp_styles;
-
-		foreach ( $wp_styles->queue as $handle ) {
-			if ( in_array( $handle, $allowed_styles, true ) ) {
+		foreach ( $wp_styles->queue as $style_handle ) {
+			if ( $style_handle === 'smailypluginstyle' ) {
 				continue;
 			}
-			wp_dequeue_style( $handle );
+			$style_src_path  = $wp_styles->registered[ $style_handle ]->src;
+			$plugins_dir_url = content_url( 'plugins' );
+
+			if ( strpos( $style_src_path, $plugins_dir_url ) === 0 ) {
+				wp_dequeue_style( $style_handle );
+			}
 		}
 	}
-
 }
