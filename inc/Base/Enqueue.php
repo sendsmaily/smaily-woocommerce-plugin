@@ -98,7 +98,7 @@ class Enqueue {
 	 */
 	public function dequeue_admin_styles() {
 
-		if ( get_current_screen()->base !== 'toplevel_page_smaily-settings' ) {
+		if ( ! isset( get_current_screen()->base ) || get_current_screen()->base !== 'toplevel_page_smaily-settings') {
 			return;
 		}
 
