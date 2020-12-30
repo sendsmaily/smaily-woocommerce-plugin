@@ -109,7 +109,7 @@ class Enqueue {
 			if ( $style_handle === 'smailypluginstyle' ) {
 				continue;
 			}
-			$style_src_path  = $wp_styles->registered[ $style_handle ]->src;
+			$style_src_path = $wp_styles->registered[ $style_handle ]->src;
 
 			if ( strpos( $style_src_path, $plugins_dir_url ) === 0 ) {
 				wp_dequeue_style( $style_handle );
