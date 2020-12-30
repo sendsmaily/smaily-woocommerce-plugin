@@ -93,6 +93,7 @@ class Enqueue {
 
 	/**
 	 * Dequeues all 3rd party styles on Smaily module settings page.
+	 * Note! This function can be removed once we decide to rework tabs to something other than jQuery UI
 	 *
 	 * @return void
 	 */
