@@ -102,7 +102,7 @@ class Enqueue {
 			return;
 		}
 
-		global $wp_styles;
+		$wp_styles = wp_styles();
 		foreach ( $wp_styles->queue as $style_handle ) {
 			if ( $style_handle === 'smailypluginstyle' ) {
 				continue;
