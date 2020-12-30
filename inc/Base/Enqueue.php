@@ -19,6 +19,8 @@ class Enqueue {
 		// add javascript and css files to plugin.
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_front_scripts' ) );
+		// Must have low priority to dequeue successfully.
+		add_action( 'admin_enqueue_scripts', array( $this, 'dequeue_admin_styles' ), 100 );
 
 	}
 
@@ -89,4 +91,30 @@ class Enqueue {
 		wp_enqueue_style( 'smailypluginstyle', SMAILY_PLUGIN_URL . 'static/front-style.css', array(), SMAILY_PLUGIN_VERSION );
 	}
 
+	/**
+	 * Dequeues all 3rd party styles on Smaily module settings page.
+	 * Note! This function can be removed once we decide to rework tabs to something other than jQuery UI
+	 *
+	 * @return void
+	 */
+	public function dequeue_admin_styles() {
+
+		$screen = get_current_screen();
+		if ( ! isset( $screen->base ) || $screen->base !== 'toplevel_page_smaily-settings' ) {
+			return;
+		}
+
+		$plugins_dir_url = content_url( 'plugins' );
+		$wp_styles       = wp_styles();
+		foreach ( $wp_styles->queue as $style_handle ) {
+			if ( $style_handle === 'smailypluginstyle' ) {
+				continue;
+			}
+			$style_src_path = $wp_styles->registered[ $style_handle ]->src;
+
+			if ( strpos( $style_src_path, $plugins_dir_url ) === 0 ) {
+				wp_dequeue_style( $style_handle );
+			}
+		}
+	}
 }
