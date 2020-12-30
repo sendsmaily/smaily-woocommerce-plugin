@@ -54,7 +54,7 @@ Automatically synchronize customers to Smaily, easily import products into templ
 
 = Requirements =
 
-Smaily for WooCommerce requires PHP 5.6+ (PHP 7.0+ recommended). You'll also need to be running WordPress 4.0+ and have WooCommerce 2.2+.
+Smaily for WooCommerce requires PHP 5.6+ (PHP 7.0+ recommended). You'll also need to be running WordPress 4.5+ and have WooCommerce 2.2+.
 
 = Documentation & Support =
 
