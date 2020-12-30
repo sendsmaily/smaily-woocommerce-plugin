@@ -100,7 +100,7 @@ class Enqueue {
 	public function dequeue_admin_styles() {
 
 		$screen = get_current_screen();
-		if ( ! isset( $screen->base ) || $screen->base !== 'toplevel_page_smaily-settings') {
+		if ( ! isset( $screen->base ) || $screen->base !== 'toplevel_page_smaily-settings' ) {
 			return;
 		}
 
