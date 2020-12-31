@@ -31,6 +31,11 @@
         .hide();
     };
     message.appendChild(button);
+    // Remove any previously existing messages(success and error).
+    var existingMessage = document.querySelector('.message-display').querySelector('.notice');
+    if (existingMessage !== null) {
+      document.querySelector('.message-display').querySelector('.notice').remove();
+    } 
     // Append to message-display.
     document.querySelector(".message-display").appendChild(message);
   }
@@ -98,6 +103,11 @@
             validateButton.hide();
             // Hide loader icon.
             spinner.hide();
+            // Remove autoresponder error if successful validation.
+            var existingAutoresponder = document.querySelector('.smaily-settings').querySelector('.error-autoresponders');
+            if (existingAutoresponder !== null) {
+              document.querySelector('.smaily-settings').querySelector('.error-autoresponders').remove();
+            }
           }
         }
       );
