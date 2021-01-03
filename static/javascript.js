@@ -32,10 +32,10 @@
     };
     message.appendChild(button);
     // Remove any previously existing messages(success and error).
-    var existingMessage = document.querySelector('.message-display').querySelector('.notice');
-    if (existingMessage !== null) {
-      document.querySelector('.message-display').querySelector('.notice').remove();
-    } 
+    var existingMessages = document.querySelectorAll('.message-display > .notice');
+    Array.prototype.forEach.call(existingMessages, function (msg) {
+      msg.remove();
+    });
     // Append to message-display.
     document.querySelector(".message-display").appendChild(message);
   }
