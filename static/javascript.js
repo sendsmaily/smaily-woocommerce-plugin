@@ -11,11 +11,12 @@
     // Add classes based on error / success.
     if (error) {
       message.classList.add("error");
-      message.classList.add("notice");
+      message.classList.add("smaily-notice");
       message.classList.add("is-dismissible");
     } else {
       message.classList.add("notice-success");
       message.classList.add("notice");
+      message.classList.add("smaily-notice");
       message.classList.add("is-dismissible");
     }
     var paragraph = document.createElement("p");
@@ -32,12 +33,12 @@
     };
     message.appendChild(button);
     // Remove any previously existing messages(success and error).
-    var existingMessages = document.querySelectorAll('.message-display > .notice');
+    var existingMessages = document.querySelectorAll('.smaily-notice');
     Array.prototype.forEach.call(existingMessages, function (msg) {
       msg.remove();
     });
-    // Append to message-display.
-    document.querySelector(".message-display").appendChild(message);
+    // Inserts message before tabs.
+    document.querySelector(".smaily-settings").insertBefore(message, document.getElementById("tabs"));
   }
 
   // Top tabs handler.
@@ -103,11 +104,6 @@
             validateButton.hide();
             // Hide loader icon.
             spinner.hide();
-            // Remove autoresponder error if successful validation.
-            var existingAutoresponder = document.querySelector('.smaily-settings').querySelector('.error-autoresponders');
-            if (existingAutoresponder !== null) {
-              document.querySelector('.smaily-settings').querySelector('.error-autoresponders').remove();
-            }
           }
         }
       );

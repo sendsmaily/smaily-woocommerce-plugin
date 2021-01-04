@@ -35,6 +35,20 @@ $wc_categories_list = DataHandler::get_woocommerce_categories_list();
 		<?php echo esc_html__( 'Plugin Settings', 'smaily' ); ?>
 		<div class="loader"></div>
 	</h1>
+
+	<?php if ( $autoresponder_error ) : ?>
+	<div class="error smaily-notice is-dismissible">
+		<p>
+		<?php
+			esc_html_e(
+				'There seems to be a problem with your connection to Smaily. Please revalidate your credentials!',
+				'smaily'
+			);
+		?>
+		</p>
+	</div>
+	<?php endif; ?>
+
 	<div id="tabs">
 		<div class="nav-tab-wrapper">
 		<ul id="tabs-list">
@@ -65,19 +79,7 @@ $wc_categories_list = DataHandler::get_woocommerce_categories_list();
 			</li>
 		</ul>
 		</div>
-		<div class="message-display"></div>
-		<?php if ( $autoresponder_error ) : ?>
-		<div class="error-autoresponders error notice">
-			<p>
-			<?php
-				esc_html_e(
-					'There seems to be a problem with your connection to Smaily. Please revalidate your credentials!',
-					'smaily'
-				);
-			?>
-			</p>
-		</div>
-		<?php endif; ?>
+
 		<div id="general">
 		<form method="POST" id="startupForm" action="">
 			<?php wp_nonce_field( 'settings-nonce', 'nonce', false ); ?>
