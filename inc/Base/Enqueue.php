@@ -60,7 +60,7 @@ class Enqueue {
 
 		$translations = array(
 			'went_wrong' => __( 'Something went wrong connecting to Smaily!', 'smaily' ),
-			'validated'  => __( 'Smaily credentials sucessfully validated!', 'smaily' ),
+			'validated'  => __( 'Smaily credentials successfully validated!', 'smaily' ),
 			'data_error' => __( 'Something went wrong with saving data!', 'smaily' ),
 		);
 		// Translations for frontend JS.
