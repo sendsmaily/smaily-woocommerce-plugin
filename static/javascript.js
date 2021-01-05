@@ -11,11 +11,12 @@
     // Add classes based on error / success.
     if (error) {
       message.classList.add("error");
-      message.classList.add("notice");
+      message.classList.add("smaily-notice");
       message.classList.add("is-dismissible");
     } else {
       message.classList.add("notice-success");
       message.classList.add("notice");
+      message.classList.add("smaily-notice");
       message.classList.add("is-dismissible");
     }
     var paragraph = document.createElement("p");
@@ -31,8 +32,13 @@
         .hide();
     };
     message.appendChild(button);
-    // Append to message-display.
-    document.querySelector(".message-display").appendChild(message);
+    // Remove any previously existing messages(success and error).
+    var existingMessages = document.querySelectorAll('.smaily-notice');
+    Array.prototype.forEach.call(existingMessages, function (msg) {
+      msg.remove();
+    });
+    // Inserts message before tabs.
+    document.querySelector(".smaily-settings").insertBefore(message, document.getElementById("tabs"));
   }
 
   // Top tabs handler.

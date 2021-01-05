@@ -175,4 +175,33 @@ input.smaily-toggle:focus + label {
   min-width: fit-content;
 }
 
+/* Messages animations */
+@keyframes smaily-notice-error-animation {
+  from {background-color: #ecacac;}
+  to {background-color: white;}
+}
 
+@-webkit-keyframes smaily-notice-error-animation {
+  from {background-color: #ecacac;}
+  to {background-color: white;}
+}
+
+.error.smaily-notice {
+  animation: smaily-notice-error-animation 0.5s;
+  -webkit-animation: smaily-notice-error-animation 0.5s;
+}
+
+@keyframes smaily-notice-success-animation {
+  from {background-color: #b6e2ba;}
+  to {background-color: white;}
+}
+
+@-webkit-keyframes smaily-notice-success-animation {
+  from {background-color: #b6e2ba;}
+  to {background-color: white;}
+}
+
+.notice-success.smaily-notice {
+  animation: smaily-notice-success-animation 0.5s;
+  -webkit-animation: smaily-notice-success-animation 0.5s;
+}
