@@ -4,8 +4,8 @@ Tags: woocommerce, smaily, newsletter, email
 Requires PHP: 5.6
 Requires at least: 4.5
 Tested up to: 5.6.0
-WC tested up to: 4.1.0
-Stable tag: 1.6.1
+WC tested up to: 4.7.0
+Stable tag: 1.7.0
 License: GPLv3
 
 Simple and flexible Smaily newsletter and RSS-feed integration for WooCommerce.
@@ -32,7 +32,7 @@ Automatically synchronize customers to Smaily, easily import products into templ
 - Option to limit generated RSS-feed products amount with prefered value
 - Option to order generated RSS-feed products by several categories
 
-**Subscribtion Widget**
+**Subscription Widget**
 
 - Smaily subscriber sign up form with built in captcha
 - Easy to use form
@@ -49,7 +49,7 @@ Automatically synchronize customers to Smaily, easily import products into templ
 **Abandoned cart reminder emails**
 
 - Automatically notify customers about their abandoned cart
-- Send abandoned cart information to smaily for easy use on templates
+- Send abandoned cart information to Smaily for easy use on templates
 - Set delay time when cart is considered abadoned
 
 = Requirements =
@@ -135,15 +135,25 @@ Also you can determine if customer had more than 10 items in cart
 
 == Screenshots ==
 
-1. WooCommerce Smaily validate settings screen.
-2. WooCommerce Smaily general settings screen.
-4. WooCommerce Smaily abadoned cart settings screen.
+1. WooCommerce Smaily general settings screen.
+2. WooCommerce Smaily customer synchronization settings screen.
+3. WooCommerce Smaily abadoned cart settings screen.
 4. Woocommerce Smaily checkout opt-in screen.
-5. WooCommerce Smaily RSS-feed screen.
-6. WooCommerce Smaily widget settings screen.
-7. WooCommerce Smaily widget front screen.
+5. WooCommerce Smaily RSS screen.
+6. WooCommerce Smaily RSS-feed screen.
+7. WooCommerce Smaily widget settings screen.
+8. WooCommerce Smaily widget front screen.
 
 == Changelog ==
+
+= 1.7.0 = 
+
+- Test compatibility with WordPress 5.6.
+- Smaily plugin settings "General" tab refinement. 
+- Improve plugin description to better describe the plugin's features. 
+- Dequeue 3rd party styles in module settings page. 
+- Update "required at least" WordPress version to 4.5 in README.md. 
+- Fix API credentials validation messages.
 
 = 1.6.1 =
 - Improve naming of widget so it's more distinguishable.
