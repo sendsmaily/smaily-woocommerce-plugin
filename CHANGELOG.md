@@ -1,9 +1,16 @@
 # Changelog
 
+### 1.7.0
+- Test compatibility with WordPress 5.6. [issue #70](https://github.com/sendsmaily/smaily-woocommerce-plugin/issues/70)
+- Smaily plugin settings "General" tab refinement. [issue #72](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/72)
+- Improve plugin description to better describe the plugin's features. [issue #75](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/75)
+- Dequeue 3rd party styles in module settings page. [issue #77](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/77)
+- Update "required at least" WordPress version to 4.5 in README.md. [issue #78](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/78)
+- Fix API credentials validation messages. [issue #79](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/79)
+
 ### 1.6.1
 - Improve naming of widget so it's more distinguishable. [issue #64](https://github.com/sendsmaily/smaily-woocommerce-plugin/issues/64)
 - Bugfix - validate credentials fails if password contains '&' character. [issue #62](https://github.com/sendsmaily/smaily-woocommerce-plugin/issues/62)
-
 
 ### 1.6.0
 
