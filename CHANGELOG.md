@@ -1,5 +1,13 @@
 # Changelog
 
+### 1.7.0
+- Test compatibility with WordPress 5.6. [issue #70](https://github.com/sendsmaily/smaily-woocommerce-plugin/issues/70)
+- Smaily plugin settings "General" tab refinement. [issue #72](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/72)
+- Improve plugin description to better describe the plugin's features. [issue #75](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/75)
+- Dequeue 3rd party styles in module settings page. [issue #77](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/77)
+- Update "required at least" WordPress version to 4.5 in README.md. [issue #78](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/78)
+- Fix API credentials validation messages. [issue #79](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/79)
+
 ### 1.6.1
 - Improve naming of widget so it's more distinguishable. [issue #64](https://github.com/sendsmaily/smaily-woocommerce-plugin/issues/64)
 - Bugfix - validate credentials fails if password contains '&' character. [issue #62](https://github.com/sendsmaily/smaily-woocommerce-plugin/issues/62)
@@ -58,21 +66,21 @@
 
 ### 1.2.2
 
-- Bugfix. Rss-feed shows correct discount price and precentage.
-- Bugfix. Rss-feed link works even when not refreshing permalinks.
+- Bugfix. RSS-feed shows correct discount price and precentage.
+- Bugfix. RSS-feed link works even when not refreshing permalinks.
 
 ### 1.2.1
 
-- Bugfix. Rss-feed now displays special characters.
+- Bugfix. RSS-feed now displays special characters.
 
 ### 1.2.0
 
-- New feature. Rss-feed now supports category and limit parameters from url.
+- New feature. RSS-feed now supports category and limit parameters from URL.
 
 ### 1.1.0
 
 - New feature. Abandoned Cart remainder emails.
-- Bugfix. Displaying rss-feed price.
+- Bugfix. Displaying RSS-feed price.
 
 ### 1.0.3
 

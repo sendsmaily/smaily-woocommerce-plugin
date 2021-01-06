@@ -35,6 +35,20 @@ $wc_categories_list = DataHandler::get_woocommerce_categories_list();
 		<?php echo esc_html__( 'Plugin Settings', 'smaily' ); ?>
 		<div class="loader"></div>
 	</h1>
+
+	<?php if ( $autoresponder_error ) : ?>
+	<div class="error smaily-notice is-dismissible">
+		<p>
+		<?php
+			esc_html_e(
+				'There seems to be a problem with your connection to Smaily. Please revalidate your credentials!',
+				'smaily'
+			);
+		?>
+		</p>
+	</div>
+	<?php endif; ?>
+
 	<div id="tabs">
 		<div class="nav-tab-wrapper">
 		<ul id="tabs-list">
@@ -65,24 +79,23 @@ $wc_categories_list = DataHandler::get_woocommerce_categories_list();
 			</li>
 		</ul>
 		</div>
-		<div class="message-display"></div>
-		<?php if ( $autoresponder_error ) : ?>
-		<div class="error-autoresponders error notice">
-			<p>
-			<?php
-				esc_html_e(
-					'There seems to be a problem with your connection to Smaily. Please revalidate your credentials!',
-					'smaily'
-				);
-			?>
-			</p>
-		</div>
-		<?php endif; ?>
+
 		<div id="general">
 		<form method="POST" id="startupForm" action="">
 			<?php wp_nonce_field( 'settings-nonce', 'nonce', false ); ?>
 			<table class="form-table">
 				<tbody>
+					<tr class="form-field">
+						<th scope="row">
+						</th>
+						<td>
+							<a
+								href="http://help.smaily.com/en/support/solutions/articles/16000062943-create-api-user"
+								target="_blank">
+								<?php echo esc_html__( 'How to create API credentials?', 'smaily' ); ?>
+							</a>
+						</td>
+					</tr>
 					<tr class="form-field">
 						<th scope="row">
 							<label for="subdomain">
@@ -136,13 +149,6 @@ $wc_categories_list = DataHandler::get_woocommerce_categories_list();
 							name="password"
 							value="<?php echo ( $result['password'] ) ? esc_html( $result['password'] ) : ''; ?>"
 							type="password">
-						<small id="password-help" class="form-text text-muted">
-							<a
-								href="http://help.smaily.com/en/support/solutions/articles/16000062943-create-api-user"
-								target="_blank">
-								<?php echo esc_html__( 'How to create API credentials?', 'smaily' ); ?>
-							</a>
-						</small>
 						</td>
 					</tr>
 					<tr class="form-field">

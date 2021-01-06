@@ -1,20 +1,20 @@
 === Smaily for WooCommerce ===
-Contributors: sendsmaily, kaarel, tomabel
+Contributors: sendsmaily, kaarel, tomabel, marispulk
 Tags: woocommerce, smaily, newsletter, email
 Requires PHP: 5.6
 Requires at least: 4.5
-Tested up to: 5.4.1
-WC tested up to: 4.1.0
-Stable tag: 1.6.1
+Tested up to: 5.6.0
+WC tested up to: 4.7.0
+Stable tag: 1.7.0
 License: GPLv3
 
-Simple and flexible Smaily newsletter and rss-feed integration for WooCommerce.
+Simple and flexible Smaily newsletter and RSS-feed integration for WooCommerce.
 
 == Description ==
 
-Smaily email marketing and automation extension plugin for WooCommerce.
+Smaily email marketing and automation plugin for WooCommerce.
 
-Automatically subscribe newsletter subscribers to a Smaily subscribers list, generate rss-feed based on products for easy template import and add Newsletter Subscribtion widget for opt-in sign-up form.
+Automatically synchronize customers to Smaily, easily import products into templates using RSS-feed and collect newsletter subscribers using Newsletter Subscription widget.
 
 = Features =
 
@@ -32,7 +32,7 @@ Automatically subscribe newsletter subscribers to a Smaily subscribers list, gen
 - Option to limit generated RSS-feed products amount with prefered value
 - Option to order generated RSS-feed products by several categories
 
-**Subscribtion Widget**
+**Subscription Widget**
 
 - Smaily subscriber sign up form with built in captcha
 - Easy to use form
@@ -49,12 +49,12 @@ Automatically subscribe newsletter subscribers to a Smaily subscribers list, gen
 **Abandoned cart reminder emails**
 
 - Automatically notify customers about their abandoned cart
-- Send abandoned cart information to smaily for easy use on templates
+- Send abandoned cart information to Smaily for easy use on templates
 - Set delay time when cart is considered abadoned
 
 = Requirements =
 
-Smaily for WooCommerce requires PHP 5.6+ (PHP 7.0+ recommended). You'll also need to be running WordPress 4.0+ and have WooCommerce 2.2+.
+Smaily for WooCommerce requires PHP 5.6+ (PHP 7.0+ recommended). You'll also need to be running WordPress 4.5+ and have WooCommerce 2.2+.
 
 = Documentation & Support =
 
@@ -135,15 +135,25 @@ Also you can determine if customer had more than 10 items in cart
 
 == Screenshots ==
 
-1. WooCommerce Smaily validate settings screen.
-2. WooCommerce Smaily general settings screen.
-4. WooCommerce Smaily abadoned cart settings screen.
+1. WooCommerce Smaily general settings screen.
+2. WooCommerce Smaily customer synchronization settings screen.
+3. WooCommerce Smaily abadoned cart settings screen.
 4. Woocommerce Smaily checkout opt-in screen.
-5. WooCommerce Smaily RSS-feed screen.
-6. WooCommerce Smaily widget settings screen.
-7. WooCommerce Smaily widget front screen.
+5. WooCommerce Smaily RSS screen.
+6. WooCommerce Smaily RSS-feed screen.
+7. WooCommerce Smaily widget settings screen.
+8. WooCommerce Smaily widget front screen.
 
 == Changelog ==
+
+= 1.7.0 = 
+
+- Test compatibility with WordPress 5.6.
+- Smaily plugin settings "General" tab refinement. 
+- Improve plugin description to better describe the plugin's features. 
+- Dequeue 3rd party styles in module settings page. 
+- Update "required at least" WordPress version to 4.5 in README.md. 
+- Fix API credentials validation messages.
 
 = 1.6.1 =
 - Improve naming of widget so it's more distinguishable.
@@ -193,18 +203,18 @@ Also you can determine if customer had more than 10 items in cart
 - Admin panel changed for better customer experience.
 
 = 1.2.2 =
-- Bugfix. Rss-feed shows correct discount price and precentage.
-- Bugfix. Rss-feed link works even when not refreshing permalinks.
+- Bugfix. RSS-feed shows correct discount price and precentage.
+- Bugfix. RSS-feed link works even when not refreshing permalinks.
 
 = 1.2.1 =
-- Bugfix. Rss-feed now displays special characters.
+- Bugfix. RSS-feed now displays special characters.
 
 = 1.2.0 =
-- New feature. Rss-feed now supports category and limit parameters from url.
+- New feature. RSS-feed now supports category and limit parameters from URL.
 
 = 1.1.0 =
 - New feature. Abandoned Cart remainder emails.
-- Bugfix. Displaying rss-feed price.
+- Bugfix. Displaying RSS-feed price.
 
 = 1.0.3 =
 - Settings form credentials are being validated automatically when allready in database

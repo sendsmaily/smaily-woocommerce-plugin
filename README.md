@@ -1,12 +1,12 @@
 # Smaily for WooCommerce
 
-Simple and flexible Smaily newsletter and rss-feed integration for WooCommerce.
+Simple and flexible Smaily newsletter and RSS-feed integration for WooCommerce.
 
 ## Description
 
-Smaily email marketing and automation extension plugin for WooCommerce.
+Smaily email marketing and automation plugin for WooCommerce.
 
-Automatically subscribe newsletter subscribers to a Smaily subscribers list, generate rss-feed based on products for easy template import and add Newsletter Subscribtion widget for opt-in sign-up form.
+Automatically synchronize customers to Smaily, easily import products into templates using RSS-feed and collect newsletter subscribers using Newsletter Subscription widget.
 
 ## Features
 
@@ -46,7 +46,7 @@ Automatically subscribe newsletter subscribers to a Smaily subscribers list, gen
 
 ## Requirements
 
-Smaily for WooCommerce requires PHP 5.6+ (PHP 7.0+ recommended). You'll also need to be running WordPress 4.0+ and have WooCommerce 2.2+.
+Smaily for WooCommerce requires PHP 5.6+ (PHP 7.0+ recommended). You'll also need to be running WordPress 4.5+ and have WooCommerce 2.2+.
 
 ## Documentation & Support
 
@@ -97,7 +97,7 @@ Scroll to bottom and click "Save Changes" without modifing anything
 
 ### How can I filter RSS-feed output by category and limit results?
 
-You can access RSS feed by visiting ulr `store_url/smaily-rss-feed` and you can add parameters (category and limit) by appending them to url. For example `store_url/smaily-rss-feed?category=tshirts&limit=3`. Regular RSS-feed shows 50 last updated products.
+You can access RSS feed by visiting ulr `store_url/smaily-rss-feed` and you can add parameters (category and limit) by appending them to URL. For example `store_url/smaily-rss-feed?category=tshirts&limit=3`. Regular RSS-feed shows 50 last updated products.
 
 ### Where I can find data-log for Cron?
 
@@ -131,10 +131,11 @@ Also you can determine if customer had more than 10 items in cart
 
 ## Screenshots found in /assets
 
-1. WooCommerce Smaily validate settings screen.
-2. WooCommerce Smaily general settings screen.
+1. WooCommerce Smaily general settings screen.
+2. WooCommerce Smaily customer synchronization settings screen.
 3. WooCommerce Smaily abadoned cart settings screen.
-4. WooCommerce Smaily checkout opt-in screen.
-5. WooCommerce Smaily RSS-feed screen.
-6. WooCommerce Smaily widget settings screen.
-7. WooCommerce Smaily widget front screen.
+4. Woocommerce Smaily checkout opt-in screen.
+5. WooCommerce Smaily RSS screen.
+6. WooCommerce Smaily RSS-feed screen.
+7. WooCommerce Smaily widget settings screen.
+8. WooCommerce Smaily widget front screen.
