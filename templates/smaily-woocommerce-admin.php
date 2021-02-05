@@ -1,31 +1,29 @@
 <?php
 
 use Smaily_Inc\Base\DataHandler;
-
+require SMAILY_PLUGIN_PATH . 'kint.phar';
 // Get results from database and fill form if results allready available.
-$settings = DataHandler::get_smaily_results();
-if ( isset( $settings ) ) {
-	$sync_additional         = $settings['syncronize_additional'];
-	$cart_options            = $settings['cart_options'];
-	$result                  = $settings['result'];
-	$is_enabled              = $result['enable'];
-	$cart_enabled            = $result['enable_cart'];
-	$cart_autoresponder_name = $result['cart_autoresponder'];
-	$cart_autoresponder_id   = $result['cart_autoresponder_id'];
-	$cb_enabled              = intval( $result['enable_checkbox'] );
-	$cb_auto_checked         = intval( $result['checkbox_auto_checked'] );
-	$cb_order_selected       = $result['checkbox_order'];
-	$cb_loc_selected         = $result['checkbox_location'];
-	$rss_category            = $result['rss_category'];
-	$rss_limit               = $result['rss_limit'];
-	$rss_order_by            = $result['rss_order_by'];
-	$rss_order               = $result['rss_order'];
-}
+$settings                = DataHandler::get_smaily_results();
+$sync_additional         = $settings['syncronize_additional'];
+$cart_options            = $settings['cart_options'];
+$is_enabled              = $settings['enable'];
+$cart_enabled            = $settings['enable_cart'];
+$cart_autoresponder_name = $settings['cart_autoresponder'];
+$cart_autoresponder_id   = $settings['cart_autoresponder_id'];
+$cb_enabled              = intval( $settings['enable_checkbox'] );
+$cb_auto_checked         = intval( $settings['checkbox_auto_checked'] );
+$cb_order_selected       = $settings['checkbox_order'];
+$cb_loc_selected         = $settings['checkbox_location'];
+$rss_category            = $settings['rss_category'];
+$rss_limit               = $settings['rss_limit'];
+$rss_order_by            = $settings['rss_order_by'];
+$rss_order               = $settings['rss_order'];
 $autoresponder_list  = DataHandler::get_autoresponder_list();
 // get_autoresponder_list will return empty array only if error with current credentials.
-$autoresponder_error = empty( $autoresponder_list ) && ! empty( $result['subdomain'] );
+$autoresponder_error = empty( $autoresponder_list ) && ! empty( $settings['subdomain'] );
 
 $wc_categories_list = DataHandler::get_woocommerce_categories_list();
+Kint::dump($settings);
 ?>
 <div class="wrap smaily-settings">
 	<h1>
@@ -106,7 +104,7 @@ $wc_categories_list = DataHandler::get_woocommerce_categories_list();
 						<input
 							id="subdomain"
 							name="subdomain"
-							value="<?php echo ( $result['subdomain'] ) ? $result['subdomain'] : ''; ?>"
+							value="<?php echo esc_attr( $settings['subdomain'] ); ?>"
 							type="text">
 						<small id="subdomain-help" class="form-text text-muted">
 							<?php
@@ -133,7 +131,7 @@ $wc_categories_list = DataHandler::get_woocommerce_categories_list();
 						<input
 							id="username"
 							name="username"
-							value="<?php echo ( $result['username'] ) ? $result['username'] : ''; ?>"
+							value="<?php echo esc_attr( $settings['username'] ); ?>"
 							type="text">
 						</td>
 					</tr>
@@ -147,7 +145,7 @@ $wc_categories_list = DataHandler::get_woocommerce_categories_list();
 						<input
 							id="password"
 							name="password"
-							value="<?php echo ( $result['password'] ) ? esc_html( $result['password'] ) : ''; ?>"
+							value="<?php echo esc_attr( $settings['password'] ); ?>"
 							type="password">
 						</td>
 					</tr>
@@ -194,7 +192,7 @@ $wc_categories_list = DataHandler::get_woocommerce_categories_list();
 						<input
 							name  ="enable"
 							type  ="checkbox"
-							<?php echo ( isset( $is_enabled ) && $is_enabled == 1 ) ? 'checked' : ' '; ?>
+							<?php checked( $is_enabled, '1' ); ?>
 							class ="smaily-toggle"
 							id    ="enable-checkbox" />
 						<label for="enable-checkbox"></label>
@@ -223,11 +221,14 @@ $wc_categories_list = DataHandler::get_woocommerce_categories_list();
 							'site_title'       => __( 'Site Title', 'smaily' ),
 						];
 						// Add options for select and select them if allready saved before.
-						foreach ( $sync_options as $value => $name ) {
-							$selected = in_array( $value, $sync_additional ) ? 'selected' : '';
-							echo( "<option value='$value' $selected>$name</option>" );
-						}
-						?>
+						foreach ( $sync_options as $value => $name ) : ?>
+							<option
+								value="<?php echo esc_attr( $value ); ?>"
+								<?php echo in_array( $value, $sync_additional ) ? 'selected' : ''; ?>
+							>
+								<?php echo esc_html( $name ); ?>
+							</option>
+						<?php endforeach; ?>
 						</select>
 						<small
 							id="syncronize-help"
@@ -258,7 +259,7 @@ $wc_categories_list = DataHandler::get_woocommerce_categories_list();
 							<input
 								name ="enable_cart"
 								type="checkbox"
-								<?php echo ( isset( $cart_enabled ) && $cart_enabled == 1 ) ? 'checked' : ' '; ?>
+								<?php echo checked( $cart_enabled, '1' ); ?>
 								class="smaily-toggle"
 								id="enable-cart-checkbox" />
 							<label for="enable-cart-checkbox"></label>
@@ -325,11 +326,14 @@ $wc_categories_list = DataHandler::get_woocommerce_categories_list();
 									'product_price'       => __( 'Product Price', 'smaily' ),
 								];
 								// Add options for select and select them if allready saved before.
-								foreach ( $cart_fields as $value => $name ) {
-									$select = in_array( $value, $cart_options ) ? 'selected' : '';
-									echo( "<option value='$value' $select>$name</option>" );
-								}
-								?>
+								foreach ( $cart_fields as $value => $name ) : ?>
+									<option
+										value="<?php echo esc_attr( $value ); ?>"
+										<?php echo in_array( $value, $cart_options, true ) ? 'selected' : ''; ?>
+									>
+										<?php echo esc_html( $name ); ?>
+									</option>
+								<?php endforeach; ?>
 							</select>
 							<small id="cart-options-help" class="form-text text-muted">
 							<?php
@@ -351,7 +355,7 @@ $wc_categories_list = DataHandler::get_woocommerce_categories_list();
 							<input	id="cart_cutoff"
 									name="cart_cutoff"
 									style="width:65px;"
-									value="<?php echo ( $result['cart_cutoff'] ) ? $result['cart_cutoff'] : ''; ?>"
+									value="<?php echo esc_attr( $settings['cart_cutoff'] ); ?>"
 									type="number"
 									min="10">
 							<?php echo esc_html__( 'minute(s)', 'smaily' ); ?>
@@ -421,10 +425,10 @@ $wc_categories_list = DataHandler::get_woocommerce_categories_list();
 						</th>
 						<td id="smaily_checkout_display_location">
 							<select id="cb-before-after" name="checkbox_order">
-								<option value="before" <?php echo( 'before' === $cb_order_selected ? 'selected' : '' ); ?> >
+								<option value="before" <?php selected( $cb_order_selected, 'before' ); ?> >
 									<?php echo esc_html__( 'Before', 'smaily' ); ?>
 								</option>
-								<option value="after" <?php echo( 'after' === $cb_order_selected ? 'selected' : '' ); ?>>
+								<option value="after" <?php selected( $cb_order_selected, 'after' ); ?>>
 									<?php echo esc_html__( 'After', 'smaily' ); ?>
 								</option>
 							</select>
@@ -440,7 +444,7 @@ $wc_categories_list = DataHandler::get_woocommerce_categories_list();
 								foreach ( $cb_loc_available as $loc_value => $loc_translation ) : ?>
 									<option
 										value="<?php echo esc_html( $loc_value ); ?>"
-										<?php echo $cb_loc_selected === $loc_value ? 'selected' : ''; ?>
+										<?php selected( $cb_loc_selected, $loc_value ); ?>
 									>
 										<?php echo esc_html( $loc_translation ); ?>
 									</option>
@@ -467,7 +471,7 @@ $wc_categories_list = DataHandler::get_woocommerce_categories_list();
 								name="rss_limit"
 								class="smaily-rss-options"
 								min="1" max="250"
-								value="<?php echo esc_html( $rss_limit ); ?>"
+								value="<?php echo esc_attr( $rss_limit ); ?>"
 							/>
 							<small>
 								<?php
@@ -491,13 +495,13 @@ $wc_categories_list = DataHandler::get_woocommerce_categories_list();
 								// Display available WooCommerce product categories and saved category.
 								foreach ( $wc_categories_list as $category ) : ?>
 									<option
-										value="<?php echo esc_html( $category->slug ); ?>"
-										<?php echo $rss_category === $category->slug ? 'selected' : ''; ?>
+										value="<?php echo esc_attr( $category->slug ); ?>"
+										<?php selected( $rss_category, $category->slug ); ?>
 									>
 										<?php echo esc_html( $category->name ); ?>
 									</option>
 								<?php endforeach; ?>
-								<option value="" <?php echo empty( $rss_category ) ? 'selected' : ''; ?>>
+								<option value="" <?php selected( $rss_category, '' ); ?>>
 									<?php echo esc_html__( 'All products', 'smaily' ); ?>
 								</option>
 							</select>
@@ -531,18 +535,18 @@ $wc_categories_list = DataHandler::get_woocommerce_categories_list();
 								// Display option and select saved value.
 								foreach ( $sort_categories_available as $sort_value => $sort_name ) : ?>
 									<option
-										value="<?php echo esc_html( $sort_value ); ?>"
-										<?php echo $rss_order_by === $sort_value ? 'selected' : ''; ?>
+										value="<?php echo esc_attr( $sort_value ); ?>"
+										<?php selected( $rss_order_by, $sort_value ); ?>
 									>
 										<?php echo esc_html( $sort_name ); ?>
 									</option>
 								<?php endforeach; ?>
 							</select>
 							<select id="rss-order" name="rss_order" class="smaily-rss-options">
-								<option value="ASC" <?php echo( 'ASC' === $rss_order ? 'selected' : '' ); ?> >
+								<option value="ASC" <?php selected( $rss_order, 'ASC' ); ?> >
 									<?php echo esc_html__( 'Ascending', 'smaily' ); ?>
 								</option>
-								<option value="DESC" <?php echo( 'DESC' === $rss_order ? 'selected' : '' ); ?>>
+								<option value="DESC" <?php selected( $rss_order, 'DESC' ); ?>>
 									<?php echo esc_html__( 'Descending', 'smaily' ); ?>
 								</option>
 							</select>
