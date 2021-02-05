@@ -6,6 +6,7 @@
 namespace Smaily_Inc\Base;
 
 use Smaily_Inc\Api\Api;
+
 /**
  * Handles communication between WordPress database
  */

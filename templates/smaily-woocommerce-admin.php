@@ -1,6 +1,7 @@
 <?php
 
 use Smaily_Inc\Base\DataHandler;
+
 // Get results from database and fill form if results allready available.
 $settings                = DataHandler::get_smaily_results();
 $cart_autoresponder_name = $settings['cart_autoresponder'];
