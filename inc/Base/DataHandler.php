@@ -6,7 +6,6 @@
 namespace Smaily_Inc\Base;
 
 use Smaily_Inc\Api\Api;
-require SMAILY_PLUGIN_PATH . 'kint.phar';
 /**
  * Handles communication between WordPress database
  */
