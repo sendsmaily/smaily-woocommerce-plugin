@@ -6,7 +6,7 @@
 namespace Smaily_Inc\Base;
 
 use Smaily_Inc\Api\Api;
-
+require SMAILY_PLUGIN_PATH . 'kint.phar';
 /**
  * Handles communication between WordPress database
  */
@@ -19,45 +19,56 @@ class DataHandler {
 	 */
 	public static function get_smaily_results() {
 		global $wpdb;
+		// Default values for input fields.
+		$results = array(
+			'id'                    => '',
+			'enable'                => '0',
+			'subdomain'             => '',
+			'username'              => '',
+			'password'              => '',
+			'syncronize_additional' => array(),
+			'enable_cart'           => '0',
+			'cart_autoresponder'    => '',
+			'cart_autoresponder_id' => '',
+			'cart_cutoff'           => '',
+			'cart_options'          => array(),
+			'enable_checkbox'       => '0',
+			'checkbox_auto_checked' => '0',
+			'checkbox_order'        => 'after',
+			'checkbox_location'     => 'checkout_billing_form',
+			'rss_limit'             => '50',
+			'rss_category'          => '',
+			'rss_order_by'          => 'modified',
+			'rss_order'             => 'DESC',
+		);
+
 		// Stop if no table exists. Required during activation hook.
 		$table_name = $wpdb->prefix . 'smaily';
 		if ( $wpdb->get_var( "SHOW TABLES LIKE '$table_name'" ) !== $table_name ) {
-			return;
+			return $results;
 		}
-		$result = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}smaily", 'ARRAY_A' );
-		// If database is empty in beginning return.
-		if ( count( $result ) === 0 ) {
-			return;
-		}
-		$un_escaped_result = $result[0];
+		$db_query = $wpdb->get_row( "SELECT * FROM {$wpdb->prefix}smaily", 'ARRAY_A' );
 
-		// Escape db values for output and usage.
-		$result = [];
-		foreach ( $un_escaped_result as $key => $value ) {
-			// Smaily may include & in generated password. Don't convert & to HTML entity as it is used for Base64 authorization.
-			if ($key === 'password') {
-				$result[ $key ] = $value;
+		// If database is empty return default values.
+		if ( ! isset( $db_query ) ) {
+			return $results;
+		}
+
+		$multiple_choice_fields = array( 'syncronize_additional', 'cart_options' );
+		// Replace default values with values saved in database.
+		foreach ( $db_query as $key => $value ) {
+			// If value is not initialized, use default one.
+			if ( ! isset( $value ) ) {
 				continue;
 			}
-			$result[ $key ] = esc_html( $value );
+			if ( in_array( $key, $multiple_choice_fields, true ) ) {
+				$results[ $key ] = explode( ',', $value );
+				continue;
+			}
+			$results[ $key ] = $value;
 		}
 
-		$un_escaped_syncronize_additional = ! empty( $result['syncronize_additional'] ) ? explode( ',', $result['syncronize_additional'] ) : array();
-
-		// Escape syncronize_additional fields.
-		$syncronize_additional = [];
-		foreach ( $un_escaped_syncronize_additional as $key => $value ) {
-			$syncronize_additional[ $key ] = esc_html( $value );
-		}
-
-		$un_escaped_cart_options = ! empty( $result['cart_options'] ) ? explode( ',', $result['cart_options'] ) : array();
-
-		// Escape cart option values.
-		$cart_options = [];
-		foreach ( $un_escaped_cart_options as $key => $value ) {
-			$cart_options [ $key ] = esc_html( $value );
-		}
-		return compact( 'result', 'syncronize_additional', 'cart_options' );
+		return $results;
 	}
 
 	/**
@@ -234,8 +245,7 @@ class DataHandler {
 	public static function get_autoresponder_list() {
 		$response = [];
 		// Get settings from db.
-		$settings = self::get_smaily_results();
-		$result   = $settings['result'];
+		$result = self::get_smaily_results();
 		// Get autoresponders if credentials available.
 		if ( empty( $result['subdomain'] ) ||
 			empty( $result['username'] ) ||

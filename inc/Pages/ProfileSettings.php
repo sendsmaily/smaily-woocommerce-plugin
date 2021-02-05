@@ -23,7 +23,7 @@ class ProfileSettings {
 		$result = DataHandler::get_smaily_results();
 
 		// No subdomain before successful credential validation.
-		if ( ! empty( $result['result']['subdomain'] ) ) {
+		if ( ! empty( $result['subdomain'] ) ) {
 			// Add fields to registration form and account area.
 			add_action( 'woocommerce_register_form', array( $this, 'smaily_print_user_frontend_fields' ), 10 );
 			add_action( 'woocommerce_edit_account_form', array( $this, 'smaily_print_user_frontend_fields' ), 10 );
@@ -54,7 +54,7 @@ class ProfileSettings {
 	 * @return string
 	 */
 	public static function generate_checkbox_location() {
-		$settings = DataHandler::get_smaily_results()['result'];
+		$settings = DataHandler::get_smaily_results();
 
 		$order    = $settings['checkbox_order'];
 		$location = $settings['checkbox_location'];
@@ -71,7 +71,7 @@ class ProfileSettings {
 	 * @return void
 	 */
 	public function smaily_checkout_newsletter_checkbox() {
-		$settings = DataHandler::get_smaily_results()['result'];
+		$settings = DataHandler::get_smaily_results();
 		$checked  = intval( $settings['checkbox_auto_checked'] );
 		$enabled  = intval( $settings['enable_checkbox'] );
 		if ( $enabled ) {

@@ -53,7 +53,7 @@ class Cron {
 
 		$results = DataHandler::get_smaily_results();
 		// Check if contact sync is enabled.
-		if ( (int) $results['result']['enable'] === 1 ) {
+		if ( (int) $results['enable'] === 1 ) {
 
 			// List value 2  = unsubscribers list.
 			$data = array(
@@ -115,12 +115,8 @@ class Cron {
 	public function smaily_abandoned_carts_email() {
 		// Get Smaily settings.
 		$results = DataHandler::get_smaily_results();
-		if ( ! isset( $results['result']['enable_cart'] ) ) {
-			// Something wrong with settings. Default value 0.
-			return;
-		}
 
-		if ( (int) $results['result']['enable_cart'] !== 1 ) {
+		if ( (int) $results['enable_cart'] !== 1 ) {
 			// Not activated.
 			return;
 		}
@@ -233,7 +229,7 @@ class Cron {
 
 			// Query for Smaily autoresponder.
 			$query = [
-				'autoresponder' => $results['result']['cart_autoresponder_id'], // autoresponder ID.
+				'autoresponder' => $results['cart_autoresponder_id'], // autoresponder ID.
 				'addresses'     => [ $addresses ],
 			];
 			// Send data to Smaily.
@@ -337,11 +333,11 @@ class Cron {
 		global $wpdb;
 		$results = DataHandler::get_smaily_results();
 		// Check if abandoned cart is enabled.
-		if ( isset( $results['result']['enable_cart'] ) && (int) $results['result']['enable_cart'] === 1 ) {
+		if ( isset( $results['enable_cart'] ) && (int) $results['enable_cart'] === 1 ) {
 			// Abandoned carts table name.
 			$table = $wpdb->prefix . 'smaily_abandoned_carts';
 			// Cart cutoff in seconds.
-			$cutoff = (int) $results['result']['cart_cutoff'] * 60;
+			$cutoff = (int) $results['cart_cutoff'] * 60;
 			// Current UTC timestamp - cutoff.
 			$limit = strtotime( gmdate( 'Y-m-d\TH:i:s\Z' ) ) - $cutoff;
 			$time = gmdate( 'Y-m-d\TH:i:s\Z', $limit );

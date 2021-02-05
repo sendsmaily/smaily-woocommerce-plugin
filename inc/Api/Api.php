@@ -354,8 +354,7 @@ class Api {
 		// Response.
 		$response = [];
 		// Smaily settings from database.
-		$db_user_info = DataHandler::get_smaily_results();
-		$result       = $db_user_info['result'];
+		$result = DataHandler::get_smaily_results();
 
 		// Add authorization to data of request.
 		$data = array_merge( $data, [ 'headers' => array( 'Authorization' => 'Basic ' . base64_encode( $result['username'] . ':' . $result['password'] ) ) ] );
