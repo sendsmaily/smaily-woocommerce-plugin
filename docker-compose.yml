@@ -30,6 +30,8 @@ services:
       - '8888:80'
     environment:
       PMA_HOST: wordpress_db
+      PMA_USER: root
+      PMA_PASSWORD: smailydev1
       MYSQL_ROOT_PASSWORD: smailydev1
 volumes:
   wordpress:
