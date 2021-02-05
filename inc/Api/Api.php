@@ -97,7 +97,7 @@ class Api {
 			wp_die();
 		}
 
-		$useragent = 'WordPress/' . get_bloginfo( 'version' ) . '; ' . get_bloginfo( 'url' ) . '; WooCommerce/' . WC_VERSION . '; smaily-for-woocommerce/' . SMAILY_PLUGIN_VERSION;
+		$useragent = 'smaily-for-woocommerce/' . SMAILY_PLUGIN_VERSION . ' (WordPress/' . get_bloginfo( 'version' ) . '; WooCommerce/' . WC_VERSION . '; +' . get_bloginfo( 'url' ) . ')';
 		// If all fields are set make api call.
 		$api_call = wp_remote_get(
 			'https://' . $sanitized['subdomain'] . '.sendsmaily.net/api/workflows.php?trigger_type=form_submitted',
