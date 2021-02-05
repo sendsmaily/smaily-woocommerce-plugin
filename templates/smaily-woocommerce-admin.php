@@ -10,7 +10,7 @@ $rss_category            = $settings['rss_category'];
 $rss_limit               = $settings['rss_limit'];
 $rss_order_by            = $settings['rss_order_by'];
 $rss_order               = $settings['rss_order'];
-$autoresponder_list  = DataHandler::get_autoresponder_list();
+$autoresponder_list      = DataHandler::get_autoresponder_list();
 // get_autoresponder_list will return empty array only if error with current credentials.
 $autoresponder_error = empty( $autoresponder_list ) && ! empty( $settings['subdomain'] );
 
