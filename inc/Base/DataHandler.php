@@ -19,7 +19,7 @@ class DataHandler {
 	public static function get_smaily_results() {
 		global $wpdb;
 		// Default values for input fields.
-		$results = array(
+		$defaults = array(
 			'id'                    => '',
 			'enable'                => '0',
 			'subdomain'             => '',
@@ -44,29 +44,30 @@ class DataHandler {
 		// Stop if no table exists. Required during activation hook.
 		$table_name = $wpdb->prefix . 'smaily';
 		if ( $wpdb->get_var( "SHOW TABLES LIKE '$table_name'" ) !== $table_name ) {
-			return $results;
+			return $defaults;
 		}
 		$db_query = $wpdb->get_row( "SELECT * FROM {$wpdb->prefix}smaily", 'ARRAY_A' );
 
 		// If database is empty return default values.
 		if ( ! isset( $db_query ) ) {
-			return $results;
+			return $defaults;
 		}
 
 		$multiple_choice_fields = array( 'syncronize_additional', 'cart_options' );
+		$results                = $defaults;
+
 		// Replace default values with values saved in database.
-		foreach ( $db_query as $key => $value ) {
+		foreach ( $db_query as $field => $value ) {
 			// If value is not initialized, use default one.
 			if ( ! isset( $value ) ) {
 				continue;
 			}
-			if ( in_array( $key, $multiple_choice_fields, true ) ) {
-				$results[ $key ] = explode( ',', $value );
+			if ( in_array( $field, $multiple_choice_fields, true ) ) {
+				$results[ $field ] = explode( ',', $value );
 				continue;
 			}
-			$results[ $key ] = $value;
+			$results[ $field ] = $value;
 		}
-
 		return $results;
 	}
 
