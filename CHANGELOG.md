@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.7.1
+- Test compatibility with WordPress 5.7. [issue #88](https://github.com/sendsmaily/smaily-woocommerce-plugin/issues/88)
+
 ### 1.7.0
 - Test compatibility with WordPress 5.6. [issue #70](https://github.com/sendsmaily/smaily-woocommerce-plugin/issues/70)
 - Smaily plugin settings "General" tab refinement. [issue #72](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/72)
