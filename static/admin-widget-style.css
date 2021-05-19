@@ -1,0 +1,85 @@
+/* WIDGET STYLES */
+.smaily-layout-container {
+    background-color: #f6f7f7;
+    border: 1px solid #c3c4c7;
+    border-radius: 5px;
+    padding: 0px 15px 0px 15px;
+    margin-bottom: 10px;
+}
+
+/* Clear floats after the columns */
+.row {
+    display: flex;
+}
+
+/* Layout styles*/
+.smaily-layouts {
+    width: 90%;
+}
+
+/* Button styles */
+.column {
+    flex: 50%;  
+ }
+ 
+.button-color {
+    width: 95%;
+    border: 1px solid #c3c4c7;
+    border-radius: 5px;
+    padding: 5px 0px 5px 0px;
+    margin-top: 3px;
+    font-size: 14px;
+    border-color: #8c8f94;
+}
+
+.button-text-color {
+    width: 95%;
+    border: 1px solid #c3c4c7;
+    border-radius: 5px;
+    padding: 5px 0px 5px 0px;
+    margin-top: 3px;
+    font-size: 14px;
+    border-color: #8c8f94;
+}
+
+/* Checkbox styles */
+.smaily-checkbox {
+    border: 1px solid #8c8f94;
+    border-radius: 4px;
+    background: #fff;
+    color: #50575e;
+    clear: none;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 0;
+    height: 1rem;
+    margin: -.25rem .25rem 0 0;
+    outline: 0;
+    padding: 0!important;
+    text-align: center;
+    vertical-align: middle;
+    width: 1rem;
+    min-width: 1rem;
+    -webkit-appearance: none;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+    transition: .05s border-color ease-in-out;
+}
+
+/* Headings and sections styles */
+div.section:first-child {
+    margin-top: 10px;
+}
+
+div.section {
+    margin-bottom: 40px;
+}
+
+div.smaily div.section > h2 { /* Selects the immediate child element that is inside the section(div). If h with p are in one section,
+    then this rule applies to the last one in the HTML */
+    margin-bottom: 10px; 
+}
+
+div.default-value-checkbox {
+    margin-top: 10px;
+}
+

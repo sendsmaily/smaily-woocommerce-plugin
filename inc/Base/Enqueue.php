@@ -41,8 +41,19 @@ class Enqueue {
 			SMAILY_PLUGIN_VERSION,
 			true
 		);
+		// Register jscolor.min.js 
+		wp_register_script(
+			'smailypluginwidgetstyle',
+			SMAILY_PLUGIN_URL . 'static/jscolor.min.js',
+			array(
+				'jquery',
+				'jquery-ui-tabs',
+			),
+			SMAILY_PLUGIN_VERSION,
+			true
+		);
 
-		// enque css and js.
+		// Enque css and js.
 		wp_enqueue_script(
 			'smailypluginscript',
 			SMAILY_PLUGIN_URL . 'static/javascript.js',
@@ -58,6 +69,21 @@ class Enqueue {
 			SMAILY_PLUGIN_URL . 'static/admin-style.css',
 			array(),
 			SMAILY_PLUGIN_VERSION
+		);
+		// Add admin-widget-style.css
+		wp_enqueue_style(
+			'smailypluginwidgetstyle',
+			SMAILY_PLUGIN_URL . 'static/admin-widget-style.css',
+			array(),
+			SMAILY_PLUGIN_VERSION
+		);
+		// Enque jscolor.min.js 
+		wp_enqueue_script(
+			'smailypluginwidgetscript',
+			SMAILY_PLUGIN_URL . 'static/jscolor.min.js',
+			array(),
+			SMAILY_PLUGIN_VERSION,
+			true
 		);
 
 		$translations = array(
@@ -117,4 +143,5 @@ class Enqueue {
 			}
 		}
 	}
+	
 }
