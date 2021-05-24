@@ -21,7 +21,6 @@ class Enqueue {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_front_scripts' ) );
 		// Must have low priority to dequeue successfully.
 		add_action( 'admin_enqueue_scripts', array( $this, 'dequeue_admin_styles' ), 100 );
-
 	}
 
 	/**
@@ -32,19 +31,8 @@ class Enqueue {
 	public function enqueue_admin_scripts() {
 
 		wp_register_script(
-			'smailypluginscript',
+			'smaily_for_woocommerce-admin_settings',
 			SMAILY_PLUGIN_URL . 'static/javascript.js',
-			array(
-				'jquery',
-				'jquery-ui-tabs',
-			),
-			SMAILY_PLUGIN_VERSION,
-			true
-		);
-		// Register jscolor.min.js 
-		wp_register_script(
-			'smailypluginwidgetstyle',
-			SMAILY_PLUGIN_URL . 'static/jscolor.min.js',
 			array(
 				'jquery',
 				'jquery-ui-tabs',
@@ -53,38 +41,48 @@ class Enqueue {
 			true
 		);
 
-		// Enque css and js.
-		wp_enqueue_script(
-			'smailypluginscript',
-			SMAILY_PLUGIN_URL . 'static/javascript.js',
+		wp_register_script(
+			'smaily_for_woocommerce-admin_widget',
+			SMAILY_PLUGIN_URL . 'static/admin-widget.js',
 			array(
 				'jquery',
-				'jquery-ui-tabs',
+				'smaily_for_woocommerce-jscolor',
 			),
 			SMAILY_PLUGIN_VERSION,
 			true
 		);
-		wp_enqueue_style(
-			'smailypluginstyle',
-			SMAILY_PLUGIN_URL . 'static/admin-style.css',
-			array(),
-			SMAILY_PLUGIN_VERSION
-		);
-		// Add admin-widget-style.css
-		wp_enqueue_style(
-			'smailypluginwidgetstyle',
-			SMAILY_PLUGIN_URL . 'static/admin-widget-style.css',
-			array(),
-			SMAILY_PLUGIN_VERSION
-		);
-		// Enque jscolor.min.js 
-		wp_enqueue_script(
-			'smailypluginwidgetscript',
+
+		// Register jscolor.min.js.
+		wp_register_script(
+			'smaily_for_woocommerce-jscolor',
 			SMAILY_PLUGIN_URL . 'static/jscolor.min.js',
 			array(),
 			SMAILY_PLUGIN_VERSION,
 			true
 		);
+
+		// Register styles.
+		wp_register_style(
+			'smaily_for_woocommerce-admin_settings',
+			SMAILY_PLUGIN_URL . 'static/admin-style.css',
+			array(),
+			SMAILY_PLUGIN_VERSION
+		);
+		wp_register_style(
+			'smaily_for_woocommerce-admin_widget',
+			SMAILY_PLUGIN_URL . 'static/admin-widget-style.css',
+			array(),
+			SMAILY_PLUGIN_VERSION
+		);
+
+		// Enqueue scripts.
+		wp_enqueue_script( 'smaily_for_woocommerce-jscolor' );
+		wp_enqueue_script( 'smaily_for_woocommerce-admin_settings' );
+		wp_enqueue_script( 'smaily_for_woocommerce-admin_widget' );
+
+		// Enqueue styles.
+		wp_enqueue_style( 'smaily_for_woocommerce-admin_settings' );
+		wp_enqueue_style( 'smaily_for_woocommerce-admin_widget' );
 
 		$translations = array(
 			'went_wrong' => __( 'Something went wrong connecting to Smaily!', 'smaily' ),
@@ -93,7 +91,7 @@ class Enqueue {
 		);
 		// Translations for frontend JS.
 		wp_localize_script(
-			'smailypluginscript',
+			'smaily_for_woocommerce-admin_settings',
 			'smaily_translations',
 			$translations
 		);
@@ -102,7 +100,7 @@ class Enqueue {
 		$default_settings = array();
 		$settings         = apply_filters( 'smaily_settings', $default_settings );
 		wp_add_inline_script(
-			'smailypluginscript',
+			'smaily_for_woocommerce-inline',
 			'var smaily_settings = ' . wp_json_encode( $settings ) . ';'
 		);
 	}
@@ -113,7 +111,7 @@ class Enqueue {
 	 * @return void
 	 */
 	public function enqueue_front_scripts() {
-		// enque css and js.
+		// Enqueue css and js.
 		wp_enqueue_style( 'smailypluginstyle', SMAILY_PLUGIN_URL . 'static/front-style.css', array(), SMAILY_PLUGIN_VERSION );
 	}
 
