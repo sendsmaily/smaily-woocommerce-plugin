@@ -17,12 +17,10 @@ jQuery( document ).ready(function($) {
         If background color checkbox is checked, then disable background color input. */
     $( document ).on('change','.default_background_color', function (  ) {
         $( 'div#button-color-container input[type="text"]' ).prop( "disabled", this.checked ? true : false );
-        console.log(this.value);
     });
     // If text color checkbox is checked, then disable text color input.
     $( document ).on('change','.default_text_color', function (  ) {
         $( 'div#button-text-container input[type="text"]' ).prop( "disabled", this.checked ? true : false );
-        console.log(this.value);
     });
 
 });
