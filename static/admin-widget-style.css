@@ -20,19 +20,9 @@
 /* Button styles */
 .column {
     flex: 50%;  
- }
- 
-.button-color {
-    width: 95%;
-    border: 1px solid #c3c4c7;
-    border-radius: 5px;
-    padding: 5px 0px 5px 0px;
-    margin-top: 3px;
-    font-size: 14px;
-    border-color: #8c8f94;
 }
 
-.button-text-color {
+.button-style {
     width: 95%;
     border: 1px solid #c3c4c7;
     border-radius: 5px;
@@ -82,4 +72,3 @@ div.smaily div.section > h2 { /* Selects the immediate child element that is ins
 div.default-value-checkbox {
     margin-top: 10px;
 }
-
