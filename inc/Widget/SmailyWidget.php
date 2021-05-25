@@ -408,10 +408,6 @@ class SmailyWidget extends \WP_Widget {
 			</div>
 		</div>
 
-		<script>
-        
-		</script>
-
 		<?php
 	}
 
