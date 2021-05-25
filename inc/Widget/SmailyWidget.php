@@ -425,38 +425,38 @@ class SmailyWidget extends \WP_Widget {
 		$instance = array();
 
 		// Sanitize user input.
-		$instance['title']                    = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( $new_instance['title'] ) : '';
-		$instance['form_layout']              = ( ! empty( $new_instance['form_layout'] ) ) ? sanitize_text_field( $new_instance['form_layout'] ) : '';
-		$instance['autoresponder']            = ( ! empty( $new_instance['autoresponder'] ) ) ? sanitize_text_field( $new_instance['autoresponder'] ) : '';
-		$instance['email_field_placeholder']  = ( ! empty( $new_instance['email_field_placeholder'] ) ) ? sanitize_text_field( $new_instance['email_field_placeholder'] ) : '';
-		$instance['name_field_placeholder']   = ( ! empty( $new_instance['name_field_placeholder'] ) ) ? sanitize_text_field( $new_instance['name_field_placeholder'] ) : '';
-		$instance['submit_button_text']       = ( ! empty( $new_instance['submit_button_text'] ) ) ? sanitize_text_field( $new_instance['submit_button_text'] ) : '';
-		$instance['submit_button_color']      = ( ! empty( $new_instance['submit_button_color'] ) ) ? sanitize_text_field( $new_instance['submit_button_color'] ) : sanitize_text_field( $old_instance['submit_button_color'] );
-		$instance['submit_button_text_color'] = ( ! empty( $new_instance['submit_button_text_color'] ) ) ? sanitize_text_field( $new_instance['submit_button_text_color'] ) : sanitize_text_field( $old_instance['submit_button_text_color'] );
+		$instance['title']                             = isset( $new_instance['title'] ) ? sanitize_text_field( $new_instance['title'] ) : '';
+		$instance['form_layout']                       = isset( $new_instance['form_layout'] ) ? sanitize_text_field( $new_instance['form_layout'] ) : '';
+		$instance['autoresponder']                     = isset( $new_instance['autoresponder'] ) ? sanitize_text_field( $new_instance['autoresponder'] ) : '';
+		$instance['email_field_placeholder']           = isset( $new_instance['email_field_placeholder'] ) ? sanitize_text_field( $new_instance['email_field_placeholder'] ) : '';
+		$instance['name_field_placeholder']            = isset( $new_instance['name_field_placeholder'] ) ? sanitize_text_field( $new_instance['name_field_placeholder'] ) : '';
+		$instance['submit_button_text']                = isset( $new_instance['submit_button_text'] ) ? sanitize_text_field( $new_instance['submit_button_text'] ) : '';
+		$instance['submit_button_color']               = isset( $new_instance['submit_button_color'] ) ? sanitize_text_field( $new_instance['submit_button_color'] ) : '';
+		$instance['submit_button_text_color']          = isset( $new_instance['submit_button_text_color'] ) ? sanitize_text_field( $new_instance['submit_button_text_color'] ) : '';
+		$instance['use_site_submit_button_color']      = isset( $new_instance['use_site_submit_button_color'] ) ? sanitize_text_field($new_instance['use_site_submit_button_color'] ): '';
+		$instance['use_site_submit_button_text_color'] = isset( $new_instance['use_site_submit_button_text_color'] ) ? sanitize_text_field($new_instance['use_site_submit_button_text_color'] ) : '';
 		
-		// Validate that input isn't empty, set default value, if it is.
-		$instance['title']                   = ( empty( $instance['title'] ) ) ? '' :  $instance['title'];
-		$instance['form_layout']             = ( empty( $instance['form_layout'] ) ) ? 'smaily-layout-1' :  $instance['form_layout'];
-		$instance['email_field_placeholder'] = ( empty( $instance['email_field_placeholder'] ) ) ? __( 'Email', 'smaily' ) :  $instance['email_field_placeholder'];
-		$instance['name_field_placeholder']  = ( empty( $instance['name_field_placeholder'] ) ) ? __( 'Name', 'smaily' ) :  $instance['name_field_placeholder'];
-		$instance['submit_button_text']      = ( empty( $instance['submit_button_text'] ) ) ? __( 'Send', 'smaily' ) :  $instance['submit_button_text'];
-		
+		// Validate that input isn't empty, set default value, if it is. 
+		$instance['title']                    = ( empty( $instance['title'] ) ) ? '' : $instance['title'];
+		$instance['form_layout']              = ( empty( $instance['form_layout'] ) ) ? 'layout-1' : $instance['form_layout'];
+		$instance['email_field_placeholder']  = ( empty( $instance['email_field_placeholder'] ) ) ? '' : $instance['email_field_placeholder'];
+		$instance['name_field_placeholder']   = ( empty( $instance['name_field_placeholder'] ) ) ? '' : $instance['name_field_placeholder'];
+		$instance['submit_button_text']       = ( empty( $instance['submit_button_text'] ) ) ? __( 'Send', 'smaily' ) : $instance['submit_button_text'];
 	
-		// If submit_button_color old_instance is empty, it forces $use_site_submit_button_color checkbox to be checked.
-		if ( ! empty ($instance['submit_button_color']) ) {
-			$instance['use_site_submit_button_color'] = ( ! empty( $new_instance['use_site_submit_button_color'] ) ) ? sanitize_text_field( $new_instance['use_site_submit_button_color'] ) : '';
-		} else {
+		// If button color isn't set, check default checkbox.
+		if ( ! empty ($instance['use_site_submit_button_color']) ) {
+			$instance['use_site_submit_button_color'] = 'default_background_color';
+		} else if ( empty ($instance['submit_button_color']) ) { 
 			$instance['use_site_submit_button_color'] = 'default_background_color';
 		}
 
-		// If submit_button_text_color old_instance is empty, it forces $use_site_submit_button_text_color checkbox to be checked.
-		if ( ! empty ($instance['submit_button_text_color']) ) {
-			$instance['use_site_submit_button_text_color'] = ( ! empty( $new_instance['use_site_submit_button_text_color'] ) ) ? sanitize_text_field( $new_instance['use_site_submit_button_text_color'] ) : '';
-		} else {
+		// If text color isn't set, check default checkbox.
+		if ( ! empty ($instance['use_site_submit_button_text_color']) ) {
+			$instance['use_site_submit_button_text_color'] = 'default_text_color';
+		} else if ( empty ($instance['submit_button_text_color']) ) { 
 			$instance['use_site_submit_button_text_color'] = 'default_text_color';
 		}
 
 		return $instance;
 	}
-
 }
