@@ -25,12 +25,13 @@ jobs:
       uses: php-actions/composer@v5
       with:
         dev: no
+        working_dir: ${{ env.WP_PLUGIN_NAME }}
 
     - name: Compress ZIP
       uses: TheDoctor0/zip-release@v0.3.0
       with:
         filename: build.zip
-        path: /${{ env.WP_PLUGIN_NAME }}
+        path: ${{ env.WP_PLUGIN_NAME }}
         exclusions: >
           /${{ env.WP_PLUGIN_NAME }}/.git*
           /${{ env.WP_PLUGIN_NAME }}/.vscode*
