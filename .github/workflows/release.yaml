@@ -40,8 +40,9 @@ jobs:
           /${{ env.WP_PLUGIN_NAME }}/composer.json
           /${{ env.WP_PLUGIN_NAME }}/composer.lock
           /${{ env.WP_PLUGIN_NAME }}/CONTRIBUTING.md
-          /${{ env.WP_PLUGIN_NAME }}/docker-composer.yml
+          /${{ env.WP_PLUGIN_NAME }}/docker-compose.yml
           /${{ env.WP_PLUGIN_NAME }}/Dockerfile
+          /${{ env.WP_PLUGIN_NAME }}/lang/smaily.pot
           /${{ env.WP_PLUGIN_NAME }}/README.md
           /${{ env.WP_PLUGIN_NAME }}/release.sh
 
