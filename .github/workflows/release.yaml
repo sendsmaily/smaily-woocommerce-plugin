@@ -27,7 +27,7 @@ jobs:
         dev: no
 
     - name: Compress ZIP
-      uses: TheDoctor0/zip-release@v0.4.2
+      uses: TheDoctor0/zip-release@v0.3.0
       with:
         filename: build.zip
         path: /${{ env.WP_PLUGIN_NAME }}
