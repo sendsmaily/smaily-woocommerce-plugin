@@ -14,7 +14,7 @@ First off, thanks for taking the time to contribute!
 
 # Getting started
 
-The development environment requires [Docker](https://docs.docker.com/) and [Docker Compose](https://docs.docker.com/compose/) to run. Please refer to the official documentation for step-by-step installation guide.
+The development environment requires [Docker](https://docs.docker.com/), [Docker Compose](https://docs.docker.com/compose/) and [Composer](https://getcomposer.org/download/) to run. Please refer to the official documentation of each for a step-by-step installation guide.
 
 Clone the repository:
 
@@ -23,6 +23,10 @@ Clone the repository:
 Next, change your working directory to the local repository:
 
     $ cd smaily-woocommerce-plugin
+
+Install packages required by the development environment:
+
+    $ composer install
 
 And run the environment:
 
@@ -40,7 +44,7 @@ The repository is split into multiple parts:
 - `lang` - localization files;
 - `static` - CSS, images and Javascript for admin panel and public pages;
 - `templates` - admin panel and public page templates;
-- `vendor` - Composer libraries;
+- `vendor` - Composer packages.
 
 In addition there are system directories:
 
