@@ -162,8 +162,8 @@ class SmailyWidget extends \WP_Widget {
 		$submit_button_text                = isset( $instance['submit_button_text'] ) ? $instance['submit_button_text'] : __( 'Send', 'smaily' );
 		$submit_button_color               = isset( $instance['submit_button_color'] ) ? $instance['submit_button_color'] : '';
 		$submit_button_text_color          = isset( $instance['submit_button_text_color'] ) ? $instance['submit_button_text_color'] : '';
-		$use_site_submit_button_color      = isset( $instance['use_site_submit_button_color'] ) ? $instance['use_site_submit_button_color'] : 'default_background_color';
-		$use_site_submit_button_text_color = isset( $instance['use_site_submit_button_text_color'] ) ? $instance['use_site_submit_button_text_color'] : 'default_text_color';
+		$use_site_submit_button_color      = isset( $instance['use_site_submit_button_color'] ) ? $instance['use_site_submit_button_color'] : true;
+		$use_site_submit_button_text_color = isset( $instance['use_site_submit_button_text_color'] ) ? $instance['use_site_submit_button_text_color'] : true;
 		$current_autoresponder             = isset( $instance['autoresponder'] ) ? json_decode( $instance['autoresponder'], true ) : array( 'id' => null );
 		?>
 
@@ -469,8 +469,8 @@ class SmailyWidget extends \WP_Widget {
 		$instance['submit_button_text']                = isset( $new_instance['submit_button_text'] ) ? sanitize_text_field( $new_instance['submit_button_text'] ) : '';
 		$instance['submit_button_color']               = isset( $new_instance['submit_button_color'] ) ? sanitize_text_field( $new_instance['submit_button_color'] ) : '';
 		$instance['submit_button_text_color']          = isset( $new_instance['submit_button_text_color'] ) ? sanitize_text_field( $new_instance['submit_button_text_color'] ) : '';
-		$instance['use_site_submit_button_color']      = isset( $new_instance['use_site_submit_button_color'] ) ? sanitize_text_field( $new_instance['use_site_submit_button_color'] ) : '';
-		$instance['use_site_submit_button_text_color'] = isset( $new_instance['use_site_submit_button_text_color'] ) ? sanitize_text_field( $new_instance['use_site_submit_button_text_color'] ) : '';
+		$instance['use_site_submit_button_color']      = isset( $new_instance['use_site_submit_button_color'] ) ? (bool) (int) sanitize_text_field( $new_instance['use_site_submit_button_color'] ) : false;
+		$instance['use_site_submit_button_text_color'] = isset( $new_instance['use_site_submit_button_text_color'] ) ? (bool) (int) sanitize_text_field( $new_instance['use_site_submit_button_text_color'] ) : false;
 
 		// Validate that input isn't empty, set default value, if it is.
 		$instance['title']                   = ( empty( $instance['title'] ) ) ? '' : $instance['title'];
