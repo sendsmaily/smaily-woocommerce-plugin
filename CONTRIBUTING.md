@@ -14,7 +14,9 @@ First off, thanks for taking the time to contribute!
 
 # Getting started
 
-The development environment requires [Docker](https://docs.docker.com/) and [Docker Compose](https://docs.docker.com/compose/) to run. Please refer to the official documentation for step-by-step installation guide.
+The development environment requires [Docker](https://docs.docker.com/), [Docker Compose](https://docs.docker.com/compose/) and [Composer](https://getcomposer.org/download/) to run. Please refer to the official documentation of each for a step-by-step installation guide.
+
+In order to fully utilize the development environment we recommend you use [Visual Studio Code](https://code.visualstudio.com/), and have [PHP Sniffer](https://marketplace.visualstudio.com/items?itemName=wongjn.php-sniffer) extension installed.
 
 Clone the repository:
 
@@ -23,6 +25,10 @@ Clone the repository:
 Next, change your working directory to the local repository:
 
     $ cd smaily-woocommerce-plugin
+
+Install packages required by the development environment:
+
+    $ composer install
 
 And run the environment:
 
@@ -40,11 +46,12 @@ The repository is split into multiple parts:
 - `lang` - localization files;
 - `static` - CSS, images and Javascript for admin panel and public pages;
 - `templates` - admin panel and public page templates;
-- `vendor` - Composer libraries;
+- `vendor` - Composer packages.
 
 In addition there are system directories:
 
-- `.github` - GitHub issue and pull request templates;
+- `.github` - GitHub issue and pull request templates, and release build pipeline;
+- `.vscode` - Visual Studio Code settings.
 
 
 # Development
@@ -75,6 +82,8 @@ If you need to reset the installation, just simply delete environment's Docker v
 # Releasing
 
 Releasing a new version of the plugin to Wordpress.org requires [SVN client](https://subversion.apache.org/packages.html).
+
+**Note!** Make sure release build has finished in GitHub (`smaily-for-woocommerce.zip` file should exist in GitHub release assets), before running the release script.
 
 After creating a release in GitHub, plugin must also be deployed to Wordpress.org. The repository contains a handy script for that:
 

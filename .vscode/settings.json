@@ -1,0 +1,25 @@
+{
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "phpSniffer.run": "onType",
+    "phpSniffer.onTypeDelay": 250,
+    "phpSniffer.executablesFolder": "./vendor/bin",
+    "phpSniffer.standard": "./phpcs.xml",
+    "[css]": {
+        "editor.detectIndentation": false,
+        "editor.insertSpaces": false,
+        "editor.tabSize": 4,
+    },
+    "[javascript]": {
+        "editor.detectIndentation": false,
+        "editor.insertSpaces": false,
+        "editor.tabSize": 4,
+    },
+    "[php]": {
+        "editor.defaultFormatter": "wongjn.php-sniffer",
+        "editor.detectIndentation": false,
+        "editor.insertSpaces": false,
+        "editor.tabSize": 4,
+    }
+}
