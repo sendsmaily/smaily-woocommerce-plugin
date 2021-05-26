@@ -9,7 +9,9 @@
     <arg name="parallel" value="8" />
     <arg name="extensions" value="php" />
 
-    <rule ref="WordPress-Core" />
+    <rule ref="WordPress-Core">
+        <exclude name="WordPress.PHP.YodaConditions.NotYoda" />
+    </rule>
 
     <!-- Add in some extra rules from other standards. -->
     <rule ref="Generic.CodeAnalysis.UnusedFunctionParameter" />
