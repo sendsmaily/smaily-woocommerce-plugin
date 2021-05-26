@@ -43,6 +43,7 @@ jobs:
           /${{ env.WP_PLUGIN_NAME }}/docker-compose.yml
           /${{ env.WP_PLUGIN_NAME }}/Dockerfile
           /${{ env.WP_PLUGIN_NAME }}/lang/smaily.pot
+          /${{ env.WP_PLUGIN_NAME }}/phpcs.xml
           /${{ env.WP_PLUGIN_NAME }}/README.md
           /${{ env.WP_PLUGIN_NAME }}/release.sh
 

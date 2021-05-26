@@ -16,6 +16,8 @@ First off, thanks for taking the time to contribute!
 
 The development environment requires [Docker](https://docs.docker.com/), [Docker Compose](https://docs.docker.com/compose/) and [Composer](https://getcomposer.org/download/) to run. Please refer to the official documentation of each for a step-by-step installation guide.
 
+In order to fully utilize the development environment we recommend you use [Visual Studio Code](https://code.visualstudio.com/), and have [PHP Sniffer](https://marketplace.visualstudio.com/items?itemName=wongjn.php-sniffer) extension installed.
+
 Clone the repository:
 
     $ git clone git@github.com:sendsmaily/smaily-woocommerce-plugin.git
@@ -48,7 +50,8 @@ The repository is split into multiple parts:
 
 In addition there are system directories:
 
-- `.github` - GitHub issue and pull request templates;
+- `.github` - GitHub issue and pull request templates, and release build pipeline;
+- `.vscode` - Visual Studio Code settings.
 
 
 # Development
@@ -79,6 +82,8 @@ If you need to reset the installation, just simply delete environment's Docker v
 # Releasing
 
 Releasing a new version of the plugin to Wordpress.org requires [SVN client](https://subversion.apache.org/packages.html).
+
+**Note!** Make sure release build has finished in GitHub (`smaily-for-woocommerce.zip` file should exist in GitHub release assets), before running the release script.
 
 After creating a release in GitHub, plugin must also be deployed to Wordpress.org. The repository contains a handy script for that:
 
