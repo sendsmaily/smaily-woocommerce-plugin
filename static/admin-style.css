@@ -83,11 +83,11 @@ small {
   display: block;
 }
 
-.smaily-settings input {
+#smaily-settings input {
   max-width: 50%;
 }
 
-.smaily-settings select {
+#smaily-settings select {
   min-width: 50%;
 }
 
