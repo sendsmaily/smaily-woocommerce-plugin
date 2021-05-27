@@ -8,6 +8,7 @@ services:
       - 8080:80
     environment:
       WORDPRESS_DB_HOST: wordpress_db
+      WORDPRESS_DB_USER: root
       WORDPRESS_DB_PASSWORD: smailydev1
     volumes:
       - wordpress:/var/www/html
@@ -21,6 +22,7 @@ services:
       MYSQL_ROOT_PASSWORD: smailydev1
     volumes:
       - wordpress_db:/var/lib/mysql
+
   phpmyadmin:
     depends_on:
       - wordpress_db
