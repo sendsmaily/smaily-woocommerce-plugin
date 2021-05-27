@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.7.2
+- Rework admin settings form [[#94](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/94)]
+
 ### 1.7.1
 - Test compatibility with WordPress 5.7. [issue #88](https://github.com/sendsmaily/smaily-woocommerce-plugin/issues/88)
 

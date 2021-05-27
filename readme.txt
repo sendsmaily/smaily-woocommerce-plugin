@@ -5,7 +5,7 @@ Requires PHP: 5.6
 Requires at least: 4.5
 Tested up to: 5.7.0
 WC tested up to: 4.7.0
-Stable tag: 1.7.1
+Stable tag: 1.7.2
 License: GPLv3
 
 Simple and flexible Smaily newsletter and RSS-feed integration for WooCommerce.
@@ -146,17 +146,21 @@ Also you can determine if customer had more than 10 items in cart
 
 == Changelog ==
 
-= 1.7.1 = 
+= 1.7.2 =
+
+- Rework admin settings form.
+
+= 1.7.1 =
 
 - Test compatibility with WordPress 5.7.
 
-= 1.7.0 = 
+= 1.7.0 =
 
 - Test compatibility with WordPress 5.6.
-- Smaily plugin settings "General" tab refinement. 
-- Improve plugin description to better describe the plugin's features. 
-- Dequeue 3rd party styles in module settings page. 
-- Update "required at least" WordPress version to 4.5 in README.md. 
+- Smaily plugin settings "General" tab refinement.
+- Improve plugin description to better describe the plugin's features.
+- Dequeue 3rd party styles in module settings page.
+- Update "required at least" WordPress version to 4.5 in README.md.
 - Fix API credentials validation messages.
 
 = 1.6.1 =
