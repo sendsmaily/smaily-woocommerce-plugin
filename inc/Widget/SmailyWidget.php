@@ -385,7 +385,7 @@ class SmailyWidget extends \WP_Widget {
 								data-jscolor="{required:false}"
 								class="button-style"
 								<?php
-								if ( $use_site_submit_button_color !== '' ) :
+								if ( $use_site_submit_button_color === true ) :
 									?>
 									disabled<?php endif; ?>
 								id="<?php echo esc_attr( $this->get_field_id( 'submit_button_color' ) ); ?>"
@@ -397,13 +397,13 @@ class SmailyWidget extends \WP_Widget {
 							<input
 								class="smaily-checkbox default_background_color"
 								<?php
-								if ( $use_site_submit_button_color !== '' ) :
+								if ( $use_site_submit_button_color === true ) :
 									?>
 									checked<?php endif; ?>
 								id="<?php echo $this->get_field_id( 'default_background_color' ); ?>"
 								name="<?php echo $this->get_field_name( 'use_site_submit_button_color' ); ?>"
 								type="checkbox"
-								value="default_background_color" />
+								value="1" />
 							<label for="<?php echo $this->get_field_id( 'use_site_submit_button_color' ); ?>" ><?php esc_html_e( 'Use default button color?', 'smaily' ); ?></label>
 						</div>
 					</div>
@@ -419,7 +419,7 @@ class SmailyWidget extends \WP_Widget {
 								class="button-style"
 								type="text"
 								<?php
-								if ( $use_site_submit_button_text_color !== '' ) :
+								if ( $use_site_submit_button_text_color === true ) :
 									?>
 									disabled<?php endif; ?>
 								id="<?php echo esc_attr( $this->get_field_id( 'submit_button_text_color' ) ); ?>"
@@ -430,13 +430,13 @@ class SmailyWidget extends \WP_Widget {
 							<input
 								class="smaily-checkbox default_text_color"
 								<?php
-								if ( $use_site_submit_button_text_color !== '' ) :
+								if ( $use_site_submit_button_text_color === true ) :
 									?>
 									checked<?php endif; ?>
 								id="<?php echo $this->get_field_id( 'default_text_color' ); ?>"
 								name="<?php echo $this->get_field_name( 'use_site_submit_button_text_color' ); ?>"
 								type="checkbox"
-								value="default_text_color" />
+								value="1" />
 							<label for="<?php echo $this->get_field_id( 'use_site_submit_button_text_color' ); ?>" ><?php esc_html_e( 'Use default text color?', 'smaily' ); ?></label>
 						</div>
 					</div>
@@ -480,17 +480,17 @@ class SmailyWidget extends \WP_Widget {
 		$instance['submit_button_text']      = ( empty( $instance['submit_button_text'] ) ) ? __( 'Send', 'smaily' ) : $instance['submit_button_text'];
 
 		// If button color isn't set, check default checkbox.
-		if ( ! empty( $instance['use_site_submit_button_color'] ) ) {
-			$instance['use_site_submit_button_color'] = 'default_background_color';
+		if ( $instance['use_site_submit_button_color'] === true ) {
+			$instance['use_site_submit_button_color'] = true;
 		} elseif ( empty( $instance['submit_button_color'] ) ) {
-			$instance['use_site_submit_button_color'] = 'default_background_color';
+			$instance['use_site_submit_button_color'] = true;
 		}
 
 		// If text color isn't set, check default checkbox.
-		if ( ! empty( $instance['use_site_submit_button_text_color'] ) ) {
-			$instance['use_site_submit_button_text_color'] = 'default_text_color';
+		if ( $instance['use_site_submit_button_text_color'] === true ) {
+			$instance['use_site_submit_button_text_color'] = true;
 		} elseif ( empty( $instance['submit_button_text_color'] ) ) {
-			$instance['use_site_submit_button_text_color'] = 'default_text_color';
+			$instance['use_site_submit_button_text_color'] = true;
 		}
 
 		return $instance;
