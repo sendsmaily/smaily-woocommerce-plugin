@@ -480,16 +480,12 @@ class SmailyWidget extends \WP_Widget {
 		$instance['submit_button_text']      = ( empty( $instance['submit_button_text'] ) ) ? __( 'Send', 'smaily' ) : $instance['submit_button_text'];
 
 		// If button color isn't set, check default checkbox.
-		if ( $instance['use_site_submit_button_color'] === true ) {
-			$instance['use_site_submit_button_color'] = true;
-		} elseif ( empty( $instance['submit_button_color'] ) ) {
+		if ( empty( $instance['submit_button_color'] ) ) {
 			$instance['use_site_submit_button_color'] = true;
 		}
 
 		// If text color isn't set, check default checkbox.
-		if ( $instance['use_site_submit_button_text_color'] === true ) {
-			$instance['use_site_submit_button_text_color'] = true;
-		} elseif ( empty( $instance['submit_button_text_color'] ) ) {
+		if ( empty( $instance['submit_button_text_color'] ) ) {
 			$instance['use_site_submit_button_text_color'] = true;
 		}
 
