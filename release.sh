@@ -70,6 +70,7 @@ read -p "PRESS [ENTER] TO BEGIN RELEASING "${VERSION}
 GIT_REPO_PATH=`dirname $(readlink -f $0)`
 TEMP_SVN_REPO="/tmp/${PLUGIN_SLUG}-svn"
 SVN_REPO="https://plugins.svn.wordpress.org/${PLUGIN_SLUG}/"
+BUILD_URL="https://github.com/sendsmaily/smaily-woocommerce-plugin/releases/download/${VERSION}/smaily-for-woocommerce.zip"
 
 # CHECKOUT SVN DIR IF NOT EXISTS
 if [[ ! -d $TEMP_SVN_REPO ]];
@@ -81,12 +82,16 @@ then
     svn update $TEMP_SVN_REPO/trunk --set-depth infinity
 fi
 
-# Ensure we are on master branch.
+# Ensure we are on version branch.
 echo "Switching to branch"
 git checkout ${VERSION} || { echo "Unable to checkout branch."; exit 1; }
 
 echo ""
 read -p "PRESS [ENTER] TO DEPLOY VERSION "${VERSION}
+
+# Fetch and extract build ZIP-file.
+curl -L --output "/tmp/smaily-for-woocommerce-${VERSION}.zip" "${BUILD_URL}" || { echo "Unable to fetch build archive"; exit 1; }
+unzip "/tmp/smaily-for-woocommerce-${VERSION}.zip" -d /tmp
 
 # MOVE INTO SVN DIR
 cd $TEMP_SVN_REPO
@@ -103,43 +108,7 @@ cp -R $GIT_REPO_PATH/assets assets/
 # REPLACE TRUNK
 echo "Replacing trunk"
 rm -Rf trunk/
-cp -R $GIT_REPO_PATH trunk/
-
-# REMOVE UNWANTED FILES & FOLDERS
-echo "Removing unwanted files"
-rm -Rf trunk/.git
-rm -Rf trunk/.github
-rm -Rf trunk/.vscode
-rm -Rf trunk/.wordpress-org
-rm -Rf trunk/apigen
-rm -Rf trunk/assets
-rm -Rf trunk/tests
-rm -f trunk/.coveralls.yml
-rm -f trunk/.editorconfig
-rm -f trunk/.gitattributes
-rm -f trunk/.gitignore
-rm -f trunk/.gitmodules
-rm -f trunk/.jscrsrc
-rm -f trunk/.jshintrc
-rm -f trunk/.scrutinizer.yml
-rm -f trunk/.stylelintrc
-rm -f trunk/.travis.yml
-rm -f trunk/apigen.neon
-rm -f trunk/CHANGELOG.txt
-rm -f trunk/CODE_OF_CONDUCT.md
-rm -f trunk/composer.json
-rm -f trunk/composer.lock
-rm -f trunk/CONTRIBUTING.md
-rm -f trunk/docker-compose.yml
-rm -f trunk/Dockerfile
-rm -f trunk/Gruntfile.js
-rm -f trunk/package.json
-rm -f trunk/phpcs.xml
-rm -f trunk/phpunit.xml
-rm -f trunk/phpunit.xml.dist
-rm -f trunk/README.md
-rm -f trunk/CHANGELOG.md
-rm -f trunk/release.sh
+cp -R /tmp/smaily-for-woocommerce trunk/
 
 # DO THE ADD ALL NOT KNOWN FILES UNIX COMMAND
 svn add --force * --auto-props --parents --depth infinity -q

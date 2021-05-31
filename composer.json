@@ -10,10 +10,15 @@
     }
   ],
   "minimum-stability": "stable",
-  "require": {},
   "autoload": {
     "psr-4": {
       "Smaily_Inc\\": "./inc"
     }
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^3.6",
+    "wp-coding-standards/wpcs": "^2.3",
+    "phpcompatibility/phpcompatibility-wp": "^2.1",
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1"
   }
 }

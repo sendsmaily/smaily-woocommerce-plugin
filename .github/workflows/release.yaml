@@ -1,0 +1,64 @@
+name: Build release package
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      WP_PLUGIN_NAME: smaily-for-woocommerce
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        path: ${{ env.WP_PLUGIN_NAME }}
+
+    - name: Setup Composer caching
+      uses: actions/cache@v2
+      with:
+        path: /tmp/composer-cache
+        key: ${{ runner.os }}-${{ hashFiles('**/composer.lock') }}
+
+    - name: Install Composer packages
+      uses: php-actions/composer@v5
+      with:
+        dev: no
+        working_dir: ${{ env.WP_PLUGIN_NAME }}
+
+    - name: Compress ZIP
+      uses: TheDoctor0/zip-release@v0.3.0
+      with:
+        filename: build.zip
+        path: ${{ env.WP_PLUGIN_NAME }}
+        exclusions: >
+          /${{ env.WP_PLUGIN_NAME }}/.git*
+          /${{ env.WP_PLUGIN_NAME }}/.vscode*
+          /${{ env.WP_PLUGIN_NAME }}/assets*
+          /${{ env.WP_PLUGIN_NAME }}/CHANGELOG.md
+          /${{ env.WP_PLUGIN_NAME }}/composer.json
+          /${{ env.WP_PLUGIN_NAME }}/composer.lock
+          /${{ env.WP_PLUGIN_NAME }}/CONTRIBUTING.md
+          /${{ env.WP_PLUGIN_NAME }}/docker-compose.yml
+          /${{ env.WP_PLUGIN_NAME }}/Dockerfile
+          /${{ env.WP_PLUGIN_NAME }}/lang/smaily.pot
+          /${{ env.WP_PLUGIN_NAME }}/phpcs.xml
+          /${{ env.WP_PLUGIN_NAME }}/README.md
+          /${{ env.WP_PLUGIN_NAME }}/release.sh
+
+    - name: Get release URL
+      id: get_release_url
+      uses: bruceadams/get-release@v1.2.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Upload release assets
+      uses: actions/upload-release-asset@v1.0.2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.get_release_url.outputs.upload_url }}
+        asset_path: ./build.zip
+        asset_name: ${{ env.WP_PLUGIN_NAME }}.zip
+        asset_content_type: application/zip
