@@ -107,10 +107,67 @@ class SmailyWidget extends \WP_Widget {
 				<div class="smaily-newsletter-alert">
 				<p>' . esc_html( $message ) . '
 				<span class="smaily-newsletter-closebtn" onclick="this.parentElement.style.display=\'none\'">&times;</span>
-				</p>
+					<p>' . esc_html( $message ) . '
+						<span class="smaily-newsletter-closebtn" onclick="this.parentElement.style.display=\'none\'">&times;</span>
+					</p>
 				</div>
 				';
 		}
+
+		// Layout options to echo.
+		if ( isset( $instance['form_layout'] ) ) {
+			switch ( $instance['form_layout'] ) {
+				// Layout 1.
+				case 'layout-1':
+					$layout = '<div class="smaily-layout-1-container">
+						<input class="smaily-layout-1-input" type="text" name="email" value="" placeholder="' . esc_attr( $instance['email_field_placeholder'] ) . '" />
+						<button class="ui pink basic button smaily-button" type="submit" style="background-color: ' . esc_attr( $instance['submit_button_color'] ) . ' ; color: ' . esc_attr( $instance['submit_button_text_color'] ) . '" >' . esc_attr( $instance['submit_button_text'] ) . '</button>
+					</div>';
+					break;
+				// Layout 2.
+				case 'layout-2':
+					$layout = '<div class="smaily-layout-2-container">
+						<input type="text" name="email" value="" placeholder="' . esc_attr( $instance['email_field_placeholder'] ) . '" />
+						<button class="ui pink basic button smaily-button" type="submit" style="background-color: ' . esc_attr( $instance['submit_button_color'] ) . ' ; color: ' . esc_attr( $instance['submit_button_text_color'] ) . '" >' . esc_attr( $instance['submit_button_text'] ) . '</button>
+					</div>';
+					break;
+				// Layout 3.
+				case 'layout-3':
+					$layout = '<div class="smaily-layout-3-container">
+						<input class="smaily-layout-3-input" type="text" name="email" value="" placeholder="' . esc_attr( $instance['email_field_placeholder'] ) . '" />
+						<p>
+							<button class=" ui pink basic button smaily-button" type="submit" style="background-color: ' . esc_attr( $instance['submit_button_color'] ) . ' ; color: ' . esc_attr( $instance['submit_button_text_color'] ) . '" >' . esc_attr( $instance['submit_button_text'] ) . '</button>
+						</p>
+					</div>';
+					break;
+				// Layout 4.
+				case 'layout-4':
+					$layout = '<div class="smaily-layout-4-container">
+						<input class="smaily-layout-4-input-email" type="text" name="email" value="" placeholder="' . esc_attr( $instance['email_field_placeholder'] ) . '" />
+						<input class="smaily-layout-4-input-name" type="text" name="name" value="" placeholder="' . esc_attr( $instance['name_field_placeholder'] ) . '" />
+						<button class="ui pink basic button smaily-button" type="submit" style="background-color: ' . esc_attr( $instance['submit_button_color'] ) . ' ; color: ' . esc_attr( $instance['submit_button_text_color'] ) . '" >' . esc_attr( $instance['submit_button_text'] ) . '</button>
+					</div>';
+					break;
+				// Layout 5.
+				case 'layout-5':
+					$layout = '<div class="smaily-layout-5-container">
+						<input class="smaily-layout-5-input" type="text" name="email" value="" placeholder="' . esc_attr( $instance['email_field_placeholder'] ) . '" />
+					</div>
+					<p>
+						<input type="text" name="name" value="" placeholder="' . esc_attr( $instance['name_field_placeholder'] ) . '" />
+					</p>
+					<p>
+						<button class="ui pink basic button smaily-button" style="background-color: ' . esc_attr( $instance['submit_button_color'] ) . ' ; color: ' . esc_attr( $instance['submit_button_text_color'] ) . '" >' . esc_attr( $instance['submit_button_text'] ) . '</button>
+					</p>';
+					break;
+				// If nothing chosen, use default layout.
+				default:
+					$layout = 'layout-1';
+					break;
+			}
+
+		}
+
 		// Main form.
 		echo '<form class="smaily-newsletter-form" action="https://' . esc_html( $result['subdomain'] ) . '.sendsmaily.net/api/opt-in/" method="post" autocomplete="off">
 				<div>
@@ -138,6 +195,15 @@ class SmailyWidget extends \WP_Widget {
 				<div style="overflow:hidden;height:0px;">
 					<input type="text" name="re-email" value="" />
 				</div>
+		echo '</div>';
+
+		// Echo chosen layout
+		echo $layout;
+
+		echo '<div style = "overflow:hidden;height:0px;" >
+				<input type = "text" name = "re-email" value = ""/>
+			</div>
+
 			</form>
 		';
 
@@ -491,4 +557,5 @@ class SmailyWidget extends \WP_Widget {
 
 		return $instance;
 	}
+
 }
