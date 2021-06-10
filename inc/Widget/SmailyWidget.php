@@ -166,6 +166,11 @@ class SmailyWidget extends \WP_Widget {
 
 		}
 
+		// Set default layout option.
+		$allowed_layouts = array( 'layout-1', 'layout-2', 'layout-3', 'layout-4', 'layout-5' );
+		$selected_layout = isset( $instance['form_layout'] ) ? $instance['form_layout'] : 'layout-1';
+		$selected_layout = in_array( $selected_layout, $allowed_layouts, true ) ? $selected_layout : 'layout-1';
+
 		// Main form.
 		echo '<form class="smaily-newsletter-form" action="https://' . esc_html( $result['subdomain'] ) . '.sendsmaily.net/api/opt-in/" method="post" autocomplete="off">
 				<div>
