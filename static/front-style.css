@@ -14,13 +14,10 @@
   color: black;
 }
 
-.smaily-newsletter-form button[type="submit"] {
-  background-color: #4caf50;
-  color: white;
-  cursor: pointer;
 /* Responsiveness for desktop */
 /* Containers */
-.smaily-layout-1-container, .smaily-layout-2-container {
+.smaily-layout-1-container, 
+.smaily-layout-2-container {
 	display: flex !important;	
 }
 .smaily-layout-3-container {
@@ -32,32 +29,35 @@
 }
 
 /* Inputs */
-.smaily-layout-1-input, .smaily-layout-4-input-email, .smaily-layout-4-input-name  {
+.smaily-layout-1-input,
+.smaily-layout-4-input-email, 
+.smaily-layout-4-input-name  {
 	margin: 0 0.8rem 0 0 !important;
+}
+.smaily-layout-2-input {
+	margin-right: 0 !important;
 }
 .smaily-layout-3-input {
 	margin: 0 0 1.8rem 0 !important;
 }
-.smaily-layout-5-input {
+.smaily-layout-5-input-email {
 	margin: 0 0 0.8rem 0 !important;
 }
+.smaily-layout-5-input-name {
+	margin: 0 0 1.8rem 0 !important;
+}
 
-.smaily-newsletter-form button[type="submit"]:hover {
-  background-color: #45a049;
-/* Smaily button */
+/* Smaily button styles */
 .smaily-button {
 	white-space: nowrap;
+}
+.smaily-button-layout-2 {
+	margin-left: 0 !important;
 }
 
 /* Responsiveness for mobile */
 @media screen and (max-width: 450px) {
 	/* Containers */
-	.smaily-layout-1-container {
-		display: flex !important;
-	}
-	.smaily-layout-2-container {
-		display: flex !important;
-	}
 	.smaily-layout-3-container {
 		margin: 0 0 1.8rem 0 !important;
 	}
