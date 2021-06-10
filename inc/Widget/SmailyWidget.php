@@ -111,59 +111,61 @@ class SmailyWidget extends \WP_Widget {
 				</div>
 				';
 		}
+		
+		// Render the style property only if it has a value.
+		$smaily_button_style_elements = [];
 
-		// Layout options to echo.
-		if ( isset( $instance['form_layout'] ) ) {
-			switch ( $instance['form_layout'] ) {
-				// Layout 1.
-				case 'layout-1':
-					$layout = '<div class="smaily-layout-1-container">
-						<input class="smaily-layout-1-input" type="text" name="email" value="" placeholder="' . esc_attr( $instance['email_field_placeholder'] ) . '" />
-						<button class="ui pink basic button smaily-button" type="submit" style="background-color: ' . esc_attr( $instance['submit_button_color'] ) . ' ; color: ' . esc_attr( $instance['submit_button_text_color'] ) . '" >' . esc_attr( $instance['submit_button_text'] ) . '</button>
-					</div>';
-					break;
-				// Layout 2.
-				case 'layout-2':
-					$layout = '<div class="smaily-layout-2-container">
-						<input type="text" name="email" value="" placeholder="' . esc_attr( $instance['email_field_placeholder'] ) . '" />
-						<button class="ui pink basic button smaily-button" type="submit" style="background-color: ' . esc_attr( $instance['submit_button_color'] ) . ' ; color: ' . esc_attr( $instance['submit_button_text_color'] ) . '" >' . esc_attr( $instance['submit_button_text'] ) . '</button>
-					</div>';
-					break;
-				// Layout 3.
-				case 'layout-3':
-					$layout = '<div class="smaily-layout-3-container">
-						<input class="smaily-layout-3-input" type="text" name="email" value="" placeholder="' . esc_attr( $instance['email_field_placeholder'] ) . '" />
-						<p>
-							<button class=" ui pink basic button smaily-button" type="submit" style="background-color: ' . esc_attr( $instance['submit_button_color'] ) . ' ; color: ' . esc_attr( $instance['submit_button_text_color'] ) . '" >' . esc_attr( $instance['submit_button_text'] ) . '</button>
-						</p>
-					</div>';
-					break;
-				// Layout 4.
-				case 'layout-4':
-					$layout = '<div class="smaily-layout-4-container">
-						<input class="smaily-layout-4-input-email" type="text" name="email" value="" placeholder="' . esc_attr( $instance['email_field_placeholder'] ) . '" />
-						<input class="smaily-layout-4-input-name" type="text" name="name" value="" placeholder="' . esc_attr( $instance['name_field_placeholder'] ) . '" />
-						<button class="ui pink basic button smaily-button" type="submit" style="background-color: ' . esc_attr( $instance['submit_button_color'] ) . ' ; color: ' . esc_attr( $instance['submit_button_text_color'] ) . '" >' . esc_attr( $instance['submit_button_text'] ) . '</button>
-					</div>';
-					break;
-				// Layout 5.
-				case 'layout-5':
-					$layout = '<div class="smaily-layout-5-container">
-						<input class="smaily-layout-5-input" type="text" name="email" value="" placeholder="' . esc_attr( $instance['email_field_placeholder'] ) . '" />
-					</div>
-					<p>
-						<input type="text" name="name" value="" placeholder="' . esc_attr( $instance['name_field_placeholder'] ) . '" />
-					</p>
-					<p>
-						<button class="ui pink basic button smaily-button" style="background-color: ' . esc_attr( $instance['submit_button_color'] ) . ' ; color: ' . esc_attr( $instance['submit_button_text_color'] ) . '" >' . esc_attr( $instance['submit_button_text'] ) . '</button>
-					</p>';
-					break;
-				// If nothing chosen, use default layout.
-				default:
-					$layout = 'layout-1';
-					break;
-			}
+		if ( ! empty( $instance['submit_button_text_color'] ) ) {
+			$smaily_button_style_elements[] = 'color: ' . esc_attr( $instance['submit_button_text_color'] );
+		}
+		
+		if ( ! empty( $instance['submit_button_color'] ) ) {
+			$smaily_button_style_elements[] = 'background-color: ' . esc_attr( $instance['submit_button_color'] );
+		}
 
+		// Create and return a new string by concatenating all the elements in an array.
+		$smaily_button_style = join(' ; ',$smaily_button_style_elements);
+
+	// Layout options to echo.
+		$selected_layout = isset( $instance['form_layout'] ) ? $instance['form_layout'] : 'layout-1';
+		switch ( $selected_layout ) {
+			// Layout 1.
+			case 'layout-1':
+				$layout = '<div class="smaily-layout-1-container">
+					<input class="smaily-layout-1-input" type="text" name="email" value="" placeholder="' . esc_attr( $instance['email_field_placeholder'] ) . '" />
+					<button class="smaily-button" type="submit" style="' . esc_attr($smaily_button_style) . '" >' . esc_attr( $instance['submit_button_text'] ) . '</button>
+				</div>';
+				break;
+			// Layout 2.
+			case 'layout-2':
+				$layout = '<div class="smaily-layout-2-container">
+					<input class="smaily-layout-2-input" type="text" name="email" value="" placeholder="' . esc_attr( $instance['email_field_placeholder'] ) . '" />
+					<button class="smaily-button smaily-button-layout-2" type="submit" style="' . esc_attr($smaily_button_style) . '" >' . esc_attr( $instance['submit_button_text'] ) . '</button>
+				</div>';
+				break;
+			// Layout 3.
+			case 'layout-3':
+				$layout = '<div class="smaily-layout-3-container">
+					<input class="smaily-layout-3-input" type="text" name="email" value="" placeholder="' . esc_attr( $instance['email_field_placeholder'] ) . '" />
+					<button class="smaily-button" type="submit" style="' . esc_attr($smaily_button_style) . '" >' . esc_attr( $instance['submit_button_text'] ) . '</button>
+				</div>';
+				break;
+			// Layout 4.
+			case 'layout-4':
+				$layout = '<div class="smaily-layout-4-container">
+					<input class="smaily-layout-4-input-email" type="text" name="email" value="" placeholder="' . esc_attr( $instance['email_field_placeholder'] ) . '" />
+					<input class="smaily-layout-4-input-name" type="text" name="name" value="" placeholder="' . esc_attr( $instance['name_field_placeholder'] ) . '" />
+					<button class="smaily-button" type="submit" style="' . esc_attr($smaily_button_style) . '" >' . esc_attr( $instance['submit_button_text'] ) . '</button>
+				</div>';
+				break;
+			// Layout 5.
+			case 'layout-5':
+				$layout = '<div class="smaily-layout-5-container">
+					<input class="smaily-layout-5-input-email" type="text" name="email" value="" placeholder="' . esc_attr( $instance['email_field_placeholder'] ) . '" />
+					<input class="smaily-layout-5-input-name" type="text" name="name" value="" placeholder="' . esc_attr( $instance['name_field_placeholder'] ) . '" />
+					<button class="smaily-button" style="' . esc_attr($smaily_button_style) . '" >' . esc_attr( $instance['submit_button_text'] ) . '</button>						
+				</div>';
+				break;			
 		}
 
 		// Set default layout option.
