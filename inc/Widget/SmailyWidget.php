@@ -105,8 +105,6 @@ class SmailyWidget extends \WP_Widget {
 
 			echo '
 				<div class="smaily-newsletter-alert">
-				<p>' . esc_html( $message ) . '
-				<span class="smaily-newsletter-closebtn" onclick="this.parentElement.style.display=\'none\'">&times;</span>
 					<p>' . esc_html( $message ) . '
 						<span class="smaily-newsletter-closebtn" onclick="this.parentElement.style.display=\'none\'">&times;</span>
 					</p>
