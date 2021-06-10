@@ -178,23 +178,6 @@ class SmailyWidget extends \WP_Widget {
 
 		// Optional autoresponder when selected.
 		echo $autoresponder_id ? '<input type="hidden" name="autoresponder" value="' . esc_html( $autoresponder_id ) . '" />' : '';
-		echo '</div>
-				<p>
-					<label>' . esc_html__( 'Email', 'smaily' ) . '</label>
-					<input type="text" name="email" value="" />
-				</p>
-				<p>
-					<label>' . esc_html__( 'Name', 'smaily' ) . '</label>
-					<input type="text" name="name" value="" />
-				</p>
-				<p>
-					<button class="ui pink basic button" type="submit">' .
-						esc_html__( 'Subscribe', 'smaily' ) .
-					'</button>
-				</p>
-				<div style="overflow:hidden;height:0px;">
-					<input type="text" name="re-email" value="" />
-				</div>
 		echo '</div>';
 
 		// Echo chosen layout
