@@ -189,6 +189,8 @@ class SmailyWidget extends \WP_Widget {
 		// Echo chosen layout
 		echo $layout;
 
+		echo '<div style="overflow:hidden;height:0px;" >
+				<input type="text" name="re-email" value="" />
 			</div>
 
 			</form>
