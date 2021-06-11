@@ -126,8 +126,11 @@ class SmailyWidget extends \WP_Widget {
 		// Create and return a new string by concatenating all the elements in an array.
 		$smaily_button_style = join(' ; ',$smaily_button_style_elements);
 
-	// Layout options to echo.
+		// Set default layout option.
+		$allowed_layouts = array( 'layout-1', 'layout-2', 'layout-3', 'layout-4', 'layout-5' );
 		$selected_layout = isset( $instance['form_layout'] ) ? $instance['form_layout'] : 'layout-1';
+		$selected_layout = in_array( $selected_layout, $allowed_layouts, true ) ? $selected_layout : 'layout-1';
+		// Layout options to echo.
 		switch ( $selected_layout ) {
 			// Layout 1.
 			case 'layout-1':
