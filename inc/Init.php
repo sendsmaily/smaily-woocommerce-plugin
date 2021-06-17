@@ -17,6 +17,7 @@ final class Init {
 	 */
 	public static function get_services() {
 		return array(
+			Lifecycle::class,
 			Pages\Admin::class,
 			Pages\ProfileSettings::class,
 			Base\Upgrade::class,
