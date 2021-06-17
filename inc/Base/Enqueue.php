@@ -111,8 +111,15 @@ class Enqueue {
 	 * @return void
 	 */
 	public function enqueue_front_scripts() {
-		// Enqueue css and js.
-		wp_enqueue_style( 'smailypluginstyle', SMAILY_PLUGIN_URL . 'static/front-style.css', array(), SMAILY_PLUGIN_VERSION );
+		// Register style
+		wp_register_style(
+			'smaily_for_woocommerce-front_style',
+			SMAILY_PLUGIN_URL . 'static/front-style.css',
+			array(),
+			SMAILY_PLUGIN_VERSION
+		);
+		// Enqueue CSS.
+		wp_enqueue_style( 'smaily_for_woocommerce-front_style' );
 	}
 
 	/**
@@ -141,5 +148,5 @@ class Enqueue {
 			}
 		}
 	}
-	
+
 }
