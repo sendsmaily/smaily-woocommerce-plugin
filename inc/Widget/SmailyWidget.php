@@ -113,7 +113,7 @@ class SmailyWidget extends \WP_Widget {
 		}
 
 		// Render the style property only if it has a value.
-		$smaily_button_style_elements = [];
+		$smaily_button_style_elements = array();
 		if ( ! empty( $instance['submit_button_text_color'] ) ) {
 			$smaily_button_style_elements[] = 'color: ' . esc_attr( $instance['submit_button_text_color'] );
 		}
@@ -122,7 +122,7 @@ class SmailyWidget extends \WP_Widget {
 			$smaily_button_style_elements[] = 'background-color: ' . esc_attr( $instance['submit_button_color'] );
 		}
 		// Create and return a new string by concatenating all the elements in an array.
-		$smaily_button_style = join(' ; ',$smaily_button_style_elements);
+		$smaily_button_style = join( ' ; ', $smaily_button_style_elements );
 
 		// Set default layout option.
 		$allowed_layouts = array( 'layout-1', 'layout-2', 'layout-3', 'layout-4', 'layout-5' );
@@ -134,21 +134,21 @@ class SmailyWidget extends \WP_Widget {
 			case 'layout-1':
 				$layout = '<div class="smaily-layout-container smaily-layout-1">
 					<input type="text" name="email" value="" placeholder="' . esc_attr( $instance['email_field_placeholder'] ) . '" />
-					<button type="submit" style="' . esc_attr($smaily_button_style) . '" >' . esc_attr( $instance['submit_button_text'] ) . '</button>
+					<button type="submit" style="' . esc_attr( $smaily_button_style ) . '" >' . esc_attr( $instance['submit_button_text'] ) . '</button>
 				</div>';
 				break;
 			// Layout 2.
 			case 'layout-2':
 				$layout = '<div class="smaily-layout-container smaily-layout-2">
 					<input type="text" name="email" value="" placeholder="' . esc_attr( $instance['email_field_placeholder'] ) . '" />
-					<button type="submit" style="' . esc_attr($smaily_button_style) . '" >' . esc_attr( $instance['submit_button_text'] ) . '</button>
+					<button type="submit" style="' . esc_attr( $smaily_button_style ) . '" >' . esc_attr( $instance['submit_button_text'] ) . '</button>
 				</div>';
 				break;
 			// Layout 3.
 			case 'layout-3':
 				$layout = '<div class="smaily-layout-container smaily-layout-3">
 					<input type="text" name="email" value="" placeholder="' . esc_attr( $instance['email_field_placeholder'] ) . '" />
-					<button type="submit" style="' . esc_attr($smaily_button_style) . '" >' . esc_attr( $instance['submit_button_text'] ) . '</button>
+					<button type="submit" style="' . esc_attr( $smaily_button_style ) . '" >' . esc_attr( $instance['submit_button_text'] ) . '</button>
 				</div>';
 				break;
 			// Layout 4.
@@ -156,7 +156,7 @@ class SmailyWidget extends \WP_Widget {
 				$layout = '<div class="smaily-layout-container smaily-layout-4">
 					<input type="text" name="email" value="" placeholder="' . esc_attr( $instance['email_field_placeholder'] ) . '" />
 					<input type="text" name="name" value="" placeholder="' . esc_attr( $instance['name_field_placeholder'] ) . '" />
-					<button type="submit" style="' . esc_attr($smaily_button_style) . '" >' . esc_attr( $instance['submit_button_text'] ) . '</button>
+					<button type="submit" style="' . esc_attr( $smaily_button_style ) . '" >' . esc_attr( $instance['submit_button_text'] ) . '</button>
 				</div>';
 				break;
 			// Layout 5.
@@ -164,9 +164,9 @@ class SmailyWidget extends \WP_Widget {
 				$layout = '<div class="smaily-layout-container smaily-layout-5">
 					<input type="text" name="email" value="" placeholder="' . esc_attr( $instance['email_field_placeholder'] ) . '" />
 					<input type="text" name="name" value="" placeholder="' . esc_attr( $instance['name_field_placeholder'] ) . '" />
-					<button type="submit" style="' . esc_attr($smaily_button_style) . '" >' . esc_attr( $instance['submit_button_text'] ) . '</button>						
+					<button type="submit" style="' . esc_attr( $smaily_button_style ) . '" >' . esc_attr( $instance['submit_button_text'] ) . '</button>
 				</div>';
-				break;			
+				break;
 		}
 
 		// Main form.
@@ -533,7 +533,7 @@ class SmailyWidget extends \WP_Widget {
 		if ( empty( $instance['submit_button_color'] ) ) {
 			$instance['use_site_submit_button_color'] = true;
 		}
-		
+
 		// If text color isn't set, check default checkbox.
 		if ( empty( $instance['submit_button_text_color'] ) ) {
 			$instance['use_site_submit_button_text_color'] = true;
