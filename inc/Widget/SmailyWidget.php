@@ -205,7 +205,7 @@ class SmailyWidget extends \WP_Widget {
 
 		$autoresponder_list = DataHandler::get_autoresponder_list();
 
-		$title                             = isset( $instance['title'] ) ? $instance['title'] : __( 'Smaily for WooCommerce Form', 'smaily' );
+		$title                             = isset( $instance['title'] ) ? $instance['title'] : __( 'Sign up to our newsletter', 'smaily' );
 		$form_layout                       = isset( $instance['form_layout'] ) ? $instance['form_layout'] : 'layout-1';
 		$email_field_placeholder           = isset( $instance['email_field_placeholder'] ) ? $instance['email_field_placeholder'] : __( 'Email', 'smaily' );
 		$name_field_placeholder            = isset( $instance['name_field_placeholder'] ) ? $instance['name_field_placeholder'] : __( 'Name', 'smaily' );
@@ -235,26 +235,26 @@ class SmailyWidget extends \WP_Widget {
 			<?php if ( ! empty( $autoresponder_list ) && ! array_key_exists( 'empty', $autoresponder_list ) ) : ?>
 			<div class="section">
 				<h2>
-					<?php esc_html_e( 'Autoresponder', 'smaily' ); ?>
+					<?php esc_html_e( 'Automation', 'smaily' ); ?>
 				</h2>
 				<select
 					id="<?php echo esc_attr( $this->get_field_id( 'autoresponder' ) ); ?>"
 					name="<?php echo esc_attr( $this->get_field_name( 'autoresponder' ) ); ?>"
 					class="widefat"
 					style="width:100%;">
-					<option value=""><?php esc_html_e( '-No Autoresponder-', 'smaily' ); ?></option>
+					<option value=""><?php esc_html_e( '-Trigger opt-in automation workflows-', 'smaily' ); ?></option>
 					<?php if ( ! empty( $autoresponder_list ) && ! array_key_exists( 'empty', $autoresponder_list ) ) : ?>
 						<?php foreach ( $autoresponder_list as $autoresponder ) : ?>
 						<option value="<?php echo htmlentities( json_encode( $autoresponder ) ); ?>"
-											<?php
-											if ( $autoresponder['id'] === $current_autoresponder['id'] ) :
-												?>
-							selected<?php endif; ?>><?php echo $autoresponder['name']; ?></option>
+							<?php
+							if ( $autoresponder['id'] === $current_autoresponder['id'] ) :
+								?>
+						selected<?php endif; ?>><?php echo $autoresponder['name']; ?></option>
 					<?php endforeach; ?>
 					<?php endif; ?>
 				</select>
 				<p>
-					<?php esc_html_e( 'Select a suitable form-submitted trigger automation workflow from the list or create a new autoresponder on your Smaily account to be added to the list.', 'smaily' ); ?>
+					<?php esc_html_e( 'Select a suitable form-submitted automation workflow to trigger from the list or create a new automation workflow on your Smaily account to be added to the list.', 'smaily' ); ?>
 				</p>
 			</div>
 			<?php endif; ?>
@@ -265,9 +265,16 @@ class SmailyWidget extends \WP_Widget {
 					<?php esc_html_e( 'Layout', 'smaily' ); ?>
 				</h2>
 				<p>
-					<?php esc_html_e( 'Choose a preferred layout.', 'smaily' ); ?>
+					<?php esc_html_e( 'Choose a preferred form layout.', 'smaily' ); ?>
 				</p>
-
+				<?php
+				$translations =
+				/* translators: Layout translations */
+				esc_html__(
+					'Layout %1$s',
+					'smaily'
+				);
+				?>
 				<div class="smaily-layout-container">
 					<p> <!-- Select layout. -->
 						<input
@@ -282,11 +289,15 @@ class SmailyWidget extends \WP_Widget {
 							?>
 							/>
 						<label for="<?php echo $this->get_field_id( 'layout-1' ); ?>">
-							<strong><?php esc_html_e( 'Layout 1', 'smaily' ); ?></strong> &minus; <?php esc_html_e( 'email address with spaced button', 'smaily' ); ?>
+							<strong>
+							<?php
+							printf( $translations, 1 );
+							?>
+							</strong> &minus; <?php esc_html_e( 'email address with spaced button', 'smaily' ); ?>
 						</label>
 					</p>
 					<p>
-						<img src="<?php echo SMAILY_PLUGIN_URL . 'static/layouts/email-layout1.svg'; ?>" alt="" title="<?php esc_attr_e( 'Layout 1', 'smaily' ); ?> &minus; <?php esc_attr_e( 'email address with spaced button', 'smaily' ); ?>" class="smaily-layouts">
+						<img src="<?php echo SMAILY_PLUGIN_URL . 'static/layouts/email-layout1.svg'; ?>" alt="" title="<?php printf( $translations, 1 ); ?> &minus; <?php esc_attr_e( 'email address with spaced button', 'smaily' ); ?>" class="smaily-layouts">
 					</p>
 				</div>
 				<div class="smaily-layout-container">
@@ -303,11 +314,13 @@ class SmailyWidget extends \WP_Widget {
 							?>
 							/>
 						<label for="<?php echo $this->get_field_id( 'layout-2' ); ?>">
-							<strong><?php esc_html_e( 'Layout 2', 'smaily' ); ?></strong> &minus; <?php esc_html_e( 'email address with attached button', 'smaily' ); ?>
+							<strong>
+							<?php printf( $translations, 2 ); ?>
+							</strong> &minus; <?php esc_html_e( 'email address with attached button', 'smaily' ); ?>
 						</label>
 					</p>
 					<p>
-						<img src="<?php echo SMAILY_PLUGIN_URL . 'static/layouts/email-layout2.svg'; ?>" alt="" title="<?php esc_attr_e( 'Layout 2', 'smaily' ); ?> &minus; <?php esc_attr_e( 'email address with attached button', 'smaily' ); ?>" class="smaily-layouts">
+						<img src="<?php echo SMAILY_PLUGIN_URL . 'static/layouts/email-layout2.svg'; ?>" alt="" title="<?php printf( $translations, 2 ); ?> &minus; <?php esc_attr_e( 'email address with attached button', 'smaily' ); ?>" class="smaily-layouts">
 					</p>
 				</div>
 				<div class="smaily-layout-container">
@@ -324,11 +337,13 @@ class SmailyWidget extends \WP_Widget {
 							?>
 							/>
 						<label for="<?php echo $this->get_field_id( 'layout-3' ); ?>">
-							<strong><?php esc_html_e( 'Layout 3', 'smaily' ); ?></strong> &minus; <?php esc_html_e( 'email address', 'smaily' ); ?>
+							<strong>
+							<?php printf( $translations, 3 ); ?>
+							</strong> &minus; <?php esc_html_e( 'email address', 'smaily' ); ?>
 						</label>
 					</p>
 					<p>
-						<img src="<?php echo SMAILY_PLUGIN_URL . 'static/layouts/email-layout3.svg'; ?>" alt="" title="<?php esc_attr_e( 'Layout 3', 'smaily' ); ?> &minus; <?php esc_attr_e( 'email address', 'smaily' ); ?>" class="smaily-layouts">
+						<img src="<?php echo SMAILY_PLUGIN_URL . 'static/layouts/email-layout3.svg'; ?>" alt="" title="<?php printf( $translations, 3 ); ?> &minus; <?php esc_attr_e( 'email address', 'smaily' ); ?>" class="smaily-layouts">
 					</p>
 				</div>
 				<div class="smaily-layout-container">
@@ -345,11 +360,13 @@ class SmailyWidget extends \WP_Widget {
 							?>
 							/>
 						<label for="<?php echo $this->get_field_id( 'layout-4' ); ?>">
-							<strong><?php esc_html_e( 'Layout 4', 'smaily' ); ?></strong> &minus; <?php esc_html_e( 'email address and name', 'smaily' ); ?>
+							<strong>
+							<?php printf( $translations, 4 ); ?>
+							</strong> &minus; <?php esc_html_e( 'email address and name', 'smaily' ); ?>
 						</label>
 					</p>
 					<p>
-						<img src="<?php echo SMAILY_PLUGIN_URL . 'static/layouts/email-layout4.svg'; ?>" alt="" title="<?php esc_attr_e( 'Layout 4', 'smaily' ); ?> &minus; <?php esc_attr_e( 'email address and name', 'smaily' ); ?>" class="smaily-layouts">
+						<img src="<?php echo SMAILY_PLUGIN_URL . 'static/layouts/email-layout4.svg'; ?>" alt="" title="<?php printf( $translations, 4 ); ?> &minus; <?php esc_attr_e( 'email address and name', 'smaily' ); ?>" class="smaily-layouts">
 					</p>
 				</div>
 				<div class="smaily-layout-container">
@@ -366,12 +383,14 @@ class SmailyWidget extends \WP_Widget {
 							?>
 							/>
 						<label for="<?php echo $this->get_field_id( 'layout-5' ); ?>">
-							<strong><?php esc_html_e( 'Layout 5', 'smaily' ); ?></strong> &minus; <?php esc_html_e( 'stacked email address and name', 'smaily' ); ?>
+							<strong>
+							<?php printf( $translations, 5 ); ?>
+							</strong> &minus; <?php esc_html_e( 'stacked email address and name', 'smaily' ); ?>
 						</label>
 					</p>
 					<p>
 						<!-- Read URL starting from the static folder. Doesn`t matter where in your computer plugin is located. -->
-						<img src="<?php echo SMAILY_PLUGIN_URL . 'static/layouts/email-layout5.svg'; ?>" alt="" title="<?php esc_attr_e( 'Layout 5', 'smaily' ); ?> &minus; <?php esc_attr_e( 'stacked email address and name', 'smaily' ); ?>" class="smaily-layouts">
+						<img src="<?php echo SMAILY_PLUGIN_URL . 'static/layouts/email-layout5.svg'; ?>" alt="" title="<?php printf( $translations, 5 ); ?> &minus; <?php esc_attr_e( 'stacked email address and name', 'smaily' ); ?>" class="smaily-layouts">
 					</p>
 				</div>
 			</div>
