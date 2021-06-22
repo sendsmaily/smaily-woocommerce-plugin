@@ -1,10 +1,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Smaily for WooCommerce\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/smaily-for-woocommerce\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/smaily-for-"
 "woocommerce\n"
-"POT-Creation-Date: 2021-05-27 15:21+0300\n"
-"PO-Revision-Date: 2021-05-27 15:23+0300\n"
+"POT-Creation-Date: 2021-06-22 13:53+0300\n"
+"PO-Revision-Date: 2021-06-22 13:53+0300\n"
 "Last-Translator: \n"
 "Language-Team: Estonian\n"
 "Language: et\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;esc_html__;esc_attr__;esc_attr_e;esc_html_e\n"
-"X-Generator: Poedit 2.4.3\n"
+"X-Generator: Poedit 2.3\n"
 "X-Loco-Version: 2.3.3; wp-5.4.1\n"
 "X-Poedit-SearchPath-0: .\n"
 
@@ -74,15 +74,15 @@ msgstr "Kontrolli sisselogimisandmeid, ühendus puudub!"
 msgid "In every 15 minutes"
 msgstr "Iga 15 minuti järel"
 
-#: inc/Base/Enqueue.php:64
+#: inc/Base/Enqueue.php:88
 msgid "Something went wrong connecting to Smaily!"
 msgstr "Midagi läks valesti Smailyga ühendamisega!"
 
-#: inc/Base/Enqueue.php:65
+#: inc/Base/Enqueue.php:89
 msgid "Smaily credentials successfully validated!"
 msgstr "Smaily kasutajatunnused salvestatud!"
 
-#: inc/Base/Enqueue.php:66
+#: inc/Base/Enqueue.php:90
 msgid "Something went wrong with saving data!"
 msgstr "Midagi läks valesti andmete salvestamisel!"
 
@@ -146,7 +146,7 @@ msgstr "Liitu uudiskirjaga"
 msgid "Additional Information"
 msgstr "Lisainformatsioon"
 
-#: inc/Widget/SmailyWidget.php:21 inc/Widget/SmailyWidget.php:158
+#: inc/Widget/SmailyWidget.php:21
 msgid "Smaily for WooCommerce Form"
 msgstr "Smaily for WooCommerce vorm"
 
@@ -154,43 +154,123 @@ msgstr "Smaily for WooCommerce vorm"
 msgid "Smaily for WooCommerce Newsletter Widget"
 msgstr "Smaily uudiskirjaga liitumise moodul"
 
-#: inc/Widget/SmailyWidget.php:97
+#: inc/Widget/SmailyWidget.php:96
 msgid "Subscription registration successful."
 msgstr "Registreerumine õnnestus."
 
-#: inc/Widget/SmailyWidget.php:100
+#: inc/Widget/SmailyWidget.php:99
 msgid "Subscription does not contain a valid email address."
 msgstr "Registreeritud email on vigane."
 
-#: inc/Widget/SmailyWidget.php:103
+#: inc/Widget/SmailyWidget.php:102
 msgid "Subscription registration failed."
 msgstr "Registreerumine ebaõnnestus."
 
-#: inc/Widget/SmailyWidget.php:126
-msgid "Email"
-msgstr "E-mail"
+#: inc/Widget/SmailyWidget.php:208
+msgid "Sign up to our newsletter"
+msgstr "Liitu uudiskirjaga"
 
-#: inc/Widget/SmailyWidget.php:130 templates/smaily-woocommerce-admin.php:511
+#: inc/Widget/SmailyWidget.php:210 migrations/upgrade-1-8-0.php:16
+msgid "Email"
+msgstr "E-post"
+
+#: inc/Widget/SmailyWidget.php:211 migrations/upgrade-1-8-0.php:17
+#: templates/smaily-woocommerce-admin.php:511
 msgid "Name"
 msgstr "Nimi"
 
-#: inc/Widget/SmailyWidget.php:135
-msgid "Subscribe"
-msgstr "Liitu"
+#: inc/Widget/SmailyWidget.php:212 inc/Widget/SmailyWidget.php:549
+#: migrations/upgrade-1-8-0.php:18
+msgid "Send"
+msgstr "Saada"
 
-#: inc/Widget/SmailyWidget.php:164
-msgid "Title:"
-msgstr "Pealkiri:"
+#: inc/Widget/SmailyWidget.php:224
+msgid "Title"
+msgstr "Pealkiri"
 
-#: inc/Widget/SmailyWidget.php:177
-msgid "Autoresponder:"
-msgstr "Automaatvastaja:"
+#: inc/Widget/SmailyWidget.php:238
+msgid "Automation"
+msgstr "Automaatika"
 
-#: inc/Widget/SmailyWidget.php:188
-msgid "-No Autoresponder-"
-msgstr "-Automaatvastajad puuduvad-"
+#: inc/Widget/SmailyWidget.php:245
+msgid "-Trigger opt-in automation workflows-"
+msgstr "-Käivitage automaatika opt-in töövood-"
 
-#: smaily-for-woocommerce.php:109
+#: inc/Widget/SmailyWidget.php:257
+msgid ""
+"Select a suitable form-submitted automation workflow to trigger from the "
+"list or create a new automation workflow on your Smaily account to be added "
+"to the list."
+msgstr ""
+"Vali rippmenüüst sobiv vormi kaudu andmete esitamisega käivituv automaatne "
+"töövoog või loo sobiv automaatika oma Smaily kontol ja lisa see nimekirja."
+
+#: inc/Widget/SmailyWidget.php:265
+msgid "Layout"
+msgstr "Kujundus"
+
+#: inc/Widget/SmailyWidget.php:268
+msgid "Choose a preferred form layout."
+msgstr "Vali meelepärane vormi kujundus."
+
+#: inc/Widget/SmailyWidget.php:274
+#, php-format
+msgid "Layout %1$s"
+msgstr "Kujundus %1$s"
+
+#: inc/Widget/SmailyWidget.php:296 inc/Widget/SmailyWidget.php:300
+msgid "email address with spaced button"
+msgstr "e-posti aadress eraldatud nupuga"
+
+#: inc/Widget/SmailyWidget.php:319 inc/Widget/SmailyWidget.php:323
+msgid "email address with attached button"
+msgstr "e-posti aadress liidetud nupuga"
+
+#: inc/Widget/SmailyWidget.php:342 inc/Widget/SmailyWidget.php:346
+msgid "email address"
+msgstr "e-posti aadress"
+
+#: inc/Widget/SmailyWidget.php:365 inc/Widget/SmailyWidget.php:369
+msgid "email address and name"
+msgstr "e-posti aadress ja nimi kõrvuti"
+
+#: inc/Widget/SmailyWidget.php:388 inc/Widget/SmailyWidget.php:393
+msgid "stacked email address and name"
+msgstr "e-posti aadress ja nimi kohakuti"
+
+#: inc/Widget/SmailyWidget.php:402
+msgid "Customize layout"
+msgstr "Loo meelepärane kujundus"
+
+#: inc/Widget/SmailyWidget.php:408
+msgid "Email field text"
+msgstr "E-posti aadressi väljal kuvatav tekst"
+
+#: inc/Widget/SmailyWidget.php:421
+msgid "Name field text"
+msgstr "Nimeväljal kuvatav tekst"
+
+#: inc/Widget/SmailyWidget.php:434
+msgid "Text on the button"
+msgstr "Nupul kuvatav tekst"
+
+#: inc/Widget/SmailyWidget.php:450
+msgid "Button color"
+msgstr "Nupu värv"
+
+#: inc/Widget/SmailyWidget.php:476
+msgid "Use default button color?"
+msgstr "Kasuta vaikimisi nupu värvi?"
+
+#: inc/Widget/SmailyWidget.php:483
+msgid "Button text color"
+msgstr "Nupul kuvatava teksti värv"
+
+#: inc/Widget/SmailyWidget.php:509
+msgid "Use default text color?"
+msgstr "Kasuta vaikimisi nupu teksti värvi?"
+
+#: smaily-for-woocommerce.php:89
 msgid ""
 "Smaily for WooCommerce is not able to activate. WooCommerce needed to "
 "function properly. Is WooCommerce installed?"
@@ -320,8 +400,8 @@ msgid "Cart Autoresponder ID"
 msgstr "Unustatud ostukorvi automaatvastaja"
 
 #: templates/smaily-woocommerce-admin.php:277
-msgid "No autoresponders created"
-msgstr "Ei ole loonud ühtegi automaatvastajat"
+msgid "No automations created"
+msgstr "Automaatikaid ei ole loodud"
 
 #: templates/smaily-woocommerce-admin.php:286
 msgid "Additional cart fields"
@@ -497,6 +577,15 @@ msgstr ""
 #: templates/smaily-woocommerce-admin.php:560
 msgid "Save Settings"
 msgstr "Salvesta"
+
+#~ msgid "Autoresponder"
+#~ msgstr "Automaatika"
+
+#~ msgid "-No Autoresponder-"
+#~ msgstr "-Automaatvastajad puuduvad-"
+
+#~ msgid "Subscribe"
+#~ msgstr "Liitu"
 
 #~ msgid "Settings updated!"
 #~ msgstr "Sätted uuendatud!"

@@ -3,9 +3,9 @@ Contributors: sendsmaily, kaarel, tomabel, marispulk
 Tags: woocommerce, smaily, newsletter, email
 Requires PHP: 5.6
 Requires at least: 4.5
-Tested up to: 5.7.0
+Tested up to: 5.7.2
 WC tested up to: 4.7.0
-Stable tag: 1.7.2
+Stable tag: 1.8.0
 License: GPLv3
 
 Simple and flexible Smaily newsletter and RSS-feed integration for WooCommerce.
@@ -90,11 +90,15 @@ All development for Smaily for WooCommerce is [handled via GitHub](https://githu
 2. Move to Appearance -> Widget menu from admin page sidepanel.
 3. Add Smaily for WooCommerce Form to your prefered location on page.
 4. Select Title for your subscribe newsletter form.
+5. Optional autoresponder:
 
 If you have added Form Submitted automation trigger from Smaily site under Automation tab you can see all availabe autoresponders in your widget settings.
 
 There is no need to select autoresponder for widget form, but if you want to customize different approach from opt-in automation trigger you can do that.
 When no autoresponder selected regular opt-in workflow will run. You can add delay, filter by field and send email after subscription. For that edit settings in Smaily automation page.
+6. Optional layout design modifications:
+
+Change layout, email field text, name field text, button text, button color and button text color.
 
 = Why RSS-feed is displaying "page not found"? =
 
@@ -145,6 +149,10 @@ Also you can determine if customer had more than 10 items in cart
 8. WooCommerce Smaily widget front screen.
 
 == Changelog ==
+
+= 1.8.0 =
+
+- Feature - user can customize the appearance of subscription form.
 
 = 1.7.2 =
 

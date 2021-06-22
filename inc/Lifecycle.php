@@ -122,6 +122,7 @@ class Lifecycle {
 
 		$migrations = array(
 			'1.0.0' => 'upgrade-1-0-0.php',
+			'1.8.0' => 'upgrade-1-8-0.php',
 		);
 
 		foreach ( $migrations as $migration_version => $migration_file ) {
