@@ -138,7 +138,7 @@ class Enqueue {
 		$plugins_dir_url = content_url( 'plugins' );
 		$wp_styles       = wp_styles();
 		foreach ( $wp_styles->queue as $style_handle ) {
-			if ( $style_handle === 'smailypluginstyle' ) {
+			if ( strpos( $style_handle, 'smaily_for_woocommerce' ) === 0 ) {
 				continue;
 			}
 			$style_src_path = $wp_styles->registered[ $style_handle ]->src;
