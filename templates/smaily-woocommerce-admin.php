@@ -274,7 +274,7 @@ $wc_categories_list = DataHandler::get_woocommerce_categories_list();
 								<?php endforeach; ?>
 								<?php else : ?>
 									<option value="">
-										<?php echo esc_html__( 'No autoresponders created', 'smaily' ); ?>
+										<?php echo esc_html__( 'No automations created', 'smaily' ); ?>
 									</option>
 								<?php endif; ?>
 								</select>
