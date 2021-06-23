@@ -205,11 +205,11 @@ class SmailyWidget extends \WP_Widget {
 
 		$autoresponder_list = DataHandler::get_autoresponder_list();
 
-		$title                             = isset( $instance['title'] ) ? $instance['title'] : __( 'Sign up to our newsletter', 'smaily' );
+		$title                             = isset( $instance['title'] ) ? $instance['title'] : __( 'Subscribe to our newsletter', 'smaily' );
 		$form_layout                       = isset( $instance['form_layout'] ) ? $instance['form_layout'] : 'layout-1';
 		$email_field_placeholder           = isset( $instance['email_field_placeholder'] ) ? $instance['email_field_placeholder'] : __( 'Email', 'smaily' );
 		$name_field_placeholder            = isset( $instance['name_field_placeholder'] ) ? $instance['name_field_placeholder'] : __( 'Name', 'smaily' );
-		$submit_button_text                = isset( $instance['submit_button_text'] ) ? $instance['submit_button_text'] : __( 'Send', 'smaily' );
+		$submit_button_text                = isset( $instance['submit_button_text'] ) ? $instance['submit_button_text'] : __( 'Subscribe', 'smaily' );
 		$submit_button_color               = isset( $instance['submit_button_color'] ) ? $instance['submit_button_color'] : '';
 		$submit_button_text_color          = isset( $instance['submit_button_text_color'] ) ? $instance['submit_button_text_color'] : '';
 		$use_site_submit_button_color      = isset( $instance['use_site_submit_button_color'] ) ? $instance['use_site_submit_button_color'] : true;
@@ -546,7 +546,7 @@ class SmailyWidget extends \WP_Widget {
 		$instance['form_layout']             = ( empty( $instance['form_layout'] ) ) ? 'layout-1' : $instance['form_layout'];
 		$instance['email_field_placeholder'] = ( empty( $instance['email_field_placeholder'] ) ) ? '' : $instance['email_field_placeholder'];
 		$instance['name_field_placeholder']  = ( empty( $instance['name_field_placeholder'] ) ) ? '' : $instance['name_field_placeholder'];
-		$instance['submit_button_text']      = ( empty( $instance['submit_button_text'] ) ) ? __( 'Send', 'smaily' ) : $instance['submit_button_text'];
+		$instance['submit_button_text']      = ( empty( $instance['submit_button_text'] ) ) ? __( 'Subscribe', 'smaily' ) : $instance['submit_button_text'];
 
 		// If button color isn't set, check default checkbox.
 		if ( empty( $instance['submit_button_color'] ) ) {
