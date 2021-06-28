@@ -1,13 +1,7 @@
 # Changelog
 
 ### 1.8.0
-- Change submit button and widget title default values [[#103](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/103)]
-- Fix admin style loading [[#101](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/101)]
-- Improve the wording of widget texts [[#100](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/100)]
-- Implement migrations [[#98](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/98)]
-- Implement opt-in widget front-end form logic [[#97](https://https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/97)]
-- Subscription form widget refinement [[#92](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/92)]
-- Formatting and logic correction for Smaily subscription form [[#85](https://github.com/sendsmaily/smaily-woocommerce-plugin/issues/85)]
+- Feature - user can customize the appearance of the subscription form. [[#97](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/97)], [[#92](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/92)], [[#85](https://github.com/sendsmaily/smaily-woocommerce-plugin/issues/85)]
 
 ### 1.7.2
 - Rework admin settings form [[#94](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/94)]
