@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Smaily for WooCommerce\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/smaily-for-"
 "woocommerce\n"
-"POT-Creation-Date: 2021-06-28 10:58+0300\n"
-"PO-Revision-Date: 2021-06-28 10:58+0300\n"
+"POT-Creation-Date: 2021-06-28 13:30+0300\n"
+"PO-Revision-Date: 2021-06-28 13:30+0300\n"
 "Last-Translator: \n"
 "Language-Team: Estonian\n"
 "Language: et\n"
@@ -180,6 +180,7 @@ msgid "Name"
 msgstr "Nimi"
 
 #: inc/Widget/SmailyWidget.php:212 inc/Widget/SmailyWidget.php:549
+#: migrations/upgrade-1-8-0.php:18
 msgid "Subscribe"
 msgstr "Liitu"
 
@@ -268,10 +269,6 @@ msgstr "Nupul kuvatava teksti värv"
 #: inc/Widget/SmailyWidget.php:509
 msgid "Use default text color?"
 msgstr "Kasuta vaikimisi nupu teksti värvi?"
-
-#: migrations/upgrade-1-8-0.php:18
-msgid "Send"
-msgstr "Saada"
 
 #: smaily-for-woocommerce.php:89
 msgid ""
@@ -580,6 +577,9 @@ msgstr ""
 #: templates/smaily-woocommerce-admin.php:560
 msgid "Save Settings"
 msgstr "Salvesta"
+
+#~ msgid "Send"
+#~ msgstr "Saada"
 
 #~ msgid "Sign up to our newsletter"
 #~ msgstr "Liitu uudiskirjaga"
