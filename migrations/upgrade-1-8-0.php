@@ -11,17 +11,20 @@ $upgrade = function() {
 		if ( ! is_array( $widget ) ) {
 			continue;
 		}
-		$array2 = array(
+		$new_settings = array(
 			'form_layout'                       => 'layout-5',
 			'email_field_placeholder'           => __( 'Email', 'smaily' ),
 			'name_field_placeholder'            => __( 'Name', 'smaily' ),
-			'submit_button_text '               => __( 'Send', 'smaily' ),
+			'submit_button_text'                => __( 'Send', 'smaily' ),
 			'submit_button_color'               => '',
 			'submit_button_text_color'          => '',
 			'use_site_submit_button_color'      => true,
 			'use_site_submit_button_text_color' => true,
 		);
+		// Apply new settings to existing widgets.
+		$widget = array_merge( $widget, $new_settings );
 	}
+
 	// Update only if $widgets has values.
 	if ( ! empty( $widgets ) ) {
 		update_option( 'widget_smaily_widget', $widgets );

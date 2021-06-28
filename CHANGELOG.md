@@ -1,6 +1,7 @@
 # Changelog
 
 ### 1.8.0
+- Change submit button and widget title default values [[#103](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/103)]
 - Fix admin style loading [[#101](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/101)]
 - Improve the wording of widget texts [[#100](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/100)]
 - Implement migrations [[#98](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/98)]

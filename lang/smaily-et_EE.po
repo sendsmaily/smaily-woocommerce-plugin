@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Smaily for WooCommerce\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/smaily-for-"
 "woocommercewoocommerce\n"
-"POT-Creation-Date: 2021-06-22 13:55+0300\n"
-"PO-Revision-Date: 2021-06-22 13:55+0300\n"
+"POT-Creation-Date: 2021-06-28 10:56+0300\n"
+"PO-Revision-Date: 2021-06-28 10:57+0300\n"
 "Last-Translator: \n"
 "Language-Team: Estonian\n"
 "Language: et\n"
@@ -168,7 +168,7 @@ msgid "Subscription registration failed."
 msgstr "Registreerumine ebaõnnestus."
 
 #: inc/Widget/SmailyWidget.php:208
-msgid "Sign up to our newsletter"
+msgid "Subscribe to our newsletter"
 msgstr "Liitu uudiskirjaga"
 
 #: inc/Widget/SmailyWidget.php:210 migrations/upgrade-1-8-0.php:16
@@ -181,9 +181,8 @@ msgid "Name"
 msgstr "Nimi"
 
 #: inc/Widget/SmailyWidget.php:212 inc/Widget/SmailyWidget.php:549
-#: migrations/upgrade-1-8-0.php:18
-msgid "Send"
-msgstr "Saada"
+msgid "Subscribe"
+msgstr "Liitu"
 
 #: inc/Widget/SmailyWidget.php:224
 msgid "Title"
@@ -270,6 +269,10 @@ msgstr "Nupul kuvatava teksti värv"
 #: inc/Widget/SmailyWidget.php:509
 msgid "Use default text color?"
 msgstr "Use default button color?"
+
+#: migrations/upgrade-1-8-0.php:18
+msgid "Send"
+msgstr "Saada"
 
 #: smaily-for-woocommerce.php:89
 msgid ""
@@ -579,14 +582,14 @@ msgstr ""
 msgid "Save Settings"
 msgstr "Salvesta"
 
+#~ msgid "Sign up to our newsletter"
+#~ msgstr "Liitu uudiskirjaga"
+
 #~ msgid "Autoresponder"
 #~ msgstr "Automaatika"
 
 #~ msgid "-No Autoresponder-"
 #~ msgstr "-Automaatvastajad puuduvad-"
-
-#~ msgid "Subscribe"
-#~ msgstr "Liitu"
 
 #~ msgid "Settings updated!"
 #~ msgstr "Sätted uuendatud!"

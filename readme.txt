@@ -152,7 +152,7 @@ Also you can determine if customer had more than 10 items in cart
 
 = 1.8.0 =
 
-- Feature - user can customize the appearance of subscription form.
+- Feature - user can customize the appearance of the subscription form.
 
 = 1.7.2 =
 
