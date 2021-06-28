@@ -14,12 +14,61 @@
   color: black;
 }
 
-.smaily-newsletter-form button[type="submit"] {
-  background-color: #4caf50;
-  color: white;
-  cursor: pointer;
+/* Responsiveness for desktop */
+.widget_smaily_widget div.smaily-layout-container {
+    display: flex;
+}
+.widget_smaily_widget div.smaily-layout-container button {
+    white-space: nowrap;
 }
 
-.smaily-newsletter-form button[type="submit"]:hover {
-  background-color: #45a049;
+.widget_smaily_widget div.smaily-layout-container.smaily-layout-4 {
+    max-width: 700px;
+}
+.widget_smaily_widget div.smaily-layout-container.smaily-layout-3,
+.widget_smaily_widget div.smaily-layout-container.smaily-layout-5 {
+    align-items: flex-start;
+    flex-flow: wrap column;
+}
+
+.widget_smaily_widget div.smaily-layout-container.smaily-layout-1 input {
+    margin-right: 0.6rem;
+}
+.widget_smaily_widget div.smaily-layout-container.smaily-layout-2 input {
+    border-bottom-right-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    margin-right: 0 !important;
+}
+.widget_smaily_widget div.smaily-layout-container.smaily-layout-4 input {
+    flex-grow: 1;
+    margin-right: 0.6rem;
+}
+.widget_smaily_widget div.smaily-layout-container.smaily-layout-3 input,
+.widget_smaily_widget div.smaily-layout-container.smaily-layout-5 input {
+    margin-bottom: 0.6rem;
+}
+
+.widget_smaily_widget div.smaily-layout-container.smaily-layout-2 button {
+    border-bottom-left-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+    margin-left: 0 !important;
+}
+.widget_smaily_widget div.smaily-layout-container.smaily-layout-3 button,
+.widget_smaily_widget div.smaily-layout-container.smaily-layout-5 button {
+    margin-top: 0.4rem;
+}
+
+/* Responsiveness for mobile */
+@media screen and (max-width: 550px) {
+    .widget_smaily_widget div.smaily-layout-container.smaily-layout-4 {
+        align-items: flex-start;
+        flex-flow: wrap column;
+    }
+    .widget_smaily_widget div.smaily-layout-container.smaily-layout-4 input {
+        margin-bottom: 0.6rem;
+        margin-right: 0;
+    }
+    .widget_smaily_widget div.smaily-layout-container.smaily-layout-4 button {
+        margin-top: 0.4rem;
+    }
 }

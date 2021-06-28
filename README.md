@@ -24,7 +24,7 @@ Automatically synchronize customers to Smaily, easily import products into templ
 - Option to limit generated RSS-feed products amount with prefered value
 - Option to order generated RSS-feed products by several categories
 
-### Subscribtion Widget
+### Subscription Widget
 
 - Smaily subscriber sign up form with built in captcha
 - Easy to use form
@@ -82,12 +82,16 @@ All development for Smaily for WooCommerce is [handled via GitHub](https://githu
 2. Move to **Appearance -> Widget** menu from admin page sidepanel.
 3. Add Smaily for WooCommerce Form to your prefered location on page.
 4. If you want you can select Title for your subscribe newsletter form.
+5. Optional autoresponder:
 
 If you have added Form Submitted automation triggers from Smaily site under Automation tab you can see all availabe autoresponders in your widget settings.
 
 There is no need to select autoresponder for widget form, but if you want to customize different approach from opt-in automation trigger you can do that.
 
 When no autoresponder selected regular opt-in workflow will run. You can add delay, filter by field and send email after subscription. For that edit settings in Smaily automation page.
+6. Optional layout design modifications:
+
+Change layout, email field text, name field text, button text, button color and button text color.
 
 ### Why RSS-feed is displaying "page not found"?
 
