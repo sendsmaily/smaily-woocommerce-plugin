@@ -9,6 +9,8 @@ First off, thanks for taking the time to contribute!
     - [Starting the environment](#starting-the-environment)
     - [Stopping the environment](#stopping-the-environment)
     - [Resetting the environment](#resetting-the-environment)
+- [Migrations](#migrations)
+    - [Creating a migration file](#creating-a-migration-file)
 - [Releasing](#releasing)
 
 
