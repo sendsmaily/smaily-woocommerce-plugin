@@ -15,6 +15,7 @@ A list of changes regarding the next version release:
 - [ ] Updated CHANGELOG.md
 - [ ] Updated CONTRIBUTING.md
 - [ ] Updated plugin version number
+- [ ] Ensure schema and data migrations are created
 - [ ] Updated screenshots in assets folder
 - [ ] Updated translations
 

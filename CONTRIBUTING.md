@@ -44,6 +44,7 @@ The repository is split into multiple parts:
 - `assets` - screenshots for Wordpress.org plugin page;
 - `inc` - classes for providing core and content functionality;
 - `lang` - localization files;
+- `migrations` - schema and data migrations;
 - `static` - CSS, images and Javascript for admin panel and public pages;
 - `templates` - admin panel and public page templates;
 - `vendor` - Composer packages.
@@ -77,6 +78,27 @@ Environment can be stopped by executing:
 If you need to reset the installation, just simply delete environment's Docker volumes. Easiest way to achieve this is by running:
 
     $ docker-compose down -v
+
+
+# Migrations
+
+Plugin has built-in feature to run schema and data migrations when plugin version changes.
+
+## Creating a migration file
+
+All migrations must be placed inside `migrations` directory, and named by pattern `upgrade-[major]-[minor]-[patch].php`. Where `major`, `minor` and `patch` represent the to-be-released version of the plugin.
+
+```php
+<?php
+
+/**
+ * Migration to make changes to the database schema.
+ */
+
+$upgrade = function() {
+    // Your migration goes here...
+};
+```
 
 
 # Releasing
