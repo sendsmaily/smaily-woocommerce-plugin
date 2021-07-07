@@ -442,74 +442,81 @@ class SmailyWidget extends \WP_Widget {
 				</p>
 
 				<!-- Customize button color and text. -->
-				<div class="row">
-					<div class="column" id="button-color-container">
-						<!-- Add color picker HTML. -->
-						<div>
-							<label for="<?php echo esc_attr( $this->get_field_id( 'submit_button_color' ) ); ?>">
-								<b><?php esc_html_e( 'Button color', 'smaily' ); ?></b>
-							</label>
-							<!-- Jscolor required:false is used to clear the input value. -->
-							<input
-								data-jscolor="{required:false}"
-								class="button-style"
-								<?php
-								if ( $use_site_submit_button_color === true ) :
-									?>
-									disabled<?php endif; ?>
-								id="<?php echo esc_attr( $this->get_field_id( 'submit_button_color' ) ); ?>"
-								name="<?php echo esc_attr( $this->get_field_name( 'submit_button_color' ) ); ?>"
-								type="text"
-								value="<?php echo esc_attr( $submit_button_color ); ?>" />
-						</div>
-						<div class="default-value-checkbox">
-							<input
-								class="smaily-checkbox default_background_color"
-								<?php
-								if ( $use_site_submit_button_color === true ) :
-									?>
-									checked<?php endif; ?>
-								id="<?php echo $this->get_field_id( 'default_background_color' ); ?>"
-								name="<?php echo $this->get_field_name( 'use_site_submit_button_color' ); ?>"
-								type="checkbox"
-								value="1" />
-							<label for="<?php echo $this->get_field_id( 'use_site_submit_button_color' ); ?>" ><?php esc_html_e( 'Use default button color?', 'smaily' ); ?></label>
+				<p>
+					<div class="row">
+						<div class="column" id="button-color-container">
+							<!-- Add color picker HTML. -->
+							<div>
+								<label for="<?php echo esc_attr( $this->get_field_id( 'submit_button_color' ) ); ?>">
+									<b><?php esc_html_e( 'Button color', 'smaily' ); ?></b>
+								</label>
+								<!-- Jscolor required:false is used to clear the input value. -->
+								<input
+									data-jscolor="{required:false}"
+									class="button-style"
+									<?php
+									if ( $use_site_submit_button_color === true ) :
+										?>
+										disabled<?php endif; ?>
+									id="<?php echo esc_attr( $this->get_field_id( 'submit_button_color' ) ); ?>"
+									name="<?php echo esc_attr( $this->get_field_name( 'submit_button_color' ) ); ?>"
+									type="text"
+									value="<?php echo esc_attr( $submit_button_color ); ?>" />
+							</div>
+							<div class="default-value-checkbox">
+								<input
+									class="smaily-checkbox default_background_color"
+									<?php
+									if ( $use_site_submit_button_color === true ) :
+										?>
+										checked<?php endif; ?>
+									id="<?php echo $this->get_field_id( 'default_background_color' ); ?>"
+									name="<?php echo $this->get_field_name( 'use_site_submit_button_color' ); ?>"
+									type="checkbox"
+									value="1" />
+								<label for="<?php echo $this->get_field_id( 'use_site_submit_button_color' ); ?>" ><?php esc_html_e( 'Use default button color?', 'smaily' ); ?></label>
+							</div>
 						</div>
 					</div>
+				</p>
 
-					<div class="column" id="button-text-container">
-						<div>
-							<label for="<?php echo esc_attr( $this->get_field_id( 'submit_button_text_color' ) ); ?>">
-								<b><?php esc_html_e( 'Button text color', 'smaily' ); ?></b>
-							</label>
-							<!--Jscolor required: false is used to clear the input value. -->
-							<input
-								data-jscolor="{required:false}"
-								class="button-style"
-								type="text"
-								<?php
-								if ( $use_site_submit_button_text_color === true ) :
-									?>
-									disabled<?php endif; ?>
-								id="<?php echo esc_attr( $this->get_field_id( 'submit_button_text_color' ) ); ?>"
-								name="<?php echo esc_attr( $this->get_field_name( 'submit_button_text_color' ) ); ?>"
-								value="<?php echo esc_attr( $submit_button_text_color ); ?>" />
-						</div>
-						<div class="default-value-checkbox">
-							<input
-								class="smaily-checkbox default_text_color"
-								<?php
-								if ( $use_site_submit_button_text_color === true ) :
-									?>
-									checked<?php endif; ?>
-								id="<?php echo $this->get_field_id( 'default_text_color' ); ?>"
-								name="<?php echo $this->get_field_name( 'use_site_submit_button_text_color' ); ?>"
-								type="checkbox"
-								value="1" />
-							<label for="<?php echo $this->get_field_id( 'use_site_submit_button_text_color' ); ?>" ><?php esc_html_e( 'Use default text color?', 'smaily' ); ?></label>
+				<!-- Customize button text. -->
+				<p>
+					<div class="row">
+						<div class="column" id="button-text-container">
+							<div>
+								<label for="<?php echo esc_attr( $this->get_field_id( 'submit_button_text_color' ) ); ?>">
+									<b><?php esc_html_e( 'Button text color', 'smaily' ); ?></b>
+								</label>
+								<!--Jscolor required: false is used to clear the input value. -->
+								<input
+									data-jscolor="{required:false}"
+									class="button-style"
+									type="text"
+									<?php
+									if ( $use_site_submit_button_text_color === true ) :
+										?>
+										disabled<?php endif; ?>
+									id="<?php echo esc_attr( $this->get_field_id( 'submit_button_text_color' ) ); ?>"
+									name="<?php echo esc_attr( $this->get_field_name( 'submit_button_text_color' ) ); ?>"
+									value="<?php echo esc_attr( $submit_button_text_color ); ?>" />
+							</div>
+							<div class="default-value-checkbox">
+								<input
+									class="smaily-checkbox default_text_color"
+									<?php
+									if ( $use_site_submit_button_text_color === true ) :
+										?>
+										checked<?php endif; ?>
+									id="<?php echo $this->get_field_id( 'default_text_color' ); ?>"
+									name="<?php echo $this->get_field_name( 'use_site_submit_button_text_color' ); ?>"
+									type="checkbox"
+									value="1" />
+								<label for="<?php echo $this->get_field_id( 'use_site_submit_button_text_color' ); ?>" ><?php esc_html_e( 'Use default text color?', 'smaily' ); ?></label>
+							</div>
 						</div>
 					</div>
-				</div>
+				</p>
 			</div>
 		</div>
 
