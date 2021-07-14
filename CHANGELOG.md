@@ -1,7 +1,7 @@
 # Changelog
 
 ### 1.8.1
-- Bugfix - [[#107](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/107)]
+- Bugfix - improve button color and button color text responsive design. [[#107](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/107)]
 
 ### 1.8.0
 - Feature - user can customize the appearance of the subscription form. [[#97](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/97)], [[#92](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/92)], [[#85](https://github.com/sendsmaily/smaily-woocommerce-plugin/issues/85)]
