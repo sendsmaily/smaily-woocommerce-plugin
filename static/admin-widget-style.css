@@ -1,6 +1,6 @@
 /* WIDGET STYLES */
 
-/* Headings and sections styles */
+/* Headings, labels and sections styles */
 div.section:first-child {
     margin-top: 10px;
 }
@@ -11,10 +11,42 @@ div.section {
 
 div.smaily div.section > h2 { /* Selects the immediate child element that is inside the section(div). If h with p are in one section,
     then this rule applies to the last one in the HTML */
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 
-/* Layout styles*/
+div.smaily div.section .widefat {
+	font-size: 15px !important;
+}
+
+@media (min-width: 600px) {
+	h2 {
+		font-size: 22px !important;
+		}
+	h3 {
+		font-size: 30px !important;
+	}
+}
+
+@media (max-width: 599px) {
+	h2 {
+		font-size: 20px !important;
+		}
+	h3 {
+		font-size: 28px !important;
+	}
+}
+
+.wp-block-legacy-widget__edit-form .widget-inside.widget-inside label {
+    font-size: 15px !important;
+}
+
+/* Paragraph styles */
+.editor-styles-wrapper p {
+	font-size: 14px !important;
+	font-family: system-ui;
+}
+
+/* Layout styles */
 .smaily-layout-container {
     background-color: #f6f7f7;
     border: 1px solid #c3c4c7;
@@ -23,8 +55,22 @@ div.smaily div.section > h2 { /* Selects the immediate child element that is ins
     margin-bottom: 10px;
 }
 
-.smaily-layouts {
-    width: 90%;
+@media (min-width: 500px) {
+	.smaily-layouts  {
+		width: 80% !important;
+	}
+}
+
+@media (min-width: 600px) {
+	.smaily-layouts  {
+		width: 70% !important;
+	}
+}
+
+@media (max-width: 499px) {
+	.smaily-layouts  {
+		width: 90% !important;
+	}
 }
 
 /* Button styles */
@@ -41,7 +87,7 @@ div.smaily div.section > h2 { /* Selects the immediate child element that is ins
     border-radius: 5px;
     padding: 5px 0px 5px 0px;
     margin-top: 3px;
-    font-size: 14px;
+    font-size: 15px !important;
 }
 
 /* Checkbox styles */
