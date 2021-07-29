@@ -1,52 +1,52 @@
 /* WIDGET STYLES */
 
-/* Headings, labels and sections styles */
-div.section:first-child {
-    margin-top: 10px;
+/* Smaily custom styles */
+div.smaily_section:first-child {
+	margin-top: 10px;
 }
 
-div.section {
-    margin-bottom: 40px;
-}
-
-div.smaily div.section > h2 { /* Selects the immediate child element that is inside the section(div). If h with p are in one section,
-    then this rule applies to the last one in the HTML */
-	margin-bottom: 10px;
-}
-
-div.smaily div.section .widefat {
-	font-size: 15px !important;
+div.smaily_section {
+    margin: 10px 0 40px;
 }
 
 @media (min-width: 600px) {
-	h2 {
-		font-size: 22px !important;
-		}
-	h3 {
-		font-size: 30px !important;
+	.smaily_subheading {
+		font-size: 22px;
+		margin: 20px 0 15px;
+		font-weight: bold;
 	}
 }
 
 @media (max-width: 599px) {
-	h2 {
-		font-size: 20px !important;
-		}
-	h3 {
-		font-size: 28px !important;
+	.smaily_subheading {
+		font-size: 20px;
+		margin: 20px 0 15px;
+		font-weight: bold;
 	}
 }
 
-.wp-block-legacy-widget__edit-form .widget-inside.widget-inside label {
-    font-size: 15px !important;
+.smaily_paragraph {
+	margin: 10px 0;
 }
 
-/* Paragraph styles */
-.editor-styles-wrapper p {
+.smaily_label, .smaily_text {
+	font-size: 15px !important;
+	font-weight: normal;
+	margin-top: 3px;
+}
+
+.smaily_label_strong {
+	font-size: 15px !important;
+	font-weight: bold !important;
+}
+
+.smaily_instructions{
+	margin: 15px 0 15px;
 	font-size: 14px !important;
-	font-family: system-ui;
+	color: #787c82;
 }
 
-/* Layout styles */
+/* Layout styles*/
 .smaily-layout-container {
     background-color: #f6f7f7;
     border: 1px solid #c3c4c7;
@@ -74,13 +74,6 @@ div.smaily div.section .widefat {
 }
 
 /* Button styles */
-.row > p:first-child {
-    margin-bottom: 0.5em;
-}
-.row > p:last-child {
-    margin: 0.5em 1px 1em;
-}
-
 .button-style {
     width: 100%;
     border: 1px solid #8c8f94;
