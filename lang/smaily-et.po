@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Smaily for WooCommerce\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/smaily-for-"
 "woocommerce\n"
-"POT-Creation-Date: 2021-06-28 13:30+0300\n"
-"PO-Revision-Date: 2021-06-28 13:30+0300\n"
+"POT-Creation-Date: 2021-07-30 14:14+0300\n"
+"PO-Revision-Date: 2021-07-30 14:14+0300\n"
 "Last-Translator: \n"
 "Language-Team: Estonian\n"
 "Language: et\n"
@@ -179,7 +179,7 @@ msgstr "E-post"
 msgid "Name"
 msgstr "Nimi"
 
-#: inc/Widget/SmailyWidget.php:212 inc/Widget/SmailyWidget.php:549
+#: inc/Widget/SmailyWidget.php:212 inc/Widget/SmailyWidget.php:543
 #: migrations/upgrade-1-8-0.php:18
 msgid "Subscribe"
 msgstr "Liitu"
@@ -218,55 +218,55 @@ msgstr "Vali meelepärane vormi kujundus."
 msgid "Layout %1$s"
 msgstr "Kujundus %1$s"
 
-#: inc/Widget/SmailyWidget.php:296 inc/Widget/SmailyWidget.php:300
+#: inc/Widget/SmailyWidget.php:295 inc/Widget/SmailyWidget.php:299
 msgid "email address with spaced button"
 msgstr "e-posti aadress eraldatud nupuga"
 
-#: inc/Widget/SmailyWidget.php:319 inc/Widget/SmailyWidget.php:323
+#: inc/Widget/SmailyWidget.php:317 inc/Widget/SmailyWidget.php:321
 msgid "email address with attached button"
 msgstr "e-posti aadress liidetud nupuga"
 
-#: inc/Widget/SmailyWidget.php:342 inc/Widget/SmailyWidget.php:346
+#: inc/Widget/SmailyWidget.php:339 inc/Widget/SmailyWidget.php:343
 msgid "email address"
 msgstr "e-posti aadress"
 
-#: inc/Widget/SmailyWidget.php:365 inc/Widget/SmailyWidget.php:369
+#: inc/Widget/SmailyWidget.php:361 inc/Widget/SmailyWidget.php:365
 msgid "email address and name"
 msgstr "e-posti aadress ja nimi kõrvuti"
 
-#: inc/Widget/SmailyWidget.php:388 inc/Widget/SmailyWidget.php:393
+#: inc/Widget/SmailyWidget.php:383 inc/Widget/SmailyWidget.php:388
 msgid "stacked email address and name"
 msgstr "e-posti aadress ja nimi kohakuti"
 
-#: inc/Widget/SmailyWidget.php:402
+#: inc/Widget/SmailyWidget.php:397
 msgid "Customize layout"
 msgstr "Loo meelepärane kujundus"
 
-#: inc/Widget/SmailyWidget.php:408
+#: inc/Widget/SmailyWidget.php:403
 msgid "Email field text"
 msgstr "E-posti aadressi väljal kuvatav tekst"
 
-#: inc/Widget/SmailyWidget.php:421
+#: inc/Widget/SmailyWidget.php:416
 msgid "Name field text"
 msgstr "Nimeväljal kuvatav tekst"
 
-#: inc/Widget/SmailyWidget.php:434
+#: inc/Widget/SmailyWidget.php:429
 msgid "Text on the button"
 msgstr "Nupul kuvatav tekst"
 
-#: inc/Widget/SmailyWidget.php:450
+#: inc/Widget/SmailyWidget.php:444
 msgid "Button color"
 msgstr "Nupu värv"
 
-#: inc/Widget/SmailyWidget.php:476
+#: inc/Widget/SmailyWidget.php:470
 msgid "Use default button color?"
 msgstr "Kasuta vaikimisi nupu värvi?"
 
-#: inc/Widget/SmailyWidget.php:483
+#: inc/Widget/SmailyWidget.php:478
 msgid "Button text color"
 msgstr "Nupul kuvatava teksti värv"
 
-#: inc/Widget/SmailyWidget.php:509
+#: inc/Widget/SmailyWidget.php:504
 msgid "Use default text color?"
 msgstr "Kasuta vaikimisi nupu teksti värvi?"
 
