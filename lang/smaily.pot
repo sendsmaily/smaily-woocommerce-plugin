@@ -10,7 +10,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2021-06-28 13:42+0300\n"
+"POT-Creation-Date: 2021-07-30 14:14+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: Poedit 2.3\n"
 "X-Domain: smaily\n"
@@ -172,7 +172,7 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: inc/Widget/SmailyWidget.php:212 inc/Widget/SmailyWidget.php:549
+#: inc/Widget/SmailyWidget.php:212 inc/Widget/SmailyWidget.php:543
 #: migrations/upgrade-1-8-0.php:18
 msgid "Subscribe"
 msgstr ""
@@ -206,55 +206,55 @@ msgstr ""
 msgid "Layout %1$s"
 msgstr ""
 
-#: inc/Widget/SmailyWidget.php:296 inc/Widget/SmailyWidget.php:300
+#: inc/Widget/SmailyWidget.php:295 inc/Widget/SmailyWidget.php:299
 msgid "email address with spaced button"
 msgstr ""
 
-#: inc/Widget/SmailyWidget.php:319 inc/Widget/SmailyWidget.php:323
+#: inc/Widget/SmailyWidget.php:317 inc/Widget/SmailyWidget.php:321
 msgid "email address with attached button"
 msgstr ""
 
-#: inc/Widget/SmailyWidget.php:342 inc/Widget/SmailyWidget.php:346
+#: inc/Widget/SmailyWidget.php:339 inc/Widget/SmailyWidget.php:343
 msgid "email address"
 msgstr ""
 
-#: inc/Widget/SmailyWidget.php:365 inc/Widget/SmailyWidget.php:369
+#: inc/Widget/SmailyWidget.php:361 inc/Widget/SmailyWidget.php:365
 msgid "email address and name"
 msgstr ""
 
-#: inc/Widget/SmailyWidget.php:388 inc/Widget/SmailyWidget.php:393
+#: inc/Widget/SmailyWidget.php:383 inc/Widget/SmailyWidget.php:388
 msgid "stacked email address and name"
 msgstr ""
 
-#: inc/Widget/SmailyWidget.php:402
+#: inc/Widget/SmailyWidget.php:397
 msgid "Customize layout"
 msgstr ""
 
-#: inc/Widget/SmailyWidget.php:408
+#: inc/Widget/SmailyWidget.php:403
 msgid "Email field text"
 msgstr ""
 
-#: inc/Widget/SmailyWidget.php:421
+#: inc/Widget/SmailyWidget.php:416
 msgid "Name field text"
 msgstr ""
 
-#: inc/Widget/SmailyWidget.php:434
+#: inc/Widget/SmailyWidget.php:429
 msgid "Text on the button"
 msgstr ""
 
-#: inc/Widget/SmailyWidget.php:450
+#: inc/Widget/SmailyWidget.php:444
 msgid "Button color"
 msgstr ""
 
-#: inc/Widget/SmailyWidget.php:476
+#: inc/Widget/SmailyWidget.php:470
 msgid "Use default button color?"
 msgstr ""
 
-#: inc/Widget/SmailyWidget.php:483
+#: inc/Widget/SmailyWidget.php:478
 msgid "Button text color"
 msgstr ""
 
-#: inc/Widget/SmailyWidget.php:509
+#: inc/Widget/SmailyWidget.php:504
 msgid "Use default text color?"
 msgstr ""
 
