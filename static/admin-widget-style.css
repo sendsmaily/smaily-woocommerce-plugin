@@ -40,7 +40,7 @@ div.smaily_section {
 	font-weight: bold !important;
 }
 
-.smaily_instructions{
+.smaily_instructions {
 	margin: 15px 0 15px;
 	font-size: 14px !important;
 	color: #787c82;
@@ -56,19 +56,19 @@ div.smaily_section {
 }
 
 @media (min-width: 500px) {
-	.smaily-layouts  {
+	.smaily-layouts {
 		width: 80% !important;
 	}
 }
 
 @media (min-width: 600px) {
-	.smaily-layouts  {
+	.smaily-layouts {
 		width: 70% !important;
 	}
 }
 
 @media (max-width: 499px) {
-	.smaily-layouts  {
+	.smaily-layouts {
 		width: 90% !important;
 	}
 }
