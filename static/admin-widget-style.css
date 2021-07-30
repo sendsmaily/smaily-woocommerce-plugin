@@ -1,17 +1,49 @@
 /* WIDGET STYLES */
 
-/* Headings and sections styles */
-div.section:first-child {
-    margin-top: 10px;
+/* Smaily custom styles */
+div.smaily_section:first-child {
+	margin-top: 10px;
 }
 
-div.section {
-    margin-bottom: 40px;
+div.smaily_section {
+    margin: 10px 0 40px;
 }
 
-div.smaily div.section > h2 { /* Selects the immediate child element that is inside the section(div). If h with p are in one section,
-    then this rule applies to the last one in the HTML */
-    margin-bottom: 10px;
+@media (min-width: 600px) {
+	.smaily_subheading {
+		font-size: 22px;
+		margin: 20px 0 15px;
+		font-weight: bold;
+	}
+}
+
+@media (max-width: 599px) {
+	.smaily_subheading {
+		font-size: 20px;
+		margin: 20px 0 15px;
+		font-weight: bold;
+	}
+}
+
+.smaily_paragraph {
+	margin: 10px 0;
+}
+
+.smaily_label, .smaily_text {
+	font-size: 15px !important;
+	font-weight: normal;
+	margin-top: 3px;
+}
+
+.smaily_label_strong {
+	font-size: 15px !important;
+	font-weight: bold !important;
+}
+
+.smaily_instructions {
+	margin: 15px 0 15px;
+	font-size: 14px !important;
+	color: #787c82;
 }
 
 /* Layout styles*/
@@ -23,25 +55,32 @@ div.smaily div.section > h2 { /* Selects the immediate child element that is ins
     margin-bottom: 10px;
 }
 
-.smaily-layouts {
-    width: 90%;
+@media (min-width: 500px) {
+	.smaily-layouts {
+		width: 80% !important;
+	}
+}
+
+@media (min-width: 600px) {
+	.smaily-layouts {
+		width: 70% !important;
+	}
+}
+
+@media (max-width: 499px) {
+	.smaily-layouts {
+		width: 90% !important;
+	}
 }
 
 /* Button styles */
-.row > p:first-child {
-    margin-bottom: 0.5em;
-}
-.row > p:last-child {
-    margin: 0.5em 1px 1em;
-}
-
 .button-style {
     width: 100%;
     border: 1px solid #8c8f94;
     border-radius: 5px;
     padding: 5px 0px 5px 0px;
     margin-top: 3px;
-    font-size: 14px;
+    font-size: 15px !important;
 }
 
 /* Checkbox styles */
