@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.9.0
+- Test compatibility with WordPress 5.8. [[#112](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/112)]
+
 ### 1.8.1
 - Bugfix - improve button color and button color text responsive design. [[#107](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/107)]
 
