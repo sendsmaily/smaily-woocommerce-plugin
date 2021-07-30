@@ -1,5 +1,5 @@
 # use the official wordpress Docker image
-FROM wordpress:5.7.2-php7.3-apache
+FROM wordpress:5.8-php7.3-apache
 
 # install curl and jq
 RUN apt-get update && apt-get install -y jq curl

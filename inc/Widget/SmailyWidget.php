@@ -219,12 +219,12 @@ class SmailyWidget extends \WP_Widget {
 
 		<div class="smaily">
 			<!-- Title. -->
-			<div class="section">
-				<h2>
+			<div class="smaily_section">
+				<div class="smaily_subheading">
 					<?php esc_html_e( 'Title', 'smaily' ); ?>
-				</h2>
+				</div>
 				<input
-					class="widefat"
+					class="widefat smaily_text"
 					id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"
 					name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>"
 					type="text"
@@ -233,14 +233,14 @@ class SmailyWidget extends \WP_Widget {
 
 			<!-- Autoresponder. -->
 			<?php if ( ! empty( $autoresponder_list ) && ! array_key_exists( 'empty', $autoresponder_list ) ) : ?>
-			<div class="section">
-				<h2>
+			<div class="smaily_section">
+				<div class="smaily_subheading">
 					<?php esc_html_e( 'Automation', 'smaily' ); ?>
-				</h2>
+				</div>
 				<select
 					id="<?php echo esc_attr( $this->get_field_id( 'autoresponder' ) ); ?>"
 					name="<?php echo esc_attr( $this->get_field_name( 'autoresponder' ) ); ?>"
-					class="widefat"
+					class="widefat smaily_text"
 					style="width:100%;">
 					<option value=""><?php esc_html_e( '-Trigger opt-in automation workflows-', 'smaily' ); ?></option>
 					<?php if ( ! empty( $autoresponder_list ) && ! array_key_exists( 'empty', $autoresponder_list ) ) : ?>
@@ -253,20 +253,20 @@ class SmailyWidget extends \WP_Widget {
 					<?php endforeach; ?>
 					<?php endif; ?>
 				</select>
-				<p>
+				<div class="smaily_instructions">
 					<?php esc_html_e( 'Select a suitable form-submitted automation workflow to trigger from the list or create a new automation workflow on your Smaily account to be added to the list.', 'smaily' ); ?>
-				</p>
+				</div>
 			</div>
 			<?php endif; ?>
 
 			<!-- Layouts. -->
-			<div class="section">
-				<h2>
+			<div class="smaily_section">
+				<div class="smaily_subheading">
 					<?php esc_html_e( 'Layout', 'smaily' ); ?>
-				</h2>
-				<p>
+				</div>
+				<div class="smaily_instructions">
 					<?php esc_html_e( 'Choose a preferred form layout.', 'smaily' ); ?>
-				</p>
+				</div>
 				<?php
 				$translations =
 				/* translators: Layout translations */
@@ -276,7 +276,7 @@ class SmailyWidget extends \WP_Widget {
 				);
 				?>
 				<div class="smaily-layout-container">
-					<p> <!-- Select layout. -->
+					<div class="smaily_paragraph"> <!-- Select layout. -->
 						<input
 							class="radio"
 							id="<?php echo $this->get_field_id( 'layout-1' ); ?>"
@@ -288,20 +288,19 @@ class SmailyWidget extends \WP_Widget {
 								echo 'checked="checked"'; }
 							?>
 							/>
-						<label for="<?php echo $this->get_field_id( 'layout-1' ); ?>">
-							<strong>
+						<label class="smaily_label_strong" for="<?php echo $this->get_field_id( 'layout-1' ); ?>">
 							<?php
 							printf( $translations, 1 );
 							?>
-							</strong> &minus; <?php esc_html_e( 'email address with spaced button', 'smaily' ); ?>
+							<span class="smaily_label"> &minus; <?php esc_html_e( 'email address with spaced button', 'smaily' ); ?></span>
 						</label>
-					</p>
-					<p>
+					</div>
+					<div class="smaily_paragraph">
 						<img src="<?php echo SMAILY_PLUGIN_URL . 'static/layouts/email-layout1.svg'; ?>" alt="" title="<?php printf( $translations, 1 ); ?> &minus; <?php esc_attr_e( 'email address with spaced button', 'smaily' ); ?>" class="smaily-layouts">
-					</p>
+					</div>
 				</div>
 				<div class="smaily-layout-container">
-					<p>
+					<div class="smaily_paragraph">
 						<input
 							class="radio"
 							id="<?php echo $this->get_field_id( 'layout-2' ); ?>"
@@ -313,18 +312,17 @@ class SmailyWidget extends \WP_Widget {
 								echo 'checked="checked"'; }
 							?>
 							/>
-						<label for="<?php echo $this->get_field_id( 'layout-2' ); ?>">
-							<strong>
+						<label class="smaily_label_strong" for="<?php echo $this->get_field_id( 'layout-2' ); ?>">
 							<?php printf( $translations, 2 ); ?>
-							</strong> &minus; <?php esc_html_e( 'email address with attached button', 'smaily' ); ?>
+							<span class="smaily_label"> &minus; <?php esc_html_e( 'email address with attached button', 'smaily' ); ?></span>
 						</label>
-					</p>
-					<p>
+					</div>
+					<div class="smaily_paragraph">
 						<img src="<?php echo SMAILY_PLUGIN_URL . 'static/layouts/email-layout2.svg'; ?>" alt="" title="<?php printf( $translations, 2 ); ?> &minus; <?php esc_attr_e( 'email address with attached button', 'smaily' ); ?>" class="smaily-layouts">
-					</p>
+					</div>
 				</div>
 				<div class="smaily-layout-container">
-					<p>
+					<div class="smaily_paragraph">
 						<input
 							class="radio"
 							id="<?php echo $this->get_field_id( 'layout-3' ); ?>"
@@ -336,18 +334,17 @@ class SmailyWidget extends \WP_Widget {
 								echo 'checked="checked"'; }
 							?>
 							/>
-						<label for="<?php echo $this->get_field_id( 'layout-3' ); ?>">
-							<strong>
+						<label class="smaily_label_strong" for="<?php echo $this->get_field_id( 'layout-3' ); ?>">
 							<?php printf( $translations, 3 ); ?>
-							</strong> &minus; <?php esc_html_e( 'email address', 'smaily' ); ?>
+							<span class="smaily_label"> &minus; <?php esc_html_e( 'email address', 'smaily' ); ?></span>
 						</label>
-					</p>
-					<p>
+					</div>
+					<div class="smaily_paragraph">
 						<img src="<?php echo SMAILY_PLUGIN_URL . 'static/layouts/email-layout3.svg'; ?>" alt="" title="<?php printf( $translations, 3 ); ?> &minus; <?php esc_attr_e( 'email address', 'smaily' ); ?>" class="smaily-layouts">
-					</p>
+					</div>
 				</div>
 				<div class="smaily-layout-container">
-					<p>
+					<div class="smaily_paragraph">
 						<input
 							class="radio"
 							id="<?php echo $this->get_field_id( 'layout-4' ); ?>"
@@ -359,18 +356,17 @@ class SmailyWidget extends \WP_Widget {
 								echo 'checked="checked"'; }
 							?>
 							/>
-						<label for="<?php echo $this->get_field_id( 'layout-4' ); ?>">
-							<strong>
+						<label class="smaily_label_strong" for="<?php echo $this->get_field_id( 'layout-4' ); ?>">
 							<?php printf( $translations, 4 ); ?>
-							</strong> &minus; <?php esc_html_e( 'email address and name', 'smaily' ); ?>
+							<span class="smaily_label"> &minus; <?php esc_html_e( 'email address and name', 'smaily' ); ?></span>
 						</label>
-					</p>
-					<p>
+					</div>
+					<div class="smaily_paragraph">
 						<img src="<?php echo SMAILY_PLUGIN_URL . 'static/layouts/email-layout4.svg'; ?>" alt="" title="<?php printf( $translations, 4 ); ?> &minus; <?php esc_attr_e( 'email address and name', 'smaily' ); ?>" class="smaily-layouts">
-					</p>
+					</div>
 				</div>
 				<div class="smaily-layout-container">
-					<p>
+					<div class="smaily_paragraph">
 						<input
 							class="radio"
 							id="<?php echo $this->get_field_id( 'layout-5' ); ?>"
@@ -382,71 +378,70 @@ class SmailyWidget extends \WP_Widget {
 								echo 'checked="checked"'; }
 							?>
 							/>
-						<label for="<?php echo $this->get_field_id( 'layout-5' ); ?>">
-							<strong>
+						<label class="smaily_label_strong" for="<?php echo $this->get_field_id( 'layout-5' ); ?>">
 							<?php printf( $translations, 5 ); ?>
-							</strong> &minus; <?php esc_html_e( 'stacked email address and name', 'smaily' ); ?>
+							<span class="smaily_label"> &minus; <?php esc_html_e( 'stacked email address and name', 'smaily' ); ?></span>
 						</label>
-					</p>
-					<p>
+					</div>
+					<div class="smaily_paragraph">
 						<!-- Read URL starting from the static folder. Doesn`t matter where in your computer plugin is located. -->
 						<img src="<?php echo SMAILY_PLUGIN_URL . 'static/layouts/email-layout5.svg'; ?>" alt="" title="<?php printf( $translations, 5 ); ?> &minus; <?php esc_attr_e( 'stacked email address and name', 'smaily' ); ?>" class="smaily-layouts">
-					</p>
+					</div>
 				</div>
 			</div>
 
 			<!-- Customize layout. -->
-			<div class="section">
-				<h2>
+			<div class="smaily_section">
+				<div class="smaily_subheading">
 					<!-- Layout customization section. -->
 					<?php echo esc_html_e( 'Customize layout', 'smaily' ); ?>
-				</h2>
+				</div>
 
 				<!-- Email field placeholder. -->
-				<p>
-					<label for="<?php echo esc_attr( $this->get_field_id( 'email_field_placeholder' ) ); ?>">
-						<b><?php esc_html_e( 'Email field text', 'smaily' ); ?></b>
+				<div class="smaily_paragraph">
+					<label class="smaily_label_strong" for="<?php echo esc_attr( $this->get_field_id( 'email_field_placeholder' ) ); ?>">
+						<?php esc_html_e( 'Email field text', 'smaily' ); ?>
 					</label>
 					<input
-						class="widefat"
+						class="widefat smaily_text"
 						id="<?php echo esc_attr( $this->get_field_id( 'email_field_placeholder' ) ); ?>"
 						name="<?php echo esc_attr( $this->get_field_name( 'email_field_placeholder' ) ); ?>"
 						type="text"
 						value="<?php echo esc_attr( $email_field_placeholder ); ?>" />
-				</p>
+				</div>
 
 				<!-- Name field placeholder. -->
-				<p>
-					<label for="<?php echo esc_attr( $this->get_field_id( 'name_field_placeholder' ) ); ?>">
-						<b><?php esc_html_e( 'Name field text', 'smaily' ); ?></b>
+				<div class="smaily_paragraph">
+					<label class="smaily_label_strong" for="<?php echo esc_attr( $this->get_field_id( 'name_field_placeholder' ) ); ?>">
+						<?php esc_html_e( 'Name field text', 'smaily' ); ?>
 					</label>
 					<input
-						class="widefat"
+						class="widefat smaily_text"
 						id="<?php echo esc_attr( $this->get_field_id( 'name_field_placeholder' ) ); ?>"
 						name="<?php echo esc_attr( $this->get_field_name( 'name_field_placeholder' ) ); ?>"
 						type="text"
 						value="<?php echo esc_attr( $name_field_placeholder ); ?>" />
-				</p>
+				</div>
 
 				<!-- Button field text. -->
-				<p>
-					<label for="<?php echo esc_attr( $this->get_field_id( 'submit_button_text' ) ); ?>">
-						<b><?php esc_html_e( 'Text on the button', 'smaily' ); ?></b>
+				<div class="smaily_paragraph">
+					<label class="smaily_label_strong" for="<?php echo esc_attr( $this->get_field_id( 'submit_button_text' ) ); ?>">
+						<?php esc_html_e( 'Text on the button', 'smaily' ); ?>
 					</label>
 					<input
-						class="widefat"
+						class="widefat smaily_text"
 						id="<?php echo esc_attr( $this->get_field_id( 'submit_button_text' ) ); ?>"
 						name="<?php echo esc_attr( $this->get_field_name( 'submit_button_text' ) ); ?>"
 						type="text"
 						value="<?php echo esc_attr( $submit_button_text ); ?>" />
-				</p>
+				</div>
 
 				<!-- Customize button color -->
 				<div class="row" id="button-color-container">
-					<p>
+					<div class="smaily_paragraph">
 						<!-- Add color picker HTML. -->
-						<label for="<?php echo esc_attr( $this->get_field_id( 'submit_button_color' ) ); ?>">
-							<b><?php esc_html_e( 'Button color', 'smaily' ); ?></b>
+						<label class="smaily_label_strong" for="<?php echo esc_attr( $this->get_field_id( 'submit_button_color' ) ); ?>">
+							<?php esc_html_e( 'Button color', 'smaily' ); ?>
 						</label>
 						<!-- Jscolor required:false is used to clear the input value. -->
 						<input
@@ -460,8 +455,8 @@ class SmailyWidget extends \WP_Widget {
 							name="<?php echo esc_attr( $this->get_field_name( 'submit_button_color' ) ); ?>"
 							type="text"
 							value="<?php echo esc_attr( $submit_button_color ); ?>" />
-					</p>
-					<p>
+					</div>
+					<div class="smaily_paragraph">
 						<input
 							class="smaily-checkbox default_background_color"
 							<?php
@@ -472,15 +467,15 @@ class SmailyWidget extends \WP_Widget {
 							name="<?php echo $this->get_field_name( 'use_site_submit_button_color' ); ?>"
 							type="checkbox"
 							value="1" />
-						<label for="<?php echo $this->get_field_id( 'use_site_submit_button_color' ); ?>" ><?php esc_html_e( 'Use default button color?', 'smaily' ); ?></label>
-					</p>
+						<label class="smaily_label" for="<?php echo $this->get_field_id( 'use_site_submit_button_color' ); ?>" ><?php esc_html_e( 'Use default button color?', 'smaily' ); ?></label>
+					</div>
 				</div>
 
 				<!-- Customize button text. -->
 				<div class="row" id="button-text-container">
-					<p>
-						<label for="<?php echo esc_attr( $this->get_field_id( 'submit_button_text_color' ) ); ?>">
-							<b><?php esc_html_e( 'Button text color', 'smaily' ); ?></b>
+					<div class="smaily_paragraph">
+						<label class="smaily_label_strong" for="<?php echo esc_attr( $this->get_field_id( 'submit_button_text_color' ) ); ?>">
+							<?php esc_html_e( 'Button text color', 'smaily' ); ?>
 						</label>
 						<!--Jscolor required: false is used to clear the input value. -->
 						<input
@@ -494,8 +489,8 @@ class SmailyWidget extends \WP_Widget {
 							id="<?php echo esc_attr( $this->get_field_id( 'submit_button_text_color' ) ); ?>"
 							name="<?php echo esc_attr( $this->get_field_name( 'submit_button_text_color' ) ); ?>"
 							value="<?php echo esc_attr( $submit_button_text_color ); ?>" />
-					</p>
-					<p>
+					</div>
+					<div class="smaily_paragraph">
 						<input
 							class="smaily-checkbox default_text_color"
 							<?php
@@ -506,8 +501,8 @@ class SmailyWidget extends \WP_Widget {
 							name="<?php echo $this->get_field_name( 'use_site_submit_button_text_color' ); ?>"
 							type="checkbox"
 							value="1" />
-						<label for="<?php echo $this->get_field_id( 'use_site_submit_button_text_color' ); ?>" ><?php esc_html_e( 'Use default text color?', 'smaily' ); ?></label>
-					</p>
+						<label class="smaily_label" for="<?php echo $this->get_field_id( 'use_site_submit_button_text_color' ); ?>" ><?php esc_html_e( 'Use default text color?', 'smaily' ); ?></label>
+					</div>
 				</div>
 			</div>
 		</div>
