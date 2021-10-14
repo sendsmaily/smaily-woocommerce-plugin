@@ -92,7 +92,7 @@ $wc_categories_list = DataHandler::get_woocommerce_categories_list();
 							<th scope="row"></th>
 							<td>
 								<a
-									href="http://help.smaily.com/en/support/solutions/articles/16000062943-create-api-user"
+									href="https://smaily.com/help/api/general/create-api-user/"
 									target="_blank">
 									<?php echo esc_html__( 'How to create API credentials?', 'smaily' ); ?>
 								</a>
