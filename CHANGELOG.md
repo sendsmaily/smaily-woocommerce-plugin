@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.9.1
+- Update user manual links. [[#116](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/116)]
+
 ### 1.9.0
 - Test compatibility with WordPress 5.8. [[#112](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/112)]
 
