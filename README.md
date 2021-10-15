@@ -50,7 +50,7 @@ Smaily for WooCommerce requires PHP 5.6+ (PHP 7.0+ recommended). You'll also nee
 
 ## Documentation & Support
 
-Online documentation and code samples are available via our [Help Center](http://help.smaily.com/en/support/home).
+Online documentation and code samples are available via our [Help Center](https://smaily.com/help/user-manuals/).
 
 ## Contribute
 
