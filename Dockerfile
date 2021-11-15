@@ -1,12 +1,15 @@
-# use the official wordpress Docker image
 FROM wordpress:5.8-php7.3-apache
 
-# install curl and jq
-RUN apt-get update && apt-get install -y jq curl
+ENV WOOCOMMERCE_VERSION=4.9.2
 
-# install latest tested release of woocommerce from github
-RUN mkdir /usr/src/wordpress/wp-content/plugins/woocommerce \
-  && curl -sL $(curl -sL -H "Accept: application/vnd.github.v3.full+json" \
-  https://api.github.com/repos/woocommerce/woocommerce/releases/tags/4.9.2 \
-  | jq -r .tarball_url) \
-  | tar zx -C /usr/src/wordpress/wp-content/plugins/woocommerce \--strip-components 1
+# Install required packages.
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    unzip && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Install WooCommerce.
+RUN curl -sL -o /tmp/woocommerce.zip https://github.com/woocommerce/woocommerce/releases/download/${WOOCOMMERCE_VERSION}/woocommerce.zip \
+    && unzip -q /tmp/woocommerce.zip -d /usr/src/wordpress/wp-content/plugins \
+    && rm /tmp/woocommerce.zip \
+    && chown www-data:www-data -R /usr/src/wordpress/wp-content/plugins/woocommerce
