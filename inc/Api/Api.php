@@ -123,14 +123,13 @@ class Api {
 		}
 
 		// Verify API credentials actually work.
-		$useragent = 'WordPress/' . get_bloginfo( 'version' ) . '; ' . get_bloginfo( 'url' ) . '; WooCommerce/' . WC_VERSION . '; smaily-for-woocommerce/' . SMAILY_PLUGIN_VERSION;
-		$api_call  = wp_remote_get(
+		$api_call = wp_remote_get(
 			'https://' . $api_credentials['subdomain'] . '.sendsmaily.net/api/workflows.php?trigger_type=form_submitted',
 			array(
 				'headers'    => array(
 					'Authorization' => 'Basic ' . base64_encode( $api_credentials['username'] . ':' . $api_credentials['password'] ),
 				),
-				'user-agent' => $useragent,
+				'user-agent' => $this->get_user_agent(),
 			)
 		);
 
@@ -248,8 +247,7 @@ class Api {
 		$data = array_merge( $data, array( 'headers' => array( 'Authorization' => 'Basic ' . base64_encode( $result['username'] . ':' . $result['password'] ) ) ) );
 
 		// Add User-Agent string to data of request.
-		$useragent = 'WordPress/' . get_bloginfo( 'version' ) . '; ' . get_bloginfo( 'url' ) . '; WooCommerce/' . WC_VERSION . '; smaily-for-woocommerce/' . SMAILY_PLUGIN_VERSION;
-		$data      = array_merge( $data, array( 'user-agent' => $useragent ) );
+		$data = array_merge( $data, array( 'user-agent' => self::get_user_agent() ) );
 
 		// API call with GET request.
 		if ( $method === 'GET' ) {
@@ -488,5 +486,14 @@ class Api {
 		}
 
 		return $rss;
+	}
+
+	/**
+	 * Compile User-Agent header value for API requests.
+	 *
+	 * @return string
+	 */
+	protected static function get_user_agent() {
+		return 'smaily-for-woocommerce/' . SMAILY_PLUGIN_VERSION . ' (WordPress/' . get_bloginfo( 'version' ) . '; WooCommerce/' . WC_VERSION . '; +' . get_bloginfo( 'url' ) . ')';
 	}
 }
