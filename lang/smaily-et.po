@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Smaily for WooCommerce\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/smaily-for-"
 "woocommerce\n"
-"POT-Creation-Date: 2021-07-30 14:14+0300\n"
-"PO-Revision-Date: 2021-07-30 14:14+0300\n"
+"POT-Creation-Date: 2022-06-17 09:58+0300\n"
+"PO-Revision-Date: 2022-06-17 09:58+0300\n"
 "Last-Translator: \n"
 "Language-Team: Estonian\n"
 "Language: et\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;esc_html__;esc_attr__;esc_attr_e;esc_html_e\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 3.0.1\n"
 "X-Loco-Version: 2.3.3; wp-5.4.1\n"
 "X-Poedit-SearchPath-0: .\n"
 
@@ -50,23 +50,23 @@ msgstr "Palun sisesta kasutajatunnus!"
 msgid "Please enter password!"
 msgstr "Palun sisesta salasõna!"
 
-#: inc/Api/Api.php:142
+#: inc/Api/Api.php:141
 msgid "Invalid API credentials, no connection!"
 msgstr "Vale kasutajatunnus või parool, ühendus puudub!"
 
-#: inc/Api/Api.php:149
+#: inc/Api/Api.php:148
 msgid "Invalid subdomain, no connection!"
 msgstr "Vale alamdomeen, ühendus puudub!"
 
-#: inc/Api/Api.php:162
+#: inc/Api/Api.php:161
 msgid "RSS product limit value must be between 1 and 250!"
 msgstr "Uudisvoo toodete arvu piirang peab olema 1 ja 250 vahel!"
 
-#: inc/Api/Api.php:207
+#: inc/Api/Api.php:206
 msgid "Something went wrong saving settings!"
 msgstr "Midagi läks sätete salvestamisel valesti!"
 
-#: inc/Api/Api.php:273
+#: inc/Api/Api.php:271
 msgid "Check details, no connection!"
 msgstr "Kontrolli sisselogimisandmeid, ühendus puudub!"
 
