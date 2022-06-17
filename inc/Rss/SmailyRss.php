@@ -60,20 +60,19 @@ class SmailyRss {
 	 * @return string Updated template location
 	 */
 	public function smaily_rss_feed_template_include( $template ) {
-		global $wp_query; // Load $wp_query object.
-		if ( isset( $wp_query->query_vars['smaily-rss-feed'] ) ) {
-			// Check for query var "smaily-rss-feed".
-			$page_value = $wp_query->query_vars['smaily-rss-feed'];
-			// Verify "smaily-rss-feed" exists and value is "true".
-			if ( $page_value && $page_value === 'true' ) {
-				// Load your template or file.
-				return SMAILY_PLUGIN_PATH . 'templates/smaily-rss-feed.php';
-			}
-		}
-		// When rewrite rules database hasn't been refreshed yet.
-		if ( array_key_exists( 'pagename', $wp_query->query ) && $wp_query->query['pagename'] === 'smaily-rss-feed' ) {
+		$render_rss_feed = get_query_var( 'smaily-rss-feed', false );
+		$render_rss_feed = $render_rss_feed === 'true' ? '1' : $render_rss_feed;
+		$render_rss_feed = (bool) (int) $render_rss_feed;
+
+		$pagename = get_query_var( 'pagename' );
+
+		// Render products RSS feed, if requested.
+		if ( $render_rss_feed === true ) {
+			return SMAILY_PLUGIN_PATH . 'templates/smaily-rss-feed.php';
+		} elseif ( $pagename === 'smaily-rss-feed' ) {
 			return SMAILY_PLUGIN_PATH . 'templates/smaily-rss-feed.php';
 		}
+
 		// Load normal template as a fallback.
 		return $template;
 	}
