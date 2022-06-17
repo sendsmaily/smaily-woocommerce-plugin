@@ -293,11 +293,13 @@ class DataHandler {
 	 * @param int $rss_limit Limit of products.
 	 * @param string $rss_order_by Order products by.
 	 * @param string $rss_order ASC/DESC order
-	 * @return string RSS URL e.g. example.com/smaily-rss-feed?category=uncategorized&limit=250
+	 * @return string
 	 */
 	public static function make_rss_feed_url( $rss_category = null, $rss_limit = null, $rss_order_by = null, $rss_order = null ) {
-		$parameters   = array();
-		$rss_url_base = get_site_url() . '/smaily-rss-feed/?';
+		global $wp_rewrite;
+
+		$site_url   = get_site_url( null, 'smaily-rss-feed' );
+		$parameters = array();
 
 		if ( isset( $rss_category ) && $rss_category !== '' ) {
 			$parameters['category'] = $rss_category;
@@ -308,12 +310,17 @@ class DataHandler {
 		if ( isset( $rss_order_by ) && $rss_order_by !== 'none' ) {
 			$parameters['order_by'] = $rss_order_by;
 		}
-		// Check if providing ?order is even necessary.
 		if ( isset( $rss_order ) && $rss_order_by !== 'none' && $rss_order_by !== 'rand' ) {
 			$parameters['order'] = $rss_order;
 		}
 
-		return add_query_arg( $parameters, get_site_url( null, 'smaily-rss-feed' ) );
+		// Handle URL when permalinks have not been enabled.
+		if ( $wp_rewrite->using_permalinks() === false ) {
+			$site_url                      = get_site_url();
+			$parameters['smaily-rss-feed'] = 'true';
+		}
+
+		return add_query_arg( $parameters, $site_url );
 	}
 
 }
