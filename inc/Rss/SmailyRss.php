@@ -17,13 +17,9 @@ class SmailyRss {
 	 * @return void
 	 */
 	public function register() {
-		/* Rewrite Rules */
 		add_action( 'init', array( $this, 'smaily_rewrite_rules' ) );
-		/* Query Vars */
 		add_filter( 'query_vars', array( $this, 'smaily_register_query_var' ) );
-		/* Template Include */
-		add_filter( 'template_include', array( $this, 'smaily_rss_feed_template_include' ) );
-		/* Frontend settings */
+		add_filter( 'template_include', array( $this, 'smaily_rss_feed_template_include' ), 100 );
 		add_filter( 'smaily_settings', array( $this, 'smaily_rss_settings' ) );
 	}
 
