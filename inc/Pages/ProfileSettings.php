@@ -75,15 +75,14 @@ class ProfileSettings {
 		$checked  = intval( $settings['checkbox_auto_checked'] );
 		$enabled  = intval( $settings['enable_checkbox'] );
 		if ( $enabled ) {
-			woocommerce_form_field(
-				'user_newsletter',
-				array(
-					'type'  => 'checkbox',
-					'id'    => 'smaily-checkout-subscribe',
-					'label' => __( 'Subscribe to newsletter', 'smaily' ),
-				),
-				$checked
-			);
+			$checkbox  = '<p class="form-row form-row-wide smaily-for-woocommerce-newsletter">';
+			$checkbox .= '<label class="checkbox woocommerce-form__label woocommerce-form__label-for-checkbox">';
+			$checkbox .= '<input type="checkbox" class="input-checkbox woocommerce-form__input woocommerce-form__input-checkbox" name="user_newsletter" id="smaily-checkout-subscribe" value="1"' . checked( $checked, 1, false ) . ' />';
+			$checkbox .= '<span>' . __( 'Subscribe to newsletter', 'smaily' ) . '</span>';
+			$checkbox .= '</label>';
+			$checkbox .= '</p>';
+
+			echo $checkbox;
 		}
 	}
 
