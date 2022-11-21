@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.10.0
+- Rework checkout newsletter sign up checkbox rendering [[#126](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/126)]
+
 ### 1.9.2
 - Generating RSS feed URL takes account permalinks enabled state [[#122](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/122)]
 - RSS feed template is rendered at a later stage to ensure RSS is rendered [[#122](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/122)]

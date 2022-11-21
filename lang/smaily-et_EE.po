@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: Smaily for WooCommerce\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/smaily-for-"
 "woocommercewoocommerce\n"
-"POT-Creation-Date: 2022-06-17 09:58+0300\n"
-"PO-Revision-Date: 2022-06-17 09:58+0300\n"
+"POT-Creation-Date: 2022-11-21 14:00+0200\n"
+"PO-Revision-Date: 2022-11-21 14:00+0200\n"
 "Last-Translator: \n"
 "Language-Team: Estonian\n"
 "Language: et\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;esc_html__;esc_attr__;esc_attr_e;esc_html_e\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1.1\n"
 "X-Loco-Version: 2.3.3; wp-5.4.1\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: vendor\n"
@@ -107,43 +107,43 @@ msgstr ""
 "Smaily for WooCommerce on muutnud tellimuslehel uudiskirjaga liitumise "
 "märkeruudu funktsionaalsust. Palun vaadake üle pistikmooduli sätted!"
 
-#: inc/Pages/ProfileSettings.php:83 inc/Pages/ProfileSettings.php:178
+#: inc/Pages/ProfileSettings.php:81 inc/Pages/ProfileSettings.php:177
 msgid "Subscribe to newsletter"
 msgstr "Liitu uudiskirjaga"
 
-#: inc/Pages/ProfileSettings.php:138 templates/smaily-woocommerce-admin.php:206
+#: inc/Pages/ProfileSettings.php:137 templates/smaily-woocommerce-admin.php:206
 msgid "Gender"
 msgstr "Sugu"
 
-#: inc/Pages/ProfileSettings.php:142
+#: inc/Pages/ProfileSettings.php:141
 msgid "Male"
 msgstr "Mees"
 
-#: inc/Pages/ProfileSettings.php:143
+#: inc/Pages/ProfileSettings.php:142
 msgid "Female"
 msgstr "Naine"
 
-#: inc/Pages/ProfileSettings.php:152 templates/smaily-woocommerce-admin.php:209
+#: inc/Pages/ProfileSettings.php:151 templates/smaily-woocommerce-admin.php:209
 msgid "Phone"
 msgstr "Telefon"
 
-#: inc/Pages/ProfileSettings.php:153
+#: inc/Pages/ProfileSettings.php:152
 msgid "Enter phone number"
 msgstr "Sisesta telefoninumber"
 
-#: inc/Pages/ProfileSettings.php:163
+#: inc/Pages/ProfileSettings.php:162
 msgid "Birthday"
 msgstr "Sünnikuupäev"
 
-#: inc/Pages/ProfileSettings.php:164
+#: inc/Pages/ProfileSettings.php:163
 msgid "Enter birthday"
 msgstr "Sisesta sünnikuupäev"
 
-#: inc/Pages/ProfileSettings.php:205
+#: inc/Pages/ProfileSettings.php:204
 msgid "Subscribe newsletter"
 msgstr "Liitu uudiskirjaga"
 
-#: inc/Pages/ProfileSettings.php:253
+#: inc/Pages/ProfileSettings.php:252
 msgid "Additional Information"
 msgstr "Lisainformatsioon"
 
