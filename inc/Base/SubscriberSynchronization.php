@@ -64,6 +64,11 @@ class SubscriberSynchronization {
 		// Data to sent to Smaily API.
 		$data = [];
 
+		// Ensure subscriber's unsubscribed status is reset.
+		// Note! We are using 'user_newsletter' property value just a precaution to cover
+		// cases where site provides a default value for the field.
+		$data['is_unsubscribed'] = (int) $_POST['user_newsletter'] === 1 ? 0 : 1;
+
 		// Add store url for refrence in Smaily database.
 		$data['store'] = get_site_url();
 
