@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.11.0
+
+- Reset subscriber's opt-outed status on checkout newsletter subscribe [[#130](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/130)]
+
 ### 1.10.0
 - Rework checkout newsletter sign up checkbox rendering [[#126](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/126)]
 
