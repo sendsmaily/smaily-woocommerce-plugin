@@ -1,36 +1,49 @@
 # Changelog
 
+### 1.11.1
+
+- Handle missing customer data to reduce logged warnings and notices [[#135](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/135)]
+
 ### 1.11.0
 
 - Reset subscriber's opt-outed status on checkout newsletter subscribe [[#130](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/130)]
 
 ### 1.10.0
+
 - Rework checkout newsletter sign up checkbox rendering [[#126](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/126)]
 
 ### 1.9.2
+
 - Generating RSS feed URL takes account permalinks enabled state [[#122](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/122)]
 - RSS feed template is rendered at a later stage to ensure RSS is rendered [[#122](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/122)]
 - Use common practice on formatting User-Agent string [[#123](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/123)]
 
 ### 1.9.1
+
 - Update user manual links. [[#116](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/116)]
 
 ### 1.9.0
+
 - Test compatibility with WordPress 5.8. [[#112](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/112)]
 
 ### 1.8.1
+
 - Bugfix - improve button color and button color text responsive design. [[#107](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/107)]
 
 ### 1.8.0
+
 - Feature - user can customize the appearance of the subscription form. [[#97](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/97)], [[#92](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/92)], [[#85](https://github.com/sendsmaily/smaily-woocommerce-plugin/issues/85)]
 
 ### 1.7.2
+
 - Rework admin settings form [[#94](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/94)]
 
 ### 1.7.1
+
 - Test compatibility with WordPress 5.7. [issue #88](https://github.com/sendsmaily/smaily-woocommerce-plugin/issues/88)
 
 ### 1.7.0
+
 - Test compatibility with WordPress 5.6. [issue #70](https://github.com/sendsmaily/smaily-woocommerce-plugin/issues/70)
 - Smaily plugin settings "General" tab refinement. [issue #72](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/72)
 - Improve plugin description to better describe the plugin's features. [issue #75](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/75)
@@ -39,6 +52,7 @@
 - Fix API credentials validation messages. [issue #79](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/79)
 
 ### 1.6.1
+
 - Improve naming of widget so it's more distinguishable. [issue #64](https://github.com/sendsmaily/smaily-woocommerce-plugin/issues/64)
 - Bugfix - validate credentials fails if password contains '&' character. [issue #62](https://github.com/sendsmaily/smaily-woocommerce-plugin/issues/62)
 
