@@ -74,7 +74,7 @@ class Cron {
 				// get user by email from unsubscribers list.
 				$wordpress_unsubscriber = get_user_by( 'email', $user_email );
 				// set user subscribed status to 0.
-				if ( isset( $wordpress_unsubscriber ) ) {
+				if ( ! empty( $wordpress_unsubscriber ) ) {
 					update_user_meta( $wordpress_unsubscriber->ID, 'user_newsletter', 0, 1 );
 				}
 			}
@@ -138,9 +138,9 @@ class Cron {
 			$customer_id   = $cart['customer_id'];
 			$customer_data = get_userdata( $customer_id );
 			$customer      = [
-				'first_name' => $customer_data->first_name ? $customer_data->first_name : '',
-				'last_name'  => $customer_data->last_name ? $customer_data->last_name : '',
-				'email'      => $customer_data->user_email ? $customer_data->user_email : '',
+				'first_name' => ! empty( $customer_data ) ? $customer_data->first_name : '',
+				'last_name'  => ! empty( $customer_data ) ? $customer_data->last_name : '',
+				'email'      => ! empty( $customer_data ) ? $customer_data->user_email : '',
 			];
 			// Continue with data gathering only if there is an email value to send data to.
 			if ( empty( $customer['email'] ) ) {
