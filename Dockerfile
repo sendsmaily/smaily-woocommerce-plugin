@@ -1,6 +1,6 @@
-FROM wordpress:5.8-php7.3-apache
+FROM wordpress:6.2
 
-ENV WOOCOMMERCE_VERSION=4.9.2
+ENV WOOCOMMERCE_VERSION=7.5.1
 
 # Install required packages.
 RUN apt-get update && \
