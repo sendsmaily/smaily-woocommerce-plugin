@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.11.2
+
+- Gracefully handle abandoned cart missing product [[#138](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/138)]
+
 ### 1.11.1
 
 - Handle missing customer data to reduce logged warnings and notices [[#135](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/135)]
