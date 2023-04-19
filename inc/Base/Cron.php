@@ -186,10 +186,14 @@ class Cron {
 			if ( ! empty( $selected_fields ) ) {
 				$products_data = [];
 				foreach ( $cart_data as $cart_item ) {
-					// Single product detais array.
 					$product = [];
+
 					// Get product details if selected from user settings.
 					$details = wc_get_product( $cart_item['product_id'] );
+					if ( ! $details ) {
+						continue;
+					}
+
 					foreach ( $selected_fields as $selected_field ) {
 						switch ( $selected_field ) {
 							case 'product_name':
