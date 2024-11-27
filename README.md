@@ -111,6 +111,8 @@ List of all parameters available in Smaily email templating engine:
 
 - Customer last name: `{{ last_name }}`.
 
+- Store URL: `{{ store }}`.
+
 Up to 10 products can be received in Smaily templating engine. You can reference each product with number 1-10 behind parameter name.
 
 - Product name: `{{ product_name_[1-10] }}`.
