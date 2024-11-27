@@ -141,6 +141,7 @@ class Cron {
 				'first_name' => ! empty( $customer_data ) ? $customer_data->first_name : '',
 				'last_name'  => ! empty( $customer_data ) ? $customer_data->last_name : '',
 				'email'      => ! empty( $customer_data ) ? $customer_data->user_email : '',
+				'store'      => get_site_url(),
 			];
 			// Continue with data gathering only if there is an email value to send data to.
 			if ( empty( $customer['email'] ) ) {
@@ -154,10 +155,10 @@ class Cron {
 			];
 			// Gather customer data.
 			$customer_data = [];
-			$sync_values   = [ 'first_name', 'last_name', 'email' ];
+			$sync_values   = [ 'first_name', 'last_name', 'email', 'store' ];
 			foreach ( $sync_values as $sync_value ) {
 				// Check if user has enabled extra field in settings.
-				if ( in_array( $sync_value, $results['cart_options'], true ) || $sync_value === 'email' ) {
+				if ( in_array( $sync_value, $results['cart_options'], true ) || $sync_value === 'email' || $sync_value === 'store' ) {
 					// Add extra field if it's available in customer data.
 					if ( isset( $customer[ $sync_value ] ) ) {
 						$addresses[ $sync_value ] = $customer[ $sync_value ];
