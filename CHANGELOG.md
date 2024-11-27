@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.12.0
+
+- Include store URL in abandoned cart parameters [[#143](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/143)]
+
 ### 1.11.2
 
 - Gracefully handle abandoned cart missing product [[#138](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/138)]
