@@ -1,5 +1,10 @@
 # Changelog
 
+### 1.22.1
+
+- Stop dequeueing 3rd party styles in module settings page
+- Fix RSS feed URL link not updating when updating form values
+
 ### 1.12.0
 
 - Include store URL in abandoned cart parameters [[#143](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/143)]
