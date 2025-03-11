@@ -1,6 +1,6 @@
 # Changelog
 
-### 1.22.1
+### 1.12.1
 
 - Stop dequeueing 3rd party styles in module settings page [[#147](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/147)]
 - Fix RSS feed URL link not updating when updating form values [[#147](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/147)]
