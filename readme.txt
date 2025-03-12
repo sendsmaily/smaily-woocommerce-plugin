@@ -5,7 +5,7 @@ Requires PHP: 5.6
 Requires at least: 4.5
 Tested up to: 6.7
 WC tested up to: 9.3.1
-Stable tag: 1.12.0
+Stable tag: 1.12.1
 License: GPLv3
 
 Simple and flexible Smaily newsletter and RSS-feed integration for WooCommerce.
@@ -150,6 +150,11 @@ Also you can determine if customer had more than 10 items in cart
 9. WooCommerce Smaily widget front screen.
 
 == Changelog ==
+
+= 1.12.1 =
+
+- Stop dequeuing 3rd party styles in module settings page.
+- Fixes RSS feed URL-s not updating when changing settings.
 
 = 1.12.0 =
 
