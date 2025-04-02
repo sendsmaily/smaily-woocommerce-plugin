@@ -1,5 +1,11 @@
 # Changelog
 
+### 1.12.2
+
+- Adds `"is_abandoned_cart" = "true"` field to abandoned cart automation payload
+- Does not opt-in customers who received abandoned cart email
+- WooCommerce 9.7 compatibility
+
 ### 1.12.1
 
 - Stop dequeueing 3rd party styles in module settings page [[#147](https://github.com/sendsmaily/smaily-woocommerce-plugin/pull/147)]

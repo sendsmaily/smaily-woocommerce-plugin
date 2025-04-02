@@ -238,8 +238,10 @@ class Cron {
 
 			// Query for Smaily autoresponder.
 			$query = [
-				'autoresponder' => $results['result']['cart_autoresponder_id'], // autoresponder ID.
-				'addresses'     => [ $addresses ],
+				'autoresponder'     => $results['result']['cart_autoresponder_id'], // autoresponder ID.
+				'addresses'         => [ $addresses ],
+				'force_opt_in'      => false,
+				'is_abandoned_cart' => true,
 			];
 			// Send data to Smaily.
 			$response = Api::ApiCall( 'autoresponder', '', [ 'body' => $query ], 'POST' );
