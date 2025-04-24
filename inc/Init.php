@@ -27,7 +27,7 @@ final class Init {
 			Base\Cart::class,
 			Base\Cron::class,
 			Api\Api::class,
-			Widget\SmailyWidget::class,
+			Widget\Register::class,
 			Rss\SmailyRss::class,
 		);
 	}
