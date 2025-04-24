@@ -24,22 +24,6 @@ class SmailyWidget extends \WP_Widget {
 	}
 
 	/**
-	 * Action hooks for initializing widget.
-	 *
-	 * @return void
-	 */
-	public function register() {
-
-		// Register widget for WordPress.
-		add_action(
-			'widgets_init',
-			function() {
-				register_widget( 'Smaily_Inc\Widget\SmailyWidget' );
-			}
-		);
-	}
-
-	/**
 	 * Front-end display of widget.
 	 *
 	 * @see WP_Widget::widget()

@@ -1,5 +1,9 @@
 # Changelog
 
+### 1.12.3
+
+- Fixes translations not correctly loaded due to widget translations were loaded too early in WordPress lifecycle.
+
 ### 1.12.2
 
 - Adds `"is_abandoned_cart" = "true"` field to abandoned cart automation payload
