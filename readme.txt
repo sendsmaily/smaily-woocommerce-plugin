@@ -5,10 +5,20 @@ Requires PHP: 5.6
 Requires at least: 4.5
 Tested up to: 6.8
 WC tested up to: 9.7
-Stable tag: 1.12.3
+Stable tag: 1.12.4
 License: GPLv3
 
 Simple and flexible Smaily newsletter and RSS-feed integration for WooCommerce.
+
+=== Deprecation Notice! ===
+
+Smaily for Smaily for WooCommerce is officially deprecated!
+
+Smaily for Smaily for WooCommerce is no longer maintained, and no further updates or security patches will be provided.
+We have released a new plugin that combines WordPress, WooCommerce, Contact Form 7 and Elementor support into a single plugin.
+
+Please uninstall the current plugin and install the new one:
+[Smaily Connect](https://wordpress.org/plugins/smaily-connect/)
 
 == Description ==
 

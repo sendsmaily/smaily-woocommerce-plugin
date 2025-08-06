@@ -2,6 +2,16 @@
 
 Simple and flexible Smaily newsletter and RSS-feed integration for WooCommerce.
 
+## Deprecation notice!
+
+Smaily for WooCommerce is officially deprecated!
+
+Smaily for WooCommerce is no longer maintained, and no further updates or security patches will be provided.
+We have released a new plugin that combines WordPress, WooCommerce, Contact Form 7 and Elementor support into a single plugin.
+
+Please uninstall the current plugin and install the new one:
+[Smaily Connect](https://wordpress.org/plugins/smaily-connect/)
+
 ## Description
 
 Smaily email marketing and automation plugin for WooCommerce.

@@ -1,5 +1,10 @@
 # Changelog
 
+
+### 1.12.4
+
+- Deprecate the plugin and add a notice to use the new Smaily Connect plugin instead.
+
 ### 1.12.3
 
 - Fixes translations not correctly loaded due to widget translations were loaded too early in WordPress lifecycle.
