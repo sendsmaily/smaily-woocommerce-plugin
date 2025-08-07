@@ -12,13 +12,13 @@
  * @wordpress-plugin
  * Plugin Name: Smaily for WooCommerce
  * Plugin URI: https://github.com/sendsmaily/smaily-woocommerce-plugin
- * Description: Smaily email marketing and automation extension plugin for WooCommerce. Set up easy sync for your contacts, add opt-in subscription form, import products directly to your email template and send abandoned cart reminder emails.
- * Version: 1.12.3
+ * Description: [DEPRECATED] Smaily for WooCommerce is deprecated. Please use the new Smaily Connect plugin instead.
+ * Version: 1.12.4
  * License: GPL3
  * Author: Smaily
  * Author URI: https://smaily.com/
  * Text Domain: smaily
- * Domain Path: languages
+ * Domain Path: /lang
  *
  * Smaily for WooCommerce is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -48,7 +48,7 @@ define( 'SMAILY_PLUGIN_FILE', __FILE__ );
 define( 'SMAILY_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
 define( 'SMAILY_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'SMAILY_PLUGIN_NAME', plugin_basename( __FILE__ ) );
-define( 'SMAILY_PLUGIN_VERSION', '1.12.3' );
+define( 'SMAILY_PLUGIN_VERSION', '1.12.4' );
 
 // Required to use functions is_plugin_active and deactivate_plugins.
 require_once ABSPATH . 'wp-admin/includes/plugin.php';
@@ -65,7 +65,7 @@ if ( is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
 
 } else {
 	deactivate_plugins( SMAILY_PLUGIN_NAME );
-	add_action( 'admin_notices', 'smaily_plugin_admin_notices' );
+	add_action( 'admin_notices', 'smaily_plugin_admin_enable_woocommerce_notice' );
 	// Stop "Plugin Activated" message from appearing.
 	if ( isset( $_GET['activate'] ) ) {
 		unset( $_GET['activate'] );
@@ -84,7 +84,7 @@ function smaily_for_woocommerce_load_textdomain() {
  *
  * @return void
  */
-function smaily_plugin_admin_notices() {
+function smaily_plugin_admin_enable_woocommerce_notice() {
 	$message = __(
 		'Smaily for WooCommerce is not able to activate. WooCommerce needed to function properly. Is WooCommerce installed?',
 		'smaily'

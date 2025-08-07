@@ -48,6 +48,8 @@ class Lifecycle {
 		wp_clear_scheduled_hook( 'smaily_cron_sync_contacts' );
 		wp_clear_scheduled_hook( 'smaily_cron_abandoned_carts_email' );
 		wp_clear_scheduled_hook( 'smaily_cron_abandoned_carts_status' );
+		// Show a deprecation notice on subsequent activations.
+		delete_metadata( 'user', 0, 'smaily_for_woocommerce_deprecation_notice_dismissed', '', true );
 	}
 
 	/**
