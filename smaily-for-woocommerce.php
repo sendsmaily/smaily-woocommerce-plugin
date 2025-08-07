@@ -18,7 +18,7 @@
  * Author: Smaily
  * Author URI: https://smaily.com/
  * Text Domain: smaily
- * Domain Path: languages
+ * Domain Path: /lang
  *
  * Smaily for WooCommerce is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
