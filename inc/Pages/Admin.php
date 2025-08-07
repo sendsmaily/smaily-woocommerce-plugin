@@ -36,14 +36,17 @@ class Admin {
 			<div id="smaily-for-woocommerce-admin-deprecation-notice" class="notice notice-warning is-dismissible">
 				<p>
 					<strong>
-						<?php esc_html_e( 'Smaily for WooCommerce is officially deprecated!', 'smaily' ); ?>
+						<?php esc_html_e( 'DEPRECATION NOTICE', 'smaily' ); ?>
 					</strong>
 				</p>
 				<p>
-					<?php esc_html_e( 'Smaily for WooCommerce is no longer maintained, and no further updates or security patches will be provided. We have released a new plugin that combines WordPress, WooCommerce, Contact Form 7 and Elementor support into a single plugin.', 'smaily' ); ?>
+					<?php esc_html_e( 'Smaily for WooCommerce is officially deprecated and will no longer receive updates or security patches.', 'smaily' ); ?>
 				</p>
 				<p>
-					<?php esc_html_e( 'Please remove the current Smaily for WooCommerce plugin and install the new Smaily Connect plugin!', 'smaily' ); ?>
+					<?php esc_html_e( 'Please uninstall this plugin and switch to Smaily Connect — our new, combined plugin with support for WordPress, WooCommerce, Contact Form 7 and Elementor.', 'smaily' ); ?>
+				</p>
+				<p>
+					<?php esc_html_e( 'Next steps: Deactivate and delete Smaily for WooCommerce → install Smaily Connect → reconnect your Smaily account.', 'smaily' ); ?>
 				</p>
 				<p>
 					<a href="https://wordpress.org/plugins/smaily-connect/" target="_blank" rel="noopener noreferrer">
